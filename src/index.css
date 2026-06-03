@@ -1,0 +1,795 @@
+/* ================================================================
+   OPUS ONE — OPERATIONAL INTELLIGENCE DESIGN SYSTEM v4.0
+   Industrial MES Edition
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+/* ---- CSS Custom Properties ------------------------------------ */
+:root {
+  /* Backgrounds — Clean Industrial */
+  --bg-app: #f1f3f6;
+  --bg-card: #ffffff;
+  --bg-sidebar: #0f172a;
+  --bg-sidebar-hi: rgba(255, 255, 255, 0.06);
+  --bg-hover: #f7f8fa;
+  --bg-selected: #eef2f7;
+  --bg-surface: #f7f8fa;
+  --bg-inset: #edf0f5;
+
+  /* Borders */
+  --border: #e2e6ed;
+  --border-light: #edf0f5;
+  --border-focus: #3b82f6;
+
+  /* Accent Colors — Operational */
+  --blue: #3b82f6;
+  --cyan: #0ea5e9;
+  --green: #16a34a;
+  --red: #dc2626;
+  --orange: #ea580c;
+  --amber: #d97706;
+  --purple: #7c3aed;
+  --indigo: #6366f1;
+
+  /* Text */
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --text-dim: #d1d5db;
+
+  /* Sidebar text */
+  --sidebar-text: #94a3b8;
+  --sidebar-text-hi: #f1f5f9;
+  --sidebar-accent: #3b82f6;
+
+  /* Status */
+  --status-running: #16a34a;
+  --status-idle: #d97706;
+  --status-breakdown: #dc2626;
+  --status-noplan: #9ca3af;
+  --status-maintenance: #ea580c;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+
+  /* Radii */
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+  
+  /* Chart */
+  --chart-tick: #9ca3af;
+}
+
+[data-theme="dark"] {
+  /* Backgrounds — Industrial Control Room */
+  --bg-app: #050b18;
+  --bg-card: rgba(15, 23, 42, 0.8);
+  --bg-sidebar: #050b18;
+  --bg-sidebar-hi: rgba(255, 255, 255, 0.06);
+  --bg-hover: rgba(255, 255, 255, 0.03);
+  --bg-selected: rgba(255, 255, 255, 0.05);
+  --bg-surface: #0b1120;
+  --bg-inset: rgba(5, 11, 24, 0.6);
+
+  /* Borders */
+  --border: rgba(255, 255, 255, 0.1);
+  --border-light: rgba(255, 255, 255, 0.05);
+  --border-focus: #3b82f6;
+
+  /* Text */
+  --text-primary: #f0f6ff;
+  --text-secondary: #8ba0bc;
+  --text-muted: #4a6080;
+  --text-dim: #2a3a50;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4);
+
+  /* Chart Tick */
+  --chart-tick: #6b7280;
+}
+
+[data-theme="dark"] .badge-running, 
+[data-theme="dark"] .badge-ok {
+  background: rgba(22, 163, 74, 0.15);
+  color: #4ade80;
+}
+
+[data-theme="dark"] .badge-idle {
+  background: rgba(217, 119, 6, 0.15);
+  color: #fbbf24;
+}
+
+[data-theme="dark"] .badge-breakdown, 
+[data-theme="dark"] .badge-alert {
+  background: rgba(220, 38, 38, 0.15);
+  color: #f87171;
+}
+
+[data-theme="dark"] .badge-maintenance {
+  background: rgba(234, 88, 12, 0.15);
+  color: #fb923c;
+}
+
+[data-theme="dark"] .badge-noplan {
+  background: rgba(107, 114, 128, 0.15);
+  color: #9ca3af;
+}
+
+/* ---- Reset ---------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg-app);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- Scrollbar ----------------------------------------------- */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ================================================================
+   TYPOGRAPHY
+   ================================================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.text-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+/* ================================================================
+   CARDS & SURFACES
+   ================================================================ */
+
+/* Primary card — white, subtle border, slight shadow */
+.ops-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.ops-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* ---- Operational Interaction Classes ---- */
+.ops-clickable {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ops-hover-surface {
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid transparent;
+}
+.ops-hover-surface:hover {
+  background-color: var(--bg-hover);
+  border-color: var(--border-light);
+  box-shadow: var(--shadow-card);
+}
+
+.ops-investigation-row {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+.ops-investigation-row:hover {
+  background-color: var(--bg-inset);
+  border-color: var(--border-light);
+}
+
+/* Drilldown card — clickable, with hover arrow hint */
+.drill-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.drill-card:hover {
+  border-color: var(--blue);
+  box-shadow: var(--shadow-md), 0 0 0 1px rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
+}
+
+.drill-card::after {
+  content: '→';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: var(--text-dim);
+  transition: color 0.2s ease, right 0.2s ease;
+}
+
+.drill-card:hover::after {
+  color: var(--blue);
+  right: 12px;
+}
+
+/* Status left border accent on cards */
+.drill-card[data-status="running"] {
+  border-left: 3px solid var(--status-running);
+}
+
+.drill-card[data-status="idle"] {
+  border-left: 3px solid var(--status-idle);
+}
+
+.drill-card[data-status="breakdown"] {
+  border-left: 3px solid var(--status-breakdown);
+}
+
+.drill-card[data-status="critical"] {
+  border-left: 3px solid var(--status-breakdown);
+}
+
+.drill-card[data-status="warning"] {
+  border-left: 3px solid var(--status-idle);
+}
+
+.drill-card[data-status="good"] {
+  border-left: 3px solid var(--status-running);
+}
+
+/* Inset panel — slightly recessed area */
+.ops-inset {
+  background: var(--bg-inset);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border-light);
+}
+
+/* ================================================================
+   SIDEBAR
+   ================================================================ */
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: var(--r-md);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sidebar-text);
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.sidebar-item:hover {
+  background: var(--bg-sidebar-hi);
+  color: var(--sidebar-text-hi);
+}
+
+.sidebar-item.active {
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+  font-weight: 600;
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+/* ================================================================
+   STATUS INDICATORS
+   ================================================================ */
+.status-dot {
+  display: inline-block;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-running {
+  background: var(--status-running);
+}
+
+.status-idle {
+  background: var(--status-idle);
+}
+
+.status-breakdown {
+  background: var(--status-breakdown);
+}
+
+.status-maintenance {
+  background: var(--status-maintenance);
+}
+
+.status-noplan {
+  background: var(--status-noplan);
+}
+
+/* Pulse animations — subtle */
+@keyframes pulse-green {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 6px rgba(22, 163, 74, 0);
+  }
+}
+
+@keyframes pulse-red {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 6px rgba(220, 38, 38, 0);
+  }
+}
+
+@keyframes pulse-amber {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 6px rgba(217, 119, 6, 0);
+  }
+}
+
+.animate-pulse-green {
+  animation: pulse-green 2s infinite;
+}
+
+.animate-pulse-red {
+  animation: pulse-red 2s infinite;
+}
+
+.animate-pulse-amber {
+  animation: pulse-amber 2s infinite;
+}
+
+/* ================================================================
+   PROGRESS BARS
+   ================================================================ */
+.progress-bar {
+  height: 6px;
+  background: var(--bg-inset);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.6s ease;
+  position: relative;
+}
+
+/* ================================================================
+   DATA TABLES — Industrial
+   ================================================================ */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.data-table thead th {
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--border);
+  background: var(--bg-surface);
+  white-space: nowrap;
+}
+
+.data-table tbody tr {
+  border-bottom: 1px solid var(--border-light);
+  transition: background 0.1s ease;
+}
+
+.data-table tbody tr:hover {
+  background: var(--bg-hover);
+}
+
+.data-table tbody tr.clickable-row {
+  cursor: pointer;
+}
+
+.data-table tbody tr.clickable-row:hover {
+  background: var(--bg-selected);
+}
+
+.data-table tbody td {
+  padding: 10px 12px;
+  color: var(--text-secondary);
+  vertical-align: middle;
+}
+
+/* ================================================================
+   MACHINE TIMELINE — Primary Visual Component
+   ================================================================ */
+.timeline-track {
+  display: flex;
+  height: 28px;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  background: var(--bg-inset);
+  border: 1px solid var(--border-light);
+}
+
+.timeline-block {
+  height: 100%;
+  position: relative;
+  transition: opacity 0.15s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.timeline-block:hover {
+  opacity: 0.8;
+}
+
+.timeline-block.running {
+  background: var(--status-running);
+}
+
+.timeline-block.idle {
+  background: var(--status-idle);
+}
+
+.timeline-block.breakdown {
+  background: var(--status-breakdown);
+}
+
+.timeline-block.noplan {
+  background: var(--status-noplan);
+  opacity: 0.5;
+}
+
+.timeline-block.maintenance {
+  background: var(--status-maintenance);
+}
+
+/* Expanded timeline for machine detail */
+.timeline-track-lg {
+  height: 40px;
+  border-radius: var(--r-md);
+}
+
+.timeline-label {
+  font-size: 9px;
+  font-weight: 600;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+
+/* ================================================================
+   TOOLTIPS
+   ================================================================ */
+.custom-tooltip {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 10px 14px;
+  box-shadow: var(--shadow-lg);
+  font-size: 12px;
+}
+
+.custom-tooltip p:first-child {
+  color: var(--text-muted);
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+/* ================================================================
+   BREADCRUMB
+   ================================================================ */
+.breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: var(--r-sm);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.breadcrumb-item:hover {
+  background: var(--bg-selected);
+  color: var(--text-primary);
+}
+
+.breadcrumb-item.active {
+  color: var(--text-primary);
+  font-weight: 600;
+  background: var(--bg-selected);
+  cursor: default;
+}
+
+.breadcrumb-sep {
+  color: var(--text-dim);
+  font-size: 10px;
+}
+
+/* ================================================================
+   BADGES & STATUS PILLS
+   ================================================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.badge-running {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.badge-idle {
+  background: #fef3c7;
+  color: #a16207;
+}
+
+.badge-breakdown {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.badge-noplan {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.badge-maintenance {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.badge-alert {
+  background: #fee2e2;
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.badge-ok {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+/* ================================================================
+   METRIC INLINE
+   ================================================================ */
+.metric-inline {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.metric-value {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.metric-unit {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.metric-sm .metric-value {
+  font-size: 20px;
+}
+
+.metric-sm .metric-unit {
+  font-size: 12px;
+}
+
+/* ================================================================
+   ALERT LIST
+   ================================================================ */
+.alert-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 13px;
+  transition: background 0.1s ease;
+}
+
+.alert-item:last-child {
+  border-bottom: none;
+}
+
+.alert-item:hover {
+  background: var(--bg-hover);
+}
+
+.alert-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 4px;
+}
+
+/* ================================================================
+   ATTENTION ITEMS (MD DASHBOARD)
+   ================================================================ */
+.attention-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  border-bottom: 1px solid var(--border-light);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.attention-item:last-child {
+  border-bottom: none;
+}
+.attention-item:hover {
+  background: var(--bg-selected);
+}
+
+/* ================================================================
+   UTILITY
+   ================================================================ */
+.gradient-text {
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.section-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.trend-up {
+  color: var(--green);
+}
+
+.trend-down {
+  color: var(--red);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+/* ================================================================
+   CHART STYLING OVERRIDES
+   ================================================================ */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: var(--border-light) !important;
+}
+.recharts-text {
+  fill: var(--chart-tick) !important;
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 768px) {
+  .metric-value {
+    font-size: 22px;
+  }
+  .data-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
