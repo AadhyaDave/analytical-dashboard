@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Bell, Search, RefreshCw, Download, LogOut,
+  Bell, Search, RefreshCw, Download, LogOut, ShieldOff,
   FileSpreadsheet, FileText, ChevronDown, Sun, Moon
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
@@ -196,12 +196,25 @@ const TopNavbar = () => {
           </AnimatePresence>
         </div>
 
-        {/* Logout */}
+        {/* Logout (role) */}
         <button onClick={logout}
           className="p-2 rounded-lg transition-colors"
           style={{ color: 'var(--text-muted)' }}
           title="Logout">
           <LogOut size={15} />
+        </button>
+
+        {/* Revoke internal access */}
+        <button
+          onClick={() => {
+            localStorage.removeItem('internalAccessGranted');
+            window.location.reload();
+          }}
+          className="p-2 rounded-lg transition-colors"
+          style={{ color: 'var(--text-muted)' }}
+          title="Revoke Internal Access"
+        >
+          <ShieldOff size={15} />
         </button>
       </div>
     </header>

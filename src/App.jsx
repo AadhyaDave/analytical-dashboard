@@ -1,4 +1,5 @@
 import React from 'react';
+import InternalAccessPage from './pages/InternalAccessPage';
 
 import { AppProvider, useApp } from './context/AppContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -74,6 +75,12 @@ const AppContent = () => {
 
 
 function App() {
+  // Internal access gate — must be granted before the platform is shown
+  const isGranted = localStorage.getItem('internalAccessGranted') === 'true';
+  if (!isGranted) {
+    return <InternalAccessPage />;
+  }
+
   return (
     <ThemeProvider>
       <AppProvider>
