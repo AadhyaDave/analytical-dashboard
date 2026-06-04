@@ -54,8 +54,8 @@ const TopNavbar = () => {
   const handleExport = async (type) => {
     setShowExportMenu(false);
     try {
-      if (type === 'excel') await exportExcel();
-      else await exportPDF();
+      if (type === 'excel') await exportExcel(user);
+      else await exportPDF(user);
     } catch (err) {
       console.error('Export failed:', err);
     }

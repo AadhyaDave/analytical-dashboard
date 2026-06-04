@@ -27,12 +27,11 @@ const StatusDonut = ({ data, size = 85, onClick, compact = false }) => {
   const total = data.reduce((acc, curr) => acc + curr.value, 0);
   return (
     <div
-      className={`flex items-center ${compact ? 'gap-3' : 'gap-5'} w-full ${onClick ? 'ops-hover-surface p-1.5 rounded cursor-pointer -m-1.5' : ''}`}
+      className={`flex items-center justify-center ${compact ? 'gap-4' : 'gap-5'} w-full ${onClick ? 'ops-hover-surface p-1.5 rounded cursor-pointer -m-1.5' : ''}`}
       onClick={onClick}
     >
       <div style={{ width: size, height: size, position: 'relative' }} className="flex-shrink-0">
-        <ResponsiveContainer width="100%" height="100%">
-          <PieChart>
+        <PieChart width={size} height={size}>
             <Pie data={data} innerRadius="65%" outerRadius="100%" paddingAngle={2} dataKey="value" stroke="none">
               {data.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={entry.color} />
@@ -49,19 +48,18 @@ const StatusDonut = ({ data, size = 85, onClick, compact = false }) => {
               return null;
             }} />
           </PieChart>
-        </ResponsiveContainer>
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
           <span className="text-[14px] font-bold leading-none text-[var(--text-primary)]">{total}</span>
         </div>
       </div>
-      <div className="flex flex-col gap-0.5 flex-1 justify-center">
+      <div className="flex flex-col gap-1 justify-center min-w-[90px]">
         {data.map((item, i) => (
-          <div key={i} className="flex items-center justify-between text-[11px] font-semibold">
-            <div className="flex items-center gap-2 min-w-0">
+          <div key={i} className="flex items-center justify-between text-[11px] font-semibold gap-3">
+            <div className="flex items-center gap-1.5 min-w-0">
               <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: item.color }} />
               <span style={{ color: 'var(--text-secondary)' }} className="truncate leading-tight">{item.name}</span>
             </div>
-            <span style={{ color: 'var(--text-primary)', marginLeft: 6, fontVariantNumeric: 'tabular-nums' }}>{item.value}</span>
+            <span style={{ color: 'var(--text-primary)', fontVariantNumeric: 'tabular-nums', flexShrink: 0 }}>{item.value}</span>
           </div>
         ))}
       </div>
@@ -81,7 +79,7 @@ const TopPerformingLines = ({ drillDown }) => {
     .slice(0, 3);
 
   return (
-    <div className="flex flex-col justify-center h-full w-full gap-1.5">
+    <div className="flex flex-col justify-center h-full w-full gap-2">
       {ranked.map((line, i) => {
         const rank = rankStyles[i];
         return (
@@ -90,11 +88,11 @@ const TopPerformingLines = ({ drillDown }) => {
             className="flex items-center justify-between ops-investigation-row bg-transparent px-2 py-1.5 rounded w-full"
             onClick={() => drillDown(line.name, { lineId: line.id })}
           >
-            <div className="flex items-center gap-2.5">
-              <span style={{ fontSize: 11, fontWeight: 800, color: rank.color }}>#{i + 1}</span>
+            <div className="flex items-center gap-2.5 min-w-0 pr-2">
+              <span style={{ fontSize: 11, fontWeight: 800, color: rank.color, flexShrink: 0 }}>#{i + 1}</span>
               <span className="text-[13px] font-bold text-[var(--text-primary)] truncate">{line.name}</span>
             </div>
-            <span style={{ fontSize: 13, fontWeight: 800, color: 'var(--text-primary)', fontVariantNumeric: 'tabular-nums' }}>
+            <span style={{ fontSize: 13, fontWeight: 800, color: 'var(--text-primary)', fontVariantNumeric: 'tabular-nums', flexShrink: 0 }}>
               {line.oee.toFixed(1)}
             </span>
           </div>
@@ -140,9 +138,9 @@ const LineModule = ({ line, index, drillDown, onInvestigate }) => {
         </div>
       </div>
 
-      <div className="p-6 flex flex-wrap lg:flex-nowrap items-center justify-between gap-8 bg-[var(--bg-card)]">
+      <div className="p-6 flex flex-wrap lg:flex-nowrap items-center justify-between gap-4 lg:gap-8 bg-[var(--bg-card)]">
         
-        <div className="flex items-center gap-8 min-w-max">
+        <div className="flex items-center gap-4 lg:gap-8 min-w-max">
           <div
             className="flex-shrink-0 flex flex-col items-center ops-hover-surface p-1 rounded cursor-pointer -m-1"
             onClick={() => drillDown(line.name, { lineId: line.id })}
@@ -172,8 +170,8 @@ const LineModule = ({ line, index, drillDown, onInvestigate }) => {
 
         <div className="hidden lg:block w-px h-16 bg-[var(--border-light)]" />
 
-        <div className="flex items-center gap-4 flex-1 justify-end min-w-max">
-          <div className="w-[180px]">
+        <div className="flex items-center gap-3 lg:gap-6 flex-1 justify-end min-w-0">
+          <div className="flex-shrink-0">
             <StatusDonut
               data={lineMachineStatus}
               size={85}
@@ -184,10 +182,10 @@ const LineModule = ({ line, index, drillDown, onInvestigate }) => {
           
           <button
             onClick={() => onInvestigate(index)}
-            className="flex-shrink-0 flex items-center justify-center gap-2 px-6 py-2 rounded bg-[var(--blue)] text-white cursor-pointer hover:bg-blue-600 transition-colors shadow border-none h-10"
+            className="flex-shrink-0 flex items-center justify-center gap-1.5 px-4 py-2 rounded bg-[var(--blue)] text-white cursor-pointer hover:bg-blue-600 transition-colors shadow border-none h-[36px]"
           >
-            <span className="text-[12px] font-bold uppercase tracking-widest whitespace-nowrap">More Info</span>
-            <ChevronRight size={16} className="flex-shrink-0" />
+            <span className="text-[11px] font-bold uppercase tracking-widest whitespace-nowrap">More Info</span>
+            <ChevronRight size={14} className="flex-shrink-0" />
           </button>
         </div>
       </div>
@@ -317,13 +315,14 @@ const InvestigationOverlay = ({ lineIdx, onClose, drillDown }) => {
             </div>
 
             {/* 2. Line Trend (Output vs Target) */}
-            <div className="flex flex-col">
+            <div className="flex flex-col min-w-0">
               <h4 className="text-[12px] font-bold text-[var(--text-muted)] uppercase tracking-wider mb-4">Line Output Trend</h4>
               <div
-                className="flex-1 w-full min-h-[160px] mt-2 ops-hover-surface p-2 rounded -m-2 cursor-pointer"
+                className="flex-1 w-full h-[160px] mt-2 ops-hover-surface p-2 rounded -m-2 cursor-pointer"
+                style={{ position: 'relative' }}
                 onClick={() => { onClose(); drillDown(lineName, { lineId: line.id, context: 'trend' }); }}
               >
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
                   <AreaChart data={hourlyProductionData}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--border-light)" />
                     <XAxis dataKey="hour" tick={{ fill: 'var(--chart-tick)', fontSize: 10 }} axisLine={false} tickLine={false} dy={5} />
@@ -451,7 +450,7 @@ const SectionHeadDashboard = () => {
             <span className="text-[11px] tracking-widest uppercase font-bold mt-4 text-[var(--text-muted)] text-center">Section OEE</span>
           </div>
 
-          <div className="flex flex-1 gap-4">
+          <div className="flex flex-1 gap-4 min-w-0">
             {[
               { label: 'Running', value: runningCount, unit: '', color: 'var(--green)' },
               { label: 'Idle', value: idleCount, unit: '', color: 'var(--amber)' },
@@ -460,7 +459,7 @@ const SectionHeadDashboard = () => {
             ].map((m, i) => (
               <div
                 key={i}
-                className="ops-card p-5 flex flex-col justify-center items-center flex-1 ops-hover-surface cursor-pointer min-w-[120px]"
+                className="ops-card p-5 flex flex-col justify-center items-center flex-1 ops-hover-surface cursor-pointer min-w-0"
                 onClick={() => drillDown('CNC Section', { context: m.label })}
               >
                 <span className="text-[11px] tracking-widest uppercase font-bold text-[var(--text-muted)] text-center mb-2">
@@ -473,17 +472,21 @@ const SectionHeadDashboard = () => {
             ))}
           </div>
 
-          <div className="ops-card p-5 min-w-[180px] flex flex-col">
-            <span className="text-[11px] tracking-widest uppercase font-bold text-[var(--text-muted)] mb-3">Top Performing Lines</span>
-            <TopPerformingLines drillDown={drillDown} />
+          <div className="ops-card p-5 min-w-[200px] flex flex-col justify-center">
+            <span className="text-[11px] tracking-widest uppercase font-bold text-[var(--text-muted)] mb-3 text-center">Top Performing Lines</span>
+            <div className="flex-1 flex flex-col justify-center">
+              <TopPerformingLines drillDown={drillDown} />
+            </div>
           </div>
 
           <div
             className="ops-card p-5 min-w-[220px] flex flex-col justify-center ops-hover-surface cursor-pointer"
             onClick={() => drillDown('CNC Section', { context: 'section_line_status' })}
           >
-            <span className="text-[11px] tracking-widest uppercase font-bold text-[var(--text-muted)] mb-4">Line Status</span>
-            <StatusDonut data={lineStatusDonutData} size={85} compact={true} />
+            <span className="text-[11px] tracking-widest uppercase font-bold text-[var(--text-muted)] mb-3 text-center">Line Status</span>
+            <div className="flex-1 flex items-center justify-center">
+              <StatusDonut data={lineStatusDonutData} size={85} compact={true} />
+            </div>
           </div>
 
         </div>
