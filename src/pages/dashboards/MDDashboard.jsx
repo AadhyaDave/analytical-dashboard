@@ -155,10 +155,10 @@ const PlantModule = ({ plant, index, drillDown, onInvestigate, spanClass = '', t
       </div>
 
       {/* ── Executive Summary (Fixed View) ── */}
-      <div className="p-6 flex flex-wrap lg:flex-nowrap items-center justify-between gap-4 lg:gap-8 bg-[var(--bg-card)]">
+      <div className="p-6 flex flex-wrap lg:flex-nowrap items-center justify-between gap-4 2xl:gap-8 bg-[var(--bg-card)]">
 
         {/* KPIs */}
-        <div className="flex items-center gap-4 lg:gap-8 min-w-max">
+        <div className="flex items-center gap-4 2xl:gap-8 min-w-0 flex-[1.5]">
           <div
             className="flex-shrink-0 flex flex-col items-center ops-hover-surface p-1 rounded cursor-pointer -m-1"
             onClick={() => drillDown(plantName, { plantIdx: index })}
@@ -219,12 +219,12 @@ const PlantModule = ({ plant, index, drillDown, onInvestigate, spanClass = '', t
 
         <div className="hidden lg:block w-px h-16 bg-[var(--border-light)]" />
 
-        {/* Donut & CTA */}
-        <div className="flex items-center gap-3 lg:gap-6 flex-1 justify-end min-w-0">
+        {/* Status Donut & More Info */}
+        <div className="flex items-center gap-2 2xl:gap-6 flex-1 justify-end min-w-0">
           <div className="flex-shrink-0">
             <MachineStatusDonut
               data={plantMachineStatus[index]}
-              size={85}
+              size={75}
               compact={true}
               onClick={() => drillDown(plantName, { plantIdx: index, context: 'machine_status' })}
             />

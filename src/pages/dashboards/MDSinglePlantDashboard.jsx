@@ -211,7 +211,7 @@ const MDSinglePlantDashboard = () => {
                <div className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-[var(--green)]"/> Qual</div>
             </div>
           </div>
-          <div className="flex-1 min-h-0 w-full relative pointer-events-none">
+          <div className="flex-1 min-h-[160px] w-full relative pointer-events-none">
             <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
               <AreaChart data={trendData} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
                 <defs>

@@ -184,6 +184,7 @@ const InternalAccessPage = () => {
                 />
                 <input
                   id="internal-username"
+                  name="username"
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
@@ -237,6 +238,7 @@ const InternalAccessPage = () => {
                 />
                 <input
                   id="internal-password"
+                  name="password"
                   type={showPw ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}

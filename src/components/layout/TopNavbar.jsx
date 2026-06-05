@@ -57,7 +57,7 @@ const TopNavbar = () => {
       if (type === 'excel') await exportExcel(user);
       else await exportPDF(user);
     } catch (err) {
-      console.error('Export failed:', err);
+      if (import.meta.env.DEV) console.error('Export failed:', err);
     }
   };
 
@@ -89,6 +89,8 @@ const TopNavbar = () => {
         <div className="relative hidden lg:block">
           <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: 'var(--text-muted)' }} />
           <input
+            id="navbar-search"
+            name="search"
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}

@@ -138,9 +138,9 @@ const LineModule = ({ line, index, drillDown, onInvestigate }) => {
         </div>
       </div>
 
-      <div className="p-6 flex flex-wrap lg:flex-nowrap items-center justify-between gap-4 lg:gap-8 bg-[var(--bg-card)]">
+      <div className="p-6 flex flex-wrap lg:flex-nowrap items-center justify-between gap-4 2xl:gap-8 bg-[var(--bg-card)]">
         
-        <div className="flex items-center gap-4 lg:gap-8 min-w-max">
+        <div className="flex items-center gap-4 2xl:gap-8 min-w-0 flex-[1.5]">
           <div
             className="flex-shrink-0 flex flex-col items-center ops-hover-surface p-1 rounded cursor-pointer -m-1"
             onClick={() => drillDown(line.name, { lineId: line.id })}
@@ -170,11 +170,11 @@ const LineModule = ({ line, index, drillDown, onInvestigate }) => {
 
         <div className="hidden lg:block w-px h-16 bg-[var(--border-light)]" />
 
-        <div className="flex items-center gap-3 lg:gap-6 flex-1 justify-end min-w-0">
+        <div className="flex items-center gap-2 2xl:gap-6 flex-1 justify-end min-w-0">
           <div className="flex-shrink-0">
             <StatusDonut
               data={lineMachineStatus}
-              size={85}
+              size={75}
               compact={true}
               onClick={() => drillDown(line.name, { lineId: line.id, context: 'machine_status' })}
             />

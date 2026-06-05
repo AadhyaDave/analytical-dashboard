@@ -116,7 +116,7 @@ const SinglePlantMDDashboard = () => {
                </div>
             </div>
           </div>
-          <div className="flex-1 min-h-0 w-full mt-2">
+          <div className="flex-1 min-h-[160px] w-full mt-2">
             <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
               <AreaChart data={oeeTrendData.daily} margin={{ top: 5, right: 0, left: -20, bottom: 0 }}>
                 <defs>
@@ -157,7 +157,7 @@ const SinglePlantMDDashboard = () => {
             </div>
           </div>
 
-          <div className="flex-1 min-h-0 w-full">
+          <div className="flex-1 min-h-[160px] w-full">
             <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
               <BarChart data={shiftOEEData} margin={{ top: 0, right: 0, left: -20, bottom: 0 }} layout="vertical">
                 <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="var(--border-light)" />
