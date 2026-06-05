@@ -116,8 +116,8 @@ const SinglePlantMDDashboard = () => {
                </div>
             </div>
           </div>
-          <div className="flex-1 min-h-0 w-full mt-2">
-            <ResponsiveContainer width="100%" height="100%">
+          <div className="flex-1 min-h-[160px] w-full mt-2">
+            <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
               <AreaChart data={oeeTrendData.daily} margin={{ top: 5, right: 0, left: -20, bottom: 0 }}>
                 <defs>
                   <linearGradient id="oeeFill" x1="0" y1="0" x2="0" y2="1">
@@ -157,8 +157,8 @@ const SinglePlantMDDashboard = () => {
             </div>
           </div>
 
-          <div className="flex-1 min-h-0 w-full">
-            <ResponsiveContainer width="100%" height="100%">
+          <div className="flex-1 min-h-[160px] w-full">
+            <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
               <BarChart data={shiftOEEData} margin={{ top: 0, right: 0, left: -20, bottom: 0 }} layout="vertical">
                 <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="var(--border-light)" />
                 <XAxis type="number" domain={[60, 100]} hide />
@@ -185,7 +185,7 @@ const SinglePlantMDDashboard = () => {
             {plantAlerts.map((alert, i) => (
               <div key={i} className="flex gap-2.5 p-2 rounded bg-[var(--bg-inset)] border border-[var(--border-light)] items-start">
                 <AlertCircle size={14} className={`mt-0.5 flex-shrink-0 ${alert.severity === 'critical' ? 'text-[var(--red)]' : 'text-[var(--amber)]'}`} />
-                <div className="flex flex-col gap-0.5 min-w-0">
+                <div className="flex flex-col gap-0.5 min-w-0 w-full">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--text-muted)] truncate">{alert.category}</span>
                   <span className="text-[11px] font-semibold text-[var(--text-primary)] leading-snug">{alert.message}</span>
                 </div>
@@ -232,12 +232,12 @@ const SinglePlantMDDashboard = () => {
           <h3 className="text-[11px] font-bold uppercase tracking-widest text-[var(--text-muted)] mb-3">Top Machines</h3>
           <div className="flex flex-col gap-2 h-full justify-center">
             {topPerformingMachines[0]?.slice(0,3).map((mac, i) => (
-              <div key={i} className="flex items-center justify-between px-2 py-1.5 bg-[var(--bg-inset)] rounded border border-[var(--border-light)]">
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-bold text-[var(--text-muted)]">0{i+1}</span>
-                  <span className="text-[12px] font-bold text-[var(--text-primary)]">{mac.name}</span>
+              <div key={i} className="flex items-center justify-between px-2 py-1.5 bg-[var(--bg-inset)] rounded border border-[var(--border-light)] gap-2">
+                <div className="flex items-center gap-2 min-w-0 pr-2">
+                  <span className="text-[10px] font-bold text-[var(--text-muted)] flex-shrink-0">0{i+1}</span>
+                  <span className="text-[12px] font-bold text-[var(--text-primary)] truncate">{mac.name}</span>
                 </div>
-                <span className="text-[13px] font-bold text-[var(--green)]">{mac.oee}%</span>
+                <span className="text-[13px] font-bold text-[var(--green)] flex-shrink-0">{mac.oee}%</span>
               </div>
             ))}
           </div>

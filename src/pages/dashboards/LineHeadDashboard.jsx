@@ -70,16 +70,16 @@ const LineHeadDashboard = () => {
       {/* Header — Line KPI Grid */}
       <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
         <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
-          <div className="ops-card p-4 flex flex-col items-center justify-center">
-            <p className="text-label mb-2 text-[10px] tracking-widest uppercase">Line OEE</p>
+          <div className="ops-card p-4 flex flex-col items-center justify-center text-center">
+            <p className="text-[10px] tracking-widest uppercase text-[var(--text-muted)] mb-2 font-bold">Line OEE</p>
             <OEEGauge size={85} oee={lineOeeAvg.toFixed(1)} showLabels={false} />
           </div>
-          <div className="ops-card p-4 flex flex-col justify-center items-center">
-            <p className="text-label mb-2 text-[10px] tracking-widest uppercase">Line Status</p>
+          <div className="ops-card p-4 flex flex-col justify-center items-center text-center">
+            <p className="text-[10px] tracking-widest uppercase text-[var(--text-muted)] mb-2 font-bold">Line Status</p>
             <LineStatusDonut machines={machineCards} />
           </div>
-          <div className="ops-card p-4 flex flex-col justify-center items-center">
-            <p className="text-label mb-2 text-[10px] tracking-widest uppercase">Produced</p>
+          <div className="ops-card p-4 flex flex-col justify-center items-center text-center">
+            <p className="text-[10px] tracking-widest uppercase text-[var(--text-muted)] mb-2 font-bold">Produced</p>
             <p style={{ fontSize: 24, fontWeight: 700, color: 'var(--text-primary)' }}>
               {productionCounter.totalToday} <span style={{ fontSize: 14, fontWeight: 500, color: 'var(--text-muted)' }}>/ {productionCounter.targetToday}</span>
             </p>
@@ -89,8 +89,8 @@ const LineHeadDashboard = () => {
             { label: 'Performance', value: 93.6, unit: '%', color: 'var(--purple)' },
             { label: 'Quality', value: 98.4, unit: '%', color: 'var(--green)' },
           ].map((m, i) => (
-            <div key={i} className="ops-card p-4 flex flex-col justify-center items-center">
-              <p className="text-label mb-2 text-[10px] tracking-widest uppercase">{m.label}</p>
+            <div key={i} className="ops-card p-4 flex flex-col justify-center items-center text-center">
+              <p className="text-[10px] tracking-widest uppercase text-[var(--text-muted)] mb-2 font-bold">{m.label}</p>
               <p style={{ fontSize: 24, fontWeight: 700, color: m.color }}>{m.value}{m.unit}</p>
             </div>
           ))}

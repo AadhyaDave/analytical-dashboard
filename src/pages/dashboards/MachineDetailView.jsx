@@ -103,11 +103,9 @@ const MachineDetailView = () => {
       <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.05 }}>
         <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
-          <div className="ops-card p-3 flex flex-col items-center justify-center relative">
-            <p className="text-label mb-1 absolute top-3 left-3">OEE</p>
-            <div className="mt-4">
-              <OEEGauge size={85} oee={machine.oee || 0} availability={machine.availability || 0} performance={machine.performance || 0} quality={machine.quality || 0} showLabels={false} />
-            </div>
+          <div className="ops-card p-3 flex flex-col items-center justify-center text-center">
+            <p className="text-[10px] tracking-widest uppercase text-[var(--text-muted)] mb-2 font-bold">OEE</p>
+            <OEEGauge size={85} oee={machine.oee || 0} availability={machine.availability || 0} performance={machine.performance || 0} quality={machine.quality || 0} showLabels={false} />
           </div>
           {[
             { label: 'Availability', value: `${(machine.availability || 90).toFixed(1)}%`, color: 'var(--blue)' },
@@ -116,9 +114,9 @@ const MachineDetailView = () => {
             { label: 'Runtime', value: machine.runtime || '7h 12m', color: 'var(--text-primary)' },
             { label: 'Downtime', value: machine.downtime || '48m', color: 'var(--red)' },
           ].map((m, i) => (
-            <div key={i} className="ops-card p-3 text-center flex flex-col justify-center">
-              <p className="text-label mb-1">{m.label}</p>
-              <p style={{ fontSize: 18, fontWeight: 700, color: m.color }}>{m.value}</p>
+            <div key={i} className="ops-card p-3 text-center flex flex-col justify-center items-center">
+              <p className="text-[10px] tracking-widest uppercase text-[var(--text-muted)] mb-2 font-bold">{m.label}</p>
+              <p style={{ fontSize: 24, fontWeight: 700, color: m.color }}>{m.value}</p>
             </div>
           ))}
         </div>
@@ -239,9 +237,9 @@ const MachineDetailView = () => {
             },
             { label: 'Energy', value: machine.energyKwh || 0, suffix: 'kWh' },
           ].map((item, i) => (
-            <div key={i} className="ops-inset p-3">
-              <p className="text-label mb-1">{item.label}</p>
-              <p style={{ fontSize: 16, fontWeight: 700, color: item.color || 'var(--text-primary)' }}>
+            <div key={i} className="ops-inset p-3 flex flex-col justify-center items-center text-center">
+              <p className="text-[10px] tracking-widest uppercase text-[var(--text-muted)] mb-1 font-bold">{item.label}</p>
+              <p style={{ fontSize: 18, fontWeight: 700, color: item.color || 'var(--text-primary)' }}>
                 {typeof item.value === 'number' ? item.value.toLocaleString() : item.value}
                 <span style={{ fontSize: 11, fontWeight: 500, color: 'var(--text-muted)', marginLeft: 3 }}>{item.suffix}</span>
               </p>
@@ -258,7 +256,7 @@ const MachineDetailView = () => {
           <h3 className="section-title">Cycle Time Trend Analysis</h3>
           <p className="section-subtitle mb-4">Actual vs Ideal (seconds)</p>
           <div style={{ width: '100%', height: 180 }}>
-            <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
               <LineChart data={cycleTimeHistory}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
                 <XAxis dataKey="time" tick={{ fill: 'var(--chart-tick)', fontSize: 10 }} axisLine={false} tickLine={false} />
@@ -277,7 +275,7 @@ const MachineDetailView = () => {
           <h3 className="section-title">Planned vs Actual Production</h3>
           <p className="section-subtitle mb-4">Cumulative Output Deviation</p>
           <div style={{ width: '100%', height: 180 }}>
-            <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
               <ComposedChart data={hourlyProductionData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
                 <XAxis dataKey="hour" tick={{ fill: 'var(--chart-tick)', fontSize: 10 }} axisLine={false} tickLine={false} />

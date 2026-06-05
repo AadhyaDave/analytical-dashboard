@@ -66,6 +66,9 @@ export const AppProvider = ({ children }) => {
     setDrilldownPath(['Opus One Industries']);
     setDrilldownContext({});
     setActivePage('dashboard');
+    if (window.location.pathname.startsWith('/demo/')) {
+      window.location.href = '/';
+    }
   }, []);
 
   return (
