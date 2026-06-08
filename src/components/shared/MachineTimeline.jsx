@@ -29,8 +29,8 @@ const MachineTimeline = ({ data, shiftHours = 8, expanded = false }) => {
           <div key={mIdx}>
             <div className="flex items-center gap-3">
               {/* Machine label */}
-              <div style={{ width: 70, flexShrink: 0 }}>
-                <p style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-primary)' }}>{machine.id}</p>
+              <div className="truncate min-w-0" style={{ width: 70, flexShrink: 0 }}>
+                <p className="truncate min-w-0" title={machine.id} style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-primary)' }}>{machine.id}</p>
               </div>
               {/* Timeline track */}
               <div className={`timeline-track flex-1 ${expanded ? 'timeline-track-lg' : ''}`}>
@@ -67,7 +67,7 @@ const MachineTimeline = ({ data, shiftHours = 8, expanded = false }) => {
       </div>
 
       {/* Legend */}
-      <div className="flex items-center gap-4 pt-1">
+      <div className="flex flex-wrap items-center gap-4 pt-1">
         <div style={{ width: 70, flexShrink: 0 }} />
         {Object.entries(STATE_CONFIG).filter(([k]) => k !== 'noplan').map(([key, cfg]) => (
           <div key={key} className="flex items-center gap-1.5">

@@ -155,33 +155,33 @@ const PlantModule = ({ plant, index, drillDown, onInvestigate, spanClass = '', t
       </div>
 
       {/* ── Executive Summary (Fixed View) ── */}
-      <div className="p-6 flex flex-wrap lg:flex-nowrap items-center justify-between gap-4 2xl:gap-8 bg-[var(--bg-card)]">
+      <div className="p-4 md:p-6 flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap items-center md:justify-between gap-6 md:gap-4 2xl:gap-8 bg-[var(--bg-card)]">
 
         {/* KPIs */}
-        <div className="flex items-center gap-4 2xl:gap-8 min-w-0 flex-[1.5]">
+        <div className="grid grid-cols-[1fr_auto_1fr] grid-rows-2 gap-y-4 gap-x-2 md:flex md:flex-row md:items-center md:gap-4 2xl:gap-8 min-w-0 flex-[1.5] w-full md:w-auto">
           <div
-            className="flex-shrink-0 flex flex-col items-center ops-hover-surface p-1 rounded cursor-pointer -m-1"
+            className="col-start-2 row-start-1 row-span-2 md:col-auto md:row-auto flex-shrink-0 flex flex-col items-center justify-center ops-hover-surface p-1 rounded cursor-pointer -m-1"
             onClick={() => drillDown(plantName, { plantIdx: index })}
           >
             <OEEGauge size={85} oee={plant.oee} showLabels={false} />
             <span className="text-[10px] tracking-widest uppercase font-bold mt-2 text-[var(--text-muted)]">OEE</span>
           </div>
-          <div className="grid grid-cols-2 gap-y-3 gap-x-6">
-            <div className="ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(plantName, { plantIdx: index, context: 'availability' })}>
+          <div className="contents md:grid md:grid-cols-2 md:gap-y-4 md:gap-x-8 md:px-0">
+            <div className="col-start-1 row-start-1 md:col-auto md:row-auto flex flex-col items-center md:items-start justify-center ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(plantName, { plantIdx: index, context: 'availability' })}>
               <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider mb-0.5">Avail</div>
-              <div className="text-[16px] font-bold text-[var(--blue)]">{plant.avail.toFixed(1)}%</div>
+              <div className="text-[16px] md:text-[16px] font-bold text-[var(--blue)]">{plant.avail.toFixed(1)}%</div>
             </div>
-            <div className="ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(plantName, { plantIdx: index, context: 'performance' })}>
+            <div className="col-start-3 row-start-1 md:col-auto md:row-auto flex flex-col items-center md:items-start justify-center ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(plantName, { plantIdx: index, context: 'performance' })}>
               <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider mb-0.5">Perf</div>
-              <div className="text-[16px] font-bold text-[var(--purple)]">{plant.perf.toFixed(1)}%</div>
+              <div className="text-[16px] md:text-[16px] font-bold text-[var(--purple)]">{plant.perf.toFixed(1)}%</div>
             </div>
-            <div className="ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(plantName, { plantIdx: index, context: 'quality' })}>
+            <div className="col-start-1 row-start-2 md:col-auto md:row-auto flex flex-col items-center md:items-start justify-center ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(plantName, { plantIdx: index, context: 'quality' })}>
               <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider mb-0.5">Qual</div>
-              <div className="text-[16px] font-bold text-[var(--green)]">{plant.qual.toFixed(1)}%</div>
+              <div className="text-[16px] md:text-[16px] font-bold text-[var(--green)]">{plant.qual.toFixed(1)}%</div>
             </div>
-            <div className="ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(plantName, { plantIdx: index, context: 'downtime' })}>
+            <div className="col-start-3 row-start-2 md:col-auto md:row-auto flex flex-col items-center md:items-start justify-center ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(plantName, { plantIdx: index, context: 'downtime' })}>
               <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider mb-0.5">Down</div>
-              <div className="text-[16px] font-bold text-[var(--red)]">{plant.downtime}h</div>
+              <div className="text-[16px] md:text-[16px] font-bold text-[var(--red)]">{plant.downtime}h</div>
             </div>
           </div>
         </div>
@@ -220,8 +220,8 @@ const PlantModule = ({ plant, index, drillDown, onInvestigate, spanClass = '', t
         <div className="hidden lg:block w-px h-16 bg-[var(--border-light)]" />
 
         {/* Status Donut & More Info */}
-        <div className="flex items-center gap-2 2xl:gap-6 flex-1 justify-end min-w-0">
-          <div className="flex-shrink-0">
+        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-2 2xl:gap-6 flex-1 md:justify-end min-w-0 w-full md:w-auto mt-2 md:mt-0">
+          <div className="flex-shrink-0 w-full md:w-auto flex justify-center">
             <MachineStatusDonut
               data={plantMachineStatus[index]}
               size={75}
@@ -232,9 +232,9 @@ const PlantModule = ({ plant, index, drillDown, onInvestigate, spanClass = '', t
 
           <button
             onClick={() => onInvestigate(index)}
-            className="flex-shrink-0 flex items-center justify-center gap-1.5 px-4 py-2 rounded bg-[var(--blue)] text-white cursor-pointer hover:bg-blue-600 transition-colors shadow border-none h-[36px]"
+            className="flex-shrink-0 flex items-center justify-center gap-1.5 px-4 py-3 md:py-2 rounded bg-[var(--blue)] text-white cursor-pointer hover:bg-blue-600 transition-colors shadow border-none md:h-[36px] w-full md:w-auto mt-2 md:mt-0"
           >
-            <span className="text-[11px] font-bold uppercase tracking-widest whitespace-nowrap">More Info</span>
+            <span className="text-[12px] md:text-[11px] font-bold uppercase tracking-widest whitespace-nowrap">More Info</span>
             <ChevronRight size={14} className="flex-shrink-0" />
           </button>
         </div>

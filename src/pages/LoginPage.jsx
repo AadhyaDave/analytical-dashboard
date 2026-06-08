@@ -145,12 +145,18 @@ const LoginPage = () => {
                   type="email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
-                  className="w-full pl-10 pr-3 py-2.5 rounded-lg text-sm"
+                  className="w-full rounded-lg text-sm"
                   style={{
                     background: 'var(--bg-card)',
                     border: '1px solid var(--border)',
                     color: 'var(--text-primary)',
                     outline: 'none',
+                    paddingTop: 10,
+                    paddingBottom: 10,
+                    paddingLeft: 40,
+                    paddingRight: 12,
+                    height: 48,
+                    boxSizing: 'border-box',
                   }}
                   placeholder="you@company.com"
                 />
@@ -168,12 +174,18 @@ const LoginPage = () => {
                   type={showPw ? 'text' : 'password'}
                   value={password}
                   onChange={e => setPassword(e.target.value)}
-                  className="w-full pl-10 pr-10 py-2.5 rounded-lg text-sm"
+                  className="w-full rounded-lg text-sm"
                   style={{
                     background: 'var(--bg-card)',
                     border: '1px solid var(--border)',
                     color: 'var(--text-primary)',
                     outline: 'none',
+                    paddingTop: 10,
+                    paddingBottom: 10,
+                    paddingLeft: 40,
+                    paddingRight: 40,
+                    height: 48,
+                    boxSizing: 'border-box',
                   }}
                 />
                 <button type="button" onClick={() => setShowPw(!showPw)}

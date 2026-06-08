@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Bell, Search, RefreshCw, Download, LogOut, ShieldOff,
-  FileSpreadsheet, FileText, ChevronDown, Sun, Moon
+  FileSpreadsheet, FileText, ChevronDown, Sun, Moon, Menu
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { useTheme } from '../../context/ThemeContext';
@@ -18,7 +18,7 @@ const ROLE_LABELS = {
   MACHINE: 'Machine Detail',
 };
 
-const TopNavbar = () => {
+const TopNavbar = ({ mobileMenuOpen, setMobileMenuOpen }) => {
   const { 
     user, currentViewRole, logout, notifications, unreadCount, 
     markAllRead, searchQuery, setSearchQuery, drilldownPath
@@ -70,6 +70,12 @@ const TopNavbar = () => {
 
       {/* Left — Role + time */}
       <div className="flex items-center gap-4">
+        <button 
+          className="md:hidden p-2 -ml-2 rounded-lg text-[var(--text-primary)] hover:bg-[var(--bg-hover)]"
+          onClick={() => setMobileMenuOpen(true)}
+        >
+          <Menu size={18} />
+        </button>
         <div>
           <p className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>
             {ROLE_LABELS[roleKey] || 'Dashboard'}

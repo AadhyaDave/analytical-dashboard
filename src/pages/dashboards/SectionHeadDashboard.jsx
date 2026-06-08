@@ -138,40 +138,40 @@ const LineModule = ({ line, index, drillDown, onInvestigate }) => {
         </div>
       </div>
 
-      <div className="p-6 flex flex-wrap lg:flex-nowrap items-center justify-between gap-4 2xl:gap-8 bg-[var(--bg-card)]">
+      <div className="p-4 md:p-6 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-4 2xl:gap-8 bg-[var(--bg-card)]">
         
-        <div className="flex items-center gap-4 2xl:gap-8 min-w-0 flex-[1.5]">
+        <div className="grid grid-cols-[1fr_auto_1fr] grid-rows-2 gap-y-4 gap-x-2 md:flex md:flex-row md:items-center md:gap-4 2xl:gap-8 min-w-0 flex-[1.5] w-full md:w-auto">
           <div
-            className="flex-shrink-0 flex flex-col items-center ops-hover-surface p-1 rounded cursor-pointer -m-1"
+            className="col-start-2 row-start-1 row-span-2 md:col-auto md:row-auto flex-shrink-0 flex flex-col items-center justify-center ops-hover-surface p-1 rounded cursor-pointer -m-1"
             onClick={() => drillDown(line.name, { lineId: line.id })}
           >
             <OEEGauge size={85} oee={line.oee} showLabels={false} />
             <span className="text-[10px] tracking-widest uppercase font-bold mt-2 text-[var(--text-muted)]">OEE</span>
           </div>
-          <div className="grid grid-cols-2 gap-y-3 gap-x-6">
-            <div className="ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(line.name, { lineId: line.id, context: 'output' })}>
+          <div className="contents md:grid md:grid-cols-2 md:gap-y-4 md:gap-x-8 md:px-0">
+            <div className="col-start-1 row-start-1 md:col-auto md:row-auto flex flex-col items-center md:items-start justify-center ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(line.name, { lineId: line.id, context: 'output' })}>
               <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider mb-0.5">Output</div>
-              <div className="text-[16px] font-bold text-[var(--blue)]">{line.output}</div>
+              <div className="text-[16px] md:text-[16px] font-bold text-[var(--blue)]">{line.output}</div>
             </div>
-            <div className="ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(line.name, { lineId: line.id, context: 'target' })}>
+            <div className="col-start-3 row-start-1 md:col-auto md:row-auto flex flex-col items-center md:items-start justify-center ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(line.name, { lineId: line.id, context: 'target' })}>
               <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider mb-0.5">Target</div>
-              <div className="text-[16px] font-bold text-[var(--purple)]">{line.target}</div>
+              <div className="text-[16px] md:text-[16px] font-bold text-[var(--purple)]">{line.target}</div>
             </div>
-            <div className="ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(line.name, { lineId: line.id, context: 'machines' })}>
+            <div className="col-start-1 row-start-2 md:col-auto md:row-auto flex flex-col items-center md:items-start justify-center ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(line.name, { lineId: line.id, context: 'machines' })}>
               <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider mb-0.5">Machines</div>
-              <div className="text-[16px] font-bold text-[var(--text-primary)]">{line.machines}</div>
+              <div className="text-[16px] md:text-[16px] font-bold text-[var(--text-primary)]">{line.machines}</div>
             </div>
-            <div className="ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(line.name, { lineId: line.id, context: 'downtime' })}>
+            <div className="col-start-3 row-start-2 md:col-auto md:row-auto flex flex-col items-center md:items-start justify-center ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(line.name, { lineId: line.id, context: 'downtime' })}>
               <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider mb-0.5">Down</div>
-              <div className="text-[16px] font-bold text-[var(--red)]">2h</div>
+              <div className="text-[16px] md:text-[16px] font-bold text-[var(--red)]">2h</div>
             </div>
           </div>
         </div>
 
         <div className="hidden lg:block w-px h-16 bg-[var(--border-light)]" />
 
-        <div className="flex items-center gap-2 2xl:gap-6 flex-1 justify-end min-w-0">
-          <div className="flex-shrink-0">
+        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-2 2xl:gap-6 flex-1 md:justify-end min-w-0 w-full md:w-auto mt-2 md:mt-0">
+          <div className="flex-shrink-0 w-full md:w-auto flex justify-center">
             <StatusDonut
               data={lineMachineStatus}
               size={75}
@@ -182,9 +182,9 @@ const LineModule = ({ line, index, drillDown, onInvestigate }) => {
           
           <button
             onClick={() => onInvestigate(index)}
-            className="flex-shrink-0 flex items-center justify-center gap-1.5 px-4 py-2 rounded bg-[var(--blue)] text-white cursor-pointer hover:bg-blue-600 transition-colors shadow border-none h-[36px]"
+            className="flex-shrink-0 flex items-center justify-center gap-1.5 px-4 py-3 md:py-2 rounded bg-[var(--blue)] text-white cursor-pointer hover:bg-blue-600 transition-colors shadow border-none w-full md:w-auto md:h-[36px] mt-2 md:mt-0"
           >
-            <span className="text-[11px] font-bold uppercase tracking-widest whitespace-nowrap">More Info</span>
+            <span className="text-[12px] md:text-[11px] font-bold uppercase tracking-widest whitespace-nowrap">More Info</span>
             <ChevronRight size={14} className="flex-shrink-0" />
           </button>
         </div>
@@ -241,28 +241,28 @@ const InvestigationOverlay = ({ lineIdx, onClose, drillDown }) => {
         className="w-full max-w-6xl max-h-full flex flex-col bg-[var(--bg-card)] border border-[var(--border)] shadow-2xl rounded-[var(--r-xl)] overflow-hidden relative pointer-events-auto"
       >
         <div className="flex-shrink-0 flex items-center justify-between px-6 py-5 border-b border-[var(--border-light)] bg-[var(--bg-inset)]">
-          <div className="flex flex-col">
-            <div className="flex items-center gap-3 mb-1">
-              <h2 className="text-[20px] font-bold text-[var(--text-primary)]">Investigating: {lineName}</h2>
-              <div className="flex items-center gap-1.5 px-2 py-0.5 rounded border border-[var(--border-light)] bg-[var(--bg-card)]">
+          <div className="flex flex-col min-w-0 pr-4">
+            <div className="flex items-center gap-3 mb-1 min-w-0">
+              <h2 className="text-[20px] font-bold text-[var(--text-primary)] truncate">Investigating: {lineName}</h2>
+              <div className="flex items-center gap-1.5 px-2 py-0.5 rounded border border-[var(--border-light)] bg-[var(--bg-card)] flex-shrink-0">
                 <div className="w-1.5 h-1.5 rounded-full" style={{ background: statusColor }} />
-                <span style={{ fontSize: 10, fontWeight: 700, color: statusColor, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                <span style={{ fontSize: 10, fontWeight: 700, color: statusColor, textTransform: 'uppercase', letterSpacing: '0.04em', whiteSpace: 'nowrap' }}>
                   {statusLabels[line.status]}
                 </span>
               </div>
             </div>
           </div>
           
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-shrink-0">
             <button
               onClick={() => { drillDown(lineName, { lineId: line.id }); onClose(); }}
-              className="flex items-center gap-2 px-5 py-2.5 bg-[var(--blue)] text-white rounded text-[12px] font-bold tracking-wide uppercase hover:bg-blue-600 transition-colors shadow-sm"
+              className="flex items-center gap-2 px-5 py-2.5 bg-[var(--blue)] text-white rounded text-[12px] font-bold tracking-wide uppercase hover:bg-blue-600 transition-colors shadow-sm whitespace-nowrap"
             >
               Drill Down <ChevronRight size={16} />
             </button>
             <button
               onClick={onClose}
-              className="p-2 text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)] rounded-full transition-colors"
+              className="p-2 text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)] rounded-full transition-colors flex-shrink-0"
             >
               <X size={24} />
             </button>
@@ -286,24 +286,24 @@ const InvestigationOverlay = ({ lineIdx, onClose, drillDown }) => {
                 {lineAlerts.slice(0, 3).map((alert, i) => (
                   <div
                     key={i}
-                    className="flex items-start gap-4 p-4 rounded border border-[var(--border-light)] bg-[var(--bg-inset)] ops-investigation-row"
+                    className="flex items-start gap-4 p-4 rounded border border-[var(--border-light)] bg-[var(--bg-inset)] ops-investigation-row min-w-0"
                     onClick={() => { onClose(); drillDown(alert.machine, alert); }}
                   >
-                    <div className="mt-0.5">
+                    <div className="mt-0.5 flex-shrink-0">
                       <AlertCircle size={16} className={alert.color === 'red' ? 'text-[var(--red)]' : 'text-[var(--amber)]'} />
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-1.5">
                         <span
-                          className="text-[11px] font-bold uppercase tracking-wider"
+                          className="text-[11px] font-bold uppercase tracking-wider truncate pr-2"
                           style={{ color: alert.color === 'red' ? 'var(--red)' : 'var(--amber)' }}
                         >
                           {alert.color === 'red' ? 'Critical' : 'Watch'} • {alert.machine}
                         </span>
                       </div>
-                      <p className="text-[13px] text-[var(--text-secondary)] font-medium leading-relaxed">{alert.message}</p>
+                      <p className="text-[13px] text-[var(--text-secondary)] font-medium leading-relaxed truncate">{alert.message}</p>
                     </div>
-                    <ChevronRight size={16} className="text-[var(--text-muted)] mt-2" />
+                    <ChevronRight size={16} className="text-[var(--text-muted)] mt-2 flex-shrink-0" />
                   </div>
                 ))}
                 {lineAlerts.length === 0 && (
@@ -385,19 +385,20 @@ const InvestigationOverlay = ({ lineIdx, onClose, drillDown }) => {
                 {lineLosses.slice(0, 2).map((loss, i) => (
                   <div
                     key={i}
-                    className="p-4 rounded border border-[var(--border-light)] bg-[var(--bg-inset)] ops-investigation-row flex flex-col justify-between"
+                    className="p-4 rounded border border-[var(--border-light)] bg-[var(--bg-inset)] ops-investigation-row flex flex-col justify-between min-w-0"
                     onClick={() => { onClose(); drillDown(lineName, loss.contextData); }}
                   >
-                    <div className="flex justify-between items-start mb-3">
-                      <span className="text-[13px] font-bold text-[var(--text-primary)]">{loss.cause}</span>
-                      <span className="text-[13px] font-bold text-[var(--red)]">{loss.hours}h</span>
+                    <div className="flex justify-between items-start mb-3 gap-2 min-w-0">
+                      <span className="text-[13px] font-bold text-[var(--text-primary)] truncate">{loss.cause}</span>
+                      <span className="text-[13px] font-bold text-[var(--red)] flex-shrink-0">{loss.hours}h</span>
                     </div>
-                    <div className="flex items-center justify-between text-[11px]">
-                      <span className="text-[var(--text-muted)] flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--amber)]" /> {loss.primaryContributor}
+                    <div className="flex items-center justify-between text-[11px] gap-2 min-w-0">
+                      <span className="text-[var(--text-muted)] flex items-center gap-1.5 min-w-0">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--amber)] flex-shrink-0" /> 
+                        <span className="truncate">{loss.primaryContributor}</span>
                       </span>
-                      <div className="flex items-center gap-2">
-                        <span className="font-semibold text-[var(--text-secondary)]">{loss.availabilityImpact} Impact</span>
+                      <div className="flex items-center gap-2 flex-shrink-0">
+                        <span className="font-semibold text-[var(--text-secondary)] whitespace-nowrap">{loss.availabilityImpact} Impact</span>
                         <ChevronRight size={14} className="text-[var(--text-muted)]" />
                       </div>
                     </div>
@@ -450,7 +451,7 @@ const SectionHeadDashboard = () => {
             <span className="text-[11px] tracking-widest uppercase font-bold mt-4 text-[var(--text-muted)] text-center">Section OEE</span>
           </div>
 
-          <div className="flex flex-1 gap-4 min-w-0">
+          <div className="grid grid-cols-2 lg:flex lg:flex-1 gap-4 min-w-0">
             {[
               { label: 'Running', value: runningCount, unit: '', color: 'var(--green)' },
               { label: 'Idle', value: idleCount, unit: '', color: 'var(--amber)' },
@@ -462,7 +463,7 @@ const SectionHeadDashboard = () => {
                 className="ops-card p-5 flex flex-col justify-center items-center flex-1 ops-hover-surface cursor-pointer min-w-0"
                 onClick={() => drillDown('CNC Section', { context: m.label })}
               >
-                <span className="text-[11px] tracking-widest uppercase font-bold text-[var(--text-muted)] text-center mb-2">
+                <span className="text-[11px] tracking-widest uppercase font-bold text-[var(--text-muted)] text-center mb-2 truncate w-full px-1">
                   {m.label}
                 </span>
                 <span style={{ fontSize: 32, fontWeight: 700, color: m.color, leadingTrim: 'both', textEdge: 'cap' }}>
@@ -472,15 +473,15 @@ const SectionHeadDashboard = () => {
             ))}
           </div>
 
-          <div className="ops-card p-5 min-w-[200px] flex flex-col justify-center">
+          <div className="ops-card p-5 min-w-0 md:min-w-[200px] flex flex-col justify-center">
             <span className="text-[11px] tracking-widest uppercase font-bold text-[var(--text-muted)] mb-3 text-center">Top Performing Lines</span>
-            <div className="flex-1 flex flex-col justify-center">
+            <div className="flex-1 flex flex-col justify-center min-w-0">
               <TopPerformingLines drillDown={drillDown} />
             </div>
           </div>
 
           <div
-            className="ops-card p-5 min-w-[220px] flex flex-col justify-center ops-hover-surface cursor-pointer"
+            className="ops-card p-5 min-w-0 md:min-w-[220px] flex flex-col justify-center ops-hover-surface cursor-pointer"
             onClick={() => drillDown('CNC Section', { context: 'section_line_status' })}
           >
             <span className="text-[11px] tracking-widest uppercase font-bold text-[var(--text-muted)] mb-3 text-center">Line Status</span>

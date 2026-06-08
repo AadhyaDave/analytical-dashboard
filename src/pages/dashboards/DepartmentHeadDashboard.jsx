@@ -132,54 +132,54 @@ const SectionModule = ({ section, index, drillDown, onInvestigate }) => {
         className="px-5 py-3 border-b border-[var(--border-light)] flex justify-between items-center ops-investigation-row bg-[var(--bg-inset)]"
         onClick={() => drillDown(section.section, { sectionIdx: index })}
       >
-        <div className="flex items-center gap-3.5">
-          <h3 className="text-[20px] font-bold text-[var(--text-primary)] leading-tight">{section.section}</h3>
+        <div className="flex items-center gap-3.5 min-w-0">
+          <h3 className="text-[20px] font-bold text-[var(--text-primary)] leading-tight truncate min-w-0">{section.section}</h3>
         </div>
-        <div className="flex items-center gap-2.5">
-          <div className="flex items-center gap-2 px-2.5 py-1 rounded border border-[var(--border-light)] bg-[var(--bg-card)]">
+        <div className="flex items-center gap-2.5 flex-shrink-0">
+          <div className="flex items-center gap-2 px-2.5 py-1 rounded border border-[var(--border-light)] bg-[var(--bg-card)] truncate">
             <div className="status-dot flex-shrink-0" style={{ width: 6, height: 6, background: statusColor }} />
-            <span style={{ fontSize: 10, fontWeight: 700, color: statusColor, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            <span style={{ fontSize: 10, fontWeight: 700, color: statusColor, textTransform: 'uppercase', letterSpacing: '0.04em' }} className="truncate">
               {statusLabels[status]}
             </span>
           </div>
-          <ChevronRight size={16} className="text-[var(--text-muted)]" />
+          <ChevronRight size={16} className="text-[var(--text-muted)] flex-shrink-0" />
         </div>
       </div>
 
-      <div className="p-6 flex flex-wrap lg:flex-nowrap items-center justify-between gap-4 2xl:gap-8 bg-[var(--bg-card)]">
+      <div className="p-4 md:p-6 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-4 2xl:gap-8 bg-[var(--bg-card)]">
         
-        <div className="flex items-center gap-4 2xl:gap-8 min-w-0 flex-[1.5]">
+        <div className="grid grid-cols-[1fr_auto_1fr] grid-rows-2 gap-y-4 gap-x-2 md:flex md:flex-row md:items-center md:gap-4 2xl:gap-8 min-w-0 flex-[1.5] w-full md:w-auto">
           <div
-            className="flex-shrink-0 flex flex-col items-center ops-hover-surface p-1 rounded cursor-pointer -m-1"
+            className="col-start-2 row-start-1 row-span-2 md:col-auto md:row-auto flex-shrink-0 flex flex-col items-center justify-center ops-hover-surface p-1 rounded cursor-pointer -m-1"
             onClick={() => drillDown(section.section, { sectionIdx: index })}
           >
             <OEEGauge size={85} oee={section.oee} showLabels={false} />
             <span className="text-[10px] tracking-widest uppercase font-bold mt-2 text-[var(--text-muted)]">OEE</span>
           </div>
-          <div className="grid grid-cols-2 gap-y-3 gap-x-6">
-            <div className="ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(section.section, { sectionIdx: index, context: 'availability' })}>
+          <div className="contents md:grid md:grid-cols-2 md:gap-y-4 md:gap-x-8 md:px-0">
+            <div className="col-start-1 row-start-1 md:col-auto md:row-auto flex flex-col items-center md:items-start justify-center ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(section.section, { sectionIdx: index, context: 'availability' })}>
               <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider mb-0.5">Avail</div>
-              <div className="text-[16px] font-bold text-[var(--blue)]">{section.avail.toFixed(1)}%</div>
+              <div className="text-[16px] md:text-[16px] font-bold text-[var(--blue)]">{section.avail.toFixed(1)}%</div>
             </div>
-            <div className="ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(section.section, { sectionIdx: index, context: 'performance' })}>
+            <div className="col-start-3 row-start-1 md:col-auto md:row-auto flex flex-col items-center md:items-start justify-center ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(section.section, { sectionIdx: index, context: 'performance' })}>
               <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider mb-0.5">Perf</div>
-              <div className="text-[16px] font-bold text-[var(--purple)]">{section.perf.toFixed(1)}%</div>
+              <div className="text-[16px] md:text-[16px] font-bold text-[var(--purple)]">{section.perf.toFixed(1)}%</div>
             </div>
-            <div className="ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(section.section, { sectionIdx: index, context: 'quality' })}>
+            <div className="col-start-1 row-start-2 md:col-auto md:row-auto flex flex-col items-center md:items-start justify-center ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(section.section, { sectionIdx: index, context: 'quality' })}>
               <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider mb-0.5">Qual</div>
-              <div className="text-[16px] font-bold text-[var(--green)]">{section.qual.toFixed(1)}%</div>
+              <div className="text-[16px] md:text-[16px] font-bold text-[var(--green)]">{section.qual.toFixed(1)}%</div>
             </div>
-            <div className="ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(section.section, { sectionIdx: index, context: 'downtime' })}>
+            <div className="col-start-3 row-start-2 md:col-auto md:row-auto flex flex-col items-center md:items-start justify-center ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(section.section, { sectionIdx: index, context: 'downtime' })}>
               <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider mb-0.5">Down</div>
-              <div className="text-[16px] font-bold text-[var(--red)]">4h</div>
+              <div className="text-[16px] md:text-[16px] font-bold text-[var(--red)]">4h</div>
             </div>
           </div>
         </div>
 
         <div className="hidden lg:block w-px h-16 bg-[var(--border-light)]" />
 
-        <div className="flex items-center gap-2 2xl:gap-6 flex-1 justify-end min-w-0">
-          <div className="flex-shrink-0">
+        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-2 2xl:gap-6 flex-1 md:justify-end min-w-0 w-full md:w-auto mt-2 md:mt-0">
+          <div className="flex-shrink-0 w-full md:w-auto flex justify-center">
             <StatusDonut
               data={secMachineStatus}
               size={75}
@@ -190,9 +190,9 @@ const SectionModule = ({ section, index, drillDown, onInvestigate }) => {
           
           <button
             onClick={() => onInvestigate(index)}
-            className="flex-shrink-0 flex items-center justify-center gap-1.5 px-4 py-2 rounded bg-[var(--blue)] text-white cursor-pointer hover:bg-blue-600 transition-colors shadow border-none h-[36px]"
+            className="flex-shrink-0 flex items-center justify-center gap-1.5 px-4 py-3 md:py-2 rounded bg-[var(--blue)] text-white cursor-pointer hover:bg-blue-600 transition-colors shadow border-none w-full md:w-auto md:h-[36px] mt-2 md:mt-0"
           >
-            <span className="text-[11px] font-bold uppercase tracking-widest whitespace-nowrap">More Info</span>
+            <span className="text-[12px] md:text-[11px] font-bold uppercase tracking-widest whitespace-nowrap">More Info</span>
             <ChevronRight size={14} className="flex-shrink-0" />
           </button>
         </div>
@@ -294,10 +294,10 @@ const InvestigationOverlay = ({ sectionIdx, onClose, drillDown }) => {
                     <div className="mt-0.5">
                       <AlertCircle size={16} className={alert.severity === 'critical' ? 'text-[var(--red)]' : 'text-[var(--amber)]'} />
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-1.5">
                         <span
-                          className="text-[11px] font-bold uppercase tracking-wider"
+                          className="text-[11px] font-bold uppercase tracking-wider truncate"
                           style={{ color: alert.severity === 'critical' ? 'var(--red)' : 'var(--amber)' }}
                         >
                           {alert.severity === 'critical' ? 'Critical' : 'Watch'} • {alert.targetLabel}
@@ -305,7 +305,7 @@ const InvestigationOverlay = ({ sectionIdx, onClose, drillDown }) => {
                       </div>
                       <p className="text-[13px] text-[var(--text-secondary)] font-medium leading-relaxed">{alert.message}</p>
                     </div>
-                    <ChevronRight size={16} className="text-[var(--text-muted)] mt-2" />
+                    <ChevronRight size={16} className="text-[var(--text-muted)] mt-2 flex-shrink-0" />
                   </div>
                 ))}
                 {sectionAlerts.length === 0 && (
@@ -346,11 +346,11 @@ const InvestigationOverlay = ({ sectionIdx, onClose, drillDown }) => {
                     className="flex items-center justify-between p-3 rounded bg-[var(--bg-inset)] ops-investigation-row"
                     onClick={() => { onClose(); drillDown(name, { sectionIdx, line: name }); }}
                   >
-                    <div className="flex items-center gap-2.5">
-                      <CheckCircle2 size={14} className="text-[var(--green)]" />
-                      <span className="text-[13px] font-semibold text-[var(--text-primary)]">{name}</span>
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <CheckCircle2 size={14} className="text-[var(--green)] flex-shrink-0" />
+                      <span className="text-[13px] font-semibold text-[var(--text-primary)] truncate">{name}</span>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 flex-shrink-0">
                       <span className="text-[13px] font-bold text-[var(--text-secondary)]">{(90 - i * 2.1).toFixed(1)}% OEE</span>
                       <ChevronRight size={14} className="text-[var(--text-muted)]" />
                     </div>
@@ -389,15 +389,16 @@ const InvestigationOverlay = ({ sectionIdx, onClose, drillDown }) => {
                     className="p-4 rounded border border-[var(--border-light)] bg-[var(--bg-inset)] ops-investigation-row flex flex-col justify-between"
                     onClick={() => { onClose(); drillDown(sectionName, loss.contextData); }}
                   >
-                    <div className="flex justify-between items-start mb-3">
-                      <span className="text-[13px] font-bold text-[var(--text-primary)]">{loss.cause}</span>
-                      <span className="text-[13px] font-bold text-[var(--red)]">{loss.hours}h</span>
+                    <div className="flex justify-between items-start mb-3 gap-2">
+                      <span className="text-[13px] font-bold text-[var(--text-primary)] line-clamp-2 min-w-0">{loss.cause}</span>
+                      <span className="text-[13px] font-bold text-[var(--red)] flex-shrink-0">{loss.hours}h</span>
                     </div>
-                    <div className="flex items-center justify-between text-[11px]">
-                      <span className="text-[var(--text-muted)] flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--amber)]" /> {loss.primaryContributor}
+                    <div className="flex items-center justify-between text-[11px] gap-2">
+                      <span className="text-[var(--text-muted)] flex items-center gap-1.5 min-w-0 truncate">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--amber)] flex-shrink-0" />
+                        <span className="truncate">{loss.primaryContributor}</span>
                       </span>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 flex-shrink-0">
                         <span className="font-semibold text-[var(--text-secondary)]">{loss.availabilityImpact} Impact</span>
                         <ChevronRight size={14} className="text-[var(--text-muted)]" />
                       </div>
@@ -433,22 +434,22 @@ const DepartmentHeadDashboard = () => {
   ];
 
   return (
-    <div className="space-y-5 pb-8">
+    <div className="space-y-4 md:space-y-5 h-auto md:h-[calc(100vh-100px)] overflow-y-auto md:overflow-hidden pb-8 px-1 md:px-0 text-white">
       <DrilldownBreadcrumb />
 
-      <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
+      <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="flex-shrink-0">
         {/* GLOBAL COMMAND STRIP */}
         <div className="flex flex-col xl:flex-row items-stretch gap-4">
           
           <div
-            className="ops-card p-5 flex flex-col items-center justify-center min-w-[140px] ops-hover-surface cursor-pointer"
+            className="ops-card p-4 md:p-5 flex flex-col items-center justify-center min-w-[140px] ops-hover-surface cursor-pointer"
             onClick={() => drillDown('Machining', { context: 'dept_oee' })}
           >
             <OEEGauge size={95} oee={deptOEEKPIs.oee.value} showLabels={false} />
             <span className="text-[11px] tracking-widest uppercase font-bold mt-4 text-[var(--text-muted)] text-center">Dept OEE</span>
           </div>
 
-          <div className="flex flex-1 gap-4 min-w-0">
+          <div className="grid grid-cols-2 md:flex flex-1 gap-4 min-w-0">
             {[
               { label: 'Availability',    value: deptOEEKPIs.availability.value,  unit: '%', color: 'var(--blue)'   },
               { label: 'Performance',     value: deptOEEKPIs.performance.value,   unit: '%', color: 'var(--purple)' },
@@ -470,7 +471,7 @@ const DepartmentHeadDashboard = () => {
             ))}
           </div>
 
-          <div className="ops-card p-5 min-w-[200px] flex flex-col justify-center">
+          <div className="ops-card p-4 md:p-5 min-w-0 md:min-w-[200px] flex flex-col justify-center">
             <span className="text-[11px] tracking-widest uppercase font-bold text-[var(--text-muted)] mb-3 text-center">Top Performing Sections</span>
             <div className="flex-1 flex flex-col justify-center">
               <TopPerformingSections drillDown={drillDown} />
@@ -478,7 +479,7 @@ const DepartmentHeadDashboard = () => {
           </div>
 
           <div
-            className="ops-card p-5 min-w-[220px] flex flex-col justify-center ops-hover-surface cursor-pointer"
+            className="ops-card p-4 md:p-5 min-w-0 md:min-w-[220px] flex flex-col justify-center ops-hover-surface cursor-pointer"
             onClick={() => drillDown('Machining', { context: 'dept_machine_status' })}
           >
             <span className="text-[11px] tracking-widest uppercase font-bold text-[var(--text-muted)] mb-3 text-center">Section Status</span>
@@ -490,12 +491,12 @@ const DepartmentHeadDashboard = () => {
         </div>
       </motion.div>
 
-      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-        <div className="flex items-center justify-between mb-3 mt-1">
+      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="flex-1 min-h-0 flex flex-col">
+        <div className="flex items-center justify-between mb-3 mt-1 flex-shrink-0">
           <h2 className="section-title">Section Intelligence</h2>
         </div>
         
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 relative">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 relative overflow-visible md:overflow-y-auto pb-4 pr-1">
           {sectionOEEComparison.map((sec, idx) => (
             <SectionModule 
               key={idx} 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Sidebar from './Sidebar';
 import TopNavbar from './TopNavbar';
@@ -6,15 +6,16 @@ import { useApp } from '../../context/AppContext';
 
 const Layout = ({ children }) => {
   const { activePage, currentViewRole, drilldownPath } = useApp();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Unique key per drill-down level for smooth page transitions
   const pageKey = `${activePage}-${currentViewRole || 'root'}-${drilldownPath.length}`;
 
   return (
     <div className="flex h-screen overflow-hidden" style={{ background: 'var(--bg-app)' }}>
-      <Sidebar />
+      <Sidebar mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
       <div className="flex-1 flex flex-col overflow-hidden">
-        <TopNavbar />
+        <TopNavbar mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
         <main className="flex-1 overflow-y-auto">
           <motion.div
             key={pageKey}

@@ -106,7 +106,7 @@ const MDSinglePlantDashboard = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-4 h-[calc(100vh-100px)] overflow-hidden pb-2 text-white">
+    <div className="flex flex-col gap-4 h-auto md:h-[calc(100vh-100px)] overflow-y-auto md:overflow-hidden pb-2 text-white">
       
       {/* ── HEADER ── */}
       <div className="flex items-center justify-between flex-shrink-0 px-1">
@@ -126,11 +126,11 @@ const MDSinglePlantDashboard = () => {
       </div>
 
       {/* ── ROW 1: CORE METRICS ── */}
-      <div className="flex gap-4 h-[110px] flex-shrink-0">
+      <div className="flex flex-col md:flex-row gap-4 md:h-[110px] flex-shrink-0">
         
         {/* Plant OEE */}
         <div 
-          className="ops-card px-4 py-3 flex flex-col justify-center items-center min-w-[140px] bg-[var(--bg-card)] border border-[var(--border-light)] rounded-xl overflow-hidden gap-2 cursor-pointer ops-hover-surface"
+          className="ops-card px-4 py-3 flex flex-col justify-center items-center md:min-w-[140px] bg-[var(--bg-card)] border border-[var(--border-light)] rounded-xl overflow-hidden gap-2 cursor-pointer ops-hover-surface"
           onClick={() => drillDown('Plant A', { context: 'global_oee' })}
           title="Drill down into Plant OEE"
         >
@@ -139,6 +139,7 @@ const MDSinglePlantDashboard = () => {
         </div>
 
         {/* APQ & Downtime */}
+        <div className="grid grid-cols-2 gap-4 md:contents">
         {[
           { label: 'Availability', value: '91.2', unit: '%', color: 'var(--blue)', title: 'Drill down into Availability losses' },
           { label: 'Performance', value: '90.8', unit: '%', color: 'var(--purple)', title: 'Drill down into Performance losses' },
@@ -157,10 +158,11 @@ const MDSinglePlantDashboard = () => {
             </span>
           </div>
         ))}
+        </div>
 
         {/* Production */}
         <div 
-          className="ops-card px-5 py-3 flex flex-col justify-center items-center flex-1 min-w-0 bg-[var(--bg-card)] border border-[var(--border-light)] rounded-xl gap-1 cursor-pointer ops-hover-surface"
+          className="ops-card px-5 py-3 flex flex-col justify-center items-center w-full md:w-auto md:flex-1 min-w-0 bg-[var(--bg-card)] border border-[var(--border-light)] rounded-xl gap-1 cursor-pointer ops-hover-surface"
           onClick={() => drillDown('Plant A', { context: 'Production' })}
         >
           <span className="text-[11px] tracking-widest uppercase font-extrabold text-[var(--text-muted)] text-center">Production</span>
@@ -173,7 +175,7 @@ const MDSinglePlantDashboard = () => {
 
         {/* Machine Status */}
         <div 
-          className="ops-card p-4 flex items-center justify-center flex-1 min-w-[260px] bg-[var(--bg-card)] border border-[var(--border-light)] rounded-xl cursor-pointer ops-hover-surface"
+          className="ops-card p-4 flex items-center justify-center w-full md:w-auto md:flex-1 md:min-w-[260px] bg-[var(--bg-card)] border border-[var(--border-light)] rounded-xl cursor-pointer ops-hover-surface"
           onClick={() => drillDown('Plant A', { context: 'global_machine_status' })}
           title="Drill down into Plant Machine Status"
         >
@@ -195,7 +197,7 @@ const MDSinglePlantDashboard = () => {
       </div>
 
       {/* ── ROW 2: OEE TREND & SHIFT ── */}
-      <div className="flex gap-4 flex-[1.6] min-h-0">
+      <div className="flex flex-col md:flex-row gap-4 flex-[1.6] min-h-0">
         
         {/* Trend */}
         <div className="ops-card p-5 flex flex-col flex-[6] min-w-0 bg-[var(--bg-card)] border border-[var(--border-light)] rounded-xl relative cursor-pointer ops-hover-surface"
@@ -211,7 +213,7 @@ const MDSinglePlantDashboard = () => {
                <div className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-[var(--green)]"/> Qual</div>
             </div>
           </div>
-          <div className="flex-1 min-h-[160px] w-full relative pointer-events-none">
+          <div className="flex-1 min-h-[250px] md:min-h-[160px] w-full relative pointer-events-none">
             <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
               <AreaChart data={trendData} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
                 <defs>
@@ -221,7 +223,7 @@ const MDSinglePlantDashboard = () => {
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
-                <XAxis dataKey="label" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: 'var(--text-muted)', fontWeight: 600 }} dy={10} />
+                <XAxis dataKey="label" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: 'var(--text-muted)', fontWeight: 600 }} dy={10} minTickGap={20} />
                 <YAxis domain={[60, 100]} axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: 'var(--text-muted)', fontWeight: 600 }} dx={-10} />
                 <Tooltip content={<CT />} cursor={{ stroke: 'rgba(255,255,255,0.1)', strokeWidth: 2 }} />
                 
@@ -246,7 +248,7 @@ const MDSinglePlantDashboard = () => {
                 onClick={() => drillDown('Plant A', { shift: s.name })}
                 title={`View details for ${s.name}`}
               >
-                <span className="text-[13px] font-semibold text-[var(--text-secondary)] w-14">{s.name}</span>
+                <span className="text-[13px] font-semibold text-[var(--text-secondary)] min-w-[60px] md:w-14 truncate">{s.name}</span>
                 <div className="flex-1 h-3.5 bg-[var(--bg-inset)] rounded-full overflow-hidden">
                   <div className="h-full rounded-full" style={{ width: `${s.val}%`, background: s.color }} />
                 </div>
@@ -263,7 +265,7 @@ const MDSinglePlantDashboard = () => {
       </div>
 
       {/* ── ROW 3: LISTS ── */}
-      <div className="flex gap-4 flex-1 min-h-[220px] max-h-[260px]">
+      <div className="flex flex-col md:flex-row gap-4 flex-1 md:min-h-[220px] md:max-h-[260px] h-auto">
         
         {/* Active Alerts */}
         <div className="ops-card p-5 flex flex-col flex-1 min-w-0 bg-[var(--bg-card)] border border-[var(--border-light)] rounded-xl relative">
@@ -345,7 +347,7 @@ const MDSinglePlantDashboard = () => {
               >
                 <div className="flex items-center gap-2.5 min-w-0 pr-2">
                   <span className="text-[11px] font-bold text-[var(--blue)] w-4 flex-shrink-0">#{i+1}</span>
-                  <span className="text-[13px] font-bold text-white truncate">{mac.name}</span>
+                  <span className="text-[13px] font-bold text-white truncate min-w-0">{mac.name}</span>
                 </div>
                 <div className="flex items-center gap-3 flex-shrink-0">
                   <span className="text-[14px] font-bold text-white">{mac.val.toFixed(1)}%</span>

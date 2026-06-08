@@ -15,17 +15,26 @@ const navItems = [
   { id: 'settings',  label: 'Settings',  icon: Settings },
 ];
 
-const Sidebar = () => {
+const Sidebar = ({ mobileMenuOpen, setMobileMenuOpen }) => {
   const { activePage, setActivePage, sidebarCollapsed, setSidebarCollapsed, user } = useApp();
   const { isDark } = useTheme();
 
   return (
-    <motion.aside
-      animate={{ width: sidebarCollapsed ? 60 : 200 }}
-      transition={{ duration: 0.25, ease: 'easeInOut' }}
-      className="flex-shrink-0 h-full flex flex-col relative z-20"
-      style={{ background: 'var(--bg-sidebar)' }}
-    >
+    <>
+      {/* Mobile Overlay */}
+      {mobileMenuOpen && (
+        <div 
+          className="md:hidden fixed inset-0 z-40 bg-black/50" 
+          onClick={() => setMobileMenuOpen(false)} 
+        />
+      )}
+
+      <motion.aside
+        animate={{ width: sidebarCollapsed ? 60 : 200 }}
+        transition={{ duration: 0.25, ease: 'easeInOut' }}
+        className={`flex-shrink-0 h-full flex flex-col z-50 fixed inset-y-0 left-0 transform transition-transform duration-300 md:relative md:translate-x-0 ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
+        style={{ background: 'var(--bg-sidebar)' }}
+      >
       {/* Logo */}
       <div className="flex flex-col justify-center px-4 py-5 gap-2" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)', minHeight: '80px' }}>
         <div className={`relative flex-shrink-0 flex items-center justify-center transition-all duration-300 ${sidebarCollapsed ? 'w-8 h-8' : 'w-32 h-8'}`}>
@@ -65,7 +74,10 @@ const Sidebar = () => {
           return (
             <button
               key={item.id}
-              onClick={() => setActivePage(item.id)}
+              onClick={() => {
+                setActivePage(item.id);
+                if (window.innerWidth < 768) setMobileMenuOpen(false);
+              }}
               className={`sidebar-item w-full text-left ${active ? 'active' : ''}`}
               title={sidebarCollapsed ? item.label : ''}
             >
@@ -106,8 +118,8 @@ const Sidebar = () => {
         </div>
       )}
 
-      {/* Collapse toggle */}
-      <div className="p-3 mt-auto border-t border-white/5 flex justify-end">
+      {/* Collapse toggle (hidden on mobile) */}
+      <div className="hidden md:flex p-3 mt-auto border-t border-white/5 justify-end">
         <button
           onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
           className="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-white/5 transition-colors"
@@ -117,6 +129,7 @@ const Sidebar = () => {
         </button>
       </div>
     </motion.aside>
+    </>
   );
 };
 

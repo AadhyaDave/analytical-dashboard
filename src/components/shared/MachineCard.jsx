@@ -23,11 +23,13 @@ const MachineCard = ({ machine, onClick }) => {
       style={{ borderLeft: `3px solid ${statusBorders[machine.status] || '#d1d5db'}` }}
     >
       {/* Header */}
-      <div className="flex items-center justify-between mb-0.5">
-        <h4 className="text-[14px] font-bold" style={{ color: 'var(--text-primary)' }}>{machine.id}</h4>
-        <StatusIndicator status={machine.status} size={8} />
+      <div className="flex items-center justify-between gap-2 mb-0.5 min-w-0">
+        <h4 className="text-[14px] font-bold truncate min-w-0" title={machine.id} style={{ color: 'var(--text-primary)' }}>{machine.id}</h4>
+        <div className="flex-shrink-0">
+          <StatusIndicator status={machine.status} size={8} />
+        </div>
       </div>
-      <div className="text-[10px] uppercase tracking-wider mb-2 font-semibold" style={{ color: statusBorders[machine.status] }}>
+      <div className="text-[10px] uppercase tracking-wider mb-2 font-semibold truncate" title={machine.stateDetail || machine.status} style={{ color: statusBorders[machine.status] }}>
         {machine.stateDetail || machine.status}
       </div>
 
@@ -54,13 +56,13 @@ const MachineCard = ({ machine, onClick }) => {
       </div>
 
       {/* Footer */}
-      <div className="flex items-center justify-between mt-3 pt-2" style={{ borderTop: '1px solid var(--border-light)' }}>
-        <span style={{ fontSize: 10, color: 'var(--text-muted)' }}>
+      <div className="flex items-center justify-between mt-3 pt-2 gap-2 min-w-0" style={{ borderTop: '1px solid var(--border-light)' }}>
+        <span className="truncate min-w-0" title={machine.operator ? `Op: ${machine.operator}` : 'No Operator'} style={{ fontSize: 10, color: 'var(--text-muted)' }}>
           {machine.operator ? `Op: ${machine.operator}` : 'No Operator'}
         </span>
         {machine.stability && (
-          <span className="flex items-center gap-1.5" style={{ fontSize: 10, fontWeight: 600, color: machine.stability === 'Stable' ? 'var(--green)' : machine.stability === 'Moderate Instability' ? 'var(--amber)' : 'var(--red)' }}>
-            <div className="w-1.5 h-1.5 rounded-full" style={{ background: machine.stability === 'Stable' ? 'var(--green)' : machine.stability === 'Moderate Instability' ? 'var(--amber)' : 'var(--red)' }} />
+          <span className="flex items-center gap-1.5 flex-shrink-0 whitespace-nowrap" style={{ fontSize: 10, fontWeight: 600, color: machine.stability === 'Stable' ? 'var(--green)' : machine.stability === 'Moderate Instability' ? 'var(--amber)' : 'var(--red)' }}>
+            <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: machine.stability === 'Stable' ? 'var(--green)' : machine.stability === 'Moderate Instability' ? 'var(--amber)' : 'var(--red)' }} />
             {machine.stability}
           </span>
         )}
