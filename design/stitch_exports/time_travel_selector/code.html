@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chronicle Intelligence - Time Travel Selector</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                      "bg-input": "#111d35",
+                      "surface-bright": "#27395a",
+                      "bg-app": "#060c18",
+                      "on-surface": "#d7e2ff",
+                      "inverse-on-surface": "#1e3050",
+                      "on-primary-fixed-variant": "#004f53",
+                      "error": "#ffb4ab",
+                      "surface-container-highest": "#223555",
+                      "secondary-container": "#03b5d3",
+                      "data-quality": "#f59e0b",
+                      "text-secondary": "#8b9dc3",
+                      "primary-fixed-dim": "#36dae4",
+                      "tertiary-container": "#ff9d4f",
+                      "on-error": "#690005",
+                      "status-breakdown": "#dc2626",
+                      "data-performance": "#4ade80",
+                      "surface-container-lowest": "#000d26",
+                      "outline": "#859394",
+                      "text-tertiary": "#4a5e8a",
+                      "on-primary-fixed": "#002022",
+                      "surface-container": "#0b1f3e",
+                      "surface-container-low": "#061b3a",
+                      "surface-variant": "#223555",
+                      "on-tertiary-fixed": "#301400",
+                      "tertiary": "#ffc49b",
+                      "surface-tint": "#36dae4",
+                      "primary-container": "#00c8d2",
+                      "on-secondary": "#003640",
+                      "inverse-primary": "#00696f",
+                      "border-default": "rgba(255, 255, 255, 0.06)",
+                      "on-surface-variant": "#bbc9ca",
+                      "inverse-surface": "#d7e2ff",
+                      "on-secondary-fixed": "#001f26",
+                      "bg-card": "#0d1526",
+                      "error-container": "#93000a",
+                      "text-primary": "#f0f4ff",
+                      "on-background": "#d7e2ff",
+                      "primary-fixed": "#6ff6ff",
+                      "bg-overlay": "#050a14",
+                      "bg-header": "#080f1e",
+                      "on-tertiary-container": "#703700",
+                      "on-tertiary-fixed-variant": "#703700",
+                      "outline-variant": "#3c494a",
+                      "on-secondary-container": "#00424e",
+                      "surface": "#001330",
+                      "surface-dim": "#001330",
+                      "on-primary": "#00373a",
+                      "tertiary-fixed-dim": "#ffb783",
+                      "tertiary-fixed": "#ffdcc5",
+                      "secondary-fixed-dim": "#4cd7f6",
+                      "secondary-fixed": "#acedff",
+                      "status-planned": "#7c3aed",
+                      "status-running": "#16a34a",
+                      "on-tertiary": "#4f2500",
+                      "secondary": "#4cd7f6",
+                      "on-primary-container": "#004f53",
+                      "background": "#001330",
+                      "surface-container-high": "#172a49",
+                      "primary": "#46e4ee",
+                      "status-idle": "#d97706",
+                      "on-error-container": "#ffdad6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-horizontal": "16px",
+                      "lg": "16px",
+                      "xs": "4px",
+                      "xl": "24px",
+                      "gutter": "12px",
+                      "base": "4px",
+                      "component-height": "52px",
+                      "2xl": "32px",
+                      "sm": "8px",
+                      "md": "12px"
+              },
+              "fontFamily": {
+                      "large-kpi": ["Roboto"],
+                      "hero-kpi": ["Roboto"],
+                      "delta-text": ["Roboto"],
+                      "section-header": ["Roboto"],
+                      "card-title": ["Roboto"],
+                      "medium-kpi": ["Roboto"],
+                      "tag-label": ["Roboto"],
+                      "card-subtitle": ["Roboto"],
+                      "body": ["Roboto"]
+              },
+              "fontSize": {
+                      "large-kpi": ["36px", {"lineHeight": "44px", "fontWeight": "400"}],
+                      "hero-kpi": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300"}],
+                      "delta-text": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                      "section-header": ["11px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "card-title": ["15px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "medium-kpi": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                      "tag-label": ["10px", {"lineHeight": "12px", "fontWeight": "600"}],
+                      "card-subtitle": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "body": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body { background-color: #060c18; color: #d7e2ff; }
+        .timeline-track {
+            background: linear-gradient(90deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 100%);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .scrubber-handle {
+            box-shadow: 0 0 15px rgba(217, 119, 6, 0.4);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body text-body bg-bg-app min-h-screen flex flex-col antialiased">
+<!-- TopAppBar -->
+<header class="bg-bg-header fixed top-0 w-full border-b border-border-default flex items-center justify-between px-margin-horizontal h-component-height z-50">
+<button class="text-status-idle flex items-center justify-center w-10 h-10 hover:bg-surface-container-high transition-colors duration-200 rounded-full">
+<span class="material-symbols-outlined text-2xl" data-icon="close">close</span>
+</button>
+<div class="font-card-title text-card-title text-status-idle uppercase tracking-widest">
+            Select Historical Snapshot
+        </div>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[64px] pb-[120px] px-margin-horizontal flex flex-col justify-center gap-xl">
+<!-- Selected Moment Card -->
+<div class="bg-bg-card border border-border-default rounded-xl p-lg flex flex-col gap-sm relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-[rgba(217,119,6,0.05)] to-transparent pointer-events-none"></div>
+<div class="flex justify-between items-start mb-2">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Target Temporal Coordinates</span>
+<div class="flex items-center gap-1 bg-[rgba(22,163,74,0.12)] text-status-running px-3 py-1 rounded-full border border-[rgba(22,163,74,0.2)]">
+<span class="w-1.5 h-1.5 bg-status-running rounded-full animate-pulse"></span>
+<span class="font-tag-label text-tag-label">Snapshot Available</span>
+</div>
+</div>
+<div class="font-large-kpi text-large-kpi text-text-primary flex items-baseline gap-xs">
+                14:23 <span class="font-medium-kpi text-medium-kpi text-text-secondary">:45</span>
+</div>
+<div class="flex gap-lg font-card-subtitle text-card-subtitle text-text-secondary">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+                    09 June 2026
+                </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                    Shift B
+                </div>
+</div>
+</div>
+<!-- Timeline Scrubber -->
+<div class="bg-bg-card border border-border-default rounded-xl p-lg flex flex-col gap-lg h-64 justify-center relative">
+<div class="flex justify-between font-tag-label text-tag-label text-text-tertiary mb-2">
+<span>08:00</span>
+<span>Shift B Span (8h)</span>
+<span>16:00</span>
+</div>
+<!-- The Track -->
+<div class="relative h-16 w-full timeline-track rounded-lg border border-border-default overflow-hidden flex items-end pb-2">
+<!-- Tick Marks -->
+<div class="absolute inset-0 flex justify-between px-2">
+<!-- Hours -->
+<div class="w-px h-full bg-border-emphasis opacity-50"></div>
+<div class="w-px h-1/2 bg-border-emphasis opacity-30 mt-auto"></div>
+<div class="w-px h-1/2 bg-border-emphasis opacity-30 mt-auto"></div>
+<div class="w-px h-1/2 bg-border-emphasis opacity-30 mt-auto"></div>
+<div class="w-px h-full bg-border-emphasis opacity-50"></div>
+<div class="w-px h-1/2 bg-border-emphasis opacity-30 mt-auto"></div>
+<div class="w-px h-1/2 bg-border-emphasis opacity-30 mt-auto"></div>
+<div class="w-px h-1/2 bg-border-emphasis opacity-30 mt-auto"></div>
+<div class="w-px h-full bg-border-emphasis opacity-50"></div>
+</div>
+<!-- Event Markers -->
+<div class="absolute top-2 left-[20%] w-2 h-2 rounded-full bg-surface-variant border border-border-default" title="Shift Change"></div>
+<div class="absolute top-2 left-[45%] w-2 h-2 rounded-full bg-status-breakdown shadow-[0_0_8px_rgba(220,38,38,0.6)]" title="Breakdown"></div>
+<div class="absolute top-2 left-[60%] w-2 h-2 rounded-full bg-status-idle shadow-[0_0_8px_rgba(217,119,6,0.6)]" title="Major Alert"></div>
+<div class="absolute top-2 left-[85%] w-2 h-2 rounded-full bg-status-planned shadow-[0_0_8px_rgba(124,58,237,0.6)]" title="Maintenance"></div>
+<!-- Active Range Highlight -->
+<div class="absolute top-0 bottom-0 left-[30%] w-[50%] bg-[rgba(217,119,6,0.05)] border-l border-r border-[rgba(217,119,6,0.2)]"></div>
+<!-- Scrubber Handle -->
+<div class="absolute top-0 bottom-0 left-[75%] w-1 bg-status-idle z-10 scrubber-handle cursor-ew-resize hover:bg-tertiary-container transition-colors">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-8 bg-surface-container border border-status-idle rounded-sm flex items-center justify-center">
+<div class="w-0.5 h-4 bg-status-idle rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Legend -->
+<div class="flex flex-wrap gap-sm justify-center mt-4">
+<div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-surface-variant border border-border-default"></span><span class="font-tag-label text-tag-label text-text-tertiary">Shift</span></div>
+<div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-status-breakdown"></span><span class="font-tag-label text-tag-label text-text-tertiary">Breakdown</span></div>
+<div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-status-idle"></span><span class="font-tag-label text-tag-label text-text-tertiary">Alert</span></div>
+<div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-status-planned"></span><span class="font-tag-label text-tag-label text-text-tertiary">Maint</span></div>
+</div>
+</div>
+</main>
+<!-- Footer Actions -->
+<footer class="fixed bottom-0 w-full bg-bg-header border-t border-border-default p-margin-horizontal pb-6 flex gap-gutter z-50">
+<button class="flex-1 h-component-height bg-transparent border-2 border-status-idle text-status-idle font-card-title text-card-title rounded-lg flex items-center justify-center gap-2 hover:bg-[rgba(217,119,6,0.1)] active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="compare_arrows">compare_arrows</span>
+            Compare
+        </button>
+<button class="flex-1 h-component-height bg-status-idle text-bg-app font-card-title text-card-title rounded-lg flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(217,119,6,0.3)] hover:bg-tertiary-container hover:shadow-[0_0_20px_rgba(217,119,6,0.5)] active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="history" style="font-variation-settings: 'FILL' 1;">history</span>
+            Load Snapshot
+        </button>
+</footer>
+</body></html>

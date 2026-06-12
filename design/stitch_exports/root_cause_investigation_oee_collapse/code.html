@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Root Cause Investigation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "bg-input": "#111d35",
+                        "surface-bright": "#27395a",
+                        "bg-app": "#060c18",
+                        "on-surface": "#d7e2ff",
+                        "inverse-on-surface": "#1e3050",
+                        "on-primary-fixed-variant": "#004f53",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#223555",
+                        "secondary-container": "#03b5d3",
+                        "data-quality": "#f59e0b",
+                        "text-secondary": "#8b9dc3",
+                        "primary-fixed-dim": "#36dae4",
+                        "tertiary-container": "#ff9d4f",
+                        "on-error": "#690005",
+                        "status-breakdown": "#dc2626",
+                        "data-performance": "#4ade80",
+                        "surface-container-lowest": "#000d26",
+                        "outline": "#859394",
+                        "text-tertiary": "#4a5e8a",
+                        "on-primary-fixed": "#002022",
+                        "surface-container": "#0b1f3e",
+                        "surface-container-low": "#061b3a",
+                        "surface-variant": "#223555",
+                        "on-tertiary-fixed": "#301400",
+                        "tertiary": "#ffc49b",
+                        "surface-tint": "#36dae4",
+                        "primary-container": "#00c8d2",
+                        "on-secondary": "#003640",
+                        "inverse-primary": "#00696f",
+                        "border-default": "rgba(255, 255, 255, 0.06)",
+                        "on-surface-variant": "#bbc9ca",
+                        "inverse-surface": "#d7e2ff",
+                        "on-secondary-fixed": "#001f26",
+                        "bg-card": "#0d1526",
+                        "error-container": "#93000a",
+                        "text-primary": "#f0f4ff",
+                        "on-background": "#d7e2ff",
+                        "primary-fixed": "#6ff6ff",
+                        "bg-overlay": "#050a14",
+                        "bg-header": "#080f1e",
+                        "on-tertiary-container": "#703700",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "outline-variant": "#3c494a",
+                        "on-secondary-container": "#00424e",
+                        "surface": "#001330",
+                        "surface-dim": "#001330",
+                        "on-primary": "#00373a",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "tertiary-fixed": "#ffdcc5",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "secondary-fixed": "#acedff",
+                        "status-planned": "#7c3aed",
+                        "status-running": "#16a34a",
+                        "on-tertiary": "#4f2500",
+                        "secondary": "#4cd7f6",
+                        "on-primary-container": "#004f53",
+                        "background": "#001330",
+                        "surface-container-high": "#172a49",
+                        "primary": "#46e4ee",
+                        "status-idle": "#d97706",
+                        "on-error-container": "#ffdad6"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "margin-horizontal": "16px",
+                        "lg": "16px",
+                        "xs": "4px",
+                        "xl": "24px",
+                        "gutter": "12px",
+                        "base": "4px",
+                        "component-height": "52px",
+                        "2xl": "32px",
+                        "sm": "8px",
+                        "md": "12px"
+                    },
+                    fontFamily: {
+                        "large-kpi": ["Roboto"],
+                        "hero-kpi": ["Roboto"],
+                        "delta-text": ["Roboto"],
+                        "section-header": ["Roboto"],
+                        "card-title": ["Roboto"],
+                        "medium-kpi": ["Roboto"],
+                        "tag-label": ["Roboto"],
+                        "card-subtitle": ["Roboto"],
+                        "body": ["Roboto"]
+                    },
+                    fontSize: {
+                        "large-kpi": ["36px", { lineHeight: "44px", fontWeight: "400" }],
+                        "hero-kpi": ["56px", { lineHeight: "64px", letterSpacing: "-0.02em", fontWeight: "300" }],
+                        "delta-text": ["12px", { lineHeight: "16px", fontWeight: "600" }],
+                        "section-header": ["11px", { lineHeight: "16px", letterSpacing: "0.1em", fontWeight: "600" }],
+                        "card-title": ["15px", { lineHeight: "20px", fontWeight: "500" }],
+                        "medium-kpi": ["24px", { lineHeight: "32px", fontWeight: "500" }],
+                        "tag-label": ["10px", { lineHeight: "12px", fontWeight: "600" }],
+                        "card-subtitle": ["12px", { lineHeight: "16px", fontWeight: "400" }],
+                        "body": ["14px", { lineHeight: "20px", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #060c18; color: #f0f4ff; }
+        .investigation-pulse { animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse-border {
+            0%, 100% { border-color: rgba(217, 119, 6, 0.5); box-shadow: 0 0 8px rgba(217, 119, 6, 0.2); }
+            50% { border-color: rgba(217, 119, 6, 0.1); box-shadow: 0 0 0 rgba(217, 119, 6, 0); }
+        }
+        .tree-line-v { position: relative; }
+        .tree-line-v::before { content: ''; position: absolute; left: 24px; top: -16px; bottom: 0; width: 1px; background-color: rgba(255, 255, 255, 0.12); z-index: 0; }
+        .tree-line-v-last::before { bottom: auto; height: 32px; }
+        .tree-line-h::after { content: ''; position: absolute; left: 24px; top: 26px; width: 24px; height: 1px; background-color: rgba(255, 255, 255, 0.12); z-index: 0; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen flex flex-col pt-component-height">
+<!-- TopAppBar -->
+<header class="bg-bg-header dark:bg-bg-header fixed top-0 w-full border-b border-border-default z-50 transition-colors duration-200">
+<div class="flex items-center justify-between px-margin-horizontal h-component-height w-full z-50">
+<button class="text-text-secondary hover:bg-surface-container-high p-2 -ml-2 rounded-full flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined" data-icon="arrow_back" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-card-title text-card-title text-status-idle uppercase tracking-widest">Chronicle Intelligence</h1>
+<button class="text-status-idle hover:bg-surface-container-high p-2 -mr-2 rounded-full flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 overflow-y-auto px-margin-horizontal py-margin-horizontal flex flex-col gap-gutter">
+<!-- Header Section -->
+<div class="flex flex-col gap-xs mb-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-status-idle text-sm" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+<h2 class="font-body text-body text-text-secondary uppercase tracking-wider">Root Cause Investigation</h2>
+</div>
+<h3 class="font-medium-kpi text-medium-kpi text-text-primary leading-tight">Packaging Department OEE Collapse (09 Jun)</h3>
+</div>
+<!-- Investigation Banner -->
+<div class="bg-card border border-[rgba(217,119,6,0.35)] rounded-xl p-md flex items-center gap-md investigation-pulse">
+<div class="w-2 h-2 rounded-full bg-status-idle animate-pulse"></div>
+<span class="font-tag-label text-tag-label text-status-idle tracking-widest">DIAGNOSTIC MODE ACTIVE</span>
+</div>
+<!-- Analysis Tree -->
+<section class="bg-card border-[0.5px] border-border-default rounded-xl p-lg flex flex-col gap-md">
+<h4 class="font-section-header text-section-header text-text-secondary uppercase tracking-widest mb-sm">Causal Chain Analysis</h4>
+<div class="flex flex-col">
+<!-- Root Node -->
+<div class="relative z-10 flex items-start gap-md pb-lg">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high border-[0.5px] border-border-default flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-status-breakdown" data-icon="conveyor_belt" style="font-variation-settings: 'FILL' 1;">conveyor_belt</span>
+</div>
+<div class="flex flex-col pt-1">
+<span class="font-tag-label text-tag-label text-text-tertiary uppercase">Root Event</span>
+<span class="font-card-title text-card-title text-text-primary">OEE Collapse &lt; 40%</span>
+</div>
+</div>
+<!-- Primary Cause Node -->
+<div class="tree-line-v relative z-10 flex items-start gap-md pb-lg pl-[48px] tree-line-h">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high border-[0.5px] border-border-default flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-status-idle" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+</div>
+<div class="flex flex-col pt-1">
+<span class="font-tag-label text-tag-label text-status-idle uppercase flex items-center gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-status-idle"></div>
+                            Primary Cause (78% Confidence)
+                        </span>
+<span class="font-card-title text-card-title text-text-primary">Material Shortage</span>
+</div>
+</div>
+<!-- Sub-cause 1 -->
+<div class="tree-line-v relative z-10 flex items-start gap-md pb-lg pl-[96px] tree-line-h">
+<div class="w-10 h-10 rounded-lg bg-surface-container border-[0.5px] border-border-default flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-text-secondary text-sm" data-icon="local_shipping" style="font-variation-settings: 'FILL' 0;">local_shipping</span>
+</div>
+<div class="flex flex-col pt-1">
+<span class="font-card-title text-card-title text-text-primary text-sm">Supplier Delay (Resin Batch B)</span>
+</div>
+</div>
+<!-- Secondary Cause Node -->
+<div class="tree-line-v tree-line-v-last relative z-10 flex items-start gap-md pl-[48px] tree-line-h">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high border-[0.5px] border-border-default flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-status-breakdown" data-icon="build" style="font-variation-settings: 'FILL' 1;">build</span>
+</div>
+<div class="flex flex-col pt-1">
+<span class="font-tag-label text-tag-label text-text-tertiary uppercase">Secondary Contributor</span>
+<span class="font-card-title text-card-title text-text-primary">Machine 7 Breakdown</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Impact Analysis -->
+<section class="bg-card border-[0.5px] border-border-default rounded-xl p-lg flex flex-col gap-md">
+<h4 class="font-section-header text-section-header text-text-secondary uppercase tracking-widest border-b-[0.5px] border-border-emphasis pb-sm">Impact Quantification</h4>
+<div class="grid grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<span class="font-section-header text-section-header text-text-tertiary">Estimated OEE Loss</span>
+<div class="flex items-end gap-2">
+<span class="font-large-kpi text-large-kpi text-text-primary">-12.4%</span>
+<span class="material-symbols-outlined text-status-breakdown pb-1 text-sm" data-icon="trending_down">trending_down</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-section-header text-section-header text-text-tertiary">Downtime Cost</span>
+<div class="flex items-end gap-2">
+<span class="font-large-kpi text-large-kpi text-status-idle">$14.2k</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs col-span-2 mt-sm">
+<span class="font-section-header text-section-header text-text-tertiary">Production Loss</span>
+<div class="flex items-center gap-3">
+<div class="flex-1 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-status-breakdown w-[85%]"></div>
+</div>
+<span class="font-medium-kpi text-medium-kpi text-text-primary">850 <span class="text-sm text-text-secondary">units</span></span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommendations -->
+<section class="bg-card border-[0.5px] border-border-default rounded-xl p-lg flex flex-col gap-md mb-2xl">
+<h4 class="font-section-header text-section-header text-text-secondary uppercase tracking-widest border-b-[0.5px] border-border-emphasis pb-sm flex justify-between items-center">
+                Remediation Protocol
+                <span class="material-symbols-outlined text-text-secondary text-sm" data-icon="assignment_turned_in">assignment_turned_in</span>
+</h4>
+<div class="flex flex-col gap-md">
+<div class="bg-surface-container border-[0.5px] border-border-default rounded-lg p-md flex items-start gap-md">
+<div class="mt-1">
+<span class="material-symbols-outlined text-data-performance" data-icon="shield" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-tag-label text-tag-label text-text-tertiary uppercase">Preventive Action</span>
+<span class="font-body text-body text-text-primary">Stock Level Buffer Increase</span>
+<button class="mt-2 self-start bg-surface-container-high hover:bg-surface-variant border-[0.5px] border-border-default px-4 py-2 rounded font-card-title text-card-title text-text-primary transition-colors h-[36px]">Authorize Buffer Adjust</button>
+</div>
+</div>
+<div class="bg-surface-container border-[0.5px] border-border-default rounded-lg p-md flex items-start gap-md">
+<div class="mt-1">
+<span class="material-symbols-outlined text-secondary" data-icon="home_repair_service" style="font-variation-settings: 'FILL' 1;">home_repair_service</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-tag-label text-tag-label text-text-tertiary uppercase">Maintenance Action</span>
+<span class="font-body text-body text-text-primary">Spindle Thermal Checkup</span>
+<button class="mt-2 self-start bg-surface-container-high hover:bg-surface-variant border-[0.5px] border-border-default px-4 py-2 rounded font-card-title text-card-title text-text-primary transition-colors h-[36px]">Dispatch Tech</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

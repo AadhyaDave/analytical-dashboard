@@ -6,6 +6,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import Layout from './components/layout/Layout';
 import LoginPage from './pages/LoginPage';
 import MDDashboard from './pages/dashboards/MDDashboard';
+import SuperAdminDashboard from './pages/dashboards/SuperAdminDashboard';
 import PlantHeadDashboard from './pages/dashboards/PlantHeadDashboard';
 import DepartmentHeadDashboard from './pages/dashboards/DepartmentHeadDashboard';
 import SectionHeadDashboard from './pages/dashboards/SectionHeadDashboard';
@@ -16,6 +17,7 @@ import ExecutiveMDDashboard from './pages/dashboards/ExecutiveMDDashboard';
 import MDSinglePlantDashboard from './pages/dashboards/MDSinglePlantDashboard';
 
 const DASHBOARD_MAP = {
+  SUPER_ADMIN: SuperAdminDashboard,
   MD: MDDashboard,
   PLANT_HEAD: PlantHeadDashboard,
   DEPT_HEAD: DepartmentHeadDashboard,

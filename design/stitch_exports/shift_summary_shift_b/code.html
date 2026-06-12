@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shift Summary - Opus One Mobile</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "status-running": "#16a34a",
+                      "on-primary-fixed-variant": "#004f53",
+                      "secondary-fixed-dim": "#4cd7f6",
+                      "surface-dim": "#001330",
+                      "bg-header": "#080f1e",
+                      "data-quality": "#f59e0b",
+                      "outline-variant": "#3c494a",
+                      "tertiary-fixed": "#ffdcc5",
+                      "border-default": "rgba(255, 255, 255, 0.06)",
+                      "on-primary-fixed": "#002022",
+                      "primary-fixed": "#6ff6ff",
+                      "surface-container": "#0b1f3e",
+                      "on-secondary": "#003640",
+                      "on-error-container": "#ffdad6",
+                      "text-secondary": "#8b9dc3",
+                      "bg-input": "#111d35",
+                      "primary-container": "#00c8d2",
+                      "inverse-primary": "#00696f",
+                      "on-surface": "#d7e2ff",
+                      "surface-variant": "#223555",
+                      "on-secondary-container": "#00424e",
+                      "on-tertiary-fixed": "#301400",
+                      "background": "#001330",
+                      "on-secondary-fixed": "#001f26",
+                      "primary": "#46e4ee",
+                      "on-primary": "#00373a",
+                      "secondary-fixed": "#acedff",
+                      "bg-overlay": "#050a14",
+                      "bg-app": "#060c18",
+                      "error-container": "#93000a",
+                      "on-primary-container": "#004f53",
+                      "bg-card": "#0d1526",
+                      "on-tertiary-container": "#703700",
+                      "error": "#ffb4ab",
+                      "surface-container-highest": "#223555",
+                      "tertiary-fixed-dim": "#ffb783",
+                      "tertiary": "#ffc49b",
+                      "inverse-surface": "#d7e2ff",
+                      "surface-tint": "#36dae4",
+                      "surface-container-lowest": "#000d26",
+                      "status-idle": "#d97706",
+                      "on-tertiary-fixed-variant": "#703700",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "surface-bright": "#27395a",
+                      "tertiary-container": "#ff9d4f",
+                      "secondary-container": "#03b5d3",
+                      "status-planned": "#7c3aed",
+                      "text-tertiary": "#4a5e8a",
+                      "surface-container-low": "#061b3a",
+                      "on-tertiary": "#4f2500",
+                      "on-background": "#d7e2ff",
+                      "on-error": "#690005",
+                      "text-primary": "#f0f4ff",
+                      "surface": "#001330",
+                      "data-performance": "#4ade80",
+                      "inverse-on-surface": "#1e3050",
+                      "on-surface-variant": "#bbc9ca",
+                      "outline": "#859394",
+                      "surface-container-high": "#172a49",
+                      "secondary": "#4cd7f6",
+                      "status-breakdown": "#dc2626",
+                      "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                      "primary-fixed-dim": "#36dae4"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "16px",
+                      "xl": "24px",
+                      "gutter": "12px",
+                      "xs": "4px",
+                      "margin-horizontal": "16px",
+                      "base": "4px",
+                      "sm": "8px",
+                      "md": "12px",
+                      "component-height": "52px",
+                      "2xl": "32px"
+              },
+              "fontFamily": {
+                      "tag-label": [
+                              "Roboto"
+                      ],
+                      "hero-kpi": [
+                              "Roboto"
+                      ],
+                      "large-kpi": [
+                              "Roboto"
+                      ],
+                      "medium-kpi": [
+                              "Roboto"
+                      ],
+                      "delta-text": [
+                              "Roboto"
+                      ],
+                      "card-title": [
+                              "Roboto"
+                      ],
+                      "section-header": [
+                              "Roboto"
+                      ],
+                      "card-subtitle": [
+                              "Roboto"
+                      ],
+                      "body": [
+                              "Roboto"
+                      ]
+              },
+              "fontSize": {
+                      "tag-label": [
+                              "10px",
+                              {
+                                      "lineHeight": "12px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "hero-kpi": [
+                              "56px",
+                              {
+                                      "lineHeight": "64px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "300"
+                              }
+                      ],
+                      "large-kpi": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "medium-kpi": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "delta-text": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "card-title": [
+                              "15px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "section-header": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "card-subtitle": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #060c18;
+            color: #f0f4ff;
+        }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #060c18;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #223555;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3c494a;
+        }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app text-text-primary antialiased font-body pb-[80px] pt-[52px]">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-horizontal h-component-height bg-bg-header border-b border-border-default">
+<div class="flex items-center gap-sm cursor-pointer hover:bg-surface-variant/50 transition-colors duration-200 p-xs rounded">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+</div>
+<div class="font-medium-kpi text-medium-kpi text-primary uppercase tracking-wider">
+            Opus One Mobile
+        </div>
+<div class="flex items-center gap-sm cursor-pointer hover:bg-surface-variant/50 transition-colors duration-200 p-xs rounded">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+</div>
+</header>
+<main class="px-margin-horizontal py-md flex flex-col gap-gutter">
+<!-- Breadcrumbs & Header -->
+<div class="flex flex-col gap-xs mb-sm">
+<div class="flex items-center gap-xs text-text-secondary font-card-subtitle text-card-subtitle">
+<span>Operations</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Dashboard</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary">Shift Summary</span>
+</div>
+<h1 class="font-large-kpi text-large-kpi text-text-primary">Current Shift: Shift B</h1>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary">08:00 → 16:00 · Active</p>
+</div>
+<!-- Investigation Banner -->
+<div class="bg-surface-container border border-[rgba(0,200,210,0.35)] rounded-lg p-sm flex items-center justify-between shadow-[0_0_15px_rgba(0,200,210,0.15)]">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-[#00c8d2] animate-pulse shadow-[0_0_8px_#00c8d2]"></div>
+<span class="font-tag-label text-tag-label text-[#00c8d2] tracking-wider uppercase">Investigating</span>
+</div>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Machine 7 Downtime</span>
+</div>
+<!-- Hero Section: OEE Gauge (Bento Grid Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Main Gauge Card -->
+<div class="bg-bg-card border border-border-default rounded-xl p-lg flex flex-col items-center justify-center relative min-h-[240px]">
+<div class="absolute top-md left-md">
+<span class="font-section-header text-section-header text-text-secondary tracking-wider">PLANT OEE</span>
+</div>
+<!-- SVG Gauge Visualization -->
+<div class="relative w-48 h-48 mt-md flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 120 120">
+<!-- Background Rings -->
+<circle cx="60" cy="60" fill="none" r="54" stroke="#223555" stroke-width="4"></circle>
+<circle cx="60" cy="60" fill="none" r="46" stroke="#223555" stroke-width="4"></circle>
+<circle cx="60" cy="60" fill="none" r="38" stroke="#223555" stroke-width="4"></circle>
+<!-- Value Rings (Simulated percentages) -->
+<!-- Availability: 92.1% (Green) -->
+<circle class="transition-all duration-1000 ease-out" cx="60" cy="60" fill="none" r="54" stroke="#16a34a" stroke-dasharray="339.29" stroke-dashoffset="26.8" stroke-width="4"></circle>
+<!-- Performance: 88.5% (Green) -->
+<circle class="transition-all duration-1000 ease-out" cx="60" cy="60" fill="none" r="46" stroke="#4ade80" stroke-dasharray="289.02" stroke-dashoffset="33.2" stroke-width="4"></circle>
+<!-- Quality: 98.2% (Amber) -->
+<circle class="transition-all duration-1000 ease-out" cx="60" cy="60" fill="none" r="38" stroke="#f59e0b" stroke-dasharray="238.76" stroke-dashoffset="4.3" stroke-width="4"></circle>
+</svg>
+<!-- Center Text -->
+<div class="absolute flex flex-col items-center justify-center">
+<span class="font-hero-kpi text-hero-kpi text-text-primary leading-none">87.4</span>
+<span class="font-tag-label text-tag-label text-text-secondary">%</span>
+</div>
+</div>
+</div>
+<!-- Rings Breakdown & Shift Strip -->
+<div class="flex flex-col gap-gutter">
+<!-- Breakdown Metrics -->
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 rounded-sm bg-status-running border border-border-default"></div>
+<span class="font-card-title text-card-title text-text-secondary">Availability</span>
+</div>
+<span class="font-medium-kpi text-medium-kpi text-text-primary">92.1%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 rounded-sm bg-data-performance border border-border-default"></div>
+<span class="font-card-title text-card-title text-text-secondary">Performance</span>
+</div>
+<span class="font-medium-kpi text-medium-kpi text-text-primary">88.5%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 rounded-sm bg-data-quality border border-border-default"></div>
+<span class="font-card-title text-card-title text-text-secondary">Quality</span>
+</div>
+<span class="font-medium-kpi text-medium-kpi text-text-primary">98.2%</span>
+</div>
+</div>
+<!-- Shift Status Strip -->
+<div class="bg-bg-card border border-border-default rounded-xl p-md">
+<span class="font-section-header text-section-header text-text-secondary tracking-wider block mb-sm">ASSET STATUS</span>
+<div class="flex gap-2 w-full h-8 rounded overflow-hidden">
+<!-- Visual representation of counts -->
+<div class="bg-status-running w-[91%] flex items-center justify-center font-tag-label text-[9px] text-on-primary">44</div>
+<div class="bg-status-idle w-[6%] flex items-center justify-center font-tag-label text-[9px] text-[#fff]">3</div>
+<div class="bg-status-breakdown w-[3%] flex items-center justify-center font-tag-label text-[9px] text-[#fff]">1</div>
+</div>
+<div class="flex justify-between mt-sm text-card-subtitle font-card-subtitle">
+<div class="flex items-center gap-xs"><span class="w-2 h-2 rounded-full bg-status-running"></span><span class="text-text-secondary">Running</span></div>
+<div class="flex items-center gap-xs"><span class="w-2 h-2 rounded-full bg-status-idle"></span><span class="text-text-secondary">Idle</span></div>
+<div class="flex items-center gap-xs"><span class="w-2 h-2 rounded-full bg-status-breakdown"></span><span class="text-text-secondary">Down</span></div>
+</div>
+</div>
+</div>
+</div>
+<!-- KPI Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 gap-gutter">
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex flex-col gap-xs">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Parts Produced</span>
+<span class="font-large-kpi text-large-kpi text-text-primary">1,240</span>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px] text-status-running">trending_up</span>
+<span class="font-delta-text text-delta-text text-status-running">+5% vs avg</span>
+</div>
+</div>
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex flex-col gap-xs">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Target Output</span>
+<span class="font-large-kpi text-large-kpi text-text-primary">1,450</span>
+<span class="font-delta-text text-delta-text text-text-tertiary">Shift goal</span>
+</div>
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex flex-col gap-xs">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Downtime</span>
+<span class="font-large-kpi text-large-kpi text-status-breakdown">18m</span>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px] text-status-breakdown">trending_up</span>
+<span class="font-delta-text text-delta-text text-status-breakdown">Above target</span>
+</div>
+</div>
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex flex-col gap-xs">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Rejections</span>
+<span class="font-large-kpi text-large-kpi text-data-quality">12</span>
+<span class="font-delta-text text-delta-text text-text-tertiary">0.96% rate</span>
+</div>
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex flex-col gap-xs md:col-span-2">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Uptime</span>
+<span class="font-large-kpi text-large-kpi text-status-running">7h 42m</span>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px] text-status-running">check_circle</span>
+<span class="font-delta-text text-delta-text text-status-running">Healthy</span>
+</div>
+</div>
+</div>
+<!-- Critical Situations & Open Issues -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mt-sm">
+<!-- Critical Situations -->
+<div class="flex flex-col gap-sm">
+<h2 class="font-section-header text-section-header text-text-secondary tracking-wider pl-xs">CRITICAL SITUATIONS</h2>
+<div class="bg-bg-card border border-border-default rounded-xl p-md relative overflow-hidden flex flex-col gap-sm">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-breakdown"></div>
+<div class="flex justify-between items-start pl-sm">
+<div class="flex flex-col">
+<span class="font-card-title text-card-title text-text-primary">Machine 7 Breakdown</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Spindle Failure</span>
+</div>
+<div class="bg-status-breakdown/12 px-sm py-[2px] rounded-[20px] flex items-center gap-xs">
+<span class="w-[6px] h-[6px] rounded-full bg-status-breakdown"></span>
+<span class="font-tag-label text-tag-label text-status-breakdown uppercase">47m Down</span>
+</div>
+</div>
+<button class="ml-sm mt-sm bg-surface-variant hover:bg-surface-bright text-text-primary font-card-title text-card-title h-[40px] rounded-lg transition-colors border border-border-default w-full md:w-auto px-lg flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">engineering</span>
+                        View Details
+                    </button>
+</div>
+</div>
+<!-- Open Issues -->
+<div class="flex flex-col gap-sm">
+<h2 class="font-section-header text-section-header text-text-secondary tracking-wider pl-xs">OPEN ISSUES</h2>
+<div class="flex flex-col gap-xs">
+<div class="bg-bg-card border border-border-default rounded-xl p-md relative overflow-hidden flex justify-between items-center">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-data-quality"></div>
+<div class="flex flex-col pl-sm">
+<span class="font-card-title text-card-title text-text-primary">Line 3</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Material Shortage</span>
+</div>
+<span class="material-symbols-outlined text-text-secondary">chevron_right</span>
+</div>
+<div class="bg-bg-card border border-border-default rounded-xl p-md relative overflow-hidden flex justify-between items-center">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-planned"></div>
+<div class="flex flex-col pl-sm">
+<span class="font-card-title text-card-title text-text-primary">Line 4</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Planned Maintenance Due</span>
+</div>
+<span class="material-symbols-outlined text-text-secondary">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-margin-horizontal py-sm bg-bg-app border-t border-border-default md:hidden">
+<!-- Active Tab: Operations -->
+<div class="flex flex-col items-center justify-center bg-surface-container text-primary rounded-xl px-sm py-xs scale-95 transition-transform duration-150 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="precision_manufacturing" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+<span class="font-tag-label text-tag-label mt-[2px]">Operations</span>
+</div>
+<!-- Inactive Tabs -->
+<div class="flex flex-col items-center justify-center text-text-secondary px-sm py-xs hover:text-primary-fixed-dim transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="factory">factory</span>
+<span class="font-tag-label text-tag-label mt-[2px]">Assets</span>
+</div>
+<div class="flex flex-col items-center justify-center text-text-secondary px-sm py-xs hover:text-primary-fixed-dim transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="error">error</span>
+<span class="font-tag-label text-tag-label mt-[2px]">Issues</span>
+</div>
+<div class="flex flex-col items-center justify-center text-text-secondary px-sm py-xs hover:text-primary-fixed-dim transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
+<span class="font-tag-label text-tag-label mt-[2px]">Handover</span>
+</div>
+</nav>
+<!-- Desktop Sidebar Overlay (Hidden on Mobile, structurally present for responsive logic if needed) -->
+<aside class="hidden md:flex flex-col fixed left-0 top-[52px] bottom-0 w-[240px] bg-bg-header border-r border-border-default z-40 p-md gap-sm">
+<div class="flex items-center gap-sm bg-surface-container text-primary rounded-xl px-sm py-sm cursor-pointer border border-border-default">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+<span class="font-card-title text-card-title">Operations</span>
+</div>
+<div class="flex items-center gap-sm text-text-secondary rounded-xl px-sm py-sm hover:bg-surface-variant/50 cursor-pointer transition-colors">
+<span class="material-symbols-outlined">factory</span>
+<span class="font-card-title text-card-title">Assets</span>
+</div>
+<div class="flex items-center gap-sm text-text-secondary rounded-xl px-sm py-sm hover:bg-surface-variant/50 cursor-pointer transition-colors">
+<span class="material-symbols-outlined">error</span>
+<span class="font-card-title text-card-title">Issues</span>
+</div>
+<div class="flex items-center gap-sm text-text-secondary rounded-xl px-sm py-sm hover:bg-surface-variant/50 cursor-pointer transition-colors">
+<span class="material-symbols-outlined">assignment_turned_in</span>
+<span class="font-card-title text-card-title">Handover</span>
+</div>
+</aside>
+<!-- Adjust main padding for desktop -->
+<style>
+        @media (min-width: 768px) {
+            main {
+                margin-left: 240px;
+            }
+        }
+    </style>
+</body></html>

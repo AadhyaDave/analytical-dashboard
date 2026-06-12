@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Opus One Mobile - Shift Notes</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;  /* Preferred icon size */
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        /* Custom scrollbar for horizontal pill list to keep it industrial and clean */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<!-- Tailwind Config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "status-running": "#16a34a",
+                        "on-primary-fixed-variant": "#004f53",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "surface-dim": "#001330",
+                        "bg-header": "#080f1e",
+                        "data-quality": "#f59e0b",
+                        "outline-variant": "#3c494a",
+                        "tertiary-fixed": "#ffdcc5",
+                        "border-default": "rgba(255, 255, 255, 0.06)",
+                        "on-primary-fixed": "#002022",
+                        "primary-fixed": "#6ff6ff",
+                        "surface-container": "#0b1f3e",
+                        "on-secondary": "#003640",
+                        "on-error-container": "#ffdad6",
+                        "text-secondary": "#8b9dc3",
+                        "bg-input": "#111d35",
+                        "primary-container": "#00c8d2",
+                        "inverse-primary": "#00696f",
+                        "on-surface": "#d7e2ff",
+                        "surface-variant": "#223555",
+                        "on-secondary-container": "#00424e",
+                        "on-tertiary-fixed": "#301400",
+                        "background": "#001330",
+                        "on-secondary-fixed": "#001f26",
+                        "primary": "#46e4ee",
+                        "on-primary": "#00373a",
+                        "secondary-fixed": "#acedff",
+                        "bg-overlay": "#050a14",
+                        "bg-app": "#060c18",
+                        "error-container": "#93000a",
+                        "on-primary-container": "#004f53",
+                        "bg-card": "#0d1526",
+                        "on-tertiary-container": "#703700",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#223555",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "tertiary": "#ffc49b",
+                        "inverse-surface": "#d7e2ff",
+                        "surface-tint": "#36dae4",
+                        "surface-container-lowest": "#000d26",
+                        "status-idle": "#d97706",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-bright": "#27395a",
+                        "tertiary-container": "#ff9d4f",
+                        "secondary-container": "#03b5d3",
+                        "status-planned": "#7c3aed",
+                        "text-tertiary": "#4a5e8a",
+                        "surface-container-low": "#061b3a",
+                        "on-tertiary": "#4f2500",
+                        "on-background": "#d7e2ff",
+                        "on-error": "#690005",
+                        "text-primary": "#f0f4ff",
+                        "surface": "#001330",
+                        "data-performance": "#4ade80",
+                        "inverse-on-surface": "#1e3050",
+                        "on-surface-variant": "#bbc9ca",
+                        "outline": "#859394",
+                        "surface-container-high": "#172a49",
+                        "secondary": "#4cd7f6",
+                        "status-breakdown": "#dc2626",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "primary-fixed-dim": "#36dae4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "16px",
+                        "xl": "24px",
+                        "gutter": "12px",
+                        "xs": "4px",
+                        "margin-horizontal": "16px",
+                        "base": "4px",
+                        "sm": "8px",
+                        "md": "12px",
+                        "component-height": "52px",
+                        "2xl": "32px"
+                    },
+                    "fontFamily": {
+                        "tag-label": ["Roboto", "sans-serif"],
+                        "hero-kpi": ["Roboto", "sans-serif"],
+                        "large-kpi": ["Roboto", "sans-serif"],
+                        "medium-kpi": ["Roboto", "sans-serif"],
+                        "delta-text": ["Roboto", "sans-serif"],
+                        "card-title": ["Roboto", "sans-serif"],
+                        "section-header": ["Roboto", "sans-serif"],
+                        "card-subtitle": ["Roboto", "sans-serif"],
+                        "body": ["Roboto", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "tag-label": ["10px", { "lineHeight": "12px", "fontWeight": "600" }],
+                        "hero-kpi": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "large-kpi": ["36px", { "lineHeight": "44px", "fontWeight": "400" }],
+                        "medium-kpi": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "delta-text": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "card-title": ["15px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "section-header": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "card-subtitle": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app text-text-primary overflow-x-hidden min-h-screen pb-[100px] pt-component-height font-body">
+<!-- TopAppBar -->
+<header class="bg-bg-header dark:bg-bg-header fixed top-0 w-full z-50 flex justify-between items-center px-margin-horizontal h-component-height border-b-[0.5px] border-border-default">
+<button class="text-primary dark:text-primary transition-colors duration-200 hover:bg-surface-variant/50 p-sm rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-medium-kpi text-medium-kpi text-primary tracking-wider uppercase font-extrabold">SHIFT NOTES</h1>
+<button class="text-primary dark:text-primary transition-colors duration-200 hover:bg-surface-variant/50 p-sm rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="px-margin-horizontal pt-lg flex flex-col gap-gutter">
+<!-- Quick Entry Card -->
+<section class="bg-bg-card border-[0.5px] border-border-default rounded-xl p-lg flex flex-col gap-md shadow-none relative overflow-hidden">
+<!-- Subtle gradient overlay for depth -->
+<div class="absolute inset-0 bg-gradient-to-br from-surface-container/20 to-transparent pointer-events-none"></div>
+<div class="relative z-10">
+<textarea class="w-full bg-bg-input text-on-surface font-body text-body p-md rounded-lg border-[0.5px] border-border-default placeholder:text-text-secondary outline-none focus:border-outline-variant focus:ring-1 focus:ring-outline-variant transition-all resize-none min-h-[80px]" placeholder="Log operational note..."></textarea>
+<div class="flex justify-between items-center mt-md">
+<div class="flex gap-sm">
+<button aria-label="Add Photo" class="p-sm text-text-secondary hover:text-primary transition-colors rounded-full hover:bg-surface-variant/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">photo_camera</span>
+</button>
+<button aria-label="Voice Note" class="p-sm text-text-secondary hover:text-primary transition-colors rounded-full hover:bg-surface-variant/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</button>
+</div>
+<button class="bg-surface-container-high hover:bg-surface-bright text-primary border-[0.5px] border-border-default px-lg py-[8px] rounded-lg font-card-title text-card-title transition-all active:scale-95 flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">send</span>
+                        Post Note
+                    </button>
+</div>
+</div>
+</section>
+<!-- Category Pills -->
+<nav class="flex overflow-x-auto gap-sm py-sm no-scrollbar mt-sm mb-xs">
+<button class="whitespace-nowrap px-md py-[6px] rounded-full font-card-title text-card-title bg-surface-tint text-on-primary-fixed border-[0.5px] border-surface-tint transition-colors flex-shrink-0">
+                All
+            </button>
+<button class="whitespace-nowrap px-md py-[6px] rounded-full font-card-subtitle text-card-subtitle bg-surface-container text-text-secondary border-[0.5px] border-border-default hover:text-primary hover:border-outline-variant transition-colors flex-shrink-0">
+                Production
+            </button>
+<button class="whitespace-nowrap px-md py-[6px] rounded-full font-card-subtitle text-card-subtitle bg-surface-container text-text-secondary border-[0.5px] border-border-default hover:text-primary hover:border-outline-variant transition-colors flex-shrink-0">
+                Quality
+            </button>
+<button class="whitespace-nowrap px-md py-[6px] rounded-full font-card-subtitle text-card-subtitle bg-surface-container text-text-secondary border-[0.5px] border-border-default hover:text-primary hover:border-outline-variant transition-colors flex-shrink-0">
+                Maintenance
+            </button>
+<button class="whitespace-nowrap px-md py-[6px] rounded-full font-card-subtitle text-card-subtitle bg-surface-container text-text-secondary border-[0.5px] border-border-default hover:text-primary hover:border-outline-variant transition-colors flex-shrink-0">
+                Safety
+            </button>
+</nav>
+<!-- Notes List -->
+<div class="flex flex-col gap-gutter">
+<!-- Note 1: Production -->
+<article class="bg-bg-card border-[0.5px] border-border-default rounded-xl p-lg flex flex-col gap-sm relative">
+<div class="flex justify-between items-start mb-xs">
+<div class="inline-flex items-center gap-xs px-sm py-[4px] rounded-full bg-status-running/10 text-status-running border-[0.5px] border-status-running/20">
+<div class="w-[6px] h-[6px] rounded-full bg-status-running"></div>
+<span class="font-tag-label text-tag-label uppercase tracking-wider">Production</span>
+</div>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">14:22</span>
+</div>
+<p class="font-body text-body text-on-surface leading-relaxed">
+                    Minor conveyor jam on Line 2 resolved in 3 mins. Cleared sensors.
+                </p>
+<div class="mt-xs pt-sm border-t-[0.5px] border-border-default flex items-center gap-sm text-text-secondary">
+<span class="material-symbols-outlined text-[16px]">account_circle</span>
+<span class="font-card-subtitle text-card-subtitle">Suresh M.</span>
+</div>
+</article>
+<!-- Note 2: Maintenance -->
+<article class="bg-bg-card border-[0.5px] border-border-default rounded-xl p-lg flex flex-col gap-sm relative">
+<div class="flex justify-between items-start mb-xs">
+<div class="inline-flex items-center gap-xs px-sm py-[4px] rounded-full bg-data-quality/10 text-data-quality border-[0.5px] border-data-quality/20">
+<div class="w-[6px] h-[6px] rounded-full bg-data-quality"></div>
+<span class="font-tag-label text-tag-label uppercase tracking-wider">Maintenance</span>
+</div>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">13:45</span>
+</div>
+<p class="font-body text-body text-on-surface leading-relaxed">
+                    Spindle on Machine 7 reached 75°C. Assigned for inspection.
+                </p>
+<div class="mt-xs pt-sm border-t-[0.5px] border-border-default flex items-center gap-sm text-text-secondary">
+<span class="material-symbols-outlined text-[16px]">account_circle</span>
+<span class="font-card-subtitle text-card-subtitle">Priya K.</span>
+</div>
+</article>
+<!-- Note 3: Safety -->
+<article class="bg-bg-card border-[0.5px] border-border-default rounded-xl p-lg flex flex-col gap-sm relative">
+<div class="flex justify-between items-start mb-xs">
+<div class="inline-flex items-center gap-xs px-sm py-[4px] rounded-full bg-status-breakdown/10 text-status-breakdown border-[0.5px] border-status-breakdown/20">
+<div class="w-[6px] h-[6px] rounded-full bg-status-breakdown"></div>
+<span class="font-tag-label text-tag-label uppercase tracking-wider">Safety</span>
+</div>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">11:10</span>
+</div>
+<p class="font-body text-body text-on-surface leading-relaxed">
+                    Floor spill near Section D cleaned and marked.
+                </p>
+<div class="mt-xs pt-sm border-t-[0.5px] border-border-default flex items-center gap-sm text-text-secondary">
+<span class="material-symbols-outlined text-[16px]">account_circle</span>
+<span class="font-card-subtitle text-card-subtitle">Arjun S.</span>
+</div>
+</article>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-bg-app dark:bg-bg-app fixed bottom-0 left-0 w-full flex justify-around items-center px-margin-horizontal py-sm z-50 border-t-[0.5px] border-border-default md:hidden">
+<!-- Operations (Active) -->
+<a class="flex flex-col items-center justify-center bg-surface-container text-primary rounded-xl px-sm py-xs scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+<span class="font-tag-label text-tag-label mt-xs">Operations</span>
+</a>
+<!-- Assets (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-secondary px-sm py-xs hover:text-primary-fixed-dim transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">factory</span>
+<span class="font-tag-label text-tag-label mt-xs">Assets</span>
+</a>
+<!-- Issues (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-secondary px-sm py-xs hover:text-primary-fixed-dim transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">error</span>
+<span class="font-tag-label text-tag-label mt-xs">Issues</span>
+</a>
+<!-- Handover (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-secondary px-sm py-xs hover:text-primary-fixed-dim transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">assignment_turned_in</span>
+<span class="font-tag-label text-tag-label mt-xs">Handover</span>
+</a>
+</nav>
+</body></html>

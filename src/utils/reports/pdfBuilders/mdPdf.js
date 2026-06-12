@@ -13,14 +13,14 @@ import {
   fillPageBackground, drawSectionTitle, drawDivider,
   drawKPICard, drawOEETrendChart, drawParetoChart, drawPageFooter,
   C,
-} from './pdfHelpers.js';
+} from '../pdfHelpers.js';
 
 import {
   generateReportMeta, generateNarrative, generateHighlights,
   generateActions, computeBenchmarks, computePlantHealth,
   computeImprovements,
   oeeTrendData, shiftProductivityComparison, alarmHeatmapData,
-} from './reportData.js';
+} from '../reportData.js';
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 const statusLabel = s => s === 'good' ? 'HEALTHY' : s === 'warning' ? 'MONITOR' : 'CRITICAL';
@@ -31,7 +31,7 @@ const sf = (doc, rgb) => doc.setFillColor(rgb[0], rgb[1], rgb[2]);
 const st = (doc, rgb) => doc.setTextColor(rgb[0], rgb[1], rgb[2]);
 
 // ─── Main builder ─────────────────────────────────────────────────────────────
-export function buildPDF(user) {
+export function buildMDPDF(user) {
   const doc   = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
   const pageW = doc.internal.pageSize.getWidth();
   const pageH = doc.internal.pageSize.getHeight();

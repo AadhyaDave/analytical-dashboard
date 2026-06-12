@@ -6,6 +6,7 @@ import { useTheme } from '../context/ThemeContext';
 import { users } from '../data/mockData';
 
 const ROLE_LABELS = {
+  SUPER_ADMIN: 'Global Administrator',
   MD: 'Managing Director',
   PLANT_HEAD: 'Plant Head',
   DEPT_HEAD: 'Department Head',

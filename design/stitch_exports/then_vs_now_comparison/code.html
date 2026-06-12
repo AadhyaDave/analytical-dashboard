@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Compare Operations - Opus One Mobile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "bg-input": "#111d35",
+                        "surface-bright": "#27395a",
+                        "bg-app": "#060c18",
+                        "on-surface": "#d7e2ff",
+                        "inverse-on-surface": "#1e3050",
+                        "on-primary-fixed-variant": "#004f53",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#223555",
+                        "secondary-container": "#03b5d3",
+                        "data-quality": "#f59e0b",
+                        "text-secondary": "#8b9dc3",
+                        "primary-fixed-dim": "#36dae4",
+                        "tertiary-container": "#ff9d4f",
+                        "on-error": "#690005",
+                        "status-breakdown": "#dc2626",
+                        "data-performance": "#4ade80",
+                        "surface-container-lowest": "#000d26",
+                        "outline": "#859394",
+                        "text-tertiary": "#4a5e8a",
+                        "on-primary-fixed": "#002022",
+                        "surface-container": "#0b1f3e",
+                        "surface-container-low": "#061b3a",
+                        "surface-variant": "#223555",
+                        "on-tertiary-fixed": "#301400",
+                        "tertiary": "#ffc49b",
+                        "surface-tint": "#36dae4",
+                        "primary-container": "#00c8d2",
+                        "on-secondary": "#003640",
+                        "inverse-primary": "#00696f",
+                        "border-default": "rgba(255, 255, 255, 0.06)",
+                        "on-surface-variant": "#bbc9ca",
+                        "inverse-surface": "#d7e2ff",
+                        "on-secondary-fixed": "#001f26",
+                        "bg-card": "#0d1526",
+                        "error-container": "#93000a",
+                        "text-primary": "#f0f4ff",
+                        "on-background": "#d7e2ff",
+                        "primary-fixed": "#6ff6ff",
+                        "bg-overlay": "#050a14",
+                        "bg-header": "#080f1e",
+                        "on-tertiary-container": "#703700",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "outline-variant": "#3c494a",
+                        "on-secondary-container": "#00424e",
+                        "surface": "#001330",
+                        "surface-dim": "#001330",
+                        "on-primary": "#00373a",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "tertiary-fixed": "#ffdcc5",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "secondary-fixed": "#acedff",
+                        "status-planned": "#7c3aed",
+                        "status-running": "#16a34a",
+                        "on-tertiary": "#4f2500",
+                        "secondary": "#4cd7f6",
+                        "on-primary-container": "#004f53",
+                        "background": "#001330",
+                        "surface-container-high": "#172a49",
+                        "primary": "#46e4ee",
+                        "status-idle": "#d97706",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-horizontal": "16px",
+                        "lg": "16px",
+                        "xs": "4px",
+                        "xl": "24px",
+                        "gutter": "12px",
+                        "base": "4px",
+                        "component-height": "52px",
+                        "2xl": "32px",
+                        "sm": "8px",
+                        "md": "12px"
+                    },
+                    "fontFamily": {
+                        "large-kpi": ["Roboto"],
+                        "hero-kpi": ["Roboto"],
+                        "delta-text": ["Roboto"],
+                        "section-header": ["Roboto"],
+                        "card-title": ["Roboto"],
+                        "medium-kpi": ["Roboto"],
+                        "tag-label": ["Roboto"],
+                        "card-subtitle": ["Roboto"],
+                        "body": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "large-kpi": ["36px", { "lineHeight": "44px", "fontWeight": "400" }],
+                        "hero-kpi": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "delta-text": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "section-header": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "card-title": ["15px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "medium-kpi": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "tag-label": ["10px", { "lineHeight": "12px", "fontWeight": "600" }],
+                        "card-subtitle": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #060c18;
+            color: #d7e2ff;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Hide scrollbar for clean industrial look */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app min-h-screen flex flex-col pt-[52px] pb-[64px] overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full bg-bg-header dark:bg-bg-header border-b border-border-default z-50 transition-colors duration-200 flex items-center justify-between px-margin-horizontal h-component-height">
+<button class="text-text-secondary hover:bg-surface-container-high rounded-full p-2 flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-card-title text-card-title text-status-idle uppercase tracking-widest font-extrabold">Compare Operations</h1>
+<button class="text-text-secondary hover:bg-surface-container-high rounded-full p-2 flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col px-margin-horizontal py-xl gap-gutter max-w-2xl mx-auto w-full">
+<!-- Context Header -->
+<div class="flex flex-col gap-xs mb-sm">
+<h2 class="font-section-header text-section-header text-text-secondary uppercase">Analysis Context</h2>
+<div class="flex items-center justify-between bg-bg-card border border-border-default rounded-lg p-md">
+<div class="flex flex-col gap-1">
+<span class="font-tag-label text-tag-label text-status-idle flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-status-idle"></span> THEN
+                    </span>
+<span class="font-body text-body text-text-primary">09 Jun, 14:23</span>
+</div>
+<span class="material-symbols-outlined text-text-secondary opacity-50">compare_arrows</span>
+<div class="flex flex-col gap-1 text-right">
+<span class="font-tag-label text-tag-label text-primary flex items-center justify-end gap-1">
+                        NOW <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+</span>
+<span class="font-body text-body text-text-primary">Live Data</span>
+</div>
+</div>
+</div>
+<!-- Primary Metric: OEE Comparison -->
+<section class="flex flex-col gap-xs">
+<h3 class="font-section-header text-section-header text-text-secondary uppercase">Key Metrics</h3>
+<div class="bg-bg-card border border-border-default rounded-xl p-lg flex flex-col gap-md relative overflow-hidden">
+<!-- Subtle indicator bar on left -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-status-idle to-primary"></div>
+<div class="flex justify-between items-start">
+<span class="font-card-title text-card-title text-text-primary">OEE Overall</span>
+<div class="bg-status-running/10 border border-status-running/20 px-2 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-status-running text-[14px]">trending_up</span>
+<span class="font-delta-text text-delta-text text-status-running">+13.9%</span>
+</div>
+</div>
+<div class="flex items-end justify-between pt-sm">
+<div class="flex flex-col">
+<span class="font-tag-label text-tag-label text-status-idle mb-1 opacity-80">THEN</span>
+<span class="font-large-kpi text-large-kpi text-text-secondary">74.2<span class="text-medium-kpi">%</span></span>
+</div>
+<span class="font-body text-body text-text-tertiary pb-2 px-2">vs</span>
+<div class="flex flex-col items-end">
+<span class="font-tag-label text-tag-label text-primary mb-1 opacity-80">NOW</span>
+<span class="font-large-kpi text-large-kpi text-text-primary">88.1<span class="text-medium-kpi">%</span></span>
+</div>
+</div>
+</div>
+</section>
+<!-- Secondary Metrics Grid -->
+<div class="grid grid-cols-2 gap-gutter">
+<!-- Availability -->
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex flex-col gap-sm relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-running"></div>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Availability</span>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="font-tag-label text-tag-label text-status-idle opacity-80 w-10">THEN</span>
+<span class="font-medium-kpi text-medium-kpi text-text-secondary">82.1%</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-tag-label text-tag-label text-primary opacity-80 w-10">NOW</span>
+<span class="font-medium-kpi text-medium-kpi text-text-primary">91.4%</span>
+</div>
+<div class="flex justify-end mt-1">
+<span class="font-delta-text text-delta-text text-status-running">+9.3%</span>
+</div>
+</div>
+</div>
+<!-- Performance -->
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex flex-col gap-sm relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-running"></div>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Performance</span>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="font-tag-label text-tag-label text-status-idle opacity-80 w-10">THEN</span>
+<span class="font-medium-kpi text-medium-kpi text-text-secondary">85.0%</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-tag-label text-tag-label text-primary opacity-80 w-10">NOW</span>
+<span class="font-medium-kpi text-medium-kpi text-text-primary">93.2%</span>
+</div>
+<div class="flex justify-end mt-1">
+<span class="font-delta-text text-delta-text text-status-running">+8.2%</span>
+</div>
+</div>
+</div>
+<!-- Quality (Full Width Spanning) -->
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex flex-col gap-sm col-span-2 relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-breakdown"></div>
+<div class="flex justify-between items-center">
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Quality Yield</span>
+<div class="bg-status-breakdown/10 border border-status-breakdown/20 px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-status-breakdown text-[12px]">trending_down</span>
+<span class="font-delta-text text-delta-text text-status-breakdown">-1.5%</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="flex flex-col">
+<span class="font-tag-label text-tag-label text-status-idle mb-0.5 opacity-80">THEN</span>
+<span class="font-medium-kpi text-medium-kpi text-text-secondary">99.8%</span>
+</div>
+<span class="material-symbols-outlined text-text-tertiary">arrow_right_alt</span>
+<div class="flex flex-col">
+<span class="font-tag-label text-tag-label text-primary mb-0.5 opacity-80">NOW</span>
+<span class="font-medium-kpi text-medium-kpi text-text-primary">98.3%</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-tag-label text-tag-label text-status-breakdown block">ATTENTION REQ.</span>
+<span class="font-body text-body text-text-secondary text-xs">Defect Rate Incr.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Operational Insights -->
+<section class="flex flex-col gap-xs mt-sm">
+<h3 class="font-section-header text-section-header text-text-secondary uppercase">Operational Insights</h3>
+<!-- Most Improved -->
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex items-center gap-md relative">
+<div class="w-10 h-10 rounded-full bg-status-running/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-status-running">keyboard_double_arrow_up</span>
+</div>
+<div class="flex flex-col flex-1">
+<span class="font-tag-label text-tag-label text-text-tertiary uppercase">Most Improved Area</span>
+<span class="font-card-title text-card-title text-text-primary">Packaging Line B</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-delta-text text-delta-text text-status-running">+22% OEE</span>
+</div>
+</div>
+<!-- Biggest Decline -->
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex items-center gap-md relative">
+<div class="w-10 h-10 rounded-full bg-status-breakdown/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-status-breakdown">keyboard_double_arrow_down</span>
+</div>
+<div class="flex flex-col flex-1">
+<span class="font-tag-label text-tag-label text-text-tertiary uppercase">Biggest Decline</span>
+<span class="font-card-title text-card-title text-text-primary">Machining Cell 4</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-delta-text text-delta-text text-status-breakdown">-8% OEE</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<!-- Rule applied: Page represents a top-level destination analysis under 'Chronicle'. -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-low dark:bg-surface-container-low border-t border-border-default flex justify-around items-center h-[64px] px-2 md:hidden">
+<button class="flex flex-col items-center justify-center text-text-tertiary px-4 py-1 hover:text-text-primary scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1">sensors</span>
+<span class="font-tag-label text-tag-label">Live</span>
+</button>
+<!-- Active Tab: Chronicle -->
+<button class="flex flex-col items-center justify-center bg-surface-container-highest text-status-idle rounded-xl px-4 py-1 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined filled mb-1 text-status-idle">settings_backup_restore</span>
+<span class="font-tag-label text-tag-label">Chronicle</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-tertiary px-4 py-1 hover:text-text-primary scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1">emergency_home</span>
+<span class="font-tag-label text-tag-label">Incidents</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-tertiary px-4 py-1 hover:text-text-primary scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1">analytics</span>
+<span class="font-tag-label text-tag-label">Reports</span>
+</button>
+</nav>
+</body></html>

@@ -3,7 +3,7 @@ import { notifications as initialNotifications } from '../data/mockData';
 
 const AppContext = createContext(null);
 
-const ROLE_HIERARCHY = ['MD', 'PLANT_HEAD', 'DEPT_HEAD', 'SECTION_HEAD', 'LINE_HEAD', 'MACHINE'];
+const ROLE_HIERARCHY = ['SUPER_ADMIN', 'MD', 'PLANT_HEAD', 'DEPT_HEAD', 'SECTION_HEAD', 'LINE_HEAD', 'MACHINE'];
 
 export const AppProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -14,7 +14,7 @@ export const AppProvider = ({ children }) => {
   const [tick, setTick] = useState(0);
 
   // Drill-down navigation state
-  const [drilldownPath, setDrilldownPath] = useState(['Opus One Industries']);
+  const [drilldownPath, setDrilldownPath] = useState(['Global Group']);
   const [drilldownContext, setDrilldownContext] = useState({});
   const [currentViewRole, setCurrentViewRole] = useState(null);
 
@@ -29,7 +29,7 @@ export const AppProvider = ({ children }) => {
     setDrilldownPath(prev => [...prev, label]);
     setDrilldownContext(prev => ({ ...prev, ...contextData }));
     // Navigate to the next role level
-    const currentRole = currentViewRole || user?.role || 'MD';
+    const currentRole = currentViewRole || user?.role || 'SUPER_ADMIN';
     const currentIdx = ROLE_HIERARCHY.indexOf(currentRole);
     if (currentIdx < ROLE_HIERARCHY.length - 1) {
       setCurrentViewRole(ROLE_HIERARCHY[currentIdx + 1]);
@@ -41,8 +41,16 @@ export const AppProvider = ({ children }) => {
   const drillUp = useCallback((targetLevel) => {
     setDrilldownPath(prev => prev.slice(0, targetLevel + 1));
     // Reset context keys that are deeper than target
-    const role = ROLE_HIERARCHY[targetLevel] || 'MD';
+    const role = ROLE_HIERARCHY[targetLevel] || 'SUPER_ADMIN';
     setCurrentViewRole(targetLevel === 0 ? null : role);
+    setActivePage('dashboard');
+  }, []);
+
+  // Jump to an explicit entity (for Global Search)
+  const jumpToEntity = useCallback((pathArray, targetRole, contextData = {}) => {
+    setDrilldownPath(pathArray);
+    setCurrentViewRole(targetRole === 'SUPER_ADMIN' ? null : targetRole);
+    setDrilldownContext(contextData);
     setActivePage('dashboard');
   }, []);
 
@@ -55,7 +63,7 @@ export const AppProvider = ({ children }) => {
   const login = useCallback((userData) => {
     setUser(userData);
     setCurrentViewRole(null);
-    setDrilldownPath(['Opus One Industries']);
+    setDrilldownPath(userData?.role === 'SUPER_ADMIN' ? ['Global Group'] : ['Opus One Industries']);
     setDrilldownContext({});
     setActivePage('dashboard');
   }, []);
@@ -76,7 +84,7 @@ export const AppProvider = ({ children }) => {
       user, login, logout,
       activePage, setActivePage,
       currentViewRole, navigateToRole,
-      drilldownPath, drilldownContext, drillDown, drillUp,
+      drilldownPath, drilldownContext, drillDown, drillUp, jumpToEntity,
       notifications, markAllRead, unreadCount,
       sidebarCollapsed, setSidebarCollapsed,
       searchQuery, setSearchQuery,

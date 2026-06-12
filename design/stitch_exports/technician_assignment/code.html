@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Assign Technician</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Design System Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#00373a",
+                        "bg-card": "#0d1526",
+                        "data-quality": "#f59e0b",
+                        "surface-dim": "#001330",
+                        "inverse-on-surface": "#1e3050",
+                        "surface-container": "#0b1f3e",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "border-default": "rgba(255, 255, 255, 0.06)",
+                        "status-planned": "#7c3aed",
+                        "secondary-container": "#03b5d3",
+                        "surface-container-highest": "#223555",
+                        "surface-tint": "#36dae4",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-secondary-fixed": "#001f26",
+                        "primary-fixed-dim": "#36dae4",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "background": "#001330",
+                        "on-secondary": "#003640",
+                        "status-breakdown": "#dc2626",
+                        "surface-container-lowest": "#000d26",
+                        "bg-app": "#060c18",
+                        "on-error": "#690005",
+                        "secondary": "#4cd7f6",
+                        "inverse-surface": "#d7e2ff",
+                        "on-secondary-container": "#00424e",
+                        "surface": "#001330",
+                        "secondary-fixed": "#acedff",
+                        "surface-bright": "#27395a",
+                        "on-primary-container": "#004f53",
+                        "status-idle": "#d97706",
+                        "text-secondary": "#8b9dc3",
+                        "primary-container": "#00c8d2",
+                        "on-tertiary": "#4f2500",
+                        "status-running": "#16a34a",
+                        "on-tertiary-fixed": "#301400",
+                        "tertiary-container": "#ff9d4f",
+                        "on-surface-variant": "#bbc9ca",
+                        "surface-container-low": "#061b3a",
+                        "on-tertiary-container": "#703700",
+                        "bg-input": "#111d35",
+                        "bg-header": "#080f1e",
+                        "on-background": "#d7e2ff",
+                        "on-surface": "#d7e2ff",
+                        "primary-fixed": "#6ff6ff",
+                        "outline": "#859394",
+                        "on-primary-fixed-variant": "#004f53",
+                        "on-error-container": "#ffdad6",
+                        "outline-variant": "#3c494a",
+                        "inverse-primary": "#00696f",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "data-performance": "#4ade80",
+                        "bg-overlay": "#050a14",
+                        "primary": "#46e4ee",
+                        "tertiary": "#ffc49b",
+                        "surface-container-high": "#172a49",
+                        "text-primary": "#f0f4ff",
+                        "surface-variant": "#223555",
+                        "text-tertiary": "#4a5e8a",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#002022"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "12px",
+                        "2xl": "32px",
+                        "base": "4px",
+                        "xl": "24px",
+                        "lg": "16px",
+                        "margin-horizontal": "16px",
+                        "xs": "4px",
+                        "component-height": "52px",
+                        "sm": "8px",
+                        "md": "12px"
+                    },
+                    "fontFamily": {
+                        "body": ["Roboto", "sans-serif"],
+                        "card-title": ["Roboto", "sans-serif"],
+                        "section-header": ["Roboto", "sans-serif"],
+                        "large-kpi": ["Roboto", "sans-serif"],
+                        "medium-kpi": ["Roboto", "sans-serif"],
+                        "tag-label": ["Roboto", "sans-serif"],
+                        "hero-kpi": ["Roboto", "sans-serif"],
+                        "delta-text": ["Roboto", "sans-serif"],
+                        "card-subtitle": ["Roboto", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "card-title": ["15px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "section-header": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "large-kpi": ["36px", { "lineHeight": "44px", "fontWeight": "400" }],
+                        "medium-kpi": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "tag-label": ["10px", { "lineHeight": "12px", "fontWeight": "600" }],
+                        "hero-kpi": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "delta-text": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "card-subtitle": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app text-on-surface font-body h-screen flex flex-col overflow-hidden antialiased selection:bg-primary/30">
+<!-- Intent: Transactional Sub-page (Assign Tech). Shell navigation is suppressed in favor of focused task flow. -->
+<!-- Header Block -->
+<header class="flex flex-col gap-sm pt-xl px-margin-horizontal pb-lg shrink-0">
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-text-primary transition-colors w-fit group">
+<span class="material-symbols-outlined text-[18px] group-active:-translate-x-1 transition-transform">arrow_back</span>
+<span class="font-body text-body">Machine 7</span>
+</button>
+<h1 class="font-medium-kpi text-medium-kpi text-text-primary tracking-tight">Assign Technician</h1>
+</header>
+<!-- Search Input Area -->
+<div class="px-margin-horizontal mb-xl shrink-0">
+<div class="flex items-center h-component-height bg-bg-input border border-border-default rounded-lg px-lg focus-within:border-primary focus-within:ring-1 focus-within:ring-primary/50 transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)]">
+<span class="material-symbols-outlined text-on-surface-variant mr-md">search</span>
+<input class="bg-transparent border-none outline-none text-on-surface font-body w-full placeholder:text-outline-variant focus:ring-0 p-0" placeholder="Search personnel..." type="text"/>
+</div>
+</div>
+<!-- Scrollable Personnel List -->
+<main class="flex-1 overflow-y-auto px-margin-horizontal flex flex-col gap-xl pb-[100px]">
+<!-- Section: RECOMMENDED -->
+<section class="flex flex-col gap-gutter">
+<h2 class="font-section-header text-section-header text-text-tertiary uppercase tracking-widest pl-xs">RECOMMENDED (ZONE 4)</h2>
+<!-- Selected Card (Suresh M.) -->
+<div class="relative bg-surface-container-highest border border-primary rounded-xl p-lg flex items-center justify-between cursor-pointer transition-colors overflow-hidden group">
+<!-- Active background accent -->
+<div class="absolute inset-0 bg-primary/5 pointer-events-none"></div>
+<div class="flex items-center gap-md z-10">
+<!-- Avatar Placeholder -->
+<div class="w-10 h-10 rounded-full bg-bg-app flex items-center justify-center border border-primary/30 text-primary">
+<span class="font-card-title">SM</span>
+</div>
+<div class="flex flex-col">
+<span class="font-card-title text-text-primary">Suresh M.</span>
+<span class="font-card-subtitle text-on-surface-variant">Lead Tech • &lt;50m</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-sm z-10">
+<!-- Semantic Status Pill: Running/Available -->
+<div class="flex items-center gap-xs px-2 py-[2px] rounded-[20px] bg-status-running/12 border border-status-running/20">
+<div class="w-[6px] h-[6px] rounded-full bg-status-running"></div>
+<span class="font-tag-label text-tag-label text-status-running uppercase tracking-wide">On-site (120m)</span>
+</div>
+<!-- Radio Active -->
+<div class="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-primary"></div>
+</div>
+</div>
+</div>
+<!-- Inactive Card (Arjun S.) -->
+<div class="bg-bg-card border border-border-default rounded-xl p-lg flex items-center justify-between cursor-pointer hover:bg-surface-container-low hover:border-border-emphasis transition-all group">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center border border-border-default text-on-surface-variant">
+<span class="font-card-title">AS</span>
+</div>
+<div class="flex flex-col">
+<span class="font-card-title text-on-surface group-hover:text-text-primary transition-colors">Arjun S.</span>
+<span class="font-card-subtitle text-on-surface-variant">Technician • 200m</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-sm">
+<!-- Semantic Status Pill: Idle/Busy -->
+<div class="flex items-center gap-xs px-2 py-[2px] rounded-[20px] bg-status-idle/12 border border-status-idle/20">
+<div class="w-[6px] h-[6px] rounded-full bg-status-idle"></div>
+<span class="font-tag-label text-tag-label text-status-idle uppercase tracking-wide">Busy (Line 2)</span>
+</div>
+<!-- Radio Inactive -->
+<div class="w-5 h-5 rounded-full border-2 border-outline-variant group-hover:border-outline transition-colors"></div>
+</div>
+</div>
+</section>
+<!-- Section: ON CALL -->
+<section class="flex flex-col gap-gutter">
+<h2 class="font-section-header text-section-header text-text-tertiary uppercase tracking-widest pl-xs">ON CALL</h2>
+<!-- Inactive Card (Priya K.) -->
+<div class="bg-bg-card border border-border-default rounded-xl p-lg flex items-center justify-between cursor-pointer hover:bg-surface-container-low hover:border-border-emphasis transition-all group">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center border border-border-default text-on-surface-variant">
+<span class="font-card-title">PK</span>
+</div>
+<div class="flex flex-col">
+<span class="font-card-title text-on-surface group-hover:text-text-primary transition-colors">Priya K.</span>
+<span class="font-card-subtitle text-on-surface-variant">Specialist • Off-site</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-sm">
+<!-- Semantic Status Pill: Running/Available -->
+<div class="flex items-center gap-xs px-2 py-[2px] rounded-[20px] bg-status-running/12 border border-status-running/20">
+<div class="w-[6px] h-[6px] rounded-full bg-status-running"></div>
+<span class="font-tag-label text-tag-label text-status-running uppercase tracking-wide">Available</span>
+</div>
+<!-- Radio Inactive -->
+<div class="w-5 h-5 rounded-full border-2 border-outline-variant group-hover:border-outline transition-colors"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Area -->
+<!-- Prohibiting hard top border; using tonal shift/gradient approach for depth -->
+<div class="fixed bottom-0 left-0 w-full px-margin-horizontal pb-8 pt-4 bg-gradient-to-t from-bg-app via-bg-app/95 to-transparent pointer-events-none z-50">
+<div class="pointer-events-auto">
+<button class="w-full h-component-height bg-primary text-on-primary font-card-title rounded-lg flex items-center justify-center gap-sm active:scale-[0.98] active:opacity-90 transition-all shadow-[0_0_15px_rgba(70,228,238,0.15)]">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'wght' 500;">assignment_ind</span>
+                Confirm Assignment
+            </button>
+</div>
+</div>
+</body></html>

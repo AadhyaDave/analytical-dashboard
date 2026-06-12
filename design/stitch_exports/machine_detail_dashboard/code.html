@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Machine Detail Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#acedff",
+                    "outline-variant": "#3c494a",
+                    "primary-fixed": "#6ff6ff",
+                    "on-secondary-container": "#00424e",
+                    "error-container": "#93000a",
+                    "surface-tint": "#36dae4",
+                    "tertiary-fixed": "#ffdcc5",
+                    "on-background": "#d7e2ff",
+                    "text-primary": "#f0f4ff",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-container": "#004f53",
+                    "surface-bright": "#27395a",
+                    "on-surface": "#d7e2ff",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "inverse-on-surface": "#1e3050",
+                    "on-surface-variant": "#bbc9ca",
+                    "outline": "#859394",
+                    "status-planned": "#7c3aed",
+                    "on-tertiary-container": "#703700",
+                    "primary-fixed-dim": "#36dae4",
+                    "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                    "surface-container-lowest": "#000d26",
+                    "on-primary-fixed-variant": "#004f53",
+                    "bg-overlay": "#050a14",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-tertiary-fixed-variant": "#703700",
+                    "tertiary": "#ffc49b",
+                    "border-default": "rgba(255, 255, 255, 0.06)",
+                    "inverse-primary": "#00696f",
+                    "surface-container-low": "#061b3a",
+                    "surface-container": "#0b1f3e",
+                    "on-secondary-fixed": "#001f26",
+                    "status-running": "#16a34a",
+                    "bg-header": "#080f1e",
+                    "bg-input": "#111d35",
+                    "surface-dim": "#001330",
+                    "bg-app": "#060c18",
+                    "on-tertiary-fixed": "#301400",
+                    "background": "#001330",
+                    "tertiary-container": "#ff9d4f",
+                    "status-breakdown": "#dc2626",
+                    "secondary": "#4cd7f6",
+                    "primary-container": "#00c8d2",
+                    "surface-container-high": "#172a49",
+                    "data-performance": "#4ade80",
+                    "inverse-surface": "#d7e2ff",
+                    "status-idle": "#d97706",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "surface-variant": "#223555",
+                    "on-primary-fixed": "#002022",
+                    "on-tertiary": "#4f2500",
+                    "error": "#ffb4ab",
+                    "on-error": "#690005",
+                    "surface": "#001330",
+                    "primary": "#46e4ee",
+                    "text-secondary": "#8b9dc3",
+                    "bg-card": "#0d1526",
+                    "on-primary": "#00373a",
+                    "on-secondary": "#003640",
+                    "text-tertiary": "#4a5e8a",
+                    "data-quality": "#f59e0b",
+                    "surface-container-highest": "#223555",
+                    "secondary-container": "#03b5d3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "24px",
+                    "lg": "16px",
+                    "sm": "8px",
+                    "component-height": "52px",
+                    "base": "4px",
+                    "2xl": "32px",
+                    "xs": "4px",
+                    "margin-horizontal": "16px",
+                    "md": "12px",
+                    "gutter": "12px"
+            },
+            "fontFamily": {
+                    "delta-text": ["Roboto"],
+                    "body": ["Roboto"],
+                    "section-header": ["Roboto"],
+                    "large-kpi": ["Roboto"],
+                    "card-subtitle": ["Roboto"],
+                    "hero-kpi": ["Roboto"],
+                    "medium-kpi": ["Roboto"],
+                    "tag-label": ["Roboto"],
+                    "card-title": ["Roboto"]
+            },
+            "fontSize": {
+                    "delta-text": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "body": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "section-header": ["11px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "large-kpi": ["36px", {"lineHeight": "44px", "fontWeight": "400"}],
+                    "card-subtitle": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "hero-kpi": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300"}],
+                    "medium-kpi": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "tag-label": ["10px", {"lineHeight": "12px", "fontWeight": "600"}],
+                    "card-title": ["15px", {"lineHeight": "20px", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .pulse-red {
+            animation: pulseRed 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulseRed {
+            0%, 100% { opacity: 1; border-color: rgba(220, 38, 38, 0.8); box-shadow: 0 0 10px rgba(220, 38, 38, 0.4); }
+            50% { opacity: .7; border-color: rgba(220, 38, 38, 0.3); box-shadow: 0 0 5px rgba(220, 38, 38, 0.1); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app text-text-primary min-h-screen pb-24 md:pb-0 flex flex-col md:flex-row">
+<!-- Top App Bar (Mobile) -->
+<header class="md:hidden bg-bg-header dark:bg-bg-header fixed top-0 left-0 w-full z-50 flex items-center justify-between px-margin-horizontal h-component-height border-b border-border-default">
+<button class="text-text-secondary hover:bg-surface-variant/50 p-2 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<div class="flex flex-col items-center justify-center">
+<span class="font-tag-label text-tag-label text-text-secondary uppercase">Plant A &gt; Packaging &gt; Line 3</span>
+<h1 class="font-section-header text-section-header uppercase tracking-widest text-secondary dark:text-secondary">Machine 7</h1>
+</div>
+<button class="text-text-secondary hover:bg-surface-variant/50 p-2 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">more_vert</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-margin-horizontal pt-20 md:pt-8 pb-8 flex flex-col gap-gutter overflow-y-auto">
+<!-- Status Banner -->
+<div class="w-full bg-status-breakdown/10 border-[0.5px] border-status-breakdown rounded-lg p-3 flex items-center justify-center pulse-red">
+<span class="material-symbols-outlined text-status-breakdown mr-2" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="font-tag-label text-tag-label text-status-breakdown uppercase tracking-wider">BREAKDOWN - Investigating</span>
+</div>
+<!-- Hero: Large OEE & KPI Grid -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Main OEE Gauge Card -->
+<div class="md:col-span-4 bg-bg-card border-[0.5px] border-border-default rounded-xl p-lg flex flex-col items-center justify-center min-h-[300px] relative overflow-hidden">
+<div class="absolute top-4 left-4 flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-status-breakdown"></span>
+<span class="font-section-header text-section-header text-text-secondary">CURRENT OEE</span>
+</div>
+<!-- Simplified Gauge Visualization -->
+<div class="relative w-48 h-48 flex items-center justify-center rounded-full border-4 border-surface-container mt-6">
+<!-- Outer Availability Ring (Red for breakdown) -->
+<div class="absolute inset-0 rounded-full border-4 border-status-breakdown" style="clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 0 100%, 0 50%); transform: rotate(45deg);"></div>
+<!-- Middle Performance Ring (Green) -->
+<div class="absolute inset-2 rounded-full border-4 border-data-performance" style="clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 50%, 50% 50%); transform: rotate(120deg);"></div>
+<!-- Inner Quality Ring (Amber) -->
+<div class="absolute inset-4 rounded-full border-4 border-data-quality" style="clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%);"></div>
+<div class="flex flex-col items-center justify-center z-10">
+<span class="font-hero-kpi text-hero-kpi text-text-primary">28.4<span class="text-2xl text-text-secondary">%</span></span>
+</div>
+</div>
+<div class="mt-6 flex justify-between w-full px-4 gap-4">
+<div class="flex flex-col items-center">
+<span class="font-tag-label text-tag-label text-text-secondary">A</span>
+<span class="font-body text-body text-status-breakdown">42%</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-tag-label text-tag-label text-text-secondary">P</span>
+<span class="font-body text-body text-data-performance">88%</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-tag-label text-tag-label text-text-secondary">Q</span>
+<span class="font-body text-body text-data-quality">95%</span>
+</div>
+</div>
+</div>
+<!-- KPI Grid -->
+<div class="md:col-span-8 grid grid-cols-2 gap-gutter">
+<div class="bg-bg-card border-[0.5px] border-border-default rounded-xl p-lg flex flex-col justify-between">
+<span class="font-section-header text-section-header text-text-secondary">CYCLE TIME</span>
+<div class="flex items-end justify-between mt-4">
+<span class="font-large-kpi text-large-kpi text-text-primary">42<span class="text-lg text-text-secondary">s</span></span>
+<span class="font-delta-text text-delta-text text-status-breakdown flex items-center"><span class="material-symbols-outlined text-[16px]">arrow_upward</span> +2s</span>
+</div>
+</div>
+<div class="bg-bg-card border-[0.5px] border-border-default rounded-xl p-lg flex flex-col justify-between">
+<span class="font-section-header text-section-header text-text-secondary">OUTPUT</span>
+<div class="flex items-end justify-between mt-4">
+<span class="font-large-kpi text-large-kpi text-text-primary">1,204<span class="text-lg text-text-secondary">/hr</span></span>
+<span class="font-delta-text text-delta-text text-status-breakdown flex items-center"><span class="material-symbols-outlined text-[16px]">arrow_downward</span> -450</span>
+</div>
+</div>
+<div class="bg-bg-card border-[0.5px] border-border-default rounded-xl p-lg flex flex-col justify-between">
+<span class="font-section-header text-section-header text-text-secondary">DOWNTIME</span>
+<div class="flex items-end justify-between mt-4">
+<span class="font-large-kpi text-large-kpi text-status-breakdown">4<span class="text-lg">h</span> 12<span class="text-lg">m</span></span>
+</div>
+</div>
+<div class="bg-bg-card border-[0.5px] border-border-default rounded-xl p-lg flex flex-col justify-between relative pl-6">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-running rounded-l-xl"></div>
+<span class="font-section-header text-section-header text-text-secondary">UPTIME</span>
+<div class="flex items-end justify-between mt-4">
+<span class="font-large-kpi text-large-kpi text-text-primary">2<span class="text-lg text-text-secondary">h</span> 18<span class="text-lg text-text-secondary">m</span></span>
+</div>
+</div>
+</div>
+</section>
+<!-- Timeline -->
+<section class="bg-bg-card border-[0.5px] border-border-default rounded-xl p-lg flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<span class="font-section-header text-section-header text-text-secondary">24-HOUR TIMELINE</span>
+</div>
+<!-- Abstract Timeline Bar -->
+<div class="w-full h-8 bg-surface-container rounded-sm overflow-hidden flex">
+<div class="h-full bg-status-running w-[30%]" title="Running"></div>
+<div class="h-full bg-status-idle w-[5%]" title="Idle"></div>
+<div class="h-full bg-status-running w-[40%]" title="Running"></div>
+<div class="h-full bg-status-breakdown w-[25%] pulse-red" title="Breakdown"></div>
+</div>
+<div class="flex justify-between text-xs text-text-tertiary font-tag-label">
+<span>-24h</span>
+<span>-12h</span>
+<span>Now</span>
+</div>
+</section>
+<!-- Shift Performance & Fault Log -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Shift Performance -->
+<div class="bg-bg-card border-[0.5px] border-border-default rounded-xl p-lg flex flex-col gap-4">
+<span class="font-section-header text-section-header text-text-secondary mb-2">SHIFT PERFORMANCE</span>
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-body text-body text-text-secondary">Shift A</span>
+<div class="flex items-center gap-3 flex-1 ml-4">
+<div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-status-running w-[92%]"></div>
+</div>
+<span class="font-body text-body text-text-primary w-12 text-right">92%</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body text-body text-text-secondary">Shift B</span>
+<div class="flex items-center gap-3 flex-1 ml-4">
+<div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-status-running w-[87%] opacity-80"></div>
+</div>
+<span class="font-body text-body text-text-primary w-12 text-right">87%</span>
+</div>
+</div>
+<div class="flex items-center justify-between bg-surface-variant/30 p-2 rounded-lg -mx-2">
+<span class="font-body text-body text-text-primary font-medium flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-status-breakdown"></span>
+                            Shift C (Current)
+                        </span>
+<div class="flex items-center gap-3 flex-1 ml-4">
+<div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-status-breakdown w-[28%]"></div>
+</div>
+<span class="font-body text-body text-status-breakdown font-medium w-12 text-right">28%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Fault Log -->
+<div class="bg-bg-card border-[0.5px] border-border-default rounded-xl p-lg flex flex-col gap-4">
+<span class="font-section-header text-section-header text-text-secondary">LATEST EVENTS</span>
+<div class="relative pl-4 border-l border-border-emphasis space-y-6">
+<div class="relative">
+<span class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-status-planned ring-4 ring-bg-card"></span>
+<div class="flex flex-col">
+<span class="font-tag-label text-tag-label text-text-tertiary">14:45</span>
+<span class="font-body text-body text-text-primary">Technician Assigned</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary mt-1">Tech Team Alpha responding.</span>
+</div>
+</div>
+<div class="relative">
+<span class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-status-idle ring-4 ring-bg-card"></span>
+<div class="flex flex-col">
+<span class="font-tag-label text-tag-label text-text-tertiary">14:25</span>
+<span class="font-body text-body text-text-primary">Auto-alert Generated</span>
+</div>
+</div>
+<div class="relative">
+<span class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-status-breakdown ring-4 ring-bg-card"></span>
+<div class="flex flex-col">
+<span class="font-tag-label text-tag-label text-text-tertiary">14:23</span>
+<span class="font-body text-body text-status-breakdown font-medium">Motor Fault (E-092)</span>
+<div class="mt-2 inline-flex items-center px-2 py-1 rounded-full bg-status-breakdown/10 border border-status-breakdown/30 w-max">
+<span class="w-1.5 h-1.5 rounded-full bg-status-breakdown mr-1.5"></span>
+<span class="font-tag-label text-tag-label text-status-breakdown">Breakdown</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Nav Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-sm h-component-height bg-bg-app border-t border-border-default">
+<button class="flex flex-col items-center justify-center text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-tag-label text-tag-label">Situation</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary bg-surface-container rounded-lg px-3 py-1 scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+<span class="font-tag-label text-tag-label">Floor</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">visibility</span>
+<span class="font-tag-label text-tag-label">Watchlist</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">notifications</span>
+<span class="font-tag-label text-tag-label">Alerts</span>
+</button>
+</nav>
+</body></html>

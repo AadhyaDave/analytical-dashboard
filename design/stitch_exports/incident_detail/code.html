@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>War Room Incident Detail - Opus One</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#46e4ee",
+                        "text-primary": "#f0f4ff",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "on-background": "#d7e2ff",
+                        "secondary-fixed": "#acedff",
+                        "tertiary": "#ffc49b",
+                        "inverse-primary": "#00696f",
+                        "secondary": "#4cd7f6",
+                        "on-error-container": "#ffdad6",
+                        "data-performance": "#4ade80",
+                        "surface-container": "#0b1f3e",
+                        "background": "#001330",
+                        "tertiary-fixed": "#ffdcc5",
+                        "surface-variant": "#223555",
+                        "data-quality": "#f59e0b",
+                        "on-primary": "#00373a",
+                        "secondary-container": "#03b5d3",
+                        "on-primary-fixed-variant": "#004f53",
+                        "status-idle": "#d97706",
+                        "status-breakdown": "#dc2626",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "surface-container-highest": "#223555",
+                        "bg-card": "#0d1526",
+                        "status-planned": "#7c3aed",
+                        "status-running": "#16a34a",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-bright": "#27395a",
+                        "bg-header": "#080f1e",
+                        "surface-container-high": "#172a49",
+                        "bg-input": "#111d35",
+                        "error": "#ffb4ab",
+                        "text-secondary": "#8b9dc3",
+                        "on-tertiary-container": "#703700",
+                        "outline": "#859394",
+                        "surface-container-lowest": "#000d26",
+                        "surface-container-low": "#061b3a",
+                        "on-error": "#690005",
+                        "on-tertiary": "#4f2500",
+                        "text-tertiary": "#4a5e8a",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "bg-overlay": "#050a14",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-dim": "#001330",
+                        "tertiary-container": "#ff9d4f",
+                        "on-secondary-fixed": "#001f26",
+                        "inverse-on-surface": "#1e3050",
+                        "bg-app": "#060c18",
+                        "surface-tint": "#36dae4",
+                        "on-surface-variant": "#bbc9ca",
+                        "error-container": "#93000a",
+                        "on-secondary": "#003640",
+                        "on-primary-fixed": "#002022",
+                        "on-surface": "#d7e2ff",
+                        "surface": "#001330",
+                        "primary-fixed-dim": "#36dae4",
+                        "primary-fixed": "#6ff6ff",
+                        "inverse-surface": "#d7e2ff",
+                        "primary-container": "#00c8d2",
+                        "outline-variant": "#3c494a",
+                        "border-default": "rgba(255, 255, 255, 0.06)",
+                        "on-secondary-container": "#00424e",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-primary-container": "#004f53"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "12px",
+                        "2xl": "32px",
+                        "xs": "4px",
+                        "margin-horizontal": "16px",
+                        "sm": "8px",
+                        "xl": "24px",
+                        "component-height": "52px",
+                        "base": "4px",
+                        "lg": "16px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "medium-kpi": ["Roboto"],
+                        "section-header": ["Roboto"],
+                        "body": ["Roboto"],
+                        "tag-label": ["Roboto"],
+                        "delta-text": ["Roboto"],
+                        "card-title": ["Roboto"],
+                        "large-kpi": ["Roboto"],
+                        "hero-kpi": ["Roboto"],
+                        "card-subtitle": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "medium-kpi": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "section-header": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "tag-label": ["10px", { "lineHeight": "12px", "fontWeight": "600" }],
+                        "delta-text": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "card-title": ["15px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "large-kpi": ["36px", { "lineHeight": "44px", "fontWeight": "400" }],
+                        "hero-kpi": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "card-subtitle": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.bg-app');
+            color: theme('colors.text-primary');
+            margin: 0;
+            padding-top: theme('spacing.component-height');
+            padding-bottom: theme('spacing.component-height');
+            min-height: 100vh;
+        }
+        
+        .timeline-scrubber::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: theme('colors.primary');
+            cursor: pointer;
+            border: 2px solid theme('colors.bg-input');
+        }
+        
+        .timeline-scrubber::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: theme('colors.primary');
+            cursor: pointer;
+            border: 2px solid theme('colors.bg-input');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body text-body antialiased">
+<!-- TopAppBar -->
+<header class="bg-bg-header text-primary font-section-header text-section-header fixed top-0 w-full z-50 border-b border-border-default flex items-center justify-between px-margin-horizontal h-component-height">
+<div class="flex items-center gap-4">
+<button class="hover:bg-surface-container-highest transition-colors active:opacity-80 transition-opacity p-2 rounded flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-section-header text-section-header tracking-widest text-primary m-0">INC-8924: LINE 4 STALL</h1>
+</div>
+<button class="hover:bg-surface-container-highest transition-colors active:opacity-80 transition-opacity p-2 rounded flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="p-margin-horizontal flex flex-col gap-gutter">
+<!-- Incident Status Banner -->
+<div class="bg-bg-card border-[0.5px] border-status-breakdown border-opacity-30 rounded-lg p-lg relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-status-breakdown"></div>
+<div class="flex justify-between items-start mb-md">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-2 h-2 rounded-full bg-status-breakdown animate-pulse"></span>
+<span class="font-tag-label text-tag-label text-status-breakdown uppercase tracking-wider">Critical Outage</span>
+</div>
+<h2 class="font-medium-kpi text-medium-kpi text-text-primary m-0">Line 4 Complete Stall</h2>
+</div>
+<div class="bg-status-breakdown bg-opacity-10 text-status-breakdown px-3 py-1 rounded-full border border-status-breakdown border-opacity-20 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="timer">timer</span>
+<span class="font-delta-text text-delta-text">02h 45m</span>
+</div>
+</div>
+<p class="font-body text-body text-text-secondary m-0 leading-relaxed">
+                Sudden halt on Assembly Line 4. Initial telemetry indicates a catastrophic loss of tension in Main Conveyor Drive B. Secondary safety systems engaged correctly, isolating the zone. Estimated production impact currently at 12,000 units.
+            </p>
+</div>
+<!-- Investigation Mode Banner -->
+<div class="bg-surface-container border-[0.5px] border-[rgba(0,200,210,0.35)] rounded-lg p-md flex items-center gap-3">
+<span class="w-3 h-3 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(70,228,238,0.6)]"></span>
+<span class="font-tag-label text-tag-label text-primary uppercase tracking-widest">War Room Active - Investigating</span>
+</div>
+<!-- KPI Block Row -->
+<div class="grid grid-cols-2 gap-gutter">
+<div class="bg-bg-card border-[0.5px] border-border-default rounded-lg p-lg flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary uppercase tracking-wider mb-2">Affected Units</span>
+<span class="font-large-kpi text-large-kpi text-text-primary">12.4k</span>
+<div class="flex items-center gap-1 mt-1 text-status-breakdown">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_down">trending_down</span>
+<span class="font-delta-text text-delta-text">-14% vs target</span>
+</div>
+</div>
+<div class="bg-bg-card border-[0.5px] border-border-default rounded-lg p-lg flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary uppercase tracking-wider mb-2">Est. Recovery</span>
+<span class="font-large-kpi text-large-kpi text-text-primary">04:30</span>
+<div class="flex items-center gap-1 mt-1 text-status-idle">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+<span class="font-delta-text text-delta-text">Pending parts</span>
+</div>
+</div>
+</div>
+<!-- Timeline Replay Scrubber -->
+<div class="bg-bg-card border-[0.5px] border-border-default rounded-lg p-lg">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-card-title text-card-title text-text-primary m-0">Event Timeline</h3>
+<button class="text-primary hover:text-secondary transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="play_circle">play_circle</span>
+<span class="font-tag-label text-tag-label uppercase tracking-wider">Replay</span>
+</button>
+</div>
+<div class="relative pt-6 pb-2">
+<input class="timeline-scrubber w-full h-1 bg-surface-container rounded-full appearance-none focus:outline-none" max="100" min="0" type="range" value="75"/>
+<div class="absolute top-0 w-full flex justify-between px-2">
+<div class="flex flex-col items-center">
+<span class="w-1 h-3 bg-border-emphasis mb-1"></span>
+<span class="font-tag-label text-tag-label text-text-secondary">08:00</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="w-1 h-3 bg-status-breakdown mb-1"></span>
+<span class="font-tag-label text-tag-label text-status-breakdown">08:14</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="w-1 h-3 bg-primary mb-1"></span>
+<span class="font-tag-label text-tag-label text-primary">Now</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="w-1 h-3 bg-border-emphasis mb-1"></span>
+<span class="font-tag-label text-tag-label text-text-secondary">12:00</span>
+</div>
+</div>
+</div>
+<div class="mt-md bg-surface-container-high rounded p-sm border-[0.5px] border-border-default">
+<p class="font-card-subtitle text-card-subtitle text-text-secondary m-0">
+<strong class="text-text-primary">08:14:22</strong> - Torque spike detected on Motor B-4. Vibration sensors crossed threshold T3. Immediate halt sequence initiated by PLC-12.
+                </p>
+</div>
+</div>
+<!-- Affected Assets List -->
+<div class="bg-bg-card border-[0.5px] border-border-default rounded-lg p-0 overflow-hidden">
+<div class="p-lg border-b-[0.5px] border-border-default">
+<h3 class="font-card-title text-card-title text-text-primary m-0">Affected Assets</h3>
+</div>
+<div class="flex flex-col">
+<!-- Asset 1 -->
+<div class="p-md flex items-center justify-between border-b-[0.5px] border-border-default bg-surface-container-highest">
+<div class="flex items-center gap-3">
+<div class="w-1 h-8 bg-status-breakdown rounded-full"></div>
+<div>
+<div class="font-card-title text-card-title text-text-primary">Conveyor Drive B</div>
+<div class="font-card-subtitle text-card-subtitle text-text-secondary">SN: MC-882-991</div>
+</div>
+</div>
+<span class="font-tag-label text-tag-label bg-status-breakdown bg-opacity-10 text-status-breakdown px-2 py-1 rounded-full uppercase">Offline</span>
+</div>
+<!-- Asset 2 -->
+<div class="p-md flex items-center justify-between border-b-[0.5px] border-border-default">
+<div class="flex items-center gap-3">
+<div class="w-1 h-8 bg-status-idle rounded-full"></div>
+<div>
+<div class="font-card-title text-card-title text-text-primary">Assembly Arm 4A</div>
+<div class="font-card-subtitle text-card-subtitle text-text-secondary">Interlocked</div>
+</div>
+</div>
+<span class="font-tag-label text-tag-label bg-status-idle bg-opacity-10 text-status-idle px-2 py-1 rounded-full uppercase">Standby</span>
+</div>
+<!-- Asset 3 -->
+<div class="p-md flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-1 h-8 bg-status-idle rounded-full"></div>
+<div>
+<div class="font-card-title text-card-title text-text-primary">Quality Scanner System</div>
+<div class="font-card-subtitle text-card-subtitle text-text-secondary">Downstream Hold</div>
+</div>
+</div>
+<span class="font-tag-label text-tag-label bg-status-idle bg-opacity-10 text-status-idle px-2 py-1 rounded-full uppercase">Standby</span>
+</div>
+</div>
+</div>
+<!-- Investigation & Root Cause (Bento-ish) -->
+<div class="bg-bg-card border-[0.5px] border-border-default rounded-lg p-lg">
+<h3 class="font-card-title text-card-title text-text-primary mb-md mt-0">Investigation Findings</h3>
+<div class="bg-surface-container rounded-lg p-md mb-md border-[0.5px] border-border-default">
+<div class="flex justify-between items-end mb-2">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Primary Root Cause</span>
+<span class="font-medium-kpi text-medium-kpi text-data-quality">78%</span>
+</div>
+<h4 class="font-card-title text-card-title text-text-primary m-0 mb-1">Material Shortage / Jam</h4>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary m-0">
+                    Sub-standard casing material from Batch 88A caused feeding jam, leading to excessive torque on Drive B.
+                </p>
+<div class="w-full bg-bg-input h-2 rounded-full mt-3 overflow-hidden">
+<div class="bg-data-quality h-full rounded-full" style="width: 78%"></div>
+</div>
+</div>
+<div class="bg-surface-container rounded-lg p-md border-[0.5px] border-border-default">
+<div class="flex justify-between items-end mb-2">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Secondary Factor</span>
+<span class="font-medium-kpi text-medium-kpi text-tertiary">22%</span>
+</div>
+<h4 class="font-card-title text-card-title text-text-primary m-0 mb-1">Bearing Wear</h4>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary m-0">
+                    Routine degradation on Drive B shaft bearing exacerbated the jam impact.
+                </p>
+<div class="w-full bg-bg-input h-2 rounded-full mt-3 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 22%"></div>
+</div>
+</div>
+</div>
+<!-- Actions Taken -->
+<div class="bg-bg-card border-[0.5px] border-border-default rounded-lg p-lg">
+<h3 class="font-card-title text-card-title text-text-primary mb-md mt-0">Actions Log</h3>
+<div class="relative pl-4 border-l-[0.5px] border-border-emphasis space-y-4">
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2 h-2 bg-primary rounded-full ring-4 ring-bg-card"></div>
+<div class="font-tag-label text-tag-label text-text-secondary mb-1">08:20 - System</div>
+<div class="font-body text-body text-text-primary">Automated safety lockout engaged. Line powered down.</div>
+</div>
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2 h-2 bg-primary rounded-full ring-4 ring-bg-card"></div>
+<div class="font-tag-label text-tag-label text-text-secondary mb-1">08:35 - Tech Team Alpha</div>
+<div class="font-body text-body text-text-primary">Physical inspection of Drive B. Confirmed jam. Initiated clearing procedure.</div>
+</div>
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2 h-2 bg-primary rounded-full ring-4 ring-bg-card"></div>
+<div class="font-tag-label text-tag-label text-text-secondary mb-1">09:10 - Maint Supervisor</div>
+<div class="font-body text-body text-text-primary">Ordered replacement bearing for Drive B shaft (Part #B-992).</div>
+</div>
+</div>
+</div>
+<!-- Resolution Plan & Lessons Learned -->
+<div class="grid grid-cols-1 gap-gutter">
+<div class="bg-bg-card border-[0.5px] border-border-default rounded-lg p-lg">
+<div class="flex items-center gap-2 mb-md">
+<span class="material-symbols-outlined text-primary" data-icon="construction">construction</span>
+<h3 class="font-card-title text-card-title text-text-primary m-0">Resolution Plan</h3>
+</div>
+<ul class="m-0 pl-5 font-body text-body text-text-secondary list-disc space-y-2">
+<li>Replace Drive B bearing assembly (ETA 1h 30m).</li>
+<li>Clear remaining jammed casings from feed chute.</li>
+<li>Quarantine Batch 88A materials.</li>
+<li>Conduct test cycle at 20% speed.</li>
+</ul>
+</div>
+<div class="bg-bg-card border-[0.5px] border-border-default rounded-lg p-lg">
+<div class="flex items-center gap-2 mb-md">
+<span class="material-symbols-outlined text-tertiary" data-icon="lightbulb">lightbulb</span>
+<h3 class="font-card-title text-card-title text-text-primary m-0">Lessons Learned</h3>
+</div>
+<p class="font-body text-body text-text-secondary m-0">
+                    Incoming material QA threshold for Batch 88 suppliers needs tightening. Tolerance variation in casing wall thickness directly led to feed jam. Recommend implementing inline optical scanning before feed chute.
+                </p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-bg-card text-primary font-tag-label text-tag-label fixed bottom-0 w-full z-50 border-t border-border-default flex justify-around items-center h-component-height px-gutter">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs hover:text-secondary transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="notifications_active">notifications_active</span>
+            Alerts
+        </a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs hover:text-secondary transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="engineering">engineering</span>
+            Personnel
+        </a>
+<a class="flex flex-col items-center justify-center text-primary bg-surface-container rounded-lg p-xs hover:text-secondary transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="history_edu" data-weight="fill" style="font-variation-settings: 'FILL' 1;">history_edu</span>
+            Logs
+        </a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs hover:text-secondary transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="query_stats">query_stats</span>
+            OEE
+        </a>
+</nav>
+</body></html>

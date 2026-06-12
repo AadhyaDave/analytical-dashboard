@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maintenance History - Industrial Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Subtle grid background for the app root to enhance the industrial feel */
+        body {
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#00c8d2",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "border-default": "rgba(255, 255, 255, 0.06)",
+                        "outline-variant": "#3c494a",
+                        "surface-bright": "#27395a",
+                        "bg-app": "#060c18",
+                        "surface-container-highest": "#223555",
+                        "on-primary": "#00373a",
+                        "primary-fixed-dim": "#36dae4",
+                        "bg-input": "#111d35",
+                        "background": "#001330",
+                        "on-tertiary": "#4f2500",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-surface": "#d7e2ff",
+                        "error": "#ffb4ab",
+                        "tertiary-container": "#ff9d4f",
+                        "surface-dim": "#001330",
+                        "surface-tint": "#36dae4",
+                        "surface-container-high": "#172a49",
+                        "inverse-on-surface": "#1e3050",
+                        "primary": "#46e4ee",
+                        "on-secondary": "#003640",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "primary-fixed": "#6ff6ff",
+                        "surface-container-low": "#061b3a",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "text-secondary": "#8b9dc3",
+                        "error-container": "#93000a",
+                        "status-planned": "#7c3aed",
+                        "tertiary-fixed": "#ffdcc5",
+                        "outline": "#859394",
+                        "on-primary-fixed-variant": "#004f53",
+                        "data-quality": "#f59e0b",
+                        "status-breakdown": "#dc2626",
+                        "bg-overlay": "#050a14",
+                        "on-primary-fixed": "#002022",
+                        "on-error-container": "#ffdad6",
+                        "data-performance": "#4ade80",
+                        "on-surface-variant": "#bbc9ca",
+                        "secondary-container": "#03b5d3",
+                        "surface-variant": "#223555",
+                        "surface": "#001330",
+                        "on-tertiary-fixed": "#301400",
+                        "text-tertiary": "#4a5e8a",
+                        "on-primary-container": "#004f53",
+                        "bg-header": "#080f1e",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "text-primary": "#f0f4ff",
+                        "secondary": "#4cd7f6",
+                        "on-error": "#690005",
+                        "status-running": "#16a34a",
+                        "tertiary": "#ffc49b",
+                        "surface-container": "#0b1f3e",
+                        "status-idle": "#d97706",
+                        "inverse-surface": "#d7e2ff",
+                        "bg-card": "#0d1526",
+                        "inverse-primary": "#00696f",
+                        "on-background": "#d7e2ff",
+                        "secondary-fixed": "#acedff",
+                        "on-secondary-container": "#00424e",
+                        "surface-container-lowest": "#000d26",
+                        "on-tertiary-container": "#703700",
+                        "on-secondary-fixed": "#001f26"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "md": "12px",
+                        "lg": "16px",
+                        "2xl": "32px",
+                        "margin-horizontal": "16px",
+                        "xl": "24px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "component-height": "52px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "body": ["Roboto"],
+                        "section-header": ["Roboto"],
+                        "medium-kpi": ["Roboto"],
+                        "card-subtitle": ["Roboto"],
+                        "hero-kpi": ["Roboto"],
+                        "tag-label": ["Roboto"],
+                        "large-kpi": ["Roboto"],
+                        "card-title": ["Roboto"],
+                        "delta-text": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "section-header": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "medium-kpi": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "card-subtitle": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "hero-kpi": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "tag-label": ["10px", { "lineHeight": "12px", "fontWeight": "600" }],
+                        "large-kpi": ["36px", { "lineHeight": "44px", "fontWeight": "400" }],
+                        "card-title": ["15px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "delta-text": ["12px", { "lineHeight": "16px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app text-on-surface font-body antialiased selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full flex justify-between items-center h-[52px] px-margin-horizontal bg-bg-header border-b border-border-default z-50">
+<button aria-label="Menu" class="text-primary hover:bg-surface-container-high active:opacity-80 transition-opacity flex items-center justify-center w-8 h-8 rounded-full">
+<span class="material-symbols-outlined text-[20px]" data-icon="menu">menu</span>
+</button>
+<span class="font-section-header text-section-header tracking-widest text-primary-container">INDUSTRIAL INTELLIGENCE</span>
+<button aria-label="Settings" class="text-primary hover:bg-surface-container-high active:opacity-80 transition-opacity flex items-center justify-center w-8 h-8 rounded-full">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-[68px] pb-[88px] px-margin-horizontal flex flex-col gap-gutter min-h-screen">
+<!-- Page Header -->
+<section class="py-xs">
+<h1 class="font-medium-kpi text-medium-kpi text-text-primary">Maintenance History</h1>
+<div class="flex items-center gap-sm mt-xs">
+<span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(70,228,238,0.5)]"></span>
+<h2 class="font-card-subtitle text-card-subtitle text-text-secondary">Machine 7 • Final Assembly Line</h2>
+</div>
+</section>
+<!-- Upcoming Maintenance Card (Level 1 Surface) -->
+<article class="bg-bg-card border border-border-default rounded-xl p-lg flex flex-col gap-md relative overflow-hidden shadow-lg shadow-black/50">
+<!-- Left edge status indicator -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-planned"></div>
+<div class="flex justify-between items-start pl-sm">
+<div class="flex flex-col gap-xs">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Upcoming PM</span>
+<h3 class="font-card-title text-card-title text-text-primary">Next PM Due: 12 Days</h3>
+<p class="font-body text-body text-text-tertiary">June 24, 2024</p>
+</div>
+<!-- Semantic Status Pill -->
+<div class="bg-status-planned/10 text-status-planned px-md py-1 rounded-full flex items-center gap-xs border border-status-planned/20">
+<div class="w-1.5 h-1.5 rounded-full bg-status-planned"></div>
+<span class="font-tag-label text-tag-label uppercase tracking-wider">Scheduled</span>
+</div>
+</div>
+<button class="mt-xs h-component-height w-full bg-surface-container flex items-center justify-center gap-sm rounded-lg border border-border-emphasis hover:bg-surface-container-high active:scale-[0.98] transition-all duration-200 group">
+<span class="material-symbols-outlined text-primary text-[18px] group-hover:rotate-12 transition-transform" data-icon="checklist">checklist</span>
+<span class="font-card-title text-card-title text-primary">View Checklist</span>
+</button>
+</article>
+<!-- MTTR Metric Card (Bento Style layout piece) -->
+<div class="flex gap-gutter">
+<article class="flex-1 bg-bg-card border border-border-default rounded-xl p-md flex flex-col justify-between relative overflow-hidden">
+<span class="font-section-header text-section-header text-text-secondary">MTTR vs TARGET</span>
+<div class="flex items-end gap-sm mt-sm z-10">
+<span class="font-large-kpi text-large-kpi text-text-primary">2.4<span class="text-body text-text-secondary ml-1">h</span></span>
+<span class="font-delta-text text-delta-text text-data-performance flex items-center mb-1.5 bg-data-performance/10 px-1.5 rounded border border-data-performance/20">
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_downward">arrow_downward</span> 12%
+                    </span>
+</div>
+<!-- Sparkline Micro-visualization -->
+<div class="w-full h-10 mt-md flex items-end gap-1 z-10 opacity-80">
+<div class="flex-1 bg-surface-container-high h-[40%] rounded-t-sm"></div>
+<div class="flex-1 bg-surface-container-high h-[70%] rounded-t-sm"></div>
+<div class="flex-1 bg-surface-container-high h-[50%] rounded-t-sm"></div>
+<div class="flex-1 bg-surface-container-high h-[30%] rounded-t-sm"></div>
+<div class="flex-1 bg-surface-container-high h-[60%] rounded-t-sm"></div>
+<div class="flex-1 bg-data-performance h-[25%] rounded-t-sm shadow-[0_0_8px_rgba(74,222,128,0.3)]"></div>
+</div>
+</article>
+<!-- Secondary Metric Snippet -->
+<article class="flex-[0.7] bg-bg-card border border-border-default rounded-xl p-md flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary">MTBF</span>
+<div class="flex items-end gap-xs mt-auto">
+<span class="font-medium-kpi text-medium-kpi text-text-primary">312<span class="text-card-subtitle text-text-secondary ml-1">h</span></span>
+</div>
+<span class="font-delta-text text-delta-text text-text-secondary mt-1">Target: 300h</span>
+</article>
+</div>
+<!-- Preventive Maintenance Section -->
+<section>
+<h3 class="font-section-header text-section-header text-text-secondary mb-sm pl-xs">RECENT PREVENTIVE</h3>
+<article class="bg-bg-card border border-border-default rounded-xl p-lg flex flex-col gap-md relative">
+<!-- Timeline item -->
+<div class="flex gap-md">
+<!-- Icon column -->
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container border border-border-emphasis flex items-center justify-center text-primary-fixed-dim z-10">
+<span class="material-symbols-outlined text-[20px]" data-icon="engineering">engineering</span>
+</div>
+<!-- Connector line -->
+<div class="w-px h-full bg-border-emphasis mt-xs hidden"></div>
+</div>
+<!-- Content column -->
+<div class="flex-1 pt-1">
+<div class="flex justify-between items-start">
+<h4 class="font-card-title text-card-title text-text-primary leading-tight">Full Lube &amp; Filter Change</h4>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary whitespace-nowrap ml-sm">May 10</span>
+</div>
+<div class="flex items-center gap-xs mt-sm bg-bg-input rounded border border-border-default p-xs w-max">
+<span class="material-symbols-outlined text-text-tertiary text-[14px]" data-icon="person">person</span>
+<span class="font-body text-body text-text-secondary">Tech: T. Richards</span>
+</div>
+<div class="mt-md bg-status-running/10 text-status-running px-sm py-1 rounded border border-status-running/20 inline-flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+<span class="font-tag-label text-tag-label uppercase tracking-wider">Clear</span>
+</div>
+</div>
+</div>
+</article>
+</section>
+<!-- Corrective Maintenance Section -->
+<section>
+<h3 class="font-section-header text-section-header text-text-secondary mb-sm pl-xs">CORRECTIVE ACTIONS</h3>
+<article class="bg-bg-card border border-border-default rounded-xl flex flex-col relative overflow-hidden">
+<!-- Critical accent border -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-data-quality"></div>
+<div class="p-lg pl-xl flex gap-md items-start hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="w-8 h-8 rounded bg-data-quality/10 border border-data-quality/20 flex items-center justify-center text-data-quality shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="build">build</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-card-title text-card-title text-text-primary group-hover:text-primary transition-colors">Fan Assembly Replacement</h4>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Jun 09</span>
+</div>
+<p class="font-body text-body text-text-secondary mt-xs">Root cause identified as bearing failure. Assembly swapped, tested, and cleared.</p>
+<div class="flex items-center gap-sm mt-sm pt-sm border-t border-border-default/50">
+<span class="font-tag-label text-tag-label text-text-tertiary uppercase">Downtime</span>
+<span class="font-body text-body text-data-quality font-medium">4.5h</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-tertiary group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</article>
+</section>
+<!-- Analytics Section (Bento Grid Style) -->
+<section>
+<h3 class="font-section-header text-section-header text-text-secondary mb-sm pl-xs">ANALYTICS</h3>
+<div class="grid grid-cols-1 gap-gutter">
+<!-- Bar Chart Canvas -->
+<article class="bg-bg-card border border-border-default rounded-xl p-md">
+<div class="flex justify-between items-center mb-md">
+<h4 class="font-card-title text-card-title text-text-primary">Maintenance Cost Trend</h4>
+<span class="material-symbols-outlined text-text-tertiary text-[18px]" data-icon="bar_chart">bar_chart</span>
+</div>
+<!-- CSS Bar Chart Representation -->
+<div class="h-32 flex items-end justify-between gap-sm border-b border-border-emphasis pb-1">
+<!-- Bars -->
+<div class="w-full bg-surface-container hover:bg-surface-container-high transition-colors h-[40%] rounded-t border-t border-border-emphasis relative group">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-bg-input text-text-primary text-[10px] px-1 py-0.5 rounded transition-opacity">$4k</div>
+</div>
+<div class="w-full bg-surface-container hover:bg-surface-container-high transition-colors h-[30%] rounded-t border-t border-border-emphasis relative group">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-bg-input text-text-primary text-[10px] px-1 py-0.5 rounded transition-opacity">$3k</div>
+</div>
+<div class="w-full bg-surface-container hover:bg-surface-container-high transition-colors h-[60%] rounded-t border-t border-border-emphasis relative group">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-bg-input text-text-primary text-[10px] px-1 py-0.5 rounded transition-opacity">$6k</div>
+</div>
+<div class="w-full bg-surface-container hover:bg-surface-container-high transition-colors h-[45%] rounded-t border-t border-border-emphasis relative group">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-bg-input text-text-primary text-[10px] px-1 py-0.5 rounded transition-opacity">$4.5k</div>
+</div>
+<div class="w-full bg-surface-container hover:bg-surface-container-high transition-colors h-[85%] rounded-t border-t border-border-emphasis relative group">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-bg-input text-text-primary text-[10px] px-1 py-0.5 rounded transition-opacity">$8.5k</div>
+</div>
+<!-- Current Month Highlighted -->
+<div class="w-full bg-primary/20 hover:bg-primary/30 transition-colors h-[50%] rounded-t border border-primary/50 relative group">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-100 bg-primary/20 text-primary border border-primary/30 text-[10px] px-1 py-0.5 rounded transition-opacity">$5k</div>
+</div>
+</div>
+<div class="flex justify-between font-card-subtitle text-card-subtitle text-text-secondary px-xs mt-2">
+<span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span class="text-primary font-medium">Jun</span>
+</div>
+</article>
+<!-- Spare Parts Usage Mini-card -->
+<article class="bg-bg-card border border-border-default rounded-xl p-md flex items-center justify-between hover:border-border-emphasis transition-colors cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded bg-surface-container border border-border-default flex items-center justify-center text-text-secondary">
+<span class="material-symbols-outlined text-[20px]" data-icon="inventory_2">inventory_2</span>
+</div>
+<div>
+<h4 class="font-card-title text-card-title text-text-primary">Spare Parts Usage</h4>
+<p class="font-card-subtitle text-card-subtitle text-text-tertiary mt-0.5">3 critical items low</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-tertiary" data-icon="chevron_right">chevron_right</span>
+</article>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-bg-app border-t border-border-default flex justify-around items-center h-[64px] px-sm pb-safe">
+<!-- Inactive Tab -->
+<button class="flex flex-col items-center justify-center text-text-secondary px-md py-xs hover:text-primary-fixed-dim active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[24px]" data-icon="dashboard">dashboard</span>
+<span class="font-tag-label text-tag-label mt-1">Dashboard</span>
+</button>
+<!-- Active Tab (Assets logic match) -->
+<button class="flex flex-col items-center justify-center bg-surface-container-highest text-primary-fixed rounded-xl px-md py-xs active:scale-95 transition-transform duration-150 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
+<span class="material-symbols-outlined text-[24px] font-variation-settings-'FILL'-1" data-icon="factory" data-weight="fill" style="font-variation-settings: 'FILL' 1;">factory</span>
+<span class="font-tag-label text-tag-label mt-1">Assets</span>
+</button>
+<!-- Inactive Tab -->
+<button class="flex flex-col items-center justify-center text-text-secondary px-md py-xs hover:text-primary-fixed-dim active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[24px]" data-icon="warning">warning</span>
+<span class="font-tag-label text-tag-label mt-1">Alerts</span>
+</button>
+<!-- Inactive Tab -->
+<button class="flex flex-col items-center justify-center text-text-secondary px-md py-xs hover:text-primary-fixed-dim active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[24px]" data-icon="assignment">assignment</span>
+<span class="font-tag-label text-tag-label mt-1">Logs</span>
+</button>
+</nav>
+</body></html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Search Results - Situation Room</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#36dae4",
+                      "surface-tint": "#36dae4",
+                      "surface-variant": "#223555",
+                      "surface-container": "#0b1f3e",
+                      "error-container": "#93000a",
+                      "on-error-container": "#ffdad6",
+                      "inverse-surface": "#d7e2ff",
+                      "border-default": "rgba(255, 255, 255, 0.06)",
+                      "bg-app": "#060c18",
+                      "on-surface": "#d7e2ff",
+                      "surface-container-high": "#172a49",
+                      "text-primary": "#f0f4ff",
+                      "bg-input": "#111d35",
+                      "outline": "#859394",
+                      "on-error": "#690005",
+                      "primary-container": "#00c8d2",
+                      "inverse-on-surface": "#1e3050",
+                      "status-running": "#16a34a",
+                      "secondary-container": "#03b5d3",
+                      "on-surface-variant": "#bbc9ca",
+                      "outline-variant": "#3c494a",
+                      "primary": "#46e4ee",
+                      "on-primary": "#00373a",
+                      "inverse-primary": "#00696f",
+                      "surface-container-highest": "#223555",
+                      "bg-header": "#080f1e",
+                      "on-tertiary-fixed-variant": "#703700",
+                      "on-primary-fixed": "#002022",
+                      "secondary-fixed-dim": "#4cd7f6",
+                      "surface-container-lowest": "#000d26",
+                      "surface": "#001330",
+                      "on-secondary-fixed": "#001f26",
+                      "secondary-fixed": "#acedff",
+                      "bg-card": "#0d1526",
+                      "text-tertiary": "#4a5e8a",
+                      "tertiary-fixed-dim": "#ffb783",
+                      "tertiary-container": "#ff9d4f",
+                      "tertiary": "#ffc49b",
+                      "status-breakdown": "#dc2626",
+                      "on-tertiary-container": "#703700",
+                      "on-primary-fixed-variant": "#004f53",
+                      "surface-container-low": "#061b3a",
+                      "status-idle": "#d97706",
+                      "primary-fixed": "#6ff6ff",
+                      "secondary": "#4cd7f6",
+                      "surface-dim": "#001330",
+                      "error": "#ffb4ab",
+                      "status-planned": "#7c3aed",
+                      "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                      "surface-bright": "#27395a",
+                      "on-background": "#d7e2ff",
+                      "text-secondary": "#8b9dc3",
+                      "on-tertiary-fixed": "#301400",
+                      "on-secondary": "#003640",
+                      "background": "#001330",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "on-primary-container": "#004f53",
+                      "bg-overlay": "#050a14",
+                      "data-quality": "#f59e0b",
+                      "tertiary-fixed": "#ffdcc5",
+                      "data-performance": "#4ade80",
+                      "on-tertiary": "#4f2500",
+                      "on-secondary-container": "#00424e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "sm": "8px",
+                      "margin-horizontal": "16px",
+                      "xl": "24px",
+                      "2xl": "32px",
+                      "lg": "16px",
+                      "md": "12px",
+                      "gutter": "12px",
+                      "base": "4px",
+                      "component-height": "52px"
+              },
+              "fontFamily": {
+                      "tag-label": [
+                              "Roboto"
+                      ],
+                      "medium-kpi": [
+                              "Roboto"
+                      ],
+                      "card-subtitle": [
+                              "Roboto"
+                      ],
+                      "body": [
+                              "Roboto"
+                      ],
+                      "card-title": [
+                              "Roboto"
+                      ],
+                      "hero-kpi": [
+                              "Roboto"
+                      ],
+                      "section-header": [
+                              "Roboto"
+                      ],
+                      "large-kpi": [
+                              "Roboto"
+                      ],
+                      "delta-text": [
+                              "Roboto"
+                      ]
+              },
+              "fontSize": {
+                      "tag-label": [
+                              "10px",
+                              {
+                                      "lineHeight": "12px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "medium-kpi": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "card-subtitle": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "card-title": [
+                              "15px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "hero-kpi": [
+                              "56px",
+                              {
+                                      "lineHeight": "64px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "300"
+                              }
+                      ],
+                      "section-header": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "large-kpi": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "delta-text": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app text-text-primary font-body antialiased selection:bg-primary/30 selection:text-primary">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-margin-horizontal h-component-height bg-bg-header dark:bg-bg-header border-b border-border-default">
+<div class="flex items-center gap-sm">
+<button aria-label="Menu" class="text-primary dark:text-primary hover:bg-surface-variant/50 p-1 rounded-md transition-colors">
+<span class="material-symbols-outlined" data-icon="factory">factory</span>
+</button>
+<h1 class="font-section-header text-section-header uppercase tracking-widest text-secondary dark:text-secondary">Situation Room</h1>
+</div>
+<div class="flex items-center gap-sm">
+<!-- Search Bar Integration within App Bar for this specific view -->
+<div class="relative flex items-center bg-bg-input rounded-md h-[36px] border border-border-default px-2 max-w-[200px] md:max-w-xs">
+<span class="material-symbols-outlined text-text-secondary text-[18px] mr-2">search</span>
+<input class="bg-transparent border-none outline-none text-text-primary font-body text-body w-full focus:ring-0 p-0 placeholder:text-text-tertiary" placeholder="Search..." type="text" value="CNC"/>
+<button class="text-text-secondary hover:text-primary ml-1">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-[calc(52px+16px)] pb-[calc(52px+16px)] px-margin-horizontal min-h-screen">
+<!-- Filter Chips & Sort -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md mb-lg">
+<div class="flex overflow-x-auto no-scrollbar gap-sm pb-1 -mx-margin-horizontal px-margin-horizontal md:mx-0 md:px-0 md:pb-0 hide-scrollbar" style="scrollbar-width: none; -ms-overflow-style: none;">
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container text-primary border border-primary/30 rounded-full font-tag-label text-tag-label transition-colors">All</button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-low text-text-secondary hover:bg-surface-variant/50 border border-border-default rounded-full font-tag-label text-tag-label transition-colors">Machines</button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-low text-text-secondary hover:bg-surface-variant/50 border border-border-default rounded-full font-tag-label text-tag-label transition-colors">Lines</button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-low text-text-secondary hover:bg-surface-variant/50 border border-border-default rounded-full font-tag-label text-tag-label transition-colors">Departments</button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-low text-text-secondary hover:bg-surface-variant/50 border border-border-default rounded-full font-tag-label text-tag-label transition-colors">Plants</button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-low text-text-secondary hover:bg-surface-variant/50 border border-border-default rounded-full font-tag-label text-tag-label transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">notifications</span>
+                    Alerts
+                </button>
+</div>
+<div class="flex items-center justify-between md:justify-end">
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">42 Results</span>
+<button class="flex items-center gap-1 text-text-secondary hover:text-primary transition-colors font-tag-label text-tag-label bg-surface-container-low px-3 py-1.5 rounded-md border border-border-default ml-md">
+<span class="material-symbols-outlined text-[16px]">sort</span>
+                    Most Relevant
+                </button>
+</div>
+</div>
+<!-- Results Grid -->
+<div class="flex flex-col gap-gutter">
+<!-- Canonical Card: CNC Lathe 21 -->
+<article class="bg-bg-card border border-border-default rounded-lg p-lg relative overflow-hidden group hover:border-primary/30 transition-colors">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-status-running"></div>
+<div class="flex justify-between items-start mb-md">
+<div class="pl-2">
+<div class="font-tag-label text-tag-label text-text-tertiary mb-1 flex items-center gap-1">
+                            Plant A <span class="material-symbols-outlined text-[10px]">chevron_right</span> CNC Section <span class="material-symbols-outlined text-[10px]">chevron_right</span> Line 01
+                        </div>
+<h2 class="font-card-title text-card-title text-text-primary">CNC Lathe 21</h2>
+</div>
+<!-- Status Pill -->
+<div class="bg-status-running/12 text-status-running px-3 py-1 rounded-full font-tag-label text-tag-label flex items-center gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-status-running"></div>
+                        Running
+                    </div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-sm pl-2">
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary uppercase">OEE</span>
+<div class="flex items-baseline gap-1">
+<span class="font-medium-kpi text-medium-kpi text-text-primary">91.2%</span>
+<span class="font-delta-text text-delta-text text-status-running flex items-center">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span> 1.2%
+                            </span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Status</span>
+<span class="font-body text-body text-text-primary mt-1">Normal</span>
+</div>
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Cycle Time</span>
+<span class="font-body text-body text-text-primary mt-1">45s / unit</span>
+</div>
+<div class="flex flex-col items-end justify-center">
+<button class="flex items-center gap-1 text-primary hover:text-primary-fixed bg-surface-container px-3 py-2 rounded-md border border-border-default transition-colors">
+<span class="font-tag-label text-tag-label">View Details</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Canonical Card: CNC Machining Center 01 -->
+<article class="bg-bg-card border border-border-default rounded-lg p-lg relative overflow-hidden group hover:border-primary/30 transition-colors">
+<!-- Investigation Mode Banner styling integrated -->
+<div class="absolute inset-0 border border-primary/20 pointer-events-none rounded-lg hidden group-hover:block"></div>
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-status-idle"></div>
+<div class="flex justify-between items-start mb-md">
+<div class="pl-2">
+<div class="font-tag-label text-tag-label text-text-tertiary mb-1 flex items-center gap-1">
+                            Plant B <span class="material-symbols-outlined text-[10px]">chevron_right</span> Heavy Machining <span class="material-symbols-outlined text-[10px]">chevron_right</span> Cell 4
+                        </div>
+<h2 class="font-card-title text-card-title text-text-primary">CNC Machining Center 01</h2>
+</div>
+<!-- Status Pill -->
+<div class="flex flex-col items-end gap-2">
+<div class="bg-status-idle/12 text-status-idle px-3 py-1 rounded-full font-tag-label text-tag-label flex items-center gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-status-idle"></div>
+                            Idle
+                        </div>
+<div class="bg-error-container text-on-error-container px-2 py-0.5 rounded text-[10px] font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">warning</span> 2 Alerts
+                        </div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-sm pl-2">
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary uppercase">OEE</span>
+<div class="flex items-baseline gap-1">
+<span class="font-medium-kpi text-medium-kpi text-text-primary">64.5%</span>
+<span class="font-delta-text text-delta-text text-status-breakdown flex items-center">
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span> 5.4%
+                            </span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Reason</span>
+<span class="font-body text-body text-text-primary mt-1">Material Starvation</span>
+</div>
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Downtime</span>
+<span class="font-body text-body text-status-idle mt-1">45m</span>
+</div>
+<div class="flex flex-col items-end justify-center">
+<button class="flex items-center gap-1 text-primary hover:text-primary-fixed bg-surface-container px-3 py-2 rounded-md border border-border-default transition-colors">
+<span class="font-tag-label text-tag-label">View Details</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Canonical Card: CNC Lathe 05 (Breakdown) -->
+<article class="bg-bg-card border border-[rgba(0,200,210,0.35)] rounded-lg p-lg relative overflow-hidden group">
+<!-- Investigation Banner Internal -->
+<div class="absolute top-0 left-0 right-0 h-6 bg-primary-container/10 flex items-center px-4 gap-2 border-b border-primary/20">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-tag-label text-tag-label text-primary tracking-widest uppercase">Investigating</span>
+</div>
+<div class="absolute left-0 top-6 bottom-0 w-[4px] bg-status-breakdown"></div>
+<div class="flex justify-between items-start mb-md mt-6">
+<div class="pl-2">
+<div class="font-tag-label text-tag-label text-text-tertiary mb-1 flex items-center gap-1">
+                            Plant A <span class="material-symbols-outlined text-[10px]">chevron_right</span> CNC Section <span class="material-symbols-outlined text-[10px]">chevron_right</span> Line 02
+                        </div>
+<h2 class="font-card-title text-card-title text-text-primary">CNC Lathe 05</h2>
+</div>
+<div class="flex flex-col items-end gap-2">
+<div class="bg-status-breakdown/12 text-status-breakdown px-3 py-1 rounded-full font-tag-label text-tag-label flex items-center gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-status-breakdown"></div>
+                            Breakdown
+                        </div>
+<div class="bg-error text-on-error px-2 py-0.5 rounded text-[10px] font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">error</span> 1 Critical
+                        </div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-sm pl-2">
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary uppercase">OEE</span>
+<div class="flex items-baseline gap-1">
+<span class="font-medium-kpi text-medium-kpi text-text-primary">22.1%</span>
+<span class="font-delta-text text-delta-text text-status-breakdown flex items-center">
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span> 15.2%
+                            </span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Component</span>
+<span class="font-body text-body text-text-primary mt-1">Spindle Motor</span>
+</div>
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Downtime</span>
+<span class="font-body text-body text-status-breakdown mt-1">2h 15m</span>
+</div>
+<div class="flex flex-col items-end justify-center">
+<button class="flex items-center gap-1 text-primary hover:text-primary-fixed bg-surface-container px-3 py-2 rounded-md border border-border-default transition-colors">
+<span class="font-tag-label text-tag-label">View Details</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-sm h-component-height bg-bg-app border-t border-border-default md:hidden">
+<a class="flex flex-col items-center justify-center text-text-secondary hover:text-primary transition-colors w-16 h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-tag-label text-tag-label">Situation</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary hover:text-primary transition-colors w-16 h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="account_tree">account_tree</span>
+<span class="font-tag-label text-tag-label">Floor</span>
+</a>
+<!-- Active Tab representing Search/Explore semantic -->
+<a class="flex flex-col items-center justify-center text-primary bg-surface-container rounded-lg px-3 py-1 w-16 h-full Active: scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="search" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-tag-label text-tag-label">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary hover:text-primary transition-colors w-16 h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="visibility">visibility</span>
+<span class="font-tag-label text-tag-label">Watchlist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary hover:text-primary transition-colors w-16 h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="notifications">notifications</span>
+<span class="font-tag-label text-tag-label">Alerts</span>
+</a>
+</nav>
+<!-- Side Navigation (Web Only) -->
+<aside class="hidden md:flex flex-col h-full py-lg fixed left-0 top-[52px] bottom-0 w-64 bg-surface-container-lowest dark:bg-surface-container-lowest border-r border-border-emphasis z-40">
+<div class="px-margin-horizontal mb-xl mt-md">
+<div class="flex items-center gap-3 mb-1">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-text-primary font-bold">
+                    SL
+                </div>
+<div>
+<h3 class="font-body text-body text-secondary font-semibold">Shift Lead Alpha</h3>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary">Zone 4 Operations</p>
+</div>
+</div>
+<p class="font-tag-label text-tag-label text-text-tertiary mt-2">v2.4.0-industrial</p>
+</div>
+<nav class="flex-1 flex flex-col gap-2 px-sm">
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-text-secondary hover:bg-surface-variant/30 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+<span class="font-body text-body">Plant Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-text-secondary hover:bg-surface-variant/30 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="precision_manufacturing">precision_manufacturing</span>
+<span class="font-body text-body">Production Lines</span>
+</a>
+<!-- Active state semantic match for Search/Exploration in Drawer context -->
+<a class="flex items-center gap-3 px-3 py-2 bg-surface-container-highest text-primary border-l-4 border-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="search" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-body text-body">Asset Search</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-text-secondary hover:bg-surface-variant/30 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+<span class="font-body text-body">Maintenance Log</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-text-secondary hover:bg-surface-variant/30 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+<span class="font-body text-body">Energy Analytics</span>
+</a>
+</nav>
+<div class="mt-auto px-sm">
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-text-secondary hover:bg-surface-variant/30 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body text-body">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Adjust main content margin for web nav -->
+<style>
+        @media (min-width: 768px) {
+            main {
+                margin-left: 16rem; /* 64 * 4px = 256px */
+                padding-bottom: 24px;
+            }
+        }
+        
+        /* Hide scrollbar for filter chips but keep functionality */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</body></html>

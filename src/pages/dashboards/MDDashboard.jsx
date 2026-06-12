@@ -6,9 +6,11 @@ import DrilldownBreadcrumb from '../../components/shared/DrilldownBreadcrumb';
 import OEEGauge from '../../components/shared/OEEGauge';
 import { useApp } from '../../context/AppContext';
 import {
-  mdKPIs, plantPerformanceTable, executiveAttentionItems, operationalLossContributors,
+  mdKPIs, plantPerformanceTables, executiveAttentionItems, operationalLossContributors,
   enterpriseMachineStatus, plantMachineStatus, plantOEETrend, topPerformingMachines, shiftProductivityComparison
 } from '../../data/mockData';
+import EntityModule, { MachineStatusDonut } from '../../components/shared/EntityModule';
+import BestPerformingEntities from '../../components/shared/BestPerformingEntities';
 
 const CT = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
@@ -31,222 +33,12 @@ const CT = ({ active, payload, label }) => {
   );
 };
 
-const MachineStatusDonut = ({ data, size = 85, onClick, compact = false }) => {
-  const total = data.reduce((acc, curr) => acc + curr.value, 0);
-  return (
-    <div
-      className={`flex items-center justify-center ${compact ? 'gap-4' : 'gap-5'} w-full ${onClick ? 'ops-hover-surface p-1.5 rounded cursor-pointer -m-1.5' : ''}`}
-      onClick={onClick}
-    >
-      <div style={{ width: size, height: size, position: 'relative' }} className="flex-shrink-0">
-        <PieChart width={size} height={size}>
-            <Pie data={data} innerRadius="65%" outerRadius="100%" paddingAngle={2} dataKey="value" stroke="none">
-              {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.color} />
-              ))}
-            </Pie>
-            <Tooltip content={({ active, payload }) => {
-              if (active && payload && payload.length) {
-                return (
-                  <div className="custom-tooltip" style={{ padding: '4px 8px', fontSize: 11 }}>
-                    <span style={{ color: payload[0].payload.color, fontWeight: 700 }}>{payload[0].name}</span>: {payload[0].value}
-                  </div>
-                );
-              }
-              return null;
-            }} />
-          </PieChart>
-        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-          <span className="text-[14px] font-bold leading-none text-[var(--text-primary)]">{total}</span>
-        </div>
-      </div>
-      <div className="flex flex-col gap-1 justify-center min-w-[90px]">
-        {data.map((item, i) => (
-          <div key={i} className="flex items-center justify-between text-[11px] font-semibold gap-3">
-            <div className="flex items-center gap-1.5 min-w-0">
-              <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: item.color }} />
-              <span style={{ color: 'var(--text-secondary)' }} className="truncate leading-tight">{item.name}</span>
-            </div>
-            <span style={{ color: 'var(--text-primary)', fontVariantNumeric: 'tabular-nums', flexShrink: 0 }}>{item.value}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
 
-const rankStyles = [
-  { label: '01', color: '#F59E0B' }, // Gold
-  { label: '02', color: '#9CA3AF' }, // Silver
-  { label: '03', color: '#B45309' }, // Bronze
-];
-
-const BestPerformingPlants = ({ drillDown }) => {
-  const ranked = [...plantPerformanceTable]
-    .sort((a, b) => b.oee - a.oee)
-    .slice(0, 3);
-
-  return (
-    <div className="flex flex-col justify-center h-full w-full gap-2">
-      {ranked.map((plant, i) => {
-        const plantName = plant.plant.split(' — ')[0];
-        const rank = rankStyles[i];
-        return (
-          <div
-            key={i}
-            className="flex items-center justify-between ops-investigation-row bg-transparent px-2 py-1.5 rounded w-full"
-            onClick={() => drillDown(plantName, { plantIdx: plantPerformanceTable.indexOf(plant) })}
-          >
-            <div className="flex items-center gap-2.5 min-w-0 pr-2">
-              <span style={{ fontSize: 11, fontWeight: 800, color: rank.color, flexShrink: 0 }}>#{i + 1}</span>
-              <span className="text-[13px] font-bold text-[var(--text-primary)] truncate">{plantName}</span>
-            </div>
-            <span style={{ fontSize: 13, fontWeight: 800, color: 'var(--text-primary)', fontVariantNumeric: 'tabular-nums', flexShrink: 0 }}>
-              {plant.oee.toFixed(1)}
-            </span>
-          </div>
-        );
-      })}
-    </div>
-  );
-};
-
-const PlantModule = ({ plant, index, drillDown, onInvestigate, spanClass = '', totalPlants }) => {
-  const statusColors = { good: 'var(--green)', warning: 'var(--amber)', critical: 'var(--red)' };
-  const statusLabels = { good: 'Stable', warning: 'Needs Attention', critical: 'Critical Alert' };
-  const statusColor = statusColors[plant.status] || 'var(--text-muted)';
-
-  const nameParts = plant.plant.split(' — ');
-  const plantName = nameParts[0];
-  const plantLocation = nameParts[1] || '';
-
-  const isSingle = totalPlants === 1;
-  const plantAlerts = executiveAttentionItems.filter(item => item.contextData?.plantIdx === index);
-  const topAlert = plantAlerts[0];
-  const topMachine = topPerformingMachines[index]?.[0];
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.1 + (index % 4) * 0.05 }}
-      className={`ops-card flex flex-col overflow-hidden ${spanClass}`}
-    >
-      {/* ── Module Header ── */}
-      <div
-        className="px-5 py-3 border-b border-[var(--border-light)] flex justify-between items-center ops-investigation-row bg-[var(--bg-inset)]"
-        onClick={() => drillDown(plantName, { plantIdx: index })}
-      >
-        <div className="flex items-center gap-3.5">
-          <h3 className="text-[20px] font-bold text-[var(--text-primary)] leading-tight">{plantName}</h3>
-          <span className="text-[11px] font-medium px-2 py-0.5 rounded bg-[var(--bg-card)] text-[var(--text-secondary)] border border-[var(--border-light)]">
-            {plantLocation}
-          </span>
-        </div>
-        <div className="flex items-center gap-2.5">
-          <div className="flex items-center gap-2 px-2.5 py-1 rounded border border-[var(--border-light)] bg-[var(--bg-card)]">
-            <div className="status-dot flex-shrink-0" style={{ width: 6, height: 6, background: statusColor }} />
-            <span style={{ fontSize: 10, fontWeight: 700, color: statusColor, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-              {statusLabels[plant.status]}
-            </span>
-          </div>
-          <ChevronRight size={16} className="text-[var(--text-muted)]" />
-        </div>
-      </div>
-
-      {/* ── Executive Summary (Fixed View) ── */}
-      <div className="p-4 md:p-6 flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap items-center md:justify-between gap-6 md:gap-4 2xl:gap-8 bg-[var(--bg-card)]">
-
-        {/* KPIs */}
-        <div className="grid grid-cols-[1fr_auto_1fr] grid-rows-2 gap-y-4 gap-x-2 md:flex md:flex-row md:items-center md:gap-4 2xl:gap-8 min-w-0 flex-[1.5] w-full md:w-auto">
-          <div
-            className="col-start-2 row-start-1 row-span-2 md:col-auto md:row-auto flex-shrink-0 flex flex-col items-center justify-center ops-hover-surface p-1 rounded cursor-pointer -m-1"
-            onClick={() => drillDown(plantName, { plantIdx: index })}
-          >
-            <OEEGauge size={85} oee={plant.oee} showLabels={false} />
-            <span className="text-[10px] tracking-widest uppercase font-bold mt-2 text-[var(--text-muted)]">OEE</span>
-          </div>
-          <div className="contents md:grid md:grid-cols-2 md:gap-y-4 md:gap-x-8 md:px-0">
-            <div className="col-start-1 row-start-1 md:col-auto md:row-auto flex flex-col items-center md:items-start justify-center ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(plantName, { plantIdx: index, context: 'availability' })}>
-              <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider mb-0.5">Avail</div>
-              <div className="text-[16px] md:text-[16px] font-bold text-[var(--blue)]">{plant.avail.toFixed(1)}%</div>
-            </div>
-            <div className="col-start-3 row-start-1 md:col-auto md:row-auto flex flex-col items-center md:items-start justify-center ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(plantName, { plantIdx: index, context: 'performance' })}>
-              <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider mb-0.5">Perf</div>
-              <div className="text-[16px] md:text-[16px] font-bold text-[var(--purple)]">{plant.perf.toFixed(1)}%</div>
-            </div>
-            <div className="col-start-1 row-start-2 md:col-auto md:row-auto flex flex-col items-center md:items-start justify-center ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(plantName, { plantIdx: index, context: 'quality' })}>
-              <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider mb-0.5">Qual</div>
-              <div className="text-[16px] md:text-[16px] font-bold text-[var(--green)]">{plant.qual.toFixed(1)}%</div>
-            </div>
-            <div className="col-start-3 row-start-2 md:col-auto md:row-auto flex flex-col items-center md:items-start justify-center ops-hover-surface p-2 rounded cursor-pointer -m-2" onClick={() => drillDown(plantName, { plantIdx: index, context: 'downtime' })}>
-              <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider mb-0.5">Down</div>
-              <div className="text-[16px] md:text-[16px] font-bold text-[var(--red)]">{plant.downtime}h</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Dynamic Extra Info for Single Plant Mode */}
-        {isSingle && (
-          <>
-            <div className="hidden lg:block w-px h-16 bg-[var(--border-light)]" />
-            
-            <div className="flex flex-col gap-3 min-w-[200px] flex-1">
-              {topAlert && (
-                <div className="flex flex-col gap-1">
-                  <span className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider font-bold flex items-center gap-1.5">
-                    <AlertCircle size={12} className={topAlert.severity === 'critical' ? 'text-[var(--red)]' : 'text-[var(--amber)]'} />
-                    Top Attention Area
-                  </span>
-                  <span className="text-[12px] font-medium text-[var(--text-primary)] leading-tight line-clamp-2">{topAlert.message}</span>
-                </div>
-              )}
-              {topMachine && (
-                <div className="flex flex-col gap-1">
-                  <span className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider font-bold flex items-center gap-1.5">
-                    <CheckCircle2 size={12} className="text-[var(--green)]" />
-                    Top Performing Machine
-                  </span>
-                  <div className="flex items-center gap-2">
-                    <span className="text-[12px] font-bold text-[var(--text-primary)]">{topMachine.name}</span>
-                    <span className="text-[12px] font-semibold text-[var(--text-secondary)]">{topMachine.oee}% OEE</span>
-                  </div>
-                </div>
-              )}
-            </div>
-          </>
-        )}
-
-        <div className="hidden lg:block w-px h-16 bg-[var(--border-light)]" />
-
-        {/* Status Donut & More Info */}
-        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-2 2xl:gap-6 flex-1 md:justify-end min-w-0 w-full md:w-auto mt-2 md:mt-0">
-          <div className="flex-shrink-0 w-full md:w-auto flex justify-center">
-            <MachineStatusDonut
-              data={plantMachineStatus[index]}
-              size={75}
-              compact={true}
-              onClick={() => drillDown(plantName, { plantIdx: index, context: 'machine_status' })}
-            />
-          </div>
-
-          <button
-            onClick={() => onInvestigate(index)}
-            className="flex-shrink-0 flex items-center justify-center gap-1.5 px-4 py-3 md:py-2 rounded bg-[var(--blue)] text-white cursor-pointer hover:bg-blue-600 transition-colors shadow border-none md:h-[36px] w-full md:w-auto mt-2 md:mt-0"
-          >
-            <span className="text-[12px] md:text-[11px] font-bold uppercase tracking-widest whitespace-nowrap">More Info</span>
-            <ChevronRight size={14} className="flex-shrink-0" />
-          </button>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
 
 /* ------------------------------------------------------------------ */
 /* Premium Investigation Overlay                                         */
 /* ------------------------------------------------------------------ */
-const InvestigationOverlay = ({ plantIdx, onClose, drillDown }) => {
+const InvestigationOverlay = ({ plantIdx, companyIdx, onClose, drillDown }) => {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => { document.body.style.overflow = 'unset'; };
@@ -254,7 +46,8 @@ const InvestigationOverlay = ({ plantIdx, onClose, drillDown }) => {
 
   if (plantIdx === null) return null;
 
-  const plant = plantPerformanceTable[plantIdx];
+  const currentPlants = plantPerformanceTables[companyIdx] || plantPerformanceTables[0];
+  const plant = currentPlants[plantIdx];
   const nameParts = plant.plant.split(' — ');
   const plantName = nameParts[0];
   const plantLocation = nameParts[1] || '';
@@ -479,7 +272,9 @@ const InvestigationOverlay = ({ plantIdx, onClose, drillDown }) => {
 /* MD Dashboard                                                          */
 /* ------------------------------------------------------------------ */
 const MDDashboard = () => {
-  const { drillDown } = useApp();
+  const { drillDown, drilldownContext } = useApp();
+  const companyIdx = drilldownContext.companyIdx ?? 0;
+  const currentPlants = plantPerformanceTables[companyIdx] || plantPerformanceTables[0];
   const [investigatingPlantIdx, setInvestigatingPlantIdx] = useState(null);
 
   const handleInvestigate = (idx) => {
@@ -536,7 +331,12 @@ const MDDashboard = () => {
           <div className="ops-card p-5 min-w-[200px] flex flex-col justify-center">
             <span className="text-[11px] tracking-widest uppercase font-bold text-[var(--text-muted)] mb-3 text-center">Best Performing</span>
             <div className="flex-1 flex flex-col justify-center">
-              <BestPerformingPlants drillDown={drillDown} />
+              <BestPerformingEntities 
+                entities={currentPlants} 
+                drillDown={drillDown} 
+                getEntityName={(p) => p.plant.split(' — ')[0]}
+                getContextData={(p) => ({ plantIdx: currentPlants.indexOf(p) })}
+              />
             </div>
           </div>
 
@@ -561,17 +361,28 @@ const MDDashboard = () => {
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 relative">
-          {plantPerformanceTable.map((plant, idx) => (
-            <PlantModule
-              key={idx}
-              plant={plant}
-              index={idx}
-              drillDown={drillDown}
-              onInvestigate={handleInvestigate}
-              totalPlants={plantPerformanceTable.length}
-              spanClass={getColSpanClass(idx, plantPerformanceTable.length)}
-            />
-          ))}
+          {currentPlants.map((plant, idx) => {
+            const plantAlerts = executiveAttentionItems.filter(item => item.contextData?.plantIdx === idx);
+            const topAlert = plantAlerts[0];
+            const topMachine = topPerformingMachines[idx]?.[0];
+            return (
+              <EntityModule
+                key={idx}
+                entity={plant}
+                index={idx}
+                drillDown={drillDown}
+                onInvestigate={handleInvestigate}
+                totalEntities={currentPlants.length}
+                spanClass={getColSpanClass(idx, currentPlants.length)}
+                entityName={plant.plant.split(' — ')[0]}
+                entityLocation={plant.plant.split(' — ')[1] || ''}
+                topAlert={topAlert}
+                topMetricItem={topMachine}
+                statusData={plantMachineStatus[idx]}
+                drilldownContextParams={{ plantIdx: idx }}
+              />
+            );
+          })}
         </div>
       </motion.div>
 
@@ -580,6 +391,7 @@ const MDDashboard = () => {
         {investigatingPlantIdx !== null && (
           <InvestigationOverlay
             plantIdx={investigatingPlantIdx}
+            companyIdx={companyIdx}
             onClose={() => setInvestigatingPlantIdx(null)}
             drillDown={drillDown}
           />

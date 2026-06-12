@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Alerts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#00373a",
+                        "bg-card": "#0d1526",
+                        "data-quality": "#f59e0b",
+                        "surface-dim": "#001330",
+                        "inverse-on-surface": "#1e3050",
+                        "surface-container": "#0b1f3e",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "border-default": "rgba(255, 255, 255, 0.06)",
+                        "status-planned": "#7c3aed",
+                        "secondary-container": "#03b5d3",
+                        "surface-container-highest": "#223555",
+                        "surface-tint": "#36dae4",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-secondary-fixed": "#001f26",
+                        "primary-fixed-dim": "#36dae4",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "background": "#001330",
+                        "on-secondary": "#003640",
+                        "status-breakdown": "#dc2626",
+                        "surface-container-lowest": "#000d26",
+                        "bg-app": "#060c18",
+                        "on-error": "#690005",
+                        "secondary": "#4cd7f6",
+                        "inverse-surface": "#d7e2ff",
+                        "on-secondary-container": "#00424e",
+                        "surface": "#001330",
+                        "secondary-fixed": "#acedff",
+                        "surface-bright": "#27395a",
+                        "on-primary-container": "#004f53",
+                        "status-idle": "#d97706",
+                        "text-secondary": "#8b9dc3",
+                        "primary-container": "#00c8d2",
+                        "on-tertiary": "#4f2500",
+                        "status-running": "#16a34a",
+                        "on-tertiary-fixed": "#301400",
+                        "tertiary-container": "#ff9d4f",
+                        "on-surface-variant": "#bbc9ca",
+                        "surface-container-low": "#061b3a",
+                        "on-tertiary-container": "#703700",
+                        "bg-input": "#111d35",
+                        "bg-header": "#080f1e",
+                        "on-background": "#d7e2ff",
+                        "on-surface": "#d7e2ff",
+                        "primary-fixed": "#6ff6ff",
+                        "outline": "#859394",
+                        "on-primary-fixed-variant": "#004f53",
+                        "on-error-container": "#ffdad6",
+                        "outline-variant": "#3c494a",
+                        "inverse-primary": "#00696f",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "data-performance": "#4ade80",
+                        "bg-overlay": "#050a14",
+                        "primary": "#46e4ee",
+                        "tertiary": "#ffc49b",
+                        "surface-container-high": "#172a49",
+                        "text-primary": "#f0f4ff",
+                        "surface-variant": "#223555",
+                        "text-tertiary": "#4a5e8a",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#002022"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "12px",
+                        "2xl": "32px",
+                        "base": "4px",
+                        "xl": "24px",
+                        "lg": "16px",
+                        "margin-horizontal": "16px",
+                        "xs": "4px",
+                        "component-height": "52px",
+                        "sm": "8px",
+                        "md": "12px"
+                    },
+                    "fontFamily": {
+                        "body": ["Roboto"],
+                        "card-title": ["Roboto"],
+                        "section-header": ["Roboto"],
+                        "large-kpi": ["Roboto"],
+                        "medium-kpi": ["Roboto"],
+                        "tag-label": ["Roboto"],
+                        "hero-kpi": ["Roboto"],
+                        "delta-text": ["Roboto"],
+                        "card-subtitle": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "card-title": ["15px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "section-header": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "large-kpi": ["36px", { "lineHeight": "44px", "fontWeight": "400" }],
+                        "medium-kpi": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "tag-label": ["10px", { "lineHeight": "12px", "fontWeight": "600" }],
+                        "hero-kpi": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "delta-text": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "card-subtitle": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #060c18; color: #d7e2ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .filled-icon { font-variation-settings: 'FILL' 1; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body text-body pb-component-height bg-bg-app text-on-surface antialiased min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-bg-header fixed top-0 w-full z-50 border-b border-border-default h-component-height flex items-center justify-between px-margin-horizontal hidden md:flex">
+<div class="flex items-center space-x-md">
+<button class="text-primary hover:bg-surface-container-highest transition-colors rounded-full p-xs flex items-center justify-center active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-section-header text-section-header tracking-widest text-primary">OPUS ONE</span>
+</div>
+<button class="text-primary hover:bg-surface-container-highest transition-colors rounded-full p-xs flex items-center justify-center active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</header>
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden md:flex flex-col h-full py-xl bg-bg-app border-r border-border-default fixed left-0 top-component-height w-72 z-40 transition-all duration-200 ease-in-out">
+<div class="px-margin-horizontal mb-xl flex items-center space-x-md">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-border-default">
+<span class="material-symbols-outlined text-primary text-[24px]">person</span>
+</div>
+<div>
+<p class="font-card-title text-card-title text-on-surface">Lead Technician</p>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary">Site B - Production</p>
+<span class="inline-block mt-xs bg-surface-container text-primary font-tag-label text-tag-label px-2 py-1 rounded-full border border-border-default">Active Shift</span>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto space-y-xs px-sm">
+<a class="flex items-center space-x-md px-margin-horizontal py-md text-on-surface-variant hover:bg-surface-container-low hover:bg-surface-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-card-title text-card-title">Dashboard</span>
+</a>
+<a class="flex items-center space-x-md px-margin-horizontal py-md bg-surface-container-highest text-primary border-l-4 border-primary rounded-r-lg" href="#">
+<span class="material-symbols-outlined filled-icon">work_history</span>
+<span class="font-card-title text-card-title">Alert History</span>
+</a>
+<a class="flex items-center space-x-md px-margin-horizontal py-md text-on-surface-variant hover:bg-surface-container-low hover:bg-surface-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-card-title text-card-title">Technician Status</span>
+</a>
+<a class="flex items-center space-x-md px-margin-horizontal py-md text-on-surface-variant hover:bg-surface-container-low hover:bg-surface-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-card-title text-card-title">Shift Logs</span>
+</a>
+<a class="flex items-center space-x-md px-margin-horizontal py-md text-on-surface-variant hover:bg-surface-container-low hover:bg-surface-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-card-title text-card-title">System Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-0 md:mt-component-height md:ml-72 w-full max-w-4xl mx-auto flex flex-col h-full pt-md pb-xl">
+<!-- Mobile Header (Contextual) -->
+<div class="px-margin-horizontal py-md flex items-center justify-between md:hidden">
+<h1 class="font-medium-kpi text-medium-kpi text-on-surface">Alerts</h1>
+<div class="flex space-x-sm">
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-text-secondary border border-border-default active:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-text-secondary border border-border-default active:bg-surface-container-highest transition-colors relative">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+<span class="absolute top-0 right-0 w-2.5 h-2.5 bg-status-breakdown rounded-full border border-bg-app"></span>
+</button>
+</div>
+</div>
+<!-- Desktop Header Content -->
+<div class="px-margin-horizontal hidden md:flex items-center justify-between mb-xl">
+<h1 class="font-hero-kpi text-hero-kpi text-on-surface tracking-tight">Alert Center</h1>
+<div class="flex space-x-md">
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary text-[20px]">search</span>
+<input class="w-full h-10 bg-bg-input border border-border-default rounded-lg pl-10 pr-4 font-body text-body text-on-surface placeholder-text-secondary focus:outline-none focus:border-primary transition-colors" placeholder="Search alerts..." type="text"/>
+</div>
+<button class="h-10 px-md rounded-lg bg-surface-container flex items-center space-x-xs text-text-secondary border border-border-default hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+<span class="font-card-title text-card-title">Filters (1)</span>
+</button>
+</div>
+</div>
+<!-- Filter Tabs -->
+<div class="px-margin-horizontal mb-lg">
+<div class="flex space-x-sm overflow-x-auto pb-sm scrollbar-hide -mx-margin-horizontal px-margin-horizontal md:mx-0 md:px-0">
+<button class="whitespace-nowrap px-md py-2 rounded-full bg-surface-container-highest border border-border-default text-on-surface font-card-title text-card-title flex items-center space-x-xs transition-colors">
+<span>Critical</span>
+<span class="bg-status-breakdown/20 text-status-breakdown px-1.5 py-0.5 rounded-md font-tag-label text-tag-label ml-1">12</span>
+</button>
+<button class="whitespace-nowrap px-md py-2 rounded-full bg-bg-card border border-border-default text-text-secondary font-card-title text-card-title flex items-center space-x-xs hover:bg-surface-container transition-colors">
+<span>Warning</span>
+<span class="bg-status-idle/20 text-status-idle px-1.5 py-0.5 rounded-md font-tag-label text-tag-label ml-1">8</span>
+</button>
+<button class="whitespace-nowrap px-md py-2 rounded-full bg-bg-card border border-border-default text-text-secondary font-card-title text-card-title flex items-center space-x-xs hover:bg-surface-container transition-colors">
+<span>Info</span>
+<span class="bg-surface-container-highest text-text-secondary px-1.5 py-0.5 rounded-md font-tag-label text-tag-label ml-1">4</span>
+</button>
+<button class="whitespace-nowrap px-md py-2 rounded-full bg-bg-card border border-border-default text-text-secondary font-card-title text-card-title flex items-center hover:bg-surface-container transition-colors">
+<span>Resolved</span>
+</button>
+</div>
+</div>
+<!-- Alert Cards List -->
+<div class="flex-1 overflow-y-auto px-margin-horizontal space-y-gutter pb-xl">
+<!-- Card 1: Critical -->
+<div class="bg-bg-card rounded-lg border border-border-default relative overflow-hidden group hover:border-border-emphasis transition-colors">
+<!-- Status Left Bar -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-breakdown"></div>
+<div class="p-lg pl-xl flex flex-col h-full justify-between">
+<div class="flex justify-between items-start mb-md">
+<div class="flex-1 pr-sm">
+<div class="flex items-center space-x-sm mb-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-status-breakdown/10 text-status-breakdown font-tag-label text-tag-label border border-status-breakdown/20">
+<span class="w-1.5 h-1.5 rounded-full bg-status-breakdown mr-1"></span>
+                                    CRITICAL
+                                 </span>
+<span class="text-text-secondary font-card-subtitle text-card-subtitle">47m ago</span>
+</div>
+<h3 class="font-medium-kpi text-medium-kpi text-on-surface leading-tight mb-xs">Machine 7 Breakdown</h3>
+<p class="font-body text-body text-text-secondary flex items-center">
+<span class="material-symbols-outlined text-[16px] mr-1">factory</span> Plant A, Line 3
+                            </p>
+</div>
+<button class="text-text-secondary hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex items-center justify-between bg-surface-container rounded-md p-sm border border-border-default mt-auto">
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Impact</span>
+<span class="font-card-title text-card-title text-status-breakdown flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-0.5">trending_down</span> -3.2% OEE
+                            </span>
+</div>
+<div class="h-8 w-px bg-border-default"></div>
+<div class="flex flex-col text-right">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Status</span>
+<div class="flex items-center justify-end space-x-1">
+<span class="material-symbols-outlined text-[14px] text-primary">person</span>
+<span class="font-card-title text-card-title text-on-surface">Assigned (Suresh M.)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Warning -->
+<div class="bg-bg-card rounded-lg border border-border-default relative overflow-hidden group hover:border-border-emphasis transition-colors">
+<!-- Status Left Bar -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-idle"></div>
+<div class="p-lg pl-xl flex flex-col h-full justify-between">
+<div class="flex justify-between items-start mb-md">
+<div class="flex-1 pr-sm">
+<div class="flex items-center space-x-sm mb-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-status-idle/10 text-status-idle font-tag-label text-tag-label border border-status-idle/20">
+<span class="w-1.5 h-1.5 rounded-full bg-status-idle mr-1"></span>
+                                    WARNING
+                                 </span>
+<span class="text-text-secondary font-card-subtitle text-card-subtitle">2h 15m ago</span>
+</div>
+<h3 class="font-medium-kpi text-medium-kpi text-on-surface leading-tight mb-xs">Sustained Underperformance</h3>
+<p class="font-body text-body text-text-secondary flex items-center">
+<span class="material-symbols-outlined text-[16px] mr-1">factory</span> Plant B, Line 4
+                            </p>
+</div>
+<button class="text-text-secondary hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex items-center justify-between bg-surface-container rounded-md p-sm border border-border-default mt-auto">
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Impact</span>
+<span class="font-card-title text-card-title text-status-idle flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-0.5">trending_down</span> -1.8% OEE
+                            </span>
+</div>
+<div class="h-8 w-px bg-border-default"></div>
+<div class="flex flex-col text-right">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Status</span>
+<div class="flex items-center justify-end space-x-1 text-text-secondary">
+<span class="material-symbols-outlined text-[14px]">done_all</span>
+<span class="font-card-title text-card-title text-on-surface">Acknowledged</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: Warning -->
+<div class="bg-bg-card rounded-lg border border-border-default relative overflow-hidden group hover:border-border-emphasis transition-colors">
+<!-- Status Left Bar -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-idle"></div>
+<div class="p-lg pl-xl flex flex-col h-full justify-between">
+<div class="flex justify-between items-start mb-md">
+<div class="flex-1 pr-sm">
+<div class="flex items-center space-x-sm mb-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-status-idle/10 text-status-idle font-tag-label text-tag-label border border-status-idle/20">
+<span class="w-1.5 h-1.5 rounded-full bg-status-idle mr-1"></span>
+                                    WARNING
+                                 </span>
+<span class="text-text-secondary font-card-subtitle text-card-subtitle">1h ago</span>
+</div>
+<h3 class="font-medium-kpi text-medium-kpi text-on-surface leading-tight mb-xs">Material Shortage</h3>
+<p class="font-body text-body text-text-secondary flex items-center">
+<span class="material-symbols-outlined text-[16px] mr-1">factory</span> Plant A, Packaging
+                            </p>
+</div>
+<button class="text-text-secondary hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex items-center justify-between bg-surface-container rounded-md p-sm border border-border-default mt-auto">
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Impact</span>
+<span class="font-card-title text-card-title text-status-idle flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-0.5">trending_down</span> -1.2% OEE
+                            </span>
+</div>
+<div class="h-8 w-px bg-border-default"></div>
+<div class="flex flex-col text-right">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Status</span>
+<div class="flex items-center justify-end space-x-1 text-status-idle">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+<span class="font-card-title text-card-title">Triggered</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="bg-bg-card fixed bottom-0 w-full z-50 border-t border-border-default h-component-height flex justify-around items-center px-gutter md:hidden pb-safe">
+<button class="flex flex-col items-center justify-center text-primary bg-surface-container rounded-lg p-xs flex-1 h-full mx-1 hover:text-secondary transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined filled-icon">notifications_active</span>
+<span class="font-tag-label text-tag-label mt-1">Alerts</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-xs flex-1 h-full mx-1 hover:text-secondary transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined">engineering</span>
+<span class="font-tag-label text-tag-label mt-1">Personnel</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-xs flex-1 h-full mx-1 hover:text-secondary transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-tag-label text-tag-label mt-1">Logs</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-xs flex-1 h-full mx-1 hover:text-secondary transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-tag-label text-tag-label mt-1">OEE</span>
+</button>
+</nav>
+</body></html>

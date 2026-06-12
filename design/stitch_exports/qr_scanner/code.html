@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scan Asset - Deep Dark Industrial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#36dae4",
+                    "surface-tint": "#36dae4",
+                    "surface-variant": "#223555",
+                    "surface-container": "#0b1f3e",
+                    "error-container": "#93000a",
+                    "on-error-container": "#ffdad6",
+                    "inverse-surface": "#d7e2ff",
+                    "border-default": "rgba(255, 255, 255, 0.06)",
+                    "bg-app": "#060c18",
+                    "on-surface": "#d7e2ff",
+                    "surface-container-high": "#172a49",
+                    "text-primary": "#f0f4ff",
+                    "bg-input": "#111d35",
+                    "outline": "#859394",
+                    "on-error": "#690005",
+                    "primary-container": "#00c8d2",
+                    "inverse-on-surface": "#1e3050",
+                    "status-running": "#16a34a",
+                    "secondary-container": "#03b5d3",
+                    "on-surface-variant": "#bbc9ca",
+                    "outline-variant": "#3c494a",
+                    "primary": "#46e4ee",
+                    "on-primary": "#00373a",
+                    "inverse-primary": "#00696f",
+                    "surface-container-highest": "#223555",
+                    "bg-header": "#080f1e",
+                    "on-tertiary-fixed-variant": "#703700",
+                    "on-primary-fixed": "#002022",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "surface-container-lowest": "#000d26",
+                    "surface": "#001330",
+                    "on-secondary-fixed": "#001f26",
+                    "secondary-fixed": "#acedff",
+                    "bg-card": "#0d1526",
+                    "text-tertiary": "#4a5e8a",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "tertiary-container": "#ff9d4f",
+                    "tertiary": "#ffc49b",
+                    "status-breakdown": "#dc2626",
+                    "on-tertiary-container": "#703700",
+                    "on-primary-fixed-variant": "#004f53",
+                    "surface-container-low": "#061b3a",
+                    "status-idle": "#d97706",
+                    "primary-fixed": "#6ff6ff",
+                    "secondary": "#4cd7f6",
+                    "surface-dim": "#001330",
+                    "error": "#ffb4ab",
+                    "status-planned": "#7c3aed",
+                    "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                    "surface-bright": "#27395a",
+                    "on-background": "#d7e2ff",
+                    "text-secondary": "#8b9dc3",
+                    "on-tertiary-fixed": "#301400",
+                    "on-secondary": "#003640",
+                    "background": "#001330",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-primary-container": "#004f53",
+                    "bg-overlay": "#050a14",
+                    "data-quality": "#f59e0b",
+                    "tertiary-fixed": "#ffdcc5",
+                    "data-performance": "#4ade80",
+                    "on-tertiary": "#4f2500",
+                    "on-secondary-container": "#00424e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "sm": "8px",
+                    "margin-horizontal": "16px",
+                    "xl": "24px",
+                    "2xl": "32px",
+                    "lg": "16px",
+                    "md": "12px",
+                    "gutter": "12px",
+                    "base": "4px",
+                    "component-height": "52px"
+            },
+            "fontFamily": {
+                    "tag-label": ["Roboto"],
+                    "medium-kpi": ["Roboto"],
+                    "card-subtitle": ["Roboto"],
+                    "body": ["Roboto"],
+                    "card-title": ["Roboto"],
+                    "hero-kpi": ["Roboto"],
+                    "section-header": ["Roboto"],
+                    "large-kpi": ["Roboto"],
+                    "delta-text": ["Roboto"]
+            },
+            "fontSize": {
+                    "tag-label": ["10px", {"lineHeight": "12px", "fontWeight": "600"}],
+                    "medium-kpi": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "card-subtitle": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "body": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "card-title": ["15px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "hero-kpi": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300"}],
+                    "section-header": ["11px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "large-kpi": ["36px", {"lineHeight": "44px", "fontWeight": "400"}],
+                    "delta-text": ["12px", {"lineHeight": "16px", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { background-color: #060c18; color: #f0f4ff; }
+        .scanner-bracket {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-color: #46e4ee; /* primary */
+        }
+        .bracket-tl { top: 0; left: 0; border-top: 3px solid; border-left: 3px solid; }
+        .bracket-tr { top: 0; right: 0; border-top: 3px solid; border-right: 3px solid; }
+        .bracket-bl { bottom: 0; left: 0; border-bottom: 3px solid; border-left: 3px solid; }
+        .bracket-br { bottom: 0; right: 0; border-bottom: 3px solid; border-right: 3px solid; }
+        
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .scan-line {
+            animation: scanline 2.5s linear infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen flex flex-col relative overflow-hidden bg-bg-app">
+<!-- TopAppBar - Task-focused (Back action implies temporary departure, no bottom nav) -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-margin-horizontal h-component-height bg-bg-header border-b border-border-default">
+<button class="text-primary hover:bg-surface-variant/50 p-2 rounded-lg transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-section-header text-section-header uppercase tracking-widest text-secondary">Scan Asset</h1>
+<div class="w-10"></div> <!-- Placeholder for balance -->
+</header>
+<!-- Camera Viewport Simulation -->
+<div class="absolute inset-0 z-0 bg-black pt-component-height">
+<!-- Simulating camera feed with a very dark blurred background image representing a factory floor -->
+<div class="absolute inset-0 opacity-40 mix-blend-luminosity bg-cover bg-center" data-alt="A highly atmospheric, dark and moody view of a modern manufacturing floor. Large industrial machinery is silhouetted against faint, cool blue and harsh white lighting in the background. The scene feels vast and complex, emphasizing precision engineering. The color palette is strictly deep blacks, slate grays, and icy cyans, perfectly matching the Deep Dark Industrial aesthetic of the UI." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCQ7vuKrN8tGnk3H2TKRRAHuY5L_699xMOL1sW4qZL5rYQ2Iu9gUYlham0oUQCazdR3-dwp8gOh1tqQQkCV0XA8OFnMlsAhCt7l8NOPg_cWBeL_39-N4FkSebu4HfPwx8YAOKVtwxR4M_vNf4YLyVQXZzDsWNIN9nmji-VcCY2EukFxLWU01zOx_m2r2OuqV7OGduEyA3kHHI3wrzoETSj6GgKHiqDKBtr9d9A8Fy0QfnzrgPYcSAoc-4Kv9PhDOoeKLNXG-965Ae8h');">
+</div>
+<!-- Vignette overlay for focus -->
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_#060c18_100%)] opacity-80"></div>
+</div>
+<!-- Scanner Overlay -->
+<main class="flex-1 flex flex-col items-center justify-center relative z-10 pt-component-height pb-24 px-margin-horizontal">
+<div class="text-center mb-8">
+<p class="font-body text-body text-text-primary mb-2">Align QR code within frame</p>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary">Instant machine identification active</p>
+</div>
+<!-- Scanning Frame -->
+<div class="relative w-64 h-64 sm:w-80 sm:h-80 mb-12">
+<!-- Brackets -->
+<div class="scanner-bracket bracket-tl"></div>
+<div class="scanner-bracket bracket-tr"></div>
+<div class="scanner-bracket bracket-bl"></div>
+<div class="scanner-bracket bracket-br"></div>
+<!-- Scan Line Animation -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none">
+<div class="w-full h-1 bg-primary scan-line shadow-[0_0_15px_2px_rgba(70,228,238,0.5)] relative">
+<div class="absolute inset-0 bg-primary opacity-50 blur-[2px]"></div>
+</div>
+</div>
+</div>
+<!-- Detected Asset Preview Card (Simulated as just detected) -->
+<div class="w-full max-w-md bg-bg-card border-[0.5px] border-border-default rounded-xl p-lg shadow-lg transform transition-all duration-300 translate-y-0 opacity-100">
+<div class="flex items-center justify-between mb-sm">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+<span class="font-tag-label text-tag-label text-primary uppercase tracking-wider">Asset Detected</span>
+</div>
+<!-- Status Pill -->
+<div class="flex items-center gap-xs bg-status-running/12 px-3 py-1 rounded-full border border-status-running/20">
+<div class="w-1.5 h-1.5 rounded-full bg-status-running"></div>
+<span class="font-tag-label text-tag-label text-status-running uppercase">Running</span>
+</div>
+</div>
+<h2 class="font-card-title text-card-title text-text-primary mb-md">CNC Lathe 21</h2>
+<div class="flex items-end justify-between border-t border-border-emphasis pt-sm">
+<div>
+<span class="font-section-header text-section-header text-text-secondary block mb-xs">Current OEE</span>
+<span class="font-medium-kpi text-medium-kpi text-data-performance block">91.2%</span>
+</div>
+<button class="h-10 px-4 bg-primary-container/20 border border-primary-container/50 text-primary rounded-lg font-tag-label text-tag-label uppercase tracking-wider hover:bg-primary-container/30 transition-colors flex items-center gap-xs">
+                    View Details
+                    <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0;">chevron_right</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Bottom Controls (Floating) -->
+<div class="fixed bottom-0 left-0 w-full z-40 p-margin-horizontal pb-8 flex justify-center gap-xl bg-gradient-to-t from-bg-app to-transparent pointer-events-none">
+<div class="pointer-events-auto flex gap-xl">
+<!-- Flash Toggle -->
+<button class="w-14 h-14 rounded-full bg-surface-container border border-border-default flex flex-col items-center justify-center text-text-secondary hover:text-primary hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">flash_on</span>
+<span class="font-tag-label text-[8px] leading-tight font-semibold uppercase">Flash</span>
+</button>
+<!-- Low Light Toggle (Active state) -->
+<button class="w-14 h-14 rounded-full bg-surface-container-highest border border-primary text-primary flex flex-col items-center justify-center shadow-[0_0_10px_rgba(70,228,238,0.1)] transition-colors">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">nightlight</span>
+<span class="font-tag-label text-[8px] leading-tight font-semibold uppercase">Low Light</span>
+</button>
+</div>
+</div>
+</body></html>

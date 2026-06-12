@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Asset Identified</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#36dae4",
+                      "surface-tint": "#36dae4",
+                      "surface-variant": "#223555",
+                      "surface-container": "#0b1f3e",
+                      "error-container": "#93000a",
+                      "on-error-container": "#ffdad6",
+                      "inverse-surface": "#d7e2ff",
+                      "border-default": "rgba(255, 255, 255, 0.06)",
+                      "bg-app": "#060c18",
+                      "on-surface": "#d7e2ff",
+                      "surface-container-high": "#172a49",
+                      "text-primary": "#f0f4ff",
+                      "bg-input": "#111d35",
+                      "outline": "#859394",
+                      "on-error": "#690005",
+                      "primary-container": "#00c8d2",
+                      "inverse-on-surface": "#1e3050",
+                      "status-running": "#16a34a",
+                      "secondary-container": "#03b5d3",
+                      "on-surface-variant": "#bbc9ca",
+                      "outline-variant": "#3c494a",
+                      "primary": "#46e4ee",
+                      "on-primary": "#00373a",
+                      "inverse-primary": "#00696f",
+                      "surface-container-highest": "#223555",
+                      "bg-header": "#080f1e",
+                      "on-tertiary-fixed-variant": "#703700",
+                      "on-primary-fixed": "#002022",
+                      "secondary-fixed-dim": "#4cd7f6",
+                      "surface-container-lowest": "#000d26",
+                      "surface": "#001330",
+                      "on-secondary-fixed": "#001f26",
+                      "secondary-fixed": "#acedff",
+                      "bg-card": "#0d1526",
+                      "text-tertiary": "#4a5e8a",
+                      "tertiary-fixed-dim": "#ffb783",
+                      "tertiary-container": "#ff9d4f",
+                      "tertiary": "#ffc49b",
+                      "status-breakdown": "#dc2626",
+                      "on-tertiary-container": "#703700",
+                      "on-primary-fixed-variant": "#004f53",
+                      "surface-container-low": "#061b3a",
+                      "status-idle": "#d97706",
+                      "primary-fixed": "#6ff6ff",
+                      "secondary": "#4cd7f6",
+                      "surface-dim": "#001330",
+                      "error": "#ffb4ab",
+                      "status-planned": "#7c3aed",
+                      "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                      "surface-bright": "#27395a",
+                      "on-background": "#d7e2ff",
+                      "text-secondary": "#8b9dc3",
+                      "on-tertiary-fixed": "#301400",
+                      "on-secondary": "#003640",
+                      "background": "#001330",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "on-primary-container": "#004f53",
+                      "bg-overlay": "#050a14",
+                      "data-quality": "#f59e0b",
+                      "tertiary-fixed": "#ffdcc5",
+                      "data-performance": "#4ade80",
+                      "on-tertiary": "#4f2500",
+                      "on-secondary-container": "#00424e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "sm": "8px",
+                      "margin-horizontal": "16px",
+                      "xl": "24px",
+                      "2xl": "32px",
+                      "lg": "16px",
+                      "md": "12px",
+                      "gutter": "12px",
+                      "base": "4px",
+                      "component-height": "52px"
+              },
+              "fontFamily": {
+                      "tag-label": [
+                              "Roboto"
+                      ],
+                      "medium-kpi": [
+                              "Roboto"
+                      ],
+                      "card-subtitle": [
+                              "Roboto"
+                      ],
+                      "body": [
+                              "Roboto"
+                      ],
+                      "card-title": [
+                              "Roboto"
+                      ],
+                      "hero-kpi": [
+                              "Roboto"
+                      ],
+                      "section-header": [
+                              "Roboto"
+                      ],
+                      "large-kpi": [
+                              "Roboto"
+                      ],
+                      "delta-text": [
+                              "Roboto"
+                      ]
+              },
+              "fontSize": {
+                      "tag-label": [
+                              "10px",
+                              {
+                                      "lineHeight": "12px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "medium-kpi": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "card-subtitle": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "card-title": [
+                              "15px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "hero-kpi": [
+                              "56px",
+                              {
+                                      "lineHeight": "64px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "300"
+                              }
+                      ],
+                      "section-header": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "large-kpi": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "delta-text": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .oee-ring {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 20; /* Example offset */
+            transition: stroke-dashoffset 1s ease-in-out;
+        }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app text-text-primary antialiased min-h-screen flex flex-col">
+<!-- Top App Bar (Transactional, no nav shell, simple back) -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-margin-horizontal h-component-height bg-bg-header border-b border-border-default">
+<button aria-label="Go Back" class="text-text-secondary hover:text-primary transition-colors flex items-center justify-center p-sm">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex-1 flex justify-center">
+<span class="font-section-header text-section-header text-primary uppercase tracking-widest">Asset Identified</span>
+</div>
+<button aria-label="More Options" class="text-text-secondary hover:text-primary transition-colors flex items-center justify-center p-sm">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 pt-[64px] pb-xl px-margin-horizontal flex flex-col gap-gutter overflow-y-auto">
+<!-- Hero Banner -->
+<section class="bg-bg-card rounded-xl border border-border-default p-lg flex flex-col gap-md relative overflow-hidden">
+<!-- Status Bar -->
+<div class="absolute top-0 left-0 bottom-0 w-[4px] bg-status-running"></div>
+<div class="flex justify-between items-start pl-xs">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-sm">
+<span class="font-large-kpi text-large-kpi text-text-primary">CNC Lathe 21</span>
+<span class="material-symbols-outlined text-text-secondary text-[20px]" data-icon="precision_manufacturing">precision_manufacturing</span>
+</div>
+<span class="font-body text-body text-text-secondary">SN: 884-291-A</span>
+</div>
+<!-- Status Pill -->
+<div class="flex items-center gap-xs px-3 py-1 rounded-full bg-status-running/12">
+<div class="w-[6px] h-[6px] rounded-full bg-status-running"></div>
+<span class="font-tag-label text-tag-label text-status-running uppercase">Running</span>
+</div>
+</div>
+<!-- OEE Gauge -->
+<div class="flex items-center gap-xl mt-sm pl-xs">
+<div class="relative w-20 h-20">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<!-- Track -->
+<circle class="stroke-surface-variant" cx="18" cy="18" fill="none" r="16" stroke-width="3"></circle>
+<!-- Availability (Outer - Status) -->
+<circle class="stroke-status-running oee-ring" cx="18" cy="18" fill="none" r="16" stroke-dasharray="100, 100" stroke-dashoffset="15" stroke-width="3"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="font-medium-kpi text-medium-kpi text-text-primary">85<span class="text-[12px]">%</span></span>
+</div>
+</div>
+<div class="flex flex-col gap-sm flex-1">
+<div class="flex justify-between items-center">
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">OEE Target: 82%</span>
+<span class="font-delta-text text-delta-text text-status-running flex items-center"><span class="material-symbols-outlined text-[16px]">arrow_drop_up</span>3%</span>
+</div>
+<div class="flex gap-md">
+<div class="flex flex-col">
+<span class="font-tag-label text-tag-label text-text-tertiary uppercase">Perf</span>
+<span class="font-body text-body text-data-performance">92%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-tag-label text-tag-label text-text-tertiary uppercase">Qual</span>
+<span class="font-body text-body text-data-quality">98%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-tag-label text-tag-label text-text-tertiary uppercase">Avail</span>
+<span class="font-body text-body text-status-running">85%</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Hierarchy Path -->
+<section class="bg-bg-input rounded-lg border border-border-default p-sm flex items-center gap-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
+<span class="material-symbols-outlined text-text-secondary text-[16px]" data-icon="account_tree">account_tree</span>
+<span class="font-tag-label text-tag-label text-text-secondary uppercase">Enterprise</span>
+<span class="material-symbols-outlined text-text-tertiary text-[14px]">chevron_right</span>
+<span class="font-tag-label text-tag-label text-text-secondary uppercase">Plant A</span>
+<span class="material-symbols-outlined text-text-tertiary text-[14px]">chevron_right</span>
+<span class="font-tag-label text-tag-label text-text-secondary uppercase">CNC Section</span>
+<span class="material-symbols-outlined text-text-tertiary text-[14px]">chevron_right</span>
+<span class="font-tag-label text-tag-label text-text-primary uppercase">Line 01</span>
+</section>
+<!-- Quick Intelligence Grid -->
+<section class="grid grid-cols-2 gap-gutter">
+<!-- Current Operator -->
+<div class="bg-bg-card rounded-xl border border-border-default p-md flex flex-col gap-xs">
+<span class="font-section-header text-section-header text-text-tertiary uppercase">Operator</span>
+<div class="flex items-center gap-sm mt-xs">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-text-primary font-body">
+                        JS
+                    </div>
+<div class="flex flex-col">
+<span class="font-card-title text-card-title text-text-primary">J. Smith</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Shift 1</span>
+</div>
+</div>
+</div>
+<!-- Active Alerts -->
+<div class="bg-bg-card rounded-xl border border-border-default p-md flex flex-col gap-xs">
+<span class="font-section-header text-section-header text-text-tertiary uppercase">Active Alerts</span>
+<div class="flex items-center gap-sm mt-xs">
+<span class="material-symbols-outlined text-status-idle text-[24px]" data-icon="warning">warning</span>
+<div class="flex flex-col">
+<span class="font-large-kpi text-large-kpi text-text-primary leading-none">1</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Minor Temp</span>
+</div>
+</div>
+</div>
+<!-- Shift Progress (Full Width) -->
+<div class="col-span-2 bg-bg-card rounded-xl border border-border-default p-md flex flex-col gap-xs">
+<div class="flex justify-between items-center">
+<span class="font-section-header text-section-header text-text-tertiary uppercase">Shift Progress</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">4h 12m remaining</span>
+</div>
+<div class="w-full h-2 bg-surface-variant rounded-full mt-sm overflow-hidden">
+<div class="h-full bg-primary w-[65%] rounded-full"></div>
+</div>
+<div class="flex justify-between items-center mt-xs">
+<span class="font-tag-label text-tag-label text-text-tertiary">06:00</span>
+<span class="font-tag-label text-tag-label text-text-tertiary">14:00</span>
+</div>
+</div>
+</section>
+<!-- Primary Action -->
+<button class="w-full h-component-height bg-primary text-on-primary rounded-lg font-card-title text-card-title flex items-center justify-center gap-sm hover:opacity-90 transition-opacity active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+            Open Machine Dashboard
+        </button>
+<!-- Secondary Actions Grid -->
+<section class="grid grid-cols-3 gap-xs">
+<button class="bg-surface-variant/50 hover:bg-surface-variant border border-border-default rounded-lg h-[64px] flex flex-col items-center justify-center gap-xs transition-colors">
+<span class="material-symbols-outlined text-text-secondary text-[20px]" data-icon="history">history</span>
+<span class="font-tag-label text-tag-label text-text-secondary">Timeline</span>
+</button>
+<button class="bg-surface-variant/50 hover:bg-surface-variant border border-border-default rounded-lg h-[64px] flex flex-col items-center justify-center gap-xs transition-colors">
+<span class="material-symbols-outlined text-text-secondary text-[20px]" data-icon="add_alert">add_alert</span>
+<span class="font-tag-label text-tag-label text-text-secondary">Alert</span>
+</button>
+<button class="bg-surface-variant/50 hover:bg-surface-variant border border-border-default rounded-lg h-[64px] flex flex-col items-center justify-center gap-xs transition-colors">
+<span class="material-symbols-outlined text-text-secondary text-[20px]" data-icon="bookmark_add">bookmark_add</span>
+<span class="font-tag-label text-tag-label text-text-secondary">Watchlist</span>
+</button>
+</section>
+<!-- Recent Events -->
+<section class="flex flex-col gap-sm mt-sm">
+<span class="font-section-header text-section-header text-text-tertiary uppercase px-xs">Recent Events</span>
+<div class="flex flex-col gap-[1px] bg-border-default rounded-lg overflow-hidden">
+<!-- Event 1 -->
+<div class="bg-bg-card p-sm flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-status-running/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-status-running text-[16px]" data-icon="play_arrow">play_arrow</span>
+</div>
+<div class="flex flex-col flex-1">
+<span class="font-body text-body text-text-primary">Cycle Resumed</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Auto-recovery sequence</span>
+</div>
+<span class="font-tag-label text-tag-label text-text-tertiary">10m ago</span>
+</div>
+<!-- Event 2 -->
+<div class="bg-bg-card p-sm flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-status-idle/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-status-idle text-[16px]" data-icon="pause">pause</span>
+</div>
+<div class="flex flex-col flex-1">
+<span class="font-body text-body text-text-primary">Minor Stoppage</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Tool change expected</span>
+</div>
+<span class="font-tag-label text-tag-label text-text-tertiary">1h ago</span>
+</div>
+</div>
+</section>
+</main>
+</body></html>

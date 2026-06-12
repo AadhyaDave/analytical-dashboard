@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shift Intelligence Detail - Opus One Mobile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "status-running": "#16a34a",
+                      "on-primary-fixed-variant": "#004f53",
+                      "secondary-fixed-dim": "#4cd7f6",
+                      "surface-dim": "#001330",
+                      "bg-header": "#080f1e",
+                      "data-quality": "#f59e0b",
+                      "outline-variant": "#3c494a",
+                      "tertiary-fixed": "#ffdcc5",
+                      "border-default": "rgba(255, 255, 255, 0.06)",
+                      "on-primary-fixed": "#002022",
+                      "primary-fixed": "#6ff6ff",
+                      "surface-container": "#0b1f3e",
+                      "on-secondary": "#003640",
+                      "on-error-container": "#ffdad6",
+                      "text-secondary": "#8b9dc3",
+                      "bg-input": "#111d35",
+                      "primary-container": "#00c8d2",
+                      "inverse-primary": "#00696f",
+                      "on-surface": "#d7e2ff",
+                      "surface-variant": "#223555",
+                      "on-secondary-container": "#00424e",
+                      "on-tertiary-fixed": "#301400",
+                      "background": "#001330",
+                      "on-secondary-fixed": "#001f26",
+                      "primary": "#46e4ee",
+                      "on-primary": "#00373a",
+                      "secondary-fixed": "#acedff",
+                      "bg-overlay": "#050a14",
+                      "bg-app": "#060c18",
+                      "error-container": "#93000a",
+                      "on-primary-container": "#004f53",
+                      "bg-card": "#0d1526",
+                      "on-tertiary-container": "#703700",
+                      "error": "#ffb4ab",
+                      "surface-container-highest": "#223555",
+                      "tertiary-fixed-dim": "#ffb783",
+                      "tertiary": "#ffc49b",
+                      "inverse-surface": "#d7e2ff",
+                      "surface-tint": "#36dae4",
+                      "surface-container-lowest": "#000d26",
+                      "status-idle": "#d97706",
+                      "on-tertiary-fixed-variant": "#703700",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "surface-bright": "#27395a",
+                      "tertiary-container": "#ff9d4f",
+                      "secondary-container": "#03b5d3",
+                      "status-planned": "#7c3aed",
+                      "text-tertiary": "#4a5e8a",
+                      "surface-container-low": "#061b3a",
+                      "on-tertiary": "#4f2500",
+                      "on-background": "#d7e2ff",
+                      "on-error": "#690005",
+                      "text-primary": "#f0f4ff",
+                      "surface": "#001330",
+                      "data-performance": "#4ade80",
+                      "inverse-on-surface": "#1e3050",
+                      "on-surface-variant": "#bbc9ca",
+                      "outline": "#859394",
+                      "surface-container-high": "#172a49",
+                      "secondary": "#4cd7f6",
+                      "status-breakdown": "#dc2626",
+                      "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                      "primary-fixed-dim": "#36dae4"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "16px",
+                      "xl": "24px",
+                      "gutter": "12px",
+                      "xs": "4px",
+                      "margin-horizontal": "16px",
+                      "base": "4px",
+                      "sm": "8px",
+                      "md": "12px",
+                      "component-height": "52px",
+                      "2xl": "32px",
+                      "bottom-nav-height": "64px",
+                      "top-app-bar-height": "52px"
+              },
+              "fontFamily": {
+                      "tag-label": [
+                              "Roboto"
+                      ],
+                      "hero-kpi": [
+                              "Roboto"
+                      ],
+                      "large-kpi": [
+                              "Roboto"
+                      ],
+                      "medium-kpi": [
+                              "Roboto"
+                      ],
+                      "delta-text": [
+                              "Roboto"
+                      ],
+                      "card-title": [
+                              "Roboto"
+                      ],
+                      "section-header": [
+                              "Roboto"
+                      ],
+                      "card-subtitle": [
+                              "Roboto"
+                      ],
+                      "body": [
+                              "Roboto"
+                      ]
+              },
+              "fontSize": {
+                      "tag-label": [
+                              "10px",
+                              {
+                                      "lineHeight": "12px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "hero-kpi": [
+                              "56px",
+                              {
+                                      "lineHeight": "64px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "300"
+                              }
+                      ],
+                      "large-kpi": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "medium-kpi": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "delta-text": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "card-title": [
+                              "15px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "section-header": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "card-subtitle": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .glass-panel {
+                @apply bg-bg-card border border-border-default rounded-xl;
+            }
+            .micro-border {
+                @apply border border-border-default;
+            }
+            .nav-active {
+                @apply flex flex-col items-center justify-center bg-surface-container text-primary rounded-xl px-sm py-xs scale-95 transition-transform duration-150;
+            }
+            .nav-inactive {
+                @apply flex flex-col items-center justify-center text-text-secondary px-sm py-xs hover:text-primary-fixed-dim transition-colors duration-200;
+            }
+            /* Hide scrollbar for clean look */
+            ::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app text-text-primary font-body antialiased selection:bg-primary-container selection:text-on-primary-container h-screen flex flex-col overflow-hidden">
+<!-- Top App Bar -->
+<header class="bg-bg-header dark:bg-bg-header fixed top-0 w-full z-50 flex justify-between items-center px-margin-horizontal h-top-app-bar-height border-b border-border-default md:hidden">
+<button class="text-primary dark:text-primary hover:bg-surface-variant/50 p-sm rounded-full transition-colors duration-200 flex items-center justify-center h-10 w-10">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-medium-kpi text-medium-kpi text-primary uppercase tracking-wider flex-1 text-center">Shift Intelligence</h1>
+<button class="text-primary dark:text-primary hover:bg-surface-variant/50 p-sm rounded-full transition-colors duration-200 flex items-center justify-center h-10 w-10">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">more_vert</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto mt-[var(--spacing-top-app-bar-height)] mb-[var(--spacing-bottom-nav-height)] md:mt-0 md:mb-0 p-margin-horizontal space-y-gutter relative">
+<!-- Toggle View -->
+<section class="glass-panel p-1">
+<div class="flex rounded-lg bg-surface-dim overflow-hidden">
+<button class="flex-1 py-2 text-center text-primary bg-surface-container font-card-title text-card-title rounded-md transition-colors duration-200">Shift A</button>
+<button class="flex-1 py-2 text-center text-text-secondary hover:text-primary font-card-title text-card-title transition-colors duration-200">Shift B</button>
+<button class="flex-1 py-2 text-center text-text-secondary hover:text-primary font-card-title text-card-title transition-colors duration-200">Shift C</button>
+</div>
+</section>
+<!-- Analysis Cards Bento -->
+<section class="grid grid-cols-2 gap-gutter">
+<!-- Best Shift -->
+<div class="glass-panel p-lg flex flex-col justify-between">
+<div class="flex items-center gap-2 mb-sm">
+<span class="material-symbols-outlined text-status-running text-lg" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<h3 class="font-section-header text-section-header text-text-secondary uppercase">Best Shift</h3>
+</div>
+<div>
+<p class="font-medium-kpi text-medium-kpi text-text-primary">Shift A</p>
+<p class="font-body text-body text-status-running mt-xs">91.2% OEE</p>
+</div>
+</div>
+<!-- Largest Loss -->
+<div class="glass-panel p-lg flex flex-col justify-between">
+<div class="flex items-center gap-2 mb-sm">
+<span class="material-symbols-outlined text-status-breakdown text-lg" style="font-variation-settings: 'FILL' 1;">warning</span>
+<h3 class="font-section-header text-section-header text-text-secondary uppercase">Largest Loss</h3>
+</div>
+<div>
+<p class="font-card-title text-card-title text-text-primary leading-tight">Setup &amp; Changeover</p>
+<p class="font-body text-body text-text-secondary mt-xs">(Shift B)</p>
+</div>
+</div>
+</section>
+<!-- Metrics Grid -->
+<section class="glass-panel p-lg">
+<h2 class="font-section-header text-section-header text-text-secondary uppercase mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">grid_view</span>
+                Metrics Comparison
+            </h2>
+<div class="grid grid-cols-4 gap-2 text-center">
+<!-- Headers -->
+<div class="font-tag-label text-tag-label text-text-secondary pb-sm border-b border-border-default">Metric</div>
+<div class="font-tag-label text-tag-label text-primary pb-sm border-b border-border-default">Shift A</div>
+<div class="font-tag-label text-tag-label text-text-secondary pb-sm border-b border-border-default">Shift B</div>
+<div class="font-tag-label text-tag-label text-text-secondary pb-sm border-b border-border-default">Shift C</div>
+<!-- OEE -->
+<div class="font-card-subtitle text-card-subtitle text-text-secondary py-sm text-left pl-xs">OEE</div>
+<div class="font-card-title text-card-title text-status-running py-sm font-medium">91.2%</div>
+<div class="font-card-title text-card-title text-text-primary py-sm">84.5%</div>
+<div class="font-card-title text-card-title text-text-primary py-sm">88.1%</div>
+<!-- Availability -->
+<div class="font-card-subtitle text-card-subtitle text-text-secondary py-sm text-left pl-xs">Avail.</div>
+<div class="font-card-title text-card-title text-text-primary py-sm">94.0%</div>
+<div class="font-card-title text-card-title text-text-primary py-sm">89.2%</div>
+<div class="font-card-title text-card-title text-text-primary py-sm">92.5%</div>
+<!-- Performance -->
+<div class="font-card-subtitle text-card-subtitle text-text-secondary py-sm text-left pl-xs border-b border-border-default/50">Perf.</div>
+<div class="font-card-title text-card-title text-data-performance py-sm border-b border-border-default/50">98.1%</div>
+<div class="font-card-title text-card-title text-text-primary py-sm border-b border-border-default/50">95.0%</div>
+<div class="font-card-title text-card-title text-text-primary py-sm border-b border-border-default/50">96.8%</div>
+<!-- Quality -->
+<div class="font-card-subtitle text-card-subtitle text-text-secondary py-sm text-left pl-xs">Qual.</div>
+<div class="font-card-title text-card-title text-data-quality py-sm">99.0%</div>
+<div class="font-card-title text-card-title text-text-primary py-sm">99.8%</div>
+<div class="font-card-title text-card-title text-text-primary py-sm">98.5%</div>
+</div>
+</section>
+<!-- Recommendations & Impact -->
+<section class="glass-panel p-lg border-l-4 border-l-primary-container relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary-container/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<div class="flex items-start gap-md relative z-10">
+<div class="mt-1 flex-shrink-0">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+</div>
+<div class="flex-1">
+<h3 class="font-section-header text-section-header text-primary-container uppercase mb-xs">Optimization Rec.</h3>
+<p class="font-body text-body text-text-primary mb-sm leading-relaxed">
+                        Optimize Line 3 changeover sequence to recover <span class="font-card-title text-card-title text-status-running">1.4% OEE</span>.
+                    </p>
+<div class="bg-surface-dim rounded-lg p-sm border border-border-default flex items-center justify-between">
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Expected Output Gain</span>
+<span class="font-card-title text-card-title text-status-running flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+                            +42 units/hr
+                        </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Placeholder for Charts (Empty state for visual balance) -->
+<section class="glass-panel p-lg min-h-[150px] flex items-center justify-center flex-col gap-sm">
+<span class="material-symbols-outlined text-text-tertiary text-3xl">monitoring</span>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary">Trend Charts (Last 7 Days)</p>
+<p class="font-tag-label text-tag-label text-text-tertiary">Select a metric above to view trends.</p>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="bg-bg-app dark:bg-bg-app fixed bottom-0 left-0 w-full z-50 border-t border-border-default flex justify-around items-center px-margin-horizontal py-sm h-bottom-nav-height md:hidden">
+<!-- Operations (Active) -->
+<a class="nav-active w-[72px]" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+<span class="font-tag-label text-tag-label">Operations</span>
+</a>
+<!-- Assets (Inactive) -->
+<a class="nav-inactive w-[72px]" href="#">
+<span class="material-symbols-outlined mb-1">factory</span>
+<span class="font-tag-label text-tag-label">Assets</span>
+</a>
+<!-- Issues (Inactive) -->
+<a class="nav-inactive w-[72px]" href="#">
+<span class="material-symbols-outlined mb-1">error</span>
+<span class="font-tag-label text-tag-label">Issues</span>
+</a>
+<!-- Handover (Inactive) -->
+<a class="nav-inactive w-[72px]" href="#">
+<span class="material-symbols-outlined mb-1">assignment_turned_in</span>
+<span class="font-tag-label text-tag-label">Handover</span>
+</a>
+</nav>
+</body></html>

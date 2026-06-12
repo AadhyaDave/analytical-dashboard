@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Department Dashboard - Packaging - Investigation Mode</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#00424e",
+                    "on-background": "#d7e2ff",
+                    "text-secondary": "#8b9dc3",
+                    "bg-header": "#080f1e",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "bg-input": "#111d35",
+                    "primary-fixed": "#6ff6ff",
+                    "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                    "surface-bright": "#27395a",
+                    "on-tertiary-fixed-variant": "#703700",
+                    "error": "#ffb4ab",
+                    "on-primary-fixed-variant": "#004f53",
+                    "on-secondary-fixed": "#001f26",
+                    "status-running": "#16a34a",
+                    "status-idle": "#d97706",
+                    "secondary-fixed": "#acedff",
+                    "surface-variant": "#223555",
+                    "bg-overlay": "#050a14",
+                    "surface-container-highest": "#223555",
+                    "surface-dim": "#001330",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#1e3050",
+                    "secondary": "#4cd7f6",
+                    "border-default": "rgba(255, 255, 255, 0.06)",
+                    "background": "#001330",
+                    "on-secondary": "#003640",
+                    "status-planned": "#7c3aed",
+                    "on-error": "#690005",
+                    "primary-fixed-dim": "#36dae4",
+                    "primary-container": "#00c8d2",
+                    "data-quality": "#f59e0b",
+                    "bg-app": "#060c18",
+                    "on-primary-fixed": "#002022",
+                    "data-performance": "#4ade80",
+                    "surface-container-high": "#172a49",
+                    "on-surface-variant": "#bbc9ca",
+                    "text-primary": "#f0f4ff",
+                    "bg-card": "#0d1526",
+                    "surface-container": "#0b1f3e",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-primary": "#00373a",
+                    "inverse-primary": "#00696f",
+                    "on-tertiary-fixed": "#301400",
+                    "tertiary-container": "#ff9d4f",
+                    "surface-container-low": "#061b3a",
+                    "on-tertiary": "#4f2500",
+                    "error-container": "#93000a",
+                    "text-tertiary": "#4a5e8a",
+                    "secondary-container": "#03b5d3",
+                    "outline-variant": "#3c494a",
+                    "inverse-surface": "#d7e2ff",
+                    "on-surface": "#d7e2ff",
+                    "outline": "#859394",
+                    "tertiary": "#ffc49b",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "status-breakdown": "#dc2626",
+                    "surface-container-lowest": "#000d26",
+                    "primary": "#46e4ee",
+                    "on-tertiary-container": "#703700",
+                    "on-primary-container": "#004f53",
+                    "surface-tint": "#36dae4",
+                    "tertiary-fixed": "#ffdcc5",
+                    "surface": "#001330"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-horizontal": "16px",
+                    "2xl": "32px",
+                    "xs": "4px",
+                    "md": "12px",
+                    "xl": "24px",
+                    "component-height": "52px",
+                    "sm": "8px",
+                    "gutter": "12px",
+                    "base": "4px",
+                    "lg": "16px"
+            },
+            "fontFamily": {
+                    "card-subtitle": ["Roboto"],
+                    "delta-text": ["Roboto"],
+                    "body": ["Roboto"],
+                    "section-header": ["Roboto"],
+                    "tag-label": ["Roboto"],
+                    "medium-kpi": ["Roboto"],
+                    "hero-kpi": ["Roboto"],
+                    "card-title": ["Roboto"],
+                    "large-kpi": ["Roboto"]
+            },
+            "fontSize": {
+                    "card-subtitle": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "delta-text": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "body": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "section-header": ["11px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "tag-label": ["10px", {"lineHeight": "12px", "fontWeight": "600"}],
+                    "medium-kpi": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "hero-kpi": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300"}],
+                    "card-title": ["15px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "large-kpi": ["36px", {"lineHeight": "44px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #060c18;
+            color: #f0f4ff;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .pulse-amber {
+            animation: pulse-border-amber 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse-border-amber {
+            0%, 100% { border-color: rgba(245, 158, 11, 0.35); box-shadow: 0 0 10px rgba(245, 158, 11, 0.1); }
+            50% { border-color: rgba(245, 158, 11, 0.8); box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); }
+        }
+
+        .oee-ring {
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        
+        .oee-circle-bg {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.06);
+            stroke-width: 8;
+        }
+        
+        .oee-circle-val {
+            fill: none;
+            stroke-width: 8;
+            stroke-linecap: round;
+            transition: stroke-dasharray 1s ease-out;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen pb-[80px]">
+<!-- Top AppBar (Modified for specific back chevron/breadcrumb) -->
+<header class="bg-bg-header dark:bg-bg-header w-full top-0 sticky z-40 border-b border-border-default flex flex-col justify-center px-lg py-md h-[72px]">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-text-secondary text-[18px] cursor-pointer hover:text-primary transition-colors">chevron_left</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary uppercase tracking-wider">Plant A <span class="mx-1">&gt;</span> Departments</span>
+</div>
+<div class="flex justify-between items-center">
+<h1 class="font-card-title text-card-title font-bold text-primary dark:text-primary">Packaging</h1>
+<span class="material-symbols-outlined text-primary dark:text-primary hover:bg-surface-variant/20 transition-colors duration-200 rounded p-1 cursor-pointer">more_vert</span>
+</div>
+</header>
+<!-- Main Scrollable Canvas -->
+<main class="flex-1 px-margin-horizontal py-md flex flex-col gap-gutter max-w-2xl mx-auto w-full">
+<!-- Investigation Banner -->
+<div class="bg-surface-container border border-data-quality rounded-lg p-md flex items-center justify-between pulse-amber">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-data-quality animate-pulse">warning</span>
+<span class="font-tag-label text-tag-label text-data-quality tracking-wider uppercase">Investigating: Packaging</span>
+</div>
+<button class="bg-data-quality/10 text-data-quality font-card-subtitle text-card-subtitle px-3 py-1 rounded-full border border-data-quality/20 hover:bg-data-quality/20 transition-colors">
+                View Log
+            </button>
+</div>
+<!-- Operational Attention Areas -->
+<section class="flex flex-col gap-sm mt-2">
+<h2 class="font-section-header text-section-header text-text-secondary uppercase tracking-widest px-1">Attention Areas</h2>
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex flex-col gap-xs relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-status-breakdown"></div>
+<div class="pl-sm">
+<div class="flex justify-between items-start">
+<span class="font-card-title text-card-title text-text-primary">Line 3 Breakdown</span>
+<span class="font-tag-label text-tag-label text-status-breakdown bg-status-breakdown/10 px-2 py-1 rounded-full flex items-center gap-1">
+<span class="w-[6px] h-[6px] rounded-full bg-status-breakdown block"></span>
+                            Critical
+                        </span>
+</div>
+<span class="font-body text-body text-text-secondary mt-1 block">Spindle Failure</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary mt-2 block opacity-70">Duration: 42m</span>
+</div>
+</div>
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex flex-col gap-xs relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-status-idle"></div>
+<div class="pl-sm">
+<div class="flex justify-between items-start">
+<span class="font-card-title text-card-title text-text-primary">Material Shortage</span>
+<span class="font-tag-label text-tag-label text-status-idle bg-status-idle/10 px-2 py-1 rounded-full flex items-center gap-1">
+<span class="w-[6px] h-[6px] rounded-full bg-status-idle block"></span>
+                            Warning
+                        </span>
+</div>
+<span class="font-body text-body text-text-secondary mt-1 block">Corrugated Box Stock</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary mt-2 block opacity-70">Est. Impact: 15m</span>
+</div>
+</div>
+</section>
+<!-- Hero: OEE 3-Ring Gauge -->
+<section class="bg-bg-card border border-border-default rounded-xl p-xl flex flex-col items-center justify-center mt-4">
+<h2 class="font-section-header text-section-header text-text-secondary uppercase mb-6 self-start w-full text-center">Department OEE</h2>
+<div class="relative w-48 h-48">
+<svg class="w-full h-full oee-ring" viewbox="0 0 100 100">
+<!-- Availability Ring (Outer) -->
+<circle class="oee-circle-bg" cx="50" cy="50" r="42"></circle>
+<circle class="oee-circle-val" cx="50" cy="50" r="42" stroke="#16a34a" stroke-dasharray="225.1 264"></circle> <!-- ~85.3% of 2*pi*42 -->
+<!-- Performance Ring (Middle) - Red for Investigating state -->
+<circle class="oee-circle-bg" cx="50" cy="50" r="32"></circle>
+<circle class="oee-circle-val" cx="50" cy="50" r="32" stroke="#dc2626" stroke-dasharray="89.6 201"></circle> <!-- ~44.6% of 2*pi*32 -->
+<!-- Quality Ring (Inner) -->
+<circle class="oee-circle-bg" cx="50" cy="50" r="22"></circle>
+<circle class="oee-circle-val" cx="50" cy="50" r="22" stroke="#f59e0b" stroke-dasharray="137.9 138.2"></circle> <!-- ~99.8% of 2*pi*22 -->
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-hero-kpi text-hero-kpi text-status-breakdown leading-none">38<span class="text-[24px]">.0</span></span>
+<span class="font-tag-label text-tag-label text-text-secondary mt-1">%</span>
+</div>
+</div>
+<div class="flex justify-center gap-6 mt-8 w-full">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-sm bg-status-running"></div>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Avail</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-sm bg-status-breakdown"></div>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Perf</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-sm bg-data-quality"></div>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Qual</span>
+</div>
+</div>
+</section>
+<!-- KPI Grid -->
+<section class="grid grid-cols-2 gap-gutter">
+<!-- OEE -->
+<div class="bg-bg-input border border-border-default rounded-xl p-md flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary">OEE</span>
+<div class="flex items-end gap-2 mt-2">
+<span class="font-large-kpi text-large-kpi text-status-breakdown leading-none">38.0<span class="text-[18px]">%</span></span>
+</div>
+<div class="flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-[16px] text-status-breakdown">arrow_downward</span>
+<span class="font-delta-text text-delta-text text-status-breakdown">-12.4%</span>
+</div>
+</div>
+<!-- Availability -->
+<div class="bg-bg-input border border-border-default rounded-xl p-md flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary">AVAILABILITY</span>
+<div class="flex items-end gap-2 mt-2">
+<span class="font-large-kpi text-large-kpi text-text-primary leading-none">85.3<span class="text-[18px]">%</span></span>
+</div>
+<div class="flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-[16px] text-status-running">arrow_upward</span>
+<span class="font-delta-text text-delta-text text-status-running">+1.2%</span>
+</div>
+</div>
+<!-- Performance -->
+<div class="bg-bg-input border border-border-default rounded-xl p-md flex flex-col border-status-breakdown/30 relative overflow-hidden">
+<div class="absolute inset-0 bg-status-breakdown/5 z-0"></div>
+<div class="relative z-10 flex flex-col h-full">
+<span class="font-section-header text-section-header text-text-secondary">PERFORMANCE</span>
+<div class="flex items-end gap-2 mt-2">
+<span class="font-large-kpi text-large-kpi text-status-breakdown leading-none">44.6<span class="text-[18px]">%</span></span>
+</div>
+<div class="flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-[16px] text-status-breakdown">arrow_downward</span>
+<span class="font-delta-text text-delta-text text-status-breakdown">-22.8%</span>
+</div>
+</div>
+</div>
+<!-- Quality -->
+<div class="bg-bg-input border border-border-default rounded-xl p-md flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary">QUALITY</span>
+<div class="flex items-end gap-2 mt-2">
+<span class="font-large-kpi text-large-kpi text-text-primary leading-none">99.8<span class="text-[18px]">%</span></span>
+</div>
+<div class="flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-[16px] text-status-running">arrow_upward</span>
+<span class="font-delta-text text-delta-text text-status-running">+0.1%</span>
+</div>
+</div>
+</section>
+<!-- Sub-Sections -->
+<section class="flex flex-col gap-sm mt-4">
+<div class="flex justify-between items-center px-1">
+<h2 class="font-section-header text-section-header text-text-secondary uppercase tracking-widest">Sections (3)</h2>
+<span class="material-symbols-outlined text-text-secondary text-[18px]">sort</span>
+</div>
+<div class="grid grid-cols-1 gap-gutter">
+<!-- Primary Packaging -->
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex items-center justify-between relative overflow-hidden border-status-breakdown/20">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-status-breakdown"></div>
+<div class="pl-sm flex flex-col">
+<span class="font-card-title text-card-title text-text-primary">Primary Packaging</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary mt-1">2/3 Lines Running</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-medium-kpi text-medium-kpi text-status-breakdown">42.1%</span>
+<span class="font-tag-label text-tag-label text-text-secondary">OEE</span>
+</div>
+</div>
+<!-- Secondary Packaging -->
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex items-center justify-between relative overflow-hidden border-status-breakdown/20">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-status-breakdown"></div>
+<div class="pl-sm flex flex-col">
+<span class="font-card-title text-card-title text-text-primary">Secondary Packaging</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary mt-1">1/2 Lines Running</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-medium-kpi text-medium-kpi text-status-breakdown">35.2%</span>
+<span class="font-tag-label text-tag-label text-text-secondary">OEE</span>
+</div>
+</div>
+<!-- Palletizing -->
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex items-center justify-between relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-status-running"></div>
+<div class="pl-sm flex flex-col">
+<span class="font-card-title text-card-title text-text-primary">Palletizing</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary mt-1">2/2 Lines Running</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-medium-kpi text-medium-kpi text-status-running">88.4%</span>
+<span class="font-tag-label text-tag-label text-text-secondary">OEE</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Analytics Links -->
+<section class="flex flex-col gap-sm mt-4 mb-4">
+<h2 class="font-section-header text-section-header text-text-secondary uppercase tracking-widest px-1">Analytics &amp; Actions</h2>
+<div class="grid grid-cols-2 gap-gutter">
+<button class="bg-bg-card border border-border-default hover:bg-surface-variant/20 transition-colors duration-200 rounded-xl p-md flex flex-col items-start gap-2 h-component-height justify-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">insights</span>
+<span class="font-body text-body text-text-primary">OEE Trend</span>
+</div>
+</button>
+<button class="bg-bg-card border border-border-default hover:bg-surface-variant/20 transition-colors duration-200 rounded-xl p-md flex flex-col items-start gap-2 h-component-height justify-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
+<span class="font-body text-body text-text-primary">Shift Intel</span>
+</div>
+</button>
+<button class="bg-bg-card border border-border-default hover:bg-surface-variant/20 transition-colors duration-200 rounded-xl p-md flex flex-col items-start gap-2 h-component-height justify-center relative overflow-hidden">
+<div class="absolute right-3 top-3 w-2 h-2 rounded-full bg-status-breakdown animate-pulse"></div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-status-breakdown text-[20px]">notifications_active</span>
+<span class="font-body text-body text-text-primary">Active Alerts</span>
+</div>
+</button>
+<button class="bg-bg-card border border-border-default hover:bg-surface-variant/20 transition-colors duration-200 rounded-xl p-md flex flex-col items-start gap-2 h-component-height justify-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">track_changes</span>
+<span class="font-body text-body text-text-primary">Targets</span>
+</div>
+</button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Generated from JSON) -->
+<nav class="bg-bg-card dark:bg-bg-card fixed bottom-0 w-full z-50 h-[80px] border-t border-border-default flex justify-around items-center px-lg pb-safe md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-sm hover:text-primary active:scale-95 transition-transform w-[64px]" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-tag-label text-tag-label">Situation</span>
+</a>
+<!-- 'Floor' is semantically active for a Department Dashboard -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl p-sm active:scale-95 transition-transform w-[64px]" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">factory</span>
+<span class="font-tag-label text-tag-label">Floor</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-sm hover:text-primary active:scale-95 transition-transform w-[64px]" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">visibility</span>
+<span class="font-tag-label text-tag-label">Watchlist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-sm hover:text-primary active:scale-95 transition-transform w-[64px]" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">notifications</span>
+<span class="font-tag-label text-tag-label">Alerts</span>
+</a>
+</nav>
+</body></html>

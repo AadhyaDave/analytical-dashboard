@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Situation Room - Alerts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#acedff",
+                        "outline-variant": "#3c494a",
+                        "primary-fixed": "#6ff6ff",
+                        "on-secondary-container": "#00424e",
+                        "error-container": "#93000a",
+                        "surface-tint": "#36dae4",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-background": "#d7e2ff",
+                        "text-primary": "#f0f4ff",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#004f53",
+                        "surface-bright": "#27395a",
+                        "on-surface": "#d7e2ff",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "inverse-on-surface": "#1e3050",
+                        "on-surface-variant": "#bbc9ca",
+                        "outline": "#859394",
+                        "status-planned": "#7c3aed",
+                        "on-tertiary-container": "#703700",
+                        "primary-fixed-dim": "#36dae4",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "surface-container-lowest": "#000d26",
+                        "on-primary-fixed-variant": "#004f53",
+                        "bg-overlay": "#050a14",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "tertiary": "#ffc49b",
+                        "border-default": "rgba(255, 255, 255, 0.06)",
+                        "inverse-primary": "#00696f",
+                        "surface-container-low": "#061b3a",
+                        "surface-container": "#0b1f3e",
+                        "on-secondary-fixed": "#001f26",
+                        "status-running": "#16a34a",
+                        "bg-header": "#080f1e",
+                        "bg-input": "#111d35",
+                        "surface-dim": "#001330",
+                        "bg-app": "#060c18",
+                        "on-tertiary-fixed": "#301400",
+                        "background": "#001330",
+                        "tertiary-container": "#ff9d4f",
+                        "status-breakdown": "#dc2626",
+                        "secondary": "#4cd7f6",
+                        "primary-container": "#00c8d2",
+                        "surface-container-high": "#172a49",
+                        "data-performance": "#4ade80",
+                        "inverse-surface": "#d7e2ff",
+                        "status-idle": "#d97706",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-variant": "#223555",
+                        "on-primary-fixed": "#002022",
+                        "on-tertiary": "#4f2500",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "surface": "#001330",
+                        "primary": "#46e4ee",
+                        "text-secondary": "#8b9dc3",
+                        "bg-card": "#0d1526",
+                        "on-primary": "#00373a",
+                        "on-secondary": "#003640",
+                        "text-tertiary": "#4a5e8a",
+                        "data-quality": "#f59e0b",
+                        "surface-container-highest": "#223555",
+                        "secondary-container": "#03b5d3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "24px",
+                        "lg": "16px",
+                        "sm": "8px",
+                        "component-height": "52px",
+                        "base": "4px",
+                        "2xl": "32px",
+                        "xs": "4px",
+                        "margin-horizontal": "16px",
+                        "md": "12px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "delta-text": ["Roboto"],
+                        "body": ["Roboto"],
+                        "section-header": ["Roboto"],
+                        "large-kpi": ["Roboto"],
+                        "card-subtitle": ["Roboto"],
+                        "hero-kpi": ["Roboto"],
+                        "medium-kpi": ["Roboto"],
+                        "tag-label": ["Roboto"],
+                        "card-title": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "delta-text": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "section-header": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "large-kpi": ["36px", { "lineHeight": "44px", "fontWeight": "400" }],
+                        "card-subtitle": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "hero-kpi": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "medium-kpi": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "tag-label": ["10px", { "lineHeight": "12px", "fontWeight": "600" }],
+                        "card-title": ["15px", { "lineHeight": "20px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #060c18;
+            color: #f0f4ff;
+        }
+        /* Custom Scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #001330; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #223555; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3c494a; 
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app text-text-primary antialiased pt-[52px] pb-[52px] md:pb-0 h-screen overflow-hidden flex flex-col font-body">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-margin-horizontal h-component-height bg-bg-header dark:bg-bg-header border-b border-border-default">
+<div class="flex items-center gap-sm text-text-secondary hover:bg-surface-variant/50 cursor-pointer p-sm rounded transition-opacity opacity-80">
+<span class="material-symbols-outlined font-section-header text-section-header text-primary dark:text-primary" style="font-variation-settings: 'FILL' 0;">factory</span>
+</div>
+<h1 class="font-section-header text-section-header uppercase tracking-widest text-secondary dark:text-secondary font-bold text-center flex-1">
+            Situation Room
+        </h1>
+<div class="flex items-center gap-sm text-text-secondary hover:bg-surface-variant/50 cursor-pointer p-sm rounded transition-opacity">
+<span class="material-symbols-outlined text-primary dark:text-primary" style="font-variation-settings: 'FILL' 0;">search</span>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto w-full px-margin-horizontal py-lg md:ml-80">
+<!-- Page Title & Search -->
+<div class="mb-xl flex flex-col gap-sm">
+<h2 class="font-medium-kpi text-medium-kpi text-text-primary">Alerts</h2>
+<div class="relative w-full h-component-height bg-bg-input rounded-lg border border-border-default flex items-center px-lg focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-text-secondary mr-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-text-primary font-body text-body w-full placeholder:text-text-secondary" placeholder="Search alerts..." type="text"/>
+</div>
+</div>
+<!-- Tabs -->
+<div class="flex overflow-x-auto gap-sm mb-lg pb-xs scrollbar-hide">
+<button class="flex-shrink-0 px-lg py-xs rounded-full bg-surface-container-highest text-text-primary border-0.5 border-border-default font-tag-label text-tag-label flex items-center gap-xs">
+                Critical <span class="bg-status-breakdown text-white px-1.5 py-0.5 rounded-full text-[9px] leading-none">12</span>
+</button>
+<button class="flex-shrink-0 px-lg py-xs rounded-full bg-transparent text-text-secondary border border-border-default hover:bg-surface-variant/50 transition-colors font-tag-label text-tag-label flex items-center gap-xs">
+                Warning <span class="bg-surface-variant text-text-primary px-1.5 py-0.5 rounded-full text-[9px] leading-none">8</span>
+</button>
+<button class="flex-shrink-0 px-lg py-xs rounded-full bg-transparent text-text-secondary border border-border-default hover:bg-surface-variant/50 transition-colors font-tag-label text-tag-label flex items-center gap-xs">
+                Info <span class="bg-surface-variant text-text-primary px-1.5 py-0.5 rounded-full text-[9px] leading-none">4</span>
+</button>
+<button class="flex-shrink-0 px-lg py-xs rounded-full bg-transparent text-text-secondary border border-border-default hover:bg-surface-variant/50 transition-colors font-tag-label text-tag-label">
+                Resolved
+            </button>
+</div>
+<!-- Alert Cards List -->
+<div class="flex flex-col gap-gutter pb-xl">
+<!-- Critical Alert -->
+<div class="bg-bg-card rounded-xl border border-border-default p-lg relative overflow-hidden flex flex-col gap-sm">
+<!-- Status Bar Left -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-breakdown"></div>
+<div class="flex justify-between items-start ml-2">
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-status-breakdown flex items-center gap-xs mb-1">
+<span class="material-symbols-outlined text-[14px]">warning</span> CRITICAL
+                        </span>
+<h3 class="font-card-title text-card-title text-text-primary">Machine 7 Breakdown</h3>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary mt-0.5">Line 3 · Plant C</p>
+</div>
+<span class="font-tag-label text-tag-label text-text-tertiary">47m ago</span>
+</div>
+<div class="ml-2 mt-2 flex justify-between items-end">
+<div class="flex flex-col gap-1">
+<span class="font-delta-text text-delta-text text-status-breakdown">-3.2% OEE Impact</span>
+<div class="inline-flex items-center gap-1.5 bg-surface-variant/30 px-2 py-1 rounded-full w-fit mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-tag-label text-tag-label text-text-primary">Assigned (Suresh M.)</span>
+</div>
+</div>
+<button class="text-primary hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Warning Alert 1 -->
+<div class="bg-bg-card rounded-xl border border-border-default p-lg relative overflow-hidden flex flex-col gap-sm">
+<!-- Status Bar Left -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-data-quality"></div>
+<div class="flex justify-between items-start ml-2">
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-data-quality flex items-center gap-xs mb-1">
+<span class="material-symbols-outlined text-[14px]">priority_high</span> WARNING
+                        </span>
+<h3 class="font-card-title text-card-title text-text-primary">Sustained Underperformance</h3>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary mt-0.5">Line 4 · Plant B</p>
+</div>
+<span class="font-tag-label text-tag-label text-text-tertiary">2h 15m ago</span>
+</div>
+<div class="ml-2 mt-2 flex justify-between items-end">
+<div class="flex flex-col gap-1">
+<span class="font-delta-text text-delta-text text-data-quality">-1.8% OEE Impact</span>
+<div class="inline-flex items-center gap-1.5 bg-surface-variant/30 px-2 py-1 rounded-full w-fit mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-text-secondary"></span>
+<span class="font-tag-label text-tag-label text-text-secondary">Acknowledged</span>
+</div>
+</div>
+<button class="text-primary hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Warning Alert 2 -->
+<div class="bg-bg-card rounded-xl border border-border-default p-lg relative overflow-hidden flex flex-col gap-sm">
+<!-- Status Bar Left -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-data-quality"></div>
+<div class="flex justify-between items-start ml-2">
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-data-quality flex items-center gap-xs mb-1">
+<span class="material-symbols-outlined text-[14px]">priority_high</span> WARNING
+                        </span>
+<h3 class="font-card-title text-card-title text-text-primary">Material Shortage</h3>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary mt-0.5">Packaging · Plant A</p>
+</div>
+<span class="font-tag-label text-tag-label text-text-tertiary">1h ago</span>
+</div>
+<div class="ml-2 mt-2 flex justify-between items-end">
+<div class="flex flex-col gap-1">
+<span class="font-delta-text text-delta-text text-data-quality">-1.2% OEE Impact</span>
+<div class="inline-flex items-center gap-1.5 bg-surface-variant/30 px-2 py-1 rounded-full w-fit mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-status-idle"></span>
+<span class="font-tag-label text-tag-label text-status-idle">Triggered</span>
+</div>
+</div>
+<button class="text-primary hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- SideNav (Desktop) -->
+<aside class="hidden md:flex flex-col h-full w-80 rounded-r-none border-r border-border-emphasis bg-surface-container-lowest dark:bg-surface-container-lowest fixed left-0 top-[52px] bottom-0 z-40 py-lg">
+<!-- Header -->
+<div class="flex items-center gap-md px-lg mb-xl">
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden flex-shrink-0">
+<img alt="Operator Profile" class="w-full h-full object-cover" data-alt="A low-key, high-contrast portrait of an industrial floor manager in a dark control room setting, cool blue light illuminating their face slightly, professional and serious expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB88HAPb4q4DKD2JWEVy8DsueEs6hFa_e7DWYSDHy6eH4fGwmX9P21MmAQcJXP54HNmJsW_dFjdW6PBcai3raJYrm0AFou5QCRQIFk1kTWBJ3GtUmgY3ed8ehRtG674Hhnq5YHZORjGyqmOyYkOeoiiENRUb1ODHbw-J-SD6fhWO2LiWVYaZ0t9x33Mq4UV6qnF0i9SeW-S2EOQ7NdGsNB8HoU64F3lI6aMa2h5g7otGNmwQo_V_J6GSxiPj2-wJqZIXauDEWl80RR3"/>
+</div>
+<div class="flex flex-col">
+<span class="font-card-title text-card-title text-text-primary">Shift Lead Alpha</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Zone 4 Operations</span>
+<span class="font-tag-label text-tag-label text-text-tertiary mt-0.5">v2.4.0-industrial</span>
+</div>
+</div>
+<!-- Nav Links -->
+<nav class="flex flex-col gap-xs flex-1">
+<a class="flex items-center gap-md px-lg py-md text-text-secondary hover:bg-surface-variant/30 transition-colors font-body text-body" href="#">
+<span class="material-symbols-outlined">domain</span>
+                Plant Overview
+            </a>
+<a class="flex items-center gap-md px-lg py-md text-text-secondary hover:bg-surface-variant/30 transition-colors font-body text-body" href="#">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+                Production Lines
+            </a>
+<a class="flex items-center gap-md px-lg py-md text-text-secondary hover:bg-surface-variant/30 transition-colors font-body text-body" href="#">
+<span class="material-symbols-outlined">build</span>
+                Maintenance Log
+            </a>
+<a class="flex items-center gap-md px-lg py-md text-text-secondary hover:bg-surface-variant/30 transition-colors font-body text-body" href="#">
+<span class="material-symbols-outlined">bolt</span>
+                Energy Analytics
+            </a>
+<a class="flex items-center gap-md px-lg py-md bg-surface-container-highest text-primary border-l-4 border-primary transition-colors font-body text-body translate-x-1" href="#">
+<span class="material-symbols-outlined">notifications</span>
+                Alerts
+            </a>
+</nav>
+<div class="mt-auto px-lg pt-md">
+<a class="flex items-center gap-md py-md text-text-secondary hover:bg-surface-variant/30 transition-colors font-body text-body" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</div>
+</aside>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-sm h-component-height bg-bg-app dark:bg-bg-app border-t border-border-default">
+<a class="flex flex-col items-center justify-center text-text-secondary hover:text-primary transition-colors flex-1 h-full" href="#">
+<span class="material-symbols-outlined mb-0.5 text-[20px]" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-tag-label text-tag-label">Situation</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary hover:text-primary transition-colors flex-1 h-full" href="#">
+<span class="material-symbols-outlined mb-0.5 text-[20px]" style="font-variation-settings: 'FILL' 0;">account_tree</span>
+<span class="font-tag-label text-tag-label">Floor</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary hover:text-primary transition-colors flex-1 h-full" href="#">
+<span class="material-symbols-outlined mb-0.5 text-[20px]" style="font-variation-settings: 'FILL' 0;">visibility</span>
+<span class="font-tag-label text-tag-label">Watchlist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-surface-container rounded-lg px-3 py-1 flex-1 h-[40px] mt-1 scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined mb-0.5 text-[20px]" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="font-tag-label text-tag-label">Alerts</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shift Sign-Off - Opus One Mobile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "status-running": "#16a34a",
+                        "on-primary-fixed-variant": "#004f53",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "surface-dim": "#001330",
+                        "bg-header": "#080f1e",
+                        "data-quality": "#f59e0b",
+                        "outline-variant": "#3c494a",
+                        "tertiary-fixed": "#ffdcc5",
+                        "border-default": "rgba(255, 255, 255, 0.06)",
+                        "on-primary-fixed": "#002022",
+                        "primary-fixed": "#6ff6ff",
+                        "surface-container": "#0b1f3e",
+                        "on-secondary": "#003640",
+                        "on-error-container": "#ffdad6",
+                        "text-secondary": "#8b9dc3",
+                        "bg-input": "#111d35",
+                        "primary-container": "#00c8d2",
+                        "inverse-primary": "#00696f",
+                        "on-surface": "#d7e2ff",
+                        "surface-variant": "#223555",
+                        "on-secondary-container": "#00424e",
+                        "on-tertiary-fixed": "#301400",
+                        "background": "#001330",
+                        "on-secondary-fixed": "#001f26",
+                        "primary": "#46e4ee",
+                        "on-primary": "#00373a",
+                        "secondary-fixed": "#acedff",
+                        "bg-overlay": "#050a14",
+                        "bg-app": "#060c18",
+                        "error-container": "#93000a",
+                        "on-primary-container": "#004f53",
+                        "bg-card": "#0d1526",
+                        "on-tertiary-container": "#703700",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#223555",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "tertiary": "#ffc49b",
+                        "inverse-surface": "#d7e2ff",
+                        "surface-tint": "#36dae4",
+                        "surface-container-lowest": "#000d26",
+                        "status-idle": "#d97706",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-bright": "#27395a",
+                        "tertiary-container": "#ff9d4f",
+                        "secondary-container": "#03b5d3",
+                        "status-planned": "#7c3aed",
+                        "text-tertiary": "#4a5e8a",
+                        "surface-container-low": "#061b3a",
+                        "on-tertiary": "#4f2500",
+                        "on-background": "#d7e2ff",
+                        "on-error": "#690005",
+                        "text-primary": "#f0f4ff",
+                        "surface": "#001330",
+                        "data-performance": "#4ade80",
+                        "inverse-on-surface": "#1e3050",
+                        "on-surface-variant": "#bbc9ca",
+                        "outline": "#859394",
+                        "surface-container-high": "#172a49",
+                        "secondary": "#4cd7f6",
+                        "status-breakdown": "#dc2626",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "primary-fixed-dim": "#36dae4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "16px",
+                        "xl": "24px",
+                        "gutter": "12px",
+                        "xs": "4px",
+                        "margin-horizontal": "16px",
+                        "base": "4px",
+                        "sm": "8px",
+                        "md": "12px",
+                        "component-height": "52px",
+                        "2xl": "32px"
+                    },
+                    "fontFamily": {
+                        "tag-label": ["Roboto"],
+                        "hero-kpi": ["Roboto"],
+                        "large-kpi": ["Roboto"],
+                        "medium-kpi": ["Roboto"],
+                        "delta-text": ["Roboto"],
+                        "card-title": ["Roboto"],
+                        "section-header": ["Roboto"],
+                        "card-subtitle": ["Roboto"],
+                        "body": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "tag-label": ["10px", { "lineHeight": "12px", "fontWeight": "600" }],
+                        "hero-kpi": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "large-kpi": ["36px", { "lineHeight": "44px", "fontWeight": "400" }],
+                        "medium-kpi": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "delta-text": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "card-title": ["15px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "section-header": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "card-subtitle": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for deep dark industrial look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #060c18;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #223555;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3c494a;
+        }
+        
+        /* Custom Checkbox Styling */
+        input[type="checkbox"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: transparent;
+            margin: 0;
+            font: inherit;
+            color: currentColor;
+            width: 20px;
+            height: 20px;
+            border: 1.5px solid #859394;
+            border-radius: 4px;
+            display: grid;
+            place-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        input[type="checkbox"]::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em #060c18;
+            background-color: #060c18;
+            transform-origin: center;
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+        }
+        input[type="checkbox"]:checked {
+            background-color: #46e4ee;
+            border-color: #46e4ee;
+        }
+        input[type="checkbox"]:checked::before {
+            transform: scale(1);
+        }
+        input[type="checkbox"]:disabled {
+            border-color: #223555;
+            cursor: not-allowed;
+        }
+        input[type="checkbox"]:checked:disabled {
+            background-color: #223555;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app text-text-primary font-body antialiased selection:bg-primary/30 selection:text-primary min-h-screen flex flex-col pb-24 pt-[52px]">
+<!-- TopAppBar -->
+<header class="bg-bg-header dark:bg-bg-header fixed top-0 w-full z-50 flex justify-between items-center px-margin-horizontal h-component-height border-b border-border-default transition-colors duration-200">
+<div class="flex items-center gap-sm">
+<button class="text-text-secondary hover:bg-surface-variant/50 p-sm rounded-full transition-colors duration-200 flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-medium-kpi text-medium-kpi text-primary uppercase tracking-wider">Shift Handover</h1>
+</div>
+<button class="text-text-secondary hover:bg-surface-variant/50 p-sm rounded-full transition-colors duration-200 flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">more_vert</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin-horizontal py-lg flex flex-col gap-gutter max-w-2xl mx-auto w-full">
+<!-- Summary Dashboard (Bento Layout) -->
+<section class="grid grid-cols-2 gap-gutter">
+<div class="col-span-2 bg-bg-card border border-border-default rounded-xl p-lg flex flex-col gap-sm">
+<h2 class="font-section-header text-section-header text-text-secondary uppercase tracking-widest">Shift Performance Summary</h2>
+<div class="flex justify-between items-end">
+<div class="flex flex-col">
+<span class="font-hero-kpi text-hero-kpi text-primary">87.4<span class="text-large-kpi">%</span></span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Overall Equipment Effectiveness</span>
+</div>
+<div class="flex flex-col items-end gap-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-status-running text-[16px]" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span class="font-delta-text text-delta-text text-status-running">+2.1% vs target</span>
+</div>
+<div class="bg-status-running/12 px-sm py-1 rounded-full flex items-center gap-xs">
+<div class="w-1.5 h-1.5 rounded-full bg-status-running"></div>
+<span class="font-tag-label text-tag-label text-status-running uppercase">Target Exceeded</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex flex-col justify-between">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Achievement</span>
+<div class="mt-sm">
+<span class="font-large-kpi text-large-kpi text-text-primary">85.5%</span>
+</div>
+</div>
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex flex-col justify-between border-l-4 border-l-status-breakdown">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Incidents / Open</span>
+<div class="mt-sm flex items-end gap-xs">
+<span class="font-large-kpi text-large-kpi text-status-breakdown">1</span>
+<span class="font-medium-kpi text-medium-kpi text-data-quality mb-1">/ 3</span>
+</div>
+</div>
+</section>
+<!-- Verification Checklist -->
+<section class="bg-bg-card border border-border-default rounded-xl p-lg flex flex-col gap-md mt-sm">
+<div class="flex items-center justify-between border-b border-border-default pb-sm">
+<h2 class="font-section-header text-section-header text-text-secondary uppercase tracking-widest">Verification Checklist</h2>
+<span class="font-tag-label text-tag-label text-primary bg-primary/10 px-2 py-1 rounded">2 / 5 PENDING</span>
+</div>
+<div class="flex flex-col gap-md">
+<label class="flex items-center gap-md cursor-pointer group">
+<input checked="" class="mt-0.5" disabled="" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-card-title text-card-title text-text-primary opacity-60 line-through">Production Performance Reviewed</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary opacity-60">Verified by System</span>
+</div>
+</label>
+<label class="flex items-center gap-md cursor-pointer group">
+<input checked="" class="mt-0.5" disabled="" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-card-title text-card-title text-text-primary opacity-60 line-through">Quality Metrics Validated</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary opacity-60">Verified by QA Node</span>
+</div>
+</label>
+<label class="flex items-center gap-md cursor-pointer group">
+<input checked="" class="mt-0.5" disabled="" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-card-title text-card-title text-text-primary opacity-60 line-through">Maintenance Log Verified</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary opacity-60">No outstanding criticals</span>
+</div>
+</label>
+<label class="flex items-center gap-md cursor-pointer group">
+<input checked="" class="mt-0.5" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-card-title text-card-title text-text-primary group-hover:text-primary transition-colors">Open Issues Handed Over</span>
+<span class="font-card-subtitle text-card-subtitle text-data-quality">3 items require attention</span>
+</div>
+</label>
+<label class="flex items-center gap-md cursor-pointer group">
+<input checked="" class="mt-0.5" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-card-title text-card-title text-text-primary group-hover:text-primary transition-colors">Safety Protocol Confirmed</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">All zones secure</span>
+</div>
+</label>
+</div>
+</section>
+<!-- Digital Confirmation Block -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-gutter mt-sm">
+<!-- Outgoing -->
+<div class="bg-surface-dim border border-border-default rounded-xl p-md flex flex-col gap-sm relative overflow-hidden">
+<div class="absolute right-0 top-0 w-16 h-16 bg-status-running/10 rounded-bl-full flex items-start justify-end p-2">
+<span class="material-symbols-outlined text-status-running" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="font-section-header text-section-header text-text-secondary uppercase">Outgoing Supervisor</span>
+<div class="flex items-center gap-sm mt-xs">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center font-card-title text-card-title text-primary border border-border-default">SM</div>
+<div class="flex flex-col">
+<span class="font-card-title text-card-title text-text-primary">Suresh M.</span>
+<span class="font-card-subtitle text-card-subtitle text-status-running">Signed: 14:05 PM</span>
+</div>
+</div>
+<div class="mt-sm bg-bg-app border border-border-default rounded p-sm flex items-center justify-center opacity-60">
+<span class="font-[brush-script-mt,cursive] text-2xl text-text-secondary italic">Suresh M.</span>
+</div>
+</div>
+<!-- Incoming -->
+<div class="bg-bg-input border border-primary/30 rounded-xl p-md flex flex-col gap-sm relative">
+<div class="absolute right-2 top-2">
+<span class="flex h-3 w-3 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+</span>
+</div>
+<span class="font-section-header text-section-header text-primary uppercase">Incoming Supervisor</span>
+<div class="flex items-center gap-sm mt-xs">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center font-card-title text-card-title text-text-secondary border border-border-default">PK</div>
+<div class="flex flex-col">
+<span class="font-card-title text-card-title text-text-primary">Priya K.</span>
+<span class="font-card-subtitle text-card-subtitle text-data-quality">Awaiting Signature</span>
+</div>
+</div>
+<button class="mt-sm w-full h-12 bg-surface-variant hover:bg-surface-bright border border-border-emphasis rounded flex items-center justify-center gap-xs transition-colors text-primary font-card-title">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">draw</span>
+                    Tap to Sign
+                </button>
+</div>
+</section>
+<!-- Submit Action -->
+<div class="mt-lg mb-xl">
+<button class="w-full h-component-height bg-primary hover:bg-primary-fixed-dim text-on-primary font-medium-kpi text-[18px] rounded-lg transition-colors flex items-center justify-center gap-sm shadow-[0_0_20px_rgba(70,228,238,0.15)]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+                Complete &amp; Submit Handover
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-bg-app dark:bg-bg-app fixed bottom-0 left-0 w-full flex justify-around items-center px-margin-horizontal py-sm z-50 border-t border-border-default">
+<!-- Operations (Active) -->
+<button class="flex flex-col items-center justify-center bg-surface-container text-primary rounded-xl px-sm py-xs scale-95 transition-transform duration-150 w-16">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+<span class="font-tag-label text-tag-label">Operations</span>
+</button>
+<!-- Assets (Inactive) -->
+<button class="flex flex-col items-center justify-center text-text-secondary hover:text-primary-fixed-dim px-sm py-xs transition-colors w-16">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">factory</span>
+<span class="font-tag-label text-tag-label">Assets</span>
+</button>
+<!-- Issues (Inactive) -->
+<button class="flex flex-col items-center justify-center text-text-secondary hover:text-primary-fixed-dim px-sm py-xs transition-colors w-16">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">error</span>
+<span class="font-tag-label text-tag-label">Issues</span>
+</button>
+<!-- Handover (Inactive - Semantic intent maps better to Operations for this specific floor flow based on active state request) -->
+<button class="flex flex-col items-center justify-center text-text-secondary hover:text-primary-fixed-dim px-sm py-xs transition-colors w-16">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">assignment_turned_in</span>
+<span class="font-tag-label text-tag-label">Handover</span>
+</button>
+</nav>
+<script>
+        // Simple script to handle checkbox interactions visually if needed
+        document.querySelectorAll('input[type="checkbox"]:not(:disabled)').forEach(cb => {
+            cb.addEventListener('change', (e) => {
+                const label = e.target.nextElementSibling.querySelector('.text-card-title');
+                if(e.target.checked) {
+                    // Logic for checked state visuals if required beyond CSS
+                }
+            });
+        });
+    </script>
+</body></html>

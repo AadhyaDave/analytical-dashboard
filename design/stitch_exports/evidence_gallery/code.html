@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OPUS ONE - Evidence Gallery</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#46e4ee",
+                      "text-primary": "#f0f4ff",
+                      "on-tertiary-fixed-variant": "#703700",
+                      "on-background": "#d7e2ff",
+                      "secondary-fixed": "#acedff",
+                      "tertiary": "#ffc49b",
+                      "inverse-primary": "#00696f",
+                      "secondary": "#4cd7f6",
+                      "on-error-container": "#ffdad6",
+                      "data-performance": "#4ade80",
+                      "surface-container": "#0b1f3e",
+                      "background": "#001330",
+                      "tertiary-fixed": "#ffdcc5",
+                      "surface-variant": "#223555",
+                      "data-quality": "#f59e0b",
+                      "on-primary": "#00373a",
+                      "secondary-container": "#03b5d3",
+                      "on-primary-fixed-variant": "#004f53",
+                      "status-idle": "#d97706",
+                      "status-breakdown": "#dc2626",
+                      "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                      "surface-container-highest": "#223555",
+                      "bg-card": "#0d1526",
+                      "status-planned": "#7c3aed",
+                      "status-running": "#16a34a",
+                      "on-tertiary-fixed": "#301400",
+                      "surface-bright": "#27395a",
+                      "bg-header": "#080f1e",
+                      "surface-container-high": "#172a49",
+                      "bg-input": "#111d35",
+                      "error": "#ffb4ab",
+                      "text-secondary": "#8b9dc3",
+                      "on-tertiary-container": "#703700",
+                      "outline": "#859394",
+                      "surface-container-lowest": "#000d26",
+                      "surface-container-low": "#061b3a",
+                      "on-error": "#690005",
+                      "on-tertiary": "#4f2500",
+                      "text-tertiary": "#4a5e8a",
+                      "tertiary-fixed-dim": "#ffb783",
+                      "bg-overlay": "#050a14",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "surface-dim": "#001330",
+                      "tertiary-container": "#ff9d4f",
+                      "on-secondary-fixed": "#001f26",
+                      "inverse-on-surface": "#1e3050",
+                      "bg-app": "#060c18",
+                      "surface-tint": "#36dae4",
+                      "on-surface-variant": "#bbc9ca",
+                      "error-container": "#93000a",
+                      "on-secondary": "#003640",
+                      "on-primary-fixed": "#002022",
+                      "on-surface": "#d7e2ff",
+                      "surface": "#001330",
+                      "primary-fixed-dim": "#36dae4",
+                      "primary-fixed": "#6ff6ff",
+                      "inverse-surface": "#d7e2ff",
+                      "primary-container": "#00c8d2",
+                      "outline-variant": "#3c494a",
+                      "border-default": "rgba(255, 255, 255, 0.06)",
+                      "on-secondary-container": "#00424e",
+                      "secondary-fixed-dim": "#4cd7f6",
+                      "on-primary-container": "#004f53"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "12px",
+                      "2xl": "32px",
+                      "xs": "4px",
+                      "margin-horizontal": "16px",
+                      "sm": "8px",
+                      "xl": "24px",
+                      "component-height": "52px",
+                      "base": "4px",
+                      "lg": "16px",
+                      "gutter": "12px"
+              },
+              "fontFamily": {
+                      "medium-kpi": ["Roboto"],
+                      "section-header": ["Roboto"],
+                      "body": ["Roboto"],
+                      "tag-label": ["Roboto"],
+                      "delta-text": ["Roboto"],
+                      "card-title": ["Roboto"],
+                      "large-kpi": ["Roboto"],
+                      "hero-kpi": ["Roboto"],
+                      "card-subtitle": ["Roboto"]
+              },
+              "fontSize": {
+                      "medium-kpi": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                      "section-header": ["11px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "body": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "tag-label": ["10px", {"lineHeight": "12px", "fontWeight": "600"}],
+                      "delta-text": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                      "card-title": ["15px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "large-kpi": ["36px", {"lineHeight": "44px", "fontWeight": "400"}],
+                      "hero-kpi": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300"}],
+                      "card-subtitle": ["12px", {"lineHeight": "16px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for deep dark theme */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app text-on-surface font-body h-screen flex overflow-hidden">
+<!-- Desktop Navigation Drawer (Hidden on Mobile) -->
+<aside class="hidden md:flex bg-bg-app border-r border-border-default h-full w-72 flex-col py-xl shrink-0 z-40">
+<!-- Header: Profile -->
+<div class="px-margin-horizontal mb-xl flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest border border-border-default flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-text-secondary text-2xl" data-icon="person">person</span>
+</div>
+<div>
+<h2 class="font-card-title text-card-title text-text-primary">Lead Technician</h2>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary">Site B - Production</p>
+<div class="mt-xs inline-flex items-center gap-xs px-2 py-0.5 rounded-full bg-status-running/10 border border-status-running/20">
+<div class="w-1.5 h-1.5 rounded-full bg-status-running"></div>
+<span class="font-tag-label text-tag-label text-status-running">Active Shift</span>
+</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 flex flex-col gap-xs px-sm">
+<a class="flex items-center gap-md px-margin-horizontal h-component-height rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body text-body">Dashboard</span>
+</a>
+<!-- Active State: Alert History -->
+<a class="flex items-center gap-md px-margin-horizontal h-component-height rounded-DEFAULT bg-surface-container-highest text-primary border-l-4 border-primary transition-colors duration-200 ease-in-out shadow-[inset_1px_0_0_0_rgba(255,255,255,0.06)]" href="#">
+<span class="material-symbols-outlined" data-icon="work_history">work_history</span>
+<span class="font-body text-body">Alert History</span>
+</a>
+<a class="flex items-center gap-md px-margin-horizontal h-component-height rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-body text-body">Technician Status</span>
+</a>
+<a class="flex items-center gap-md px-margin-horizontal h-component-height rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-body text-body">Shift Logs</span>
+</a>
+<a class="flex items-center gap-md px-margin-horizontal h-component-height rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body text-body">System Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col min-w-0 h-full relative">
+<!-- TopAppBar -->
+<header class="bg-bg-header fixed top-0 w-full z-50 border-b border-border-default md:sticky md:w-auto">
+<div class="flex items-center justify-between px-margin-horizontal h-component-height">
+<div class="flex items-center gap-md">
+<button class="md:hidden text-primary hover:bg-surface-container-highest transition-colors active:opacity-80 p-sm rounded-DEFAULT flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-section-header text-section-header tracking-widest text-primary uppercase">OPUS ONE</h1>
+</div>
+<button class="text-primary hover:bg-surface-container-highest transition-colors active:opacity-80 p-sm rounded-DEFAULT flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Canvas -->
+<main class="flex-1 overflow-y-auto px-margin-horizontal pt-xl pb-[calc(52px+24px)] md:pb-xl">
+<div class="max-w-7xl mx-auto flex flex-col gap-xl">
+<!-- Page Header & Banner -->
+<div>
+<h2 class="font-medium-kpi text-medium-kpi text-text-primary mb-xs">Evidence Gallery</h2>
+<p class="font-body text-body text-text-secondary">Historical sensor telemetry and visual inspection records.</p>
+</div>
+<!-- Filters & Search Bar Row -->
+<div class="flex flex-col lg:flex-row gap-gutter">
+<!-- Search Input -->
+<div class="flex-1 bg-bg-input border border-border-default rounded-DEFAULT h-component-height flex items-center px-lg focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-text-secondary mr-md" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body font-body text-text-primary placeholder-text-secondary w-full outline-none" placeholder="Search by Asset ID, Error Code..." type="text"/>
+</div>
+<!-- Dropdown Filters (Simulated with select for simplicity in dark theme) -->
+<div class="flex gap-gutter overflow-x-auto pb-2 lg:pb-0 hide-scrollbar shrink-0">
+<div class="relative bg-bg-input border border-border-default rounded-DEFAULT h-component-height flex items-center min-w-[140px]">
+<select class="appearance-none bg-transparent border-none text-body font-body text-text-primary w-full px-lg pr-xl focus:ring-0 outline-none cursor-pointer">
+<option class="bg-bg-card">All Departments</option>
+<option class="bg-bg-card">Machining</option>
+<option class="bg-bg-card">Assembly</option>
+<option class="bg-bg-card">Stamping</option>
+</select>
+<span class="material-symbols-outlined text-text-secondary absolute right-sm pointer-events-none" data-icon="arrow_drop_down">arrow_drop_down</span>
+</div>
+<div class="relative bg-bg-input border border-border-default rounded-DEFAULT h-component-height flex items-center min-w-[140px]">
+<select class="appearance-none bg-transparent border-none text-body font-body text-text-primary w-full px-lg pr-xl focus:ring-0 outline-none cursor-pointer">
+<option class="bg-bg-card">All Machines</option>
+<option class="bg-bg-card">CNC-01 to 05</option>
+<option class="bg-bg-card">Press Line A</option>
+</select>
+<span class="material-symbols-outlined text-text-secondary absolute right-sm pointer-events-none" data-icon="arrow_drop_down">arrow_drop_down</span>
+</div>
+<div class="relative bg-bg-input border border-border-default rounded-DEFAULT h-component-height flex items-center min-w-[140px]">
+<select class="appearance-none bg-transparent border-none text-body font-body text-text-primary w-full px-lg pr-xl focus:ring-0 outline-none cursor-pointer">
+<option class="bg-bg-card">Last 24 Hours</option>
+<option class="bg-bg-card">Last 7 Days</option>
+<option class="bg-bg-card">Custom Range</option>
+</select>
+<span class="material-symbols-outlined text-text-secondary absolute right-sm pointer-events-none" data-icon="calendar_month">calendar_month</span>
+</div>
+</div>
+</div>
+<!-- Evidence Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter">
+<!-- Card 1: Thermal -->
+<div class="bg-bg-card border border-border-default rounded-lg overflow-hidden flex flex-col group hover:border-primary/50 transition-colors duration-300">
+<div class="h-48 relative border-b border-border-default bg-surface-container-lowest">
+<img alt="Thermal scan" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A false-color thermal imaging scan of a complex industrial machine component. The image uses a heatmap palette ranging from deep blues in cooler areas to intense glowing reds and whites at critical friction points. The aesthetic is highly technical, clinical, and data-driven, capturing the unseen thermal stress within a dark, mechanical environment. The overall mood is diagnostic and precise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfrkNK8S-g1AJyuNAIxBIla-KzZ0mF7VC-1Q0330dhU_MPdImcpJwuNmJOHc_0pFI9sw9p0JycKdjcgFAfbc17XxHwFJR0pmjaw5UNm1DLrt5uFXUfYU1un9pMO10nfz4L9ZE3t-5dXwXTyAE9ALBfdZrX4zpXFG3JgQveVDThZLM6IeeUC7_ZUt70UjI1a5DuYX33GNjLVDKzwhTuo9AFBQhI_hMlsP0CXodRBwRZGpqz7Fn_uMR60lAeYPrEgt4b1Rhg8FWXTgXu"/>
+<!-- Investigation Banner Overlay -->
+<div class="absolute top-sm right-sm bg-bg-card/90 backdrop-blur-sm border border-[rgba(0,200,210,0.35)] rounded-full px-sm py-1 flex items-center gap-xs shadow-[0_0_10px_rgba(0,200,210,0.2)]">
+<div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
+<span class="font-tag-label text-tag-label text-primary tracking-wider">INVESTIGATING</span>
+</div>
+<!-- Asset Status Bar -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-breakdown"></div>
+</div>
+<div class="p-lg flex flex-col flex-1 gap-md">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-card-title text-card-title text-text-primary">CNC-04 Spindle</h3>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary mt-xs">Machining Dept</p>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="thermostat">thermostat</span>
+</div>
+<div class="flex items-center gap-sm mt-auto">
+<span class="material-symbols-outlined text-text-secondary text-[16px]" data-icon="schedule">schedule</span>
+<span class="font-tag-label text-tag-label text-text-secondary">2023-10-27 14:32:05</span>
+</div>
+<a class="mt-sm pt-sm border-t border-border-default font-tag-label text-tag-label text-primary inline-flex items-center gap-xs hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]" data-icon="open_in_new">open_in_new</span>
+                                VIEW INVESTIGATION
+                            </a>
+</div>
+</div>
+<!-- Card 2: Vibration -->
+<div class="bg-bg-card border border-border-default rounded-lg overflow-hidden flex flex-col group hover:border-primary/50 transition-colors duration-300">
+<div class="h-48 relative border-b border-border-default bg-surface-container-lowest">
+<img alt="Motor sensor" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity grayscale hover:grayscale-0" data-alt="A macro photograph of an industrial electric motor housed within a massive steel structure. A small, high-tech vibration sensor module is magnetically attached to the side, featuring a tiny blinking green LED. The lighting is low-key, utilizing dramatic shadows typical of a deep dark industrial facility. The metallic textures are gritty yet precise, conveying a sense of heavy duty operation under constant monitoring." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSW1vEUBPBilbHaBbCjWJ7oJwR7aqqTszZMDDPnnS-1Lqj8mTq1XOHpgeX1hf87sCYUlM638sIuYNrQxB85u_T63A0-wSjJ6p9MPMw7qHFn9h_UxC1xOJSyxJE5mEsFKtVXkPc358GraOUd3rMSHkduzXdbuyIRuY0U8KWzW2uaow6e3uzCnmdYzA4DrUJ1yCeYnEQXpmjcBrVJTK2mp1TuB1vbGZYjIWFL4SxH_T2us_j5VK2TT0PDZ2XML6CPUo6RnI4K2Vu2xfl"/>
+<!-- Status Pill -->
+<div class="absolute top-sm right-sm bg-status-running/12 border border-status-running/20 rounded-full px-sm py-1 flex items-center gap-xs">
+<div class="w-1.5 h-1.5 rounded-full bg-status-running"></div>
+<span class="font-tag-label text-tag-label text-status-running">RESOLVED</span>
+</div>
+<!-- Asset Status Bar -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-running"></div>
+</div>
+<div class="p-lg flex flex-col flex-1 gap-md">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-card-title text-card-title text-text-primary">Conv-Line A Drive</h3>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary mt-xs">Assembly Dept</p>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="vibration">vibration</span>
+</div>
+<div class="flex items-center gap-sm mt-auto">
+<span class="material-symbols-outlined text-text-secondary text-[16px]" data-icon="schedule">schedule</span>
+<span class="font-tag-label text-tag-label text-text-secondary">2023-10-27 09:15:22</span>
+</div>
+<a class="mt-sm pt-sm border-t border-border-default font-tag-label text-tag-label text-text-secondary inline-flex items-center gap-xs hover:text-text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]" data-icon="history">history</span>
+                                REVIEW LOG
+                            </a>
+</div>
+</div>
+<!-- Card 3: Fluid -->
+<div class="bg-bg-card border border-border-default rounded-lg overflow-hidden flex flex-col group hover:border-primary/50 transition-colors duration-300">
+<div class="h-48 relative border-b border-border-default bg-surface-container-lowest flex items-center justify-center p-md">
+<!-- Using a placeholder for missing fluid analysis photo to show variety -->
+<div class="text-center">
+<span class="material-symbols-outlined text-error text-4xl mb-sm" data-icon="warning">warning</span>
+<p class="font-tag-label text-tag-label text-error border border-error/20 bg-error/10 px-2 py-1 rounded">IMAGE CORRUPTED</p>
+</div>
+<div class="absolute top-sm right-sm bg-bg-card/90 backdrop-blur-sm border border-[rgba(0,200,210,0.35)] rounded-full px-sm py-1 flex items-center gap-xs shadow-[0_0_10px_rgba(0,200,210,0.2)]">
+<div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
+<span class="font-tag-label text-tag-label text-primary tracking-wider">INVESTIGATING</span>
+</div>
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-idle"></div>
+</div>
+<div class="p-lg flex flex-col flex-1 gap-md">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-card-title text-card-title text-text-primary">Press-01 Hydraulics</h3>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary mt-xs">Stamping Dept</p>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="water_drop">water_drop</span>
+</div>
+<div class="flex items-center gap-sm mt-auto">
+<span class="material-symbols-outlined text-text-secondary text-[16px]" data-icon="schedule">schedule</span>
+<span class="font-tag-label text-tag-label text-text-secondary">2023-10-26 22:00:11</span>
+</div>
+<a class="mt-sm pt-sm border-t border-border-default font-tag-label text-tag-label text-primary inline-flex items-center gap-xs hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]" data-icon="open_in_new">open_in_new</span>
+                                VIEW INVESTIGATION
+                            </a>
+</div>
+</div>
+<!-- Card 4: Visual -->
+<div class="bg-bg-card border border-border-default rounded-lg overflow-hidden flex flex-col group hover:border-primary/50 transition-colors duration-300">
+<div class="h-48 relative border-b border-border-default bg-surface-container-lowest">
+<img alt="Weld inspection" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="An extreme close-up, high-contrast black and white image of a fractured metal weld. The metallic surface shows granular details and stress lines illuminated by harsh, angled forensic lighting. The surrounding context is completely black, isolating the structural failure as the sole focal point. The visual style is reminiscent of electron microscopy or high-end non-destructive testing reports in a dark industrial facility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg3eNhadI3dLhSgNmkTh4uCguYyqQ8weBSFQIkdd2rghUVxVlhizQ0iUSniZhJBgVzgthfc_01YA_AqOe_2kVRJiYdJJxWCpA30nUW3aSEn-wgTyHvED_VNLZWXnOSevQPqA-00x76mVCkLQlKqy-udWEPAzDH0i4hnT-KCKRrUxcjHE6qwY5KzA5NdBY8KrU_Vz0HOI110bn0Xi2q_Gn0rsFKj1QmH9zsfzgCJbN8kfoXW4_CEoUOAltiFNBAeClvaakTOrnGEdZw"/>
+<div class="absolute top-sm right-sm bg-status-idle/12 border border-status-idle/20 rounded-full px-sm py-1 flex items-center gap-xs">
+<div class="w-1.5 h-1.5 rounded-full bg-status-idle"></div>
+<span class="font-tag-label text-tag-label text-status-idle">PENDING REVIEW</span>
+</div>
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-planned"></div>
+</div>
+<div class="p-lg flex flex-col flex-1 gap-md">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-card-title text-card-title text-text-primary">Rob-Arm-7 Joint</h3>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary mt-xs">Welding Dept</p>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="camera_alt">camera_alt</span>
+</div>
+<div class="flex items-center gap-sm mt-auto">
+<span class="material-symbols-outlined text-text-secondary text-[16px]" data-icon="schedule">schedule</span>
+<span class="font-tag-label text-tag-label text-text-secondary">2023-10-26 18:45:00</span>
+</div>
+<a class="mt-sm pt-sm border-t border-border-default font-tag-label text-tag-label text-text-primary inline-flex items-center gap-xs hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]" data-icon="fact_check">fact_check</span>
+                                INITIATE REVIEW
+                            </a>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Mobile Bottom NavBar (Hidden on Desktop) -->
+<nav class="md:hidden bg-bg-card fixed bottom-0 w-full z-50 border-t border-border-default flex justify-around items-center h-component-height px-gutter pb-safe">
+<!-- Alerts (Active) -->
+<a class="flex flex-col items-center justify-center text-primary bg-surface-container rounded-lg p-xs flex-1 max-w-[80px] active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="notifications_active">notifications_active</span>
+<span class="font-tag-label text-tag-label mt-1">Alerts</span>
+</a>
+<!-- Personnel (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs flex-1 max-w-[80px] hover:text-secondary transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="engineering">engineering</span>
+<span class="font-tag-label text-tag-label mt-1">Personnel</span>
+</a>
+<!-- Logs (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs flex-1 max-w-[80px] hover:text-secondary transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="history_edu">history_edu</span>
+<span class="font-tag-label text-tag-label mt-1">Logs</span>
+</a>
+<!-- OEE (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs flex-1 max-w-[80px] hover:text-secondary transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="query_stats">query_stats</span>
+<span class="font-tag-label text-tag-label mt-1">OEE</span>
+</a>
+</nav>
+<!-- PWA Safe Area utility -->
+<style>
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+    </style>
+</body></html>

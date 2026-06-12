@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Universal Quick Actions - Bottom Sheet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#36dae4",
+                    "surface-tint": "#36dae4",
+                    "surface-variant": "#223555",
+                    "surface-container": "#0b1f3e",
+                    "error-container": "#93000a",
+                    "on-error-container": "#ffdad6",
+                    "inverse-surface": "#d7e2ff",
+                    "border-default": "rgba(255, 255, 255, 0.06)",
+                    "bg-app": "#060c18",
+                    "on-surface": "#d7e2ff",
+                    "surface-container-high": "#172a49",
+                    "text-primary": "#f0f4ff",
+                    "bg-input": "#111d35",
+                    "outline": "#859394",
+                    "on-error": "#690005",
+                    "primary-container": "#00c8d2",
+                    "inverse-on-surface": "#1e3050",
+                    "status-running": "#16a34a",
+                    "secondary-container": "#03b5d3",
+                    "on-surface-variant": "#bbc9ca",
+                    "outline-variant": "#3c494a",
+                    "primary": "#46e4ee",
+                    "on-primary": "#00373a",
+                    "inverse-primary": "#00696f",
+                    "surface-container-highest": "#223555",
+                    "bg-header": "#080f1e",
+                    "on-tertiary-fixed-variant": "#703700",
+                    "on-primary-fixed": "#002022",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "surface-container-lowest": "#000d26",
+                    "surface": "#001330",
+                    "on-secondary-fixed": "#001f26",
+                    "secondary-fixed": "#acedff",
+                    "bg-card": "#0d1526",
+                    "text-tertiary": "#4a5e8a",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "tertiary-container": "#ff9d4f",
+                    "tertiary": "#ffc49b",
+                    "status-breakdown": "#dc2626",
+                    "on-tertiary-container": "#703700",
+                    "on-primary-fixed-variant": "#004f53",
+                    "surface-container-low": "#061b3a",
+                    "status-idle": "#d97706",
+                    "primary-fixed": "#6ff6ff",
+                    "secondary": "#4cd7f6",
+                    "surface-dim": "#001330",
+                    "error": "#ffb4ab",
+                    "status-planned": "#7c3aed",
+                    "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                    "surface-bright": "#27395a",
+                    "on-background": "#d7e2ff",
+                    "text-secondary": "#8b9dc3",
+                    "on-tertiary-fixed": "#301400",
+                    "on-secondary": "#003640",
+                    "background": "#001330",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-primary-container": "#004f53",
+                    "bg-overlay": "#050a14",
+                    "data-quality": "#f59e0b",
+                    "tertiary-fixed": "#ffdcc5",
+                    "data-performance": "#4ade80",
+                    "on-tertiary": "#4f2500",
+                    "on-secondary-container": "#00424e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "sm": "8px",
+                    "margin-horizontal": "16px",
+                    "xl": "24px",
+                    "2xl": "32px",
+                    "lg": "16px",
+                    "md": "12px",
+                    "gutter": "12px",
+                    "base": "4px",
+                    "component-height": "52px"
+            },
+            "fontFamily": {
+                    "tag-label": ["Roboto"],
+                    "medium-kpi": ["Roboto"],
+                    "card-subtitle": ["Roboto"],
+                    "body": ["Roboto"],
+                    "card-title": ["Roboto"],
+                    "hero-kpi": ["Roboto"],
+                    "section-header": ["Roboto"],
+                    "large-kpi": ["Roboto"],
+                    "delta-text": ["Roboto"]
+            },
+            "fontSize": {
+                    "tag-label": ["10px", { "lineHeight": "12px", "fontWeight": "600" }],
+                    "medium-kpi": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                    "card-subtitle": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                    "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                    "card-title": ["15px", { "lineHeight": "20px", "fontWeight": "500" }],
+                    "hero-kpi": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                    "section-header": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                    "large-kpi": ["36px", { "lineHeight": "44px", "fontWeight": "400" }],
+                    "delta-text": ["12px", { "lineHeight": "16px", "fontWeight": "600" }]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .sheet-enter {
+            transform: translateY(100%);
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes slideUp {
+            to { transform: translateY(0); }
+        }
+        .backdrop-enter {
+            opacity: 0;
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app text-text-primary font-body antialiased min-h-screen relative overflow-hidden flex flex-col items-center justify-center">
+<!-- Mock Background Content (Situation Room - Dimmed via Overlay) -->
+<div aria-hidden="true" class="absolute inset-0 z-0 flex flex-col opacity-30 pointer-events-none">
+<!-- TopAppBar Placeholder -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-margin-horizontal h-component-height bg-bg-header border-b border-border-default">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary mr-sm" data-icon="factory">factory</span>
+<h1 class="font-section-header text-section-header text-primary">Situation Room</h1>
+</div>
+<button class="text-text-secondary hover:bg-surface-variant/50 p-xs rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</header>
+<!-- Main Content Area Placeholder -->
+<main class="flex-1 w-full max-w-[600px] mx-auto mt-component-height px-margin-horizontal py-xl flex flex-col gap-gutter">
+<div class="w-full h-32 bg-bg-card rounded-lg border border-border-default p-lg"></div>
+<div class="w-full h-48 bg-bg-card rounded-lg border border-border-default p-lg"></div>
+<div class="w-full h-32 bg-bg-card rounded-lg border border-border-default p-lg"></div>
+</main>
+</div>
+<!-- Backdrop Overlay -->
+<div aria-hidden="true" class="fixed inset-0 bg-bg-overlay/80 backdrop-blur-sm z-40 backdrop-enter"></div>
+<!-- Bottom Sheet Container -->
+<div class="fixed bottom-0 left-0 w-full z-50 flex flex-col items-center sheet-enter">
+<div class="w-full max-w-[600px] bg-bg-overlay rounded-t-xl border-t border-l border-r border-border-default shadow-2xl flex flex-col relative overflow-hidden">
+<!-- Drag Handle / Visual Indicator -->
+<div class="w-full flex justify-center pt-md pb-xs">
+<div class="w-12 h-1 bg-surface-variant rounded-full"></div>
+</div>
+<!-- Sheet Header -->
+<div class="px-margin-horizontal py-sm flex items-center justify-between">
+<h2 class="font-card-title text-card-title text-text-primary">Quick Actions</h2>
+<button aria-label="Close menu" class="text-text-secondary hover:text-primary transition-colors flex items-center justify-center w-8 h-8 rounded-full hover:bg-surface-variant/30">
+<span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+</button>
+</div>
+<!-- Action Grid -->
+<div class="px-margin-horizontal pb-xl pt-sm grid grid-cols-2 md:grid-cols-3 gap-md">
+<!-- Action 1: Scan QR -->
+<button class="flex flex-col items-center justify-center gap-sm p-lg bg-bg-card rounded-lg border-[0.5px] border-border-default hover:bg-surface-container-high transition-colors group active:scale-95 duration-150 h-28 focus:outline-none focus:ring-1 focus:ring-primary">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-primary-container/20 group-hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-text-primary group-hover:text-primary transition-colors text-[24px]" data-icon="qr_code_scanner" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+</div>
+<span class="font-body text-body text-text-secondary group-hover:text-text-primary transition-colors text-center w-full leading-tight">Scan QR</span>
+</button>
+<!-- Action 2: Create Alert -->
+<button class="flex flex-col items-center justify-center gap-sm p-lg bg-bg-card rounded-lg border-[0.5px] border-border-default hover:bg-surface-container-high transition-colors group active:scale-95 duration-150 h-28 focus:outline-none focus:ring-1 focus:ring-primary">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-error-container/40 transition-colors">
+<span class="material-symbols-outlined text-text-primary group-hover:text-error transition-colors text-[24px]" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<span class="font-body text-body text-text-secondary group-hover:text-text-primary transition-colors text-center w-full leading-tight">Create Alert</span>
+</button>
+<!-- Action 3: Log Downtime -->
+<button class="flex flex-col items-center justify-center gap-sm p-lg bg-bg-card rounded-lg border-[0.5px] border-border-default hover:bg-surface-container-high transition-colors group active:scale-95 duration-150 h-28 focus:outline-none focus:ring-1 focus:ring-primary">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-status-breakdown/20 transition-colors">
+<span class="material-symbols-outlined text-text-primary group-hover:text-status-breakdown transition-colors text-[24px]" data-icon="timer_off" style="font-variation-settings: 'FILL' 1;">timer_off</span>
+</div>
+<span class="font-body text-body text-text-secondary group-hover:text-text-primary transition-colors text-center w-full leading-tight">Log Downtime</span>
+</button>
+<!-- Action 4: Open Chronicle -->
+<button class="flex flex-col items-center justify-center gap-sm p-lg bg-bg-card rounded-lg border-[0.5px] border-border-default hover:bg-surface-container-high transition-colors group active:scale-95 duration-150 h-28 focus:outline-none focus:ring-1 focus:ring-primary">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-text-primary group-hover:text-primary transition-colors text-[24px]" data-icon="history_edu" style="font-variation-settings: 'FILL' 1;">history_edu</span>
+</div>
+<span class="font-body text-body text-text-secondary group-hover:text-text-primary transition-colors text-center w-full leading-tight">Open Chronicle</span>
+</button>
+<!-- Action 5: Search Asset -->
+<button class="flex flex-col items-center justify-center gap-sm p-lg bg-bg-card rounded-lg border-[0.5px] border-border-default hover:bg-surface-container-high transition-colors group active:scale-95 duration-150 h-28 focus:outline-none focus:ring-1 focus:ring-primary">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-text-primary group-hover:text-primary transition-colors text-[24px]" data-icon="search" style="font-variation-settings: 'FILL' 1;">search</span>
+</div>
+<span class="font-body text-body text-text-secondary group-hover:text-text-primary transition-colors text-center w-full leading-tight">Search Asset</span>
+</button>
+<!-- Action 6: Shift Handover -->
+<button class="flex flex-col items-center justify-center gap-sm p-lg bg-bg-card rounded-lg border-[0.5px] border-border-default hover:bg-surface-container-high transition-colors group active:scale-95 duration-150 h-28 focus:outline-none focus:ring-1 focus:ring-primary">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-status-planned/20 transition-colors">
+<span class="material-symbols-outlined text-text-primary group-hover:text-status-planned transition-colors text-[24px]" data-icon="sync_alt" style="font-variation-settings: 'FILL' 1;">sync_alt</span>
+</div>
+<span class="font-body text-body text-text-secondary group-hover:text-text-primary transition-colors text-center w-full leading-tight">Shift Handover</span>
+</button>
+</div>
+<!-- Bottom safe area padding for modern mobile devices -->
+<div class="h-6 w-full bg-transparent"></div>
+</div>
+</div>
+</body></html>

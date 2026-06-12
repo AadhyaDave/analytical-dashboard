@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Photo Evidence Capture - OPUS ONE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#46e4ee",
+                        "text-primary": "#f0f4ff",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "on-background": "#d7e2ff",
+                        "secondary-fixed": "#acedff",
+                        "tertiary": "#ffc49b",
+                        "inverse-primary": "#00696f",
+                        "secondary": "#4cd7f6",
+                        "on-error-container": "#ffdad6",
+                        "data-performance": "#4ade80",
+                        "surface-container": "#0b1f3e",
+                        "background": "#001330",
+                        "tertiary-fixed": "#ffdcc5",
+                        "surface-variant": "#223555",
+                        "data-quality": "#f59e0b",
+                        "on-primary": "#00373a",
+                        "secondary-container": "#03b5d3",
+                        "on-primary-fixed-variant": "#004f53",
+                        "status-idle": "#d97706",
+                        "status-breakdown": "#dc2626",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "surface-container-highest": "#223555",
+                        "bg-card": "#0d1526",
+                        "status-planned": "#7c3aed",
+                        "status-running": "#16a34a",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-bright": "#27395a",
+                        "bg-header": "#080f1e",
+                        "surface-container-high": "#172a49",
+                        "bg-input": "#111d35",
+                        "error": "#ffb4ab",
+                        "text-secondary": "#8b9dc3",
+                        "on-tertiary-container": "#703700",
+                        "outline": "#859394",
+                        "surface-container-lowest": "#000d26",
+                        "surface-container-low": "#061b3a",
+                        "on-error": "#690005",
+                        "on-tertiary": "#4f2500",
+                        "text-tertiary": "#4a5e8a",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "bg-overlay": "#050a14",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-dim": "#001330",
+                        "tertiary-container": "#ff9d4f",
+                        "on-secondary-fixed": "#001f26",
+                        "inverse-on-surface": "#1e3050",
+                        "bg-app": "#060c18",
+                        "surface-tint": "#36dae4",
+                        "on-surface-variant": "#bbc9ca",
+                        "error-container": "#93000a",
+                        "on-secondary": "#003640",
+                        "on-primary-fixed": "#002022",
+                        "on-surface": "#d7e2ff",
+                        "surface": "#001330",
+                        "primary-fixed-dim": "#36dae4",
+                        "primary-fixed": "#6ff6ff",
+                        "inverse-surface": "#d7e2ff",
+                        "primary-container": "#00c8d2",
+                        "outline-variant": "#3c494a",
+                        "border-default": "rgba(255, 255, 255, 0.06)",
+                        "on-secondary-container": "#00424e",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-primary-container": "#004f53"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "12px",
+                        "2xl": "32px",
+                        "xs": "4px",
+                        "margin-horizontal": "16px",
+                        "sm": "8px",
+                        "xl": "24px",
+                        "component-height": "52px",
+                        "base": "4px",
+                        "lg": "16px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "medium-kpi": ["Roboto"],
+                        "section-header": ["Roboto"],
+                        "body": ["Roboto"],
+                        "tag-label": ["Roboto"],
+                        "delta-text": ["Roboto"],
+                        "card-title": ["Roboto"],
+                        "large-kpi": ["Roboto"],
+                        "hero-kpi": ["Roboto"],
+                        "card-subtitle": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "medium-kpi": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "section-header": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "tag-label": ["10px", { "lineHeight": "12px", "fontWeight": "600" }],
+                        "delta-text": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "card-title": ["15px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "large-kpi": ["36px", { "lineHeight": "44px", "fontWeight": "400" }],
+                        "hero-kpi": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "card-subtitle": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .camera-corner {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-color: rgba(255, 255, 255, 0.5);
+            border-style: solid;
+        }
+        .top-left { top: 16px; left: 16px; border-width: 2px 0 0 2px; }
+        .top-right { top: 16px; right: 16px; border-width: 2px 2px 0 0; }
+        .bottom-left { bottom: 16px; left: 16px; border-width: 0 0 2px 2px; }
+        .bottom-right { bottom: 16px; right: 16px; border-width: 0 2px 2px 0; }
+        
+        .blur-overlay {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app text-text-primary h-screen w-screen overflow-hidden flex flex-col font-body">
+<!-- Top Navigation App Bar (Suppressed for Contextual Focus/Transactional) -->
+<!-- This is a transactional "Capture" screen. The main nav is hidden to prioritize the camera canvas. -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-margin-horizontal h-component-height bg-gradient-to-b from-bg-overlay/80 to-transparent">
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center p-xs active:scale-95 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">close</span>
+</button>
+<span class="font-section-header text-section-header text-primary tracking-widest">EVIDENCE CAPTURE</span>
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center p-xs active:scale-95 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">flash_on</span>
+</button>
+</header>
+<!-- Camera Canvas Background -->
+<div class="absolute inset-0 z-0 bg-surface-container">
+<!-- Placeholder for actual camera feed - Simulated with an image and blur for context -->
+<div class="w-full h-full bg-cover bg-center" data-alt="A blurred, deep dark industrial factory floor setting, viewed through a camera lens. The scene is dominated by massive, complex metallic machinery with subtle glowing indicator lights. The lighting is low-key, moody, and highly technological, emphasizing a 'Layered Surface' aesthetic with deep navies and sharp cyan highlights, typical of a precision manufacturing environment under scrutiny." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCkV-M4e877FP2IB1l_gfwygASoLz6WClBmtOEbKfe3AEo0Z6ZDbz0KvYYmq-V6Ta6niAGF-V2EByj5LB5L1_V33uhd00XPHb5j1shQdkB21uOHh7Duvp6uwb1EQaCNSeXyNVUb6EmE8ilfySxO6c9wPTMjcuCf8p4CvDbuKVIsquVdgVvkoufC1R-madMO5IvDaGDRm-SMxUBR1QAaU7hdOFqMWSDa8IVP2zhYSnixGBNPFrEvqfKFon--j17v1DA5_fSeTeJW8Kpf');"></div>
+<!-- Crosshair/Focus Frame -->
+<div class="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
+<div class="relative w-3/4 h-1/2">
+<div class="camera-corner top-left"></div>
+<div class="camera-corner top-right"></div>
+<div class="camera-corner bottom-left"></div>
+<div class="camera-corner bottom-right"></div>
+<!-- Center reticle -->
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-white/30 text-4xl">add</span>
+</div>
+</div>
+</div>
+</div>
+<!-- UI Overlay Controls -->
+<div class="relative z-20 flex flex-col justify-end h-full w-full pb-component-height">
+<!-- Category Selection Pills (Level 1 Surface) -->
+<div class="px-margin-horizontal mb-lg">
+<span class="block font-section-header text-section-header text-on-surface-variant mb-xs">CAPTURE TYPE</span>
+<div class="flex gap-sm overflow-x-auto no-scrollbar pb-xs">
+<!-- Active Pill -->
+<button class="flex-shrink-0 bg-surface-variant border-[0.5px] border-primary text-primary px-lg py-sm rounded-full flex items-center gap-base active:scale-95 transition-transform">
+<div class="w-1.5 h-1.5 rounded-full bg-status-breakdown"></div>
+<span class="font-tag-label text-tag-label">Machine Fault</span>
+</button>
+<!-- Inactive Pills -->
+<button class="flex-shrink-0 bg-bg-card border-[0.5px] border-border-default text-on-surface-variant px-lg py-sm rounded-full flex items-center gap-base active:scale-95 transition-transform hover:bg-surface-container-high">
+<div class="w-1.5 h-1.5 rounded-full bg-data-quality"></div>
+<span class="font-tag-label text-tag-label">Quality Issue</span>
+</button>
+<button class="flex-shrink-0 bg-bg-card border-[0.5px] border-border-default text-on-surface-variant px-lg py-sm rounded-full flex items-center gap-base active:scale-95 transition-transform hover:bg-surface-container-high">
+<div class="w-1.5 h-1.5 rounded-full bg-primary"></div>
+<span class="font-tag-label text-tag-label">Safety Hazard</span>
+</button>
+</div>
+</div>
+<!-- Annotation Tools Container (Level 2 Surface) -->
+<div class="px-margin-horizontal mb-xl flex justify-end">
+<div class="bg-bg-input border-[0.5px] border-border-default rounded-lg p-xs flex flex-col gap-sm">
+<button class="p-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded transition-all">
+<span class="material-symbols-outlined">north_west</span>
+</button>
+<button class="p-sm text-primary bg-surface-container-highest rounded transition-all">
+<span class="material-symbols-outlined">radio_button_unchecked</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded transition-all">
+<span class="material-symbols-outlined">text_fields</span>
+</button>
+<div class="h-[1px] w-full bg-border-default my-base"></div>
+<button class="p-sm text-on-surface-variant hover:text-error hover:bg-surface-container-highest rounded transition-all">
+<span class="material-symbols-outlined">undo</span>
+</button>
+</div>
+</div>
+<!-- Bottom Action Bar / Metadata Footer (Level 1 Surface) -->
+<div class="bg-bg-card border-t border-border-default px-margin-horizontal py-md blur-overlay">
+<!-- Metadata Auto-fill Block -->
+<div class="flex items-center justify-between mb-lg">
+<div class="flex flex-col">
+<div class="flex items-center gap-xs text-text-secondary font-tag-label text-tag-label">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span>Plant A</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span>Line 3</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="text-text-primary">Machine 7</span>
+</div>
+<div class="flex items-center gap-sm mt-base text-on-surface-variant font-card-subtitle text-card-subtitle">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>14:32:05 UTC</span>
+</div>
+<div class="w-1 h-1 rounded-full bg-border-default"></div>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">badge</span>
+<span>OP-8842</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Actions -->
+<div class="flex items-center gap-md">
+<!-- Gallery Thumbnail -->
+<button class="w-12 h-12 rounded-lg bg-surface-container-high border-[0.5px] border-border-default flex items-center justify-center active:scale-95 transition-transform overflow-hidden relative">
+<div class="absolute inset-0 bg-cover bg-center opacity-50" data-alt="A dark industrial close-up of a scratched metal gear." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCkiX4Dd2Gu0xLz0hXlcFHorvGq6PdBHZX8nfOxcEyVSf-LHRSgeXKg3x1XUcP2BAqtZh7a3qrm0cUbVUfQxeBeJul_bjfKR0eqiGnvPenfTMb9zYLd0MobIglD1BdJHUuAr-G-DduBMUOiO8xnY0qh4AjOyiNLV_SqOeCPTrOyhzWdiJ6HOgOsU9wWQe5Z_0wUhxbK645o0pADIR69k12p4LmccMJsqVdkKkUMocYdjGCe7c05JAk_muNQZNcTTL8P8JUCfzcg_5wy');"></div>
+<span class="material-symbols-outlined text-white relative z-10 text-[20px]">photo_library</span>
+</button>
+<!-- Primary Capture / Save Button -->
+<button class="flex-1 h-component-height bg-primary text-on-primary font-medium-kpi text-body flex items-center justify-center gap-sm rounded-lg active:scale-95 transition-transform hover:bg-primary-fixed shadow-[0_0_15px_rgba(70,228,238,0.2)]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">save</span>
+<span>SAVE EVIDENCE</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

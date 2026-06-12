@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Work Order Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#46e4ee",
+                        "text-primary": "#f0f4ff",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "on-background": "#d7e2ff",
+                        "secondary-fixed": "#acedff",
+                        "tertiary": "#ffc49b",
+                        "inverse-primary": "#00696f",
+                        "secondary": "#4cd7f6",
+                        "on-error-container": "#ffdad6",
+                        "data-performance": "#4ade80",
+                        "surface-container": "#0b1f3e",
+                        "background": "#001330",
+                        "tertiary-fixed": "#ffdcc5",
+                        "surface-variant": "#223555",
+                        "data-quality": "#f59e0b",
+                        "on-primary": "#00373a",
+                        "secondary-container": "#03b5d3",
+                        "on-primary-fixed-variant": "#004f53",
+                        "status-idle": "#d97706",
+                        "status-breakdown": "#dc2626",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "surface-container-highest": "#223555",
+                        "bg-card": "#0d1526",
+                        "status-planned": "#7c3aed",
+                        "status-running": "#16a34a",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-bright": "#27395a",
+                        "bg-header": "#080f1e",
+                        "surface-container-high": "#172a49",
+                        "bg-input": "#111d35",
+                        "error": "#ffb4ab",
+                        "text-secondary": "#8b9dc3",
+                        "on-tertiary-container": "#703700",
+                        "outline": "#859394",
+                        "surface-container-lowest": "#000d26",
+                        "surface-container-low": "#061b3a",
+                        "on-error": "#690005",
+                        "on-tertiary": "#4f2500",
+                        "text-tertiary": "#4a5e8a",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "bg-overlay": "#050a14",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-dim": "#001330",
+                        "tertiary-container": "#ff9d4f",
+                        "on-secondary-fixed": "#001f26",
+                        "inverse-on-surface": "#1e3050",
+                        "bg-app": "#060c18",
+                        "surface-tint": "#36dae4",
+                        "on-surface-variant": "#bbc9ca",
+                        "error-container": "#93000a",
+                        "on-secondary": "#003640",
+                        "on-primary-fixed": "#002022",
+                        "on-surface": "#d7e2ff",
+                        "surface": "#001330",
+                        "primary-fixed-dim": "#36dae4",
+                        "primary-fixed": "#6ff6ff",
+                        "inverse-surface": "#d7e2ff",
+                        "primary-container": "#00c8d2",
+                        "outline-variant": "#3c494a",
+                        "border-default": "rgba(255, 255, 255, 0.06)",
+                        "on-secondary-container": "#00424e",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-primary-container": "#004f53"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "12px",
+                        "2xl": "32px",
+                        "xs": "4px",
+                        "margin-horizontal": "16px",
+                        "sm": "8px",
+                        "xl": "24px",
+                        "component-height": "52px",
+                        "base": "4px",
+                        "lg": "16px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "medium-kpi": ["Roboto"],
+                        "section-header": ["Roboto"],
+                        "body": ["Roboto"],
+                        "tag-label": ["Roboto"],
+                        "delta-text": ["Roboto"],
+                        "card-title": ["Roboto"],
+                        "large-kpi": ["Roboto"],
+                        "hero-kpi": ["Roboto"],
+                        "card-subtitle": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "medium-kpi": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "section-header": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "tag-label": ["10px", { "lineHeight": "12px", "fontWeight": "600" }],
+                        "delta-text": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "card-title": ["15px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "large-kpi": ["36px", { "lineHeight": "44px", "fontWeight": "400" }],
+                        "hero-kpi": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "card-subtitle": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app text-text-primary font-body antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen pb-24 md:pb-8 flex flex-col md:flex-row">
+<!-- Top App Bar (Mobile & Desktop) -->
+<header class="bg-bg-header fixed top-0 w-full z-50 border-b border-border-default flat no shadows flex items-center justify-between px-margin-horizontal h-component-height">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-highest transition-colors active:opacity-80 transition-opacity p-2 -ml-2 rounded-full">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="font-section-header text-section-header tracking-widest text-primary">OPUS ONE</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-on-surface-variant hover:bg-surface-container-highest transition-colors active:opacity-80 transition-opacity p-2 rounded-full">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Side Navigation (Desktop only) - Suppressed as this is a detail screen with a back button (transactional/task-focused) -->
+<main class="flex-1 mt-[52px] w-full max-w-5xl mx-auto px-margin-horizontal py-xl flex flex-col gap-gutter">
+<!-- Breadcrumb / Hierarchy -->
+<div class="flex items-center gap-2 text-text-secondary font-body text-body mb-sm">
+<span>Plant A</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span>Line 4</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-primary font-medium">CNC-024</span>
+</div>
+<!-- Header Section -->
+<div class="bg-bg-card border border-border-default rounded-lg p-lg relative overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<!-- Status Bar -->
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-status-breakdown"></div>
+<div class="pl-2">
+<div class="flex items-center gap-3 mb-2">
+<span class="font-tag-label text-tag-label bg-surface-container text-on-surface-variant px-2 py-1 rounded">WO-9942</span>
+<div class="flex items-center gap-1.5 bg-status-breakdown/10 px-3 py-1 rounded-full border border-status-breakdown/20">
+<div class="w-1.5 h-1.5 rounded-full bg-status-breakdown"></div>
+<span class="font-tag-label text-tag-label text-status-breakdown uppercase tracking-wider">CRITICAL</span>
+</div>
+</div>
+<h1 class="font-large-kpi text-large-kpi text-text-primary mb-1">Spindle Bearing Failure</h1>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary">Assigned to: Tech Team Alpha • Priority: High</p>
+</div>
+<div class="flex flex-row gap-4 bg-surface-container-lowest p-4 rounded border border-border-default w-full md:w-auto">
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-text-tertiary uppercase mb-1">Downtime</span>
+<span class="font-medium-kpi text-medium-kpi text-status-breakdown">4.5h</span>
+</div>
+<div class="w-px bg-border-default"></div>
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-text-tertiary uppercase mb-1">OEE Impact</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-status-breakdown text-[20px]">trending_down</span>
+<span class="font-medium-kpi text-medium-kpi text-status-breakdown">-1.2%</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mt-2">
+<!-- Left Column: Details & Timeline -->
+<div class="lg:col-span-2 flex flex-col gap-gutter">
+<!-- Root Cause Analysis -->
+<div class="bg-bg-card border border-border-default rounded-lg p-lg">
+<h2 class="font-section-header text-section-header text-text-secondary uppercase tracking-widest mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">troubleshoot</span>
+                        Investigation Findings
+                    </h2>
+<div class="bg-surface-container-low border border-border-emphasis rounded p-4">
+<h3 class="font-card-title text-card-title text-primary mb-2">Lube System Blockage</h3>
+<p class="font-body text-body text-on-surface-variant leading-relaxed">
+                            Initial inspection indicates a severe blockage in the primary lubrication delivery line to the main spindle bearing assembly. Lack of lubrication caused rapid thermal expansion and subsequent mechanical failure of the ceramic ball bearings.
+                        </p>
+</div>
+</div>
+<!-- Activity Timeline -->
+<div class="bg-bg-card border border-border-default rounded-lg p-lg">
+<h2 class="font-section-header text-section-header text-text-secondary uppercase tracking-widest mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                        Activity Timeline
+                    </h2>
+<div class="relative pl-6 border-l border-border-emphasis ml-2 space-y-8">
+<!-- Step 1 -->
+<div class="relative">
+<div class="absolute -left-[31px] bg-bg-card p-1 rounded-full">
+<div class="w-3 h-3 rounded-full bg-primary ring-4 ring-primary/20"></div>
+</div>
+<div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+<div>
+<h4 class="font-card-title text-card-title text-text-primary">Work Order Created</h4>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary mt-1">System generated via automated alert.</p>
+</div>
+<span class="font-tag-label text-tag-label text-text-tertiary">08:14 AM</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative">
+<div class="absolute -left-[31px] bg-bg-card p-1 rounded-full">
+<div class="w-3 h-3 rounded-full bg-primary ring-4 ring-primary/20"></div>
+</div>
+<div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+<div>
+<h4 class="font-card-title text-card-title text-text-primary">Assigned</h4>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary mt-1">Assigned to Tech Team Alpha by Shift Supervisor.</p>
+</div>
+<span class="font-tag-label text-tag-label text-text-tertiary">08:22 AM</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative">
+<div class="absolute -left-[31px] bg-bg-card p-1 rounded-full">
+<div class="w-3 h-3 rounded-full bg-primary ring-4 ring-primary/20"></div>
+</div>
+<div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+<div>
+<h4 class="font-card-title text-card-title text-text-primary">Started</h4>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary mt-1">LOTO procedure initiated. Teardown commenced.</p>
+</div>
+<span class="font-tag-label text-tag-label text-text-tertiary">08:45 AM</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Meta & Actions -->
+<div class="flex flex-col gap-gutter">
+<!-- Action Card -->
+<div class="bg-bg-card border border-border-default rounded-lg p-lg">
+<button class="w-full h-component-height bg-primary text-on-primary font-card-title text-card-title rounded-lg flex items-center justify-center gap-2 hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined">check_circle</span>
+                        Close Work Order
+                    </button>
+<button class="w-full h-component-height mt-3 bg-transparent border border-outline text-text-primary font-card-title text-card-title rounded-lg flex items-center justify-center gap-2 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">pause_circle</span>
+                        Hold Execution
+                    </button>
+</div>
+<!-- Attachments -->
+<div class="bg-bg-card border border-border-default rounded-lg p-lg flex-1">
+<h2 class="font-section-header text-section-header text-text-secondary uppercase tracking-widest mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">attachment</span>
+                        Attachments (2)
+                    </h2>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3 p-3 bg-bg-input border border-border-emphasis rounded hover:bg-surface-container cursor-pointer transition-colors">
+<div class="w-10 h-10 rounded bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">image</span>
+</div>
+<div class="flex-1">
+<h4 class="font-card-title text-card-title text-text-primary text-sm truncate">damage_report_1.jpg</h4>
+<p class="font-tag-label text-tag-label text-text-tertiary mt-0.5">2.4 MB</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-bg-input border border-border-emphasis rounded hover:bg-surface-container cursor-pointer transition-colors">
+<div class="w-10 h-10 rounded bg-surface-container-highest flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div class="flex-1">
+<h4 class="font-card-title text-card-title text-text-primary text-sm truncate">spindle_schematic.pdf</h4>
+<p class="font-tag-label text-tag-label text-text-tertiary mt-0.5">8.1 MB</p>
+</div>
+</div>
+<button class="mt-2 text-primary font-tag-label text-tag-label hover:underline text-left">
+                            + Add Attachment
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav Bar (Mobile only) - Suppressed as this is a detail screen -->
+</body></html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Historical Machine Timeline</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Subtle technical grid background for the canvas */
+        body {
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        /* Timeline hatching for idle state */
+        .hatch-idle {
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 4px,
+                rgba(217, 119, 6, 0.2) 4px,
+                rgba(217, 119, 6, 0.2) 8px
+            );
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "bg-input": "#111d35",
+                        "surface-bright": "#27395a",
+                        "bg-app": "#060c18",
+                        "on-surface": "#d7e2ff",
+                        "inverse-on-surface": "#1e3050",
+                        "on-primary-fixed-variant": "#004f53",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#223555",
+                        "secondary-container": "#03b5d3",
+                        "data-quality": "#f59e0b",
+                        "text-secondary": "#8b9dc3",
+                        "primary-fixed-dim": "#36dae4",
+                        "tertiary-container": "#ff9d4f",
+                        "on-error": "#690005",
+                        "status-breakdown": "#dc2626",
+                        "data-performance": "#4ade80",
+                        "surface-container-lowest": "#000d26",
+                        "outline": "#859394",
+                        "text-tertiary": "#4a5e8a",
+                        "on-primary-fixed": "#002022",
+                        "surface-container": "#0b1f3e",
+                        "surface-container-low": "#061b3a",
+                        "surface-variant": "#223555",
+                        "on-tertiary-fixed": "#301400",
+                        "tertiary": "#ffc49b",
+                        "surface-tint": "#36dae4",
+                        "primary-container": "#00c8d2",
+                        "on-secondary": "#003640",
+                        "inverse-primary": "#00696f",
+                        "border-default": "rgba(255, 255, 255, 0.06)",
+                        "on-surface-variant": "#bbc9ca",
+                        "inverse-surface": "#d7e2ff",
+                        "on-secondary-fixed": "#001f26",
+                        "bg-card": "#0d1526",
+                        "error-container": "#93000a",
+                        "text-primary": "#f0f4ff",
+                        "on-background": "#d7e2ff",
+                        "primary-fixed": "#6ff6ff",
+                        "bg-overlay": "#050a14",
+                        "bg-header": "#080f1e",
+                        "on-tertiary-container": "#703700",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "outline-variant": "#3c494a",
+                        "on-secondary-container": "#00424e",
+                        "surface": "#001330",
+                        "surface-dim": "#001330",
+                        "on-primary": "#00373a",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "tertiary-fixed": "#ffdcc5",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "secondary-fixed": "#acedff",
+                        "status-planned": "#7c3aed",
+                        "status-running": "#16a34a",
+                        "on-tertiary": "#4f2500",
+                        "secondary": "#4cd7f6",
+                        "on-primary-container": "#004f53",
+                        "background": "#001330",
+                        "surface-container-high": "#172a49",
+                        "primary": "#46e4ee",
+                        "status-idle": "#d97706",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-horizontal": "16px",
+                        "lg": "16px",
+                        "xs": "4px",
+                        "xl": "24px",
+                        "gutter": "12px",
+                        "base": "4px",
+                        "component-height": "52px",
+                        "2xl": "32px",
+                        "sm": "8px",
+                        "md": "12px"
+                    },
+                    "fontFamily": {
+                        "large-kpi": ["Roboto"],
+                        "hero-kpi": ["Roboto"],
+                        "delta-text": ["Roboto"],
+                        "section-header": ["Roboto"],
+                        "card-title": ["Roboto"],
+                        "medium-kpi": ["Roboto"],
+                        "tag-label": ["Roboto"],
+                        "card-subtitle": ["Roboto"],
+                        "body": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "large-kpi": ["36px", { "lineHeight": "44px", "fontWeight": "400" }],
+                        "hero-kpi": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "delta-text": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "section-header": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "card-title": ["15px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "medium-kpi": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "tag-label": ["10px", { "lineHeight": "12px", "fontWeight": "600" }],
+                        "card-subtitle": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app text-on-surface font-body text-body min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar (From JSON) -->
+<header class="fixed top-0 w-full z-50 bg-bg-header border-b border-border-default flex items-center justify-between px-margin-horizontal h-component-height transition-colors duration-200">
+<button aria-label="Go back to Line level" class="w-10 h-10 flex items-center justify-start text-status-idle hover:bg-surface-container-high rounded-full transition-colors focus:outline-none">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">arrow_back</span>
+</button>
+<h1 class="font-card-title text-card-title text-status-idle uppercase tracking-widest truncate max-w-[60%] text-center">Chronicle Intelligence</h1>
+<button aria-label="Settings" class="w-10 h-10 flex items-center justify-end text-status-idle hover:bg-surface-container-high rounded-full transition-colors focus:outline-none">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">settings</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-[52px] flex flex-col px-margin-horizontal py-xl gap-gutter overflow-y-auto">
+<!-- Context Header (Machine Card variant) -->
+<section class="bg-bg-card border border-border-default rounded-xl p-lg relative overflow-hidden flex flex-col gap-1 shadow-lg">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-tertiary"></div>
+<h2 class="font-medium-kpi text-medium-kpi text-on-surface pl-xs">Historical Machine Timeline</h2>
+<div class="flex items-center justify-between pl-xs mt-1">
+<span class="font-card-title text-card-title text-primary">CNC Lathe 21</span>
+<div class="flex items-center gap-2 text-text-secondary bg-surface-container rounded-full px-3 py-1 border border-border-emphasis">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+<span class="font-tag-label text-tag-label uppercase tracking-wide">09 June 2026</span>
+</div>
+</div>
+</section>
+<!-- 24-Hour Timeline Component -->
+<section class="bg-bg-card border border-border-default rounded-xl p-lg flex flex-col gap-md">
+<header class="flex items-center justify-between">
+<h3 class="font-section-header text-section-header text-text-secondary uppercase tracking-widest">Operating Profile (24h)</h3>
+</header>
+<div class="flex flex-col gap-xs mt-sm">
+<!-- Gantt Bar -->
+<div class="w-full h-10 rounded-lg overflow-hidden flex border border-border-emphasis bg-surface-container-lowest relative shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)]">
+<!-- Segments -->
+<div class="h-full bg-status-running border-r border-bg-card" style="width: 35%;" title="Running: 00:00 - 08:24"></div>
+<div class="h-full bg-status-idle hatch-idle border-r border-bg-card relative" style="width: 12%;" title="Idle: 08:24 - 11:16">
+<div class="absolute inset-0 border-y border-status-idle opacity-30"></div>
+</div>
+<div class="h-full bg-status-running border-r border-bg-card" style="width: 15%;" title="Running: 11:16 - 14:52"></div>
+<div class="h-full bg-status-breakdown border-r border-bg-card relative" style="width: 8%;" title="Breakdown: 14:52 - 16:47">
+<!-- Critical marker line -->
+<div class="absolute left-1/2 top-0 bottom-0 w-[2px] bg-white opacity-80 -translate-x-1/2"></div>
+</div>
+<div class="h-full bg-status-idle hatch-idle border-r border-bg-card" style="width: 10%;" title="Idle: 16:47 - 19:11"></div>
+<div class="h-full bg-status-running" style="width: 20%;" title="Running: 19:11 - 24:00"></div>
+</div>
+<!-- Axis Markers -->
+<div class="flex justify-between w-full font-tag-label text-tag-label text-text-tertiary px-1">
+<span>00:00</span>
+<span>06:00</span>
+<span>12:00</span>
+<span>18:00</span>
+<span>24:00</span>
+</div>
+</div>
+<!-- Legend -->
+<div class="flex items-center gap-4 mt-2 border-t border-border-default pt-md">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-status-running"></div>
+<span class="font-card-subtitle text-card-subtitle text-on-surface-variant">Running</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-status-idle"></div>
+<span class="font-card-subtitle text-card-subtitle text-on-surface-variant">Idle</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-status-breakdown"></div>
+<span class="font-card-subtitle text-card-subtitle text-on-surface-variant">Breakdown</span>
+</div>
+</div>
+</section>
+<!-- Historical Data Bento Grid -->
+<div class="grid grid-cols-2 gap-gutter">
+<!-- Output KPI -->
+<section class="bg-bg-card border border-border-default rounded-xl p-md flex flex-col justify-between min-h-[110px]">
+<h3 class="font-section-header text-section-header text-text-secondary uppercase">Total Output</h3>
+<div class="flex flex-col">
+<span class="font-large-kpi text-large-kpi text-on-surface tracking-tight">1,102</span>
+<span class="font-tag-label text-tag-label text-primary-fixed-dim uppercase">Units</span>
+</div>
+</section>
+<!-- Downtime KPI -->
+<section class="bg-bg-card border border-border-default rounded-xl p-md flex flex-col justify-between min-h-[110px]">
+<h3 class="font-section-header text-section-header text-text-secondary uppercase">Total Downtime</h3>
+<div class="flex flex-col">
+<span class="font-large-kpi text-large-kpi text-status-breakdown tracking-tight">47m</span>
+<span class="font-tag-label text-tag-label text-status-breakdown opacity-80 uppercase">Lower is better</span>
+</div>
+</section>
+<!-- Operator Pill/Card -->
+<section class="col-span-2 bg-bg-input border border-border-default rounded-xl p-md flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center border border-border-emphasis">
+<span class="material-symbols-outlined text-primary-fixed-dim" style="font-variation-settings: 'wght' 300;">person</span>
+</div>
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Assigned Operator</span>
+<span class="font-card-title text-card-title text-on-surface">Suresh M.</span>
+</div>
+</div>
+<button aria-label="View Operator Details" class="text-text-secondary hover:text-primary transition-colors focus:outline-none">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</section>
+</div>
+<!-- Active Fault Record -->
+<section class="mt-xs bg-bg-card border border-border-default rounded-xl relative overflow-hidden flex flex-col">
+<!-- Critical Status Left Border -->
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-status-breakdown z-10"></div>
+<!-- Header/Banner Area -->
+<div class="bg-[#180a0a] border-b border-border-default p-md pl-[20px] flex items-center gap-2">
+<span class="material-symbols-outlined text-status-breakdown text-[18px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="font-section-header text-section-header text-status-breakdown uppercase tracking-widest">Recorded Fault Event</span>
+</div>
+<!-- Details Area -->
+<div class="p-lg pl-[20px] flex flex-col gap-1">
+<h4 class="font-card-title text-card-title text-on-surface">Spindle Overheat (Critical)</h4>
+<div class="flex items-center gap-4 mt-2">
+<div class="flex items-center gap-1.5 text-text-secondary">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span class="font-card-subtitle text-card-subtitle">14:52 - 15:39</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-secondary">
+<span class="material-symbols-outlined text-[14px]">timer</span>
+<span class="font-card-subtitle text-card-subtitle">Duration: 47m</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chronicle Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "bg-input": "#111d35",
+                        "surface-bright": "#27395a",
+                        "bg-app": "#060c18",
+                        "on-surface": "#d7e2ff",
+                        "inverse-on-surface": "#1e3050",
+                        "on-primary-fixed-variant": "#004f53",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#223555",
+                        "secondary-container": "#03b5d3",
+                        "data-quality": "#f59e0b",
+                        "text-secondary": "#8b9dc3",
+                        "primary-fixed-dim": "#36dae4",
+                        "tertiary-container": "#ff9d4f",
+                        "on-error": "#690005",
+                        "status-breakdown": "#dc2626",
+                        "data-performance": "#4ade80",
+                        "surface-container-lowest": "#000d26",
+                        "outline": "#859394",
+                        "text-tertiary": "#4a5e8a",
+                        "on-primary-fixed": "#002022",
+                        "surface-container": "#0b1f3e",
+                        "surface-container-low": "#061b3a",
+                        "surface-variant": "#223555",
+                        "on-tertiary-fixed": "#301400",
+                        "tertiary": "#ffc49b",
+                        "surface-tint": "#36dae4",
+                        "primary-container": "#00c8d2",
+                        "on-secondary": "#003640",
+                        "inverse-primary": "#00696f",
+                        "border-default": "rgba(255, 255, 255, 0.06)",
+                        "on-surface-variant": "#bbc9ca",
+                        "inverse-surface": "#d7e2ff",
+                        "on-secondary-fixed": "#001f26",
+                        "bg-card": "#0d1526",
+                        "error-container": "#93000a",
+                        "text-primary": "#f0f4ff",
+                        "on-background": "#d7e2ff",
+                        "primary-fixed": "#6ff6ff",
+                        "bg-overlay": "#050a14",
+                        "bg-header": "#080f1e",
+                        "on-tertiary-container": "#703700",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "outline-variant": "#3c494a",
+                        "on-secondary-container": "#00424e",
+                        "surface": "#001330",
+                        "surface-dim": "#001330",
+                        "on-primary": "#00373a",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "tertiary-fixed": "#ffdcc5",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "secondary-fixed": "#acedff",
+                        "status-planned": "#7c3aed",
+                        "status-running": "#16a34a",
+                        "on-tertiary": "#4f2500",
+                        "secondary": "#4cd7f6",
+                        "on-primary-container": "#004f53",
+                        "background": "#001330",
+                        "surface-container-high": "#172a49",
+                        "primary": "#46e4ee",
+                        "status-idle": "#d97706",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-horizontal": "16px",
+                        "lg": "16px",
+                        "xs": "4px",
+                        "xl": "24px",
+                        "gutter": "12px",
+                        "base": "4px",
+                        "component-height": "52px",
+                        "2xl": "32px",
+                        "sm": "8px",
+                        "md": "12px"
+                    },
+                    "fontFamily": {
+                        "large-kpi": ["Roboto"],
+                        "hero-kpi": ["Roboto"],
+                        "delta-text": ["Roboto"],
+                        "section-header": ["Roboto"],
+                        "card-title": ["Roboto"],
+                        "medium-kpi": ["Roboto"],
+                        "tag-label": ["Roboto"],
+                        "card-subtitle": ["Roboto"],
+                        "body": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "large-kpi": ["36px", { "lineHeight": "44px", "fontWeight": "400" }],
+                        "hero-kpi": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "delta-text": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "section-header": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "card-title": ["15px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "medium-kpi": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "tag-label": ["10px", { "lineHeight": "12px", "fontWeight": "600" }],
+                        "card-subtitle": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .pulse-amber {
+            animation: pulse-amber 2s infinite;
+        }
+        @keyframes pulse-amber {
+            0% { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(217, 119, 6, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0); }
+        }
+        .historical-border {
+            border: 0.5px solid rgba(217, 119, 6, 0.35);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app text-text-primary min-h-screen flex flex-col font-body pb-[64px]">
+<!-- TopAppBar from JSON -->
+<header class="fixed top-0 w-full z-50 bg-bg-header dark:bg-bg-header text-status-idle dark:text-status-idle font-card-title text-card-title border-b border-border-default transition-colors duration-200">
+<div class="flex items-center justify-between px-margin-horizontal h-component-height w-full z-50">
+<button class="flex items-center justify-center w-10 h-10 hover:bg-surface-container-high rounded-full transition-colors duration-200">
+<span class="material-symbols-outlined text-status-idle">history</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="font-card-title text-card-title text-status-idle uppercase tracking-widest flex items-center gap-2">
+                    Chronicle Intelligence
+                    <span class="w-2 h-2 rounded-full bg-status-idle pulse-amber"></span>
+</h1>
+<span class="text-tag-label font-tag-label text-text-secondary">09 Jun 2026 • 14:23</span>
+</div>
+<button class="flex items-center justify-center w-10 h-10 hover:bg-surface-container-high rounded-full transition-colors duration-200">
+<span class="material-symbols-outlined text-status-idle">settings</span>
+</button>
+</div>
+</header>
+<!-- Persistent Historical Banner -->
+<div class="mt-component-height w-full bg-status-idle/20 border-b border-status-idle/50 py-2 px-margin-horizontal flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-status-idle text-[16px]">warning</span>
+<span class="text-status-idle font-section-header text-section-header uppercase tracking-wider">Historical View Active</span>
+</div>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col px-margin-horizontal pt-lg gap-gutter w-full max-w-md mx-auto">
+<!-- Hero Card: Historical OEE -->
+<div class="bg-bg-card rounded-xl p-lg historical-border flex flex-col gap-md relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-status-idle"></div>
+<h2 class="font-section-header text-section-header text-status-idle uppercase tracking-wider">Historical OEE</h2>
+<div class="flex justify-between items-center">
+<div class="relative w-32 h-32 flex items-center justify-center">
+<!-- Placeholder for OEE 3-Ring Gauge -->
+<svg class="absolute inset-0 w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<!-- Outer: Availability (Amber/Status) -->
+<circle cx="50" cy="50" fill="none" r="45" stroke="rgba(255,255,255,0.06)" stroke-width="6"></circle>
+<circle class="transition-all duration-1000" cx="50" cy="50" fill="none" r="45" stroke="#d97706" stroke-dasharray="282.7" stroke-dashoffset="56.5" stroke-width="6"></circle>
+<!-- Middle: Performance (Green) -->
+<circle cx="50" cy="50" fill="none" r="35" stroke="rgba(255,255,255,0.06)" stroke-width="6"></circle>
+<circle class="transition-all duration-1000" cx="50" cy="50" fill="none" r="35" stroke="#4ade80" stroke-dasharray="219.9" stroke-dashoffset="65.9" stroke-width="6"></circle>
+<!-- Inner: Quality (Teal converted to Amber/Yellow for diagnostic) -->
+<circle cx="50" cy="50" fill="none" r="25" stroke="rgba(255,255,255,0.06)" stroke-width="6"></circle>
+<circle class="transition-all duration-1000" cx="50" cy="50" fill="none" r="25" stroke="#f59e0b" stroke-dasharray="157" stroke-dashoffset="15.7" stroke-width="6"></circle>
+</svg>
+<div class="flex flex-col items-center">
+<span class="font-medium-kpi text-medium-kpi text-status-idle">74.2%</span>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="flex flex-col">
+<span class="font-tag-label text-tag-label text-text-secondary uppercase">Availability</span>
+<span class="font-card-title text-card-title text-text-primary">80.0%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-tag-label text-tag-label text-text-secondary uppercase">Performance</span>
+<span class="font-card-title text-card-title text-data-performance">70.0%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-tag-label text-tag-label text-text-secondary uppercase">Quality</span>
+<span class="font-card-title text-card-title text-data-quality">90.0%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Historical Situations -->
+<div class="flex flex-col gap-sm">
+<h3 class="font-section-header text-section-header text-text-tertiary uppercase tracking-wider px-sm">Historical Situations</h3>
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex items-center gap-md relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-breakdown"></div>
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-status-breakdown/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-status-breakdown">engineering</span>
+</div>
+<div class="flex-1 flex flex-col">
+<span class="font-card-title text-card-title text-text-primary">Machine 7 Breakdown</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Line A • 14:15 - 14:45</span>
+</div>
+<div class="flex-shrink-0 flex items-center justify-center px-sm py-1 rounded-full bg-status-breakdown/10 text-status-breakdown font-tag-label text-tag-label">
+<div class="w-1.5 h-1.5 rounded-full bg-status-breakdown mr-1"></div> Critical
+                </div>
+</div>
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex items-center gap-md relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-idle"></div>
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-status-idle/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-status-idle">trending_down</span>
+</div>
+<div class="flex-1 flex flex-col">
+<span class="font-card-title text-card-title text-text-primary">Line 3 Underperformance</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Cycle Time +12%</span>
+</div>
+<div class="flex-shrink-0 flex items-center justify-center px-sm py-1 rounded-full bg-status-idle/10 text-status-idle font-tag-label text-tag-label">
+<div class="w-1.5 h-1.5 rounded-full bg-status-idle mr-1"></div> Warning
+                </div>
+</div>
+</div>
+<!-- Decision Queue -->
+<div class="flex flex-col gap-sm">
+<div class="flex items-center justify-between px-sm">
+<h3 class="font-section-header text-section-header text-text-tertiary uppercase tracking-wider">Decision Queue (Pending)</h3>
+<span class="bg-surface-container-high text-text-secondary font-tag-label text-tag-label px-2 py-0.5 rounded-full">2</span>
+</div>
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex flex-col gap-sm">
+<div class="flex items-center justify-between border-b border-border-default pb-sm">
+<div class="flex flex-col">
+<span class="font-card-title text-card-title text-text-primary">Line 1 Maintenance Bypass</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Requested by John D.</span>
+</div>
+<span class="material-symbols-outlined text-status-idle">pending_actions</span>
+</div>
+<div class="flex items-center justify-between pt-xs">
+<div class="flex flex-col">
+<span class="font-card-title text-card-title text-text-primary">Speed Override Appr.</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Line 3</span>
+</div>
+<span class="material-symbols-outlined text-status-idle">pending_actions</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar from JSON -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-low dark:bg-surface-container-low border-t border-border-default flat no shadows">
+<div class="flex justify-around items-center w-full h-[64px] px-2 md:hidden">
+<button class="flex flex-col items-center justify-center text-text-tertiary px-4 py-1 hover:text-text-primary scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1">sensors</span>
+<span class="font-tag-label text-tag-label">Live</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-surface-container-highest text-status-idle rounded-xl px-4 py-1 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1 text-status-idle">settings_backup_restore</span>
+<span class="font-tag-label text-tag-label text-status-idle">Chronicle</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-tertiary px-4 py-1 hover:text-text-primary scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1">emergency_home</span>
+<span class="font-tag-label text-tag-label">Incidents</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-tertiary px-4 py-1 hover:text-text-primary scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1">analytics</span>
+<span class="font-tag-label text-tag-label">Reports</span>
+</button>
+</div>
+</nav>
+</body></html>

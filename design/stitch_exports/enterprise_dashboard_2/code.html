@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Enterprise Dashboard - Opus One Mobile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#703700",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "background": "#001330",
+                        "surface": "#001330",
+                        "on-tertiary": "#4f2500",
+                        "error-container": "#93000a",
+                        "error": "#ffb4ab",
+                        "status-idle": "#d97706",
+                        "tertiary-container": "#ff9d4f",
+                        "bg-overlay": "#050a14",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "on-primary-fixed": "#002022",
+                        "surface-variant": "#223555",
+                        "on-error": "#690005",
+                        "text-secondary": "#8b9dc3",
+                        "data-performance": "#4ade80",
+                        "surface-container-lowest": "#000d26",
+                        "surface-container": "#0b1f3e",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "surface-bright": "#27395a",
+                        "surface-container-low": "#061b3a",
+                        "surface-container-highest": "#223555",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "on-tertiary-fixed": "#301400",
+                        "outline-variant": "#3c494a",
+                        "on-primary-container": "#004f53",
+                        "on-background": "#d7e2ff",
+                        "primary-fixed-dim": "#36dae4",
+                        "on-primary": "#00373a",
+                        "status-planned": "#7c3aed",
+                        "bg-input": "#111d35",
+                        "surface-tint": "#36dae4",
+                        "primary-fixed": "#6ff6ff",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-surface": "#d7e2ff",
+                        "status-running": "#16a34a",
+                        "status-breakdown": "#dc2626",
+                        "inverse-primary": "#00696f",
+                        "outline": "#859394",
+                        "text-primary": "#f0f4ff",
+                        "bg-card": "#0d1526",
+                        "secondary-container": "#03b5d3",
+                        "inverse-surface": "#d7e2ff",
+                        "on-tertiary-container": "#703700",
+                        "secondary": "#4cd7f6",
+                        "on-error-container": "#ffdad6",
+                        "text-tertiary": "#4a5e8a",
+                        "on-surface-variant": "#bbc9ca",
+                        "bg-header": "#080f1e",
+                        "on-primary-fixed-variant": "#004f53",
+                        "on-secondary-fixed": "#001f26",
+                        "secondary-fixed": "#acedff",
+                        "inverse-on-surface": "#1e3050",
+                        "primary-container": "#00c8d2",
+                        "bg-app": "#060c18",
+                        "on-secondary": "#003640",
+                        "tertiary": "#ffc49b",
+                        "primary": "#46e4ee",
+                        "on-secondary-container": "#00424e",
+                        "surface-dim": "#001330",
+                        "surface-container-high": "#172a49",
+                        "data-quality": "#f59e0b",
+                        "border-default": "rgba(255, 255, 255, 0.06)"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "lg": "16px",
+                        "2xl": "32px",
+                        "md": "12px",
+                        "gutter": "12px",
+                        "sm": "8px",
+                        "component-height": "52px",
+                        "base": "4px",
+                        "xl": "24px",
+                        "margin-horizontal": "16px"
+                    },
+                    "fontFamily": {
+                        "hero-kpi": ["Roboto"],
+                        "tag-label": ["Roboto"],
+                        "body": ["Roboto"],
+                        "medium-kpi": ["Roboto"],
+                        "large-kpi": ["Roboto"],
+                        "card-subtitle": ["Roboto"],
+                        "delta-text": ["Roboto"],
+                        "section-header": ["Roboto"],
+                        "card-title": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "hero-kpi": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "tag-label": ["10px", { "lineHeight": "12px", "fontWeight": "600" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "medium-kpi": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "large-kpi": ["36px", { "lineHeight": "44px", "fontWeight": "400" }],
+                        "card-subtitle": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "delta-text": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "section-header": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "card-title": ["15px", { "lineHeight": "20px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Roboto', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .gauge-ring { transition: stroke-dasharray 1s ease-in-out; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app text-text-primary h-screen w-full flex justify-center items-start overflow-hidden">
+<div class="w-full max-w-md h-full flex flex-col bg-bg-app relative shadow-2xl overflow-y-auto pb-[68px]">
+<!-- Header -->
+<header class="bg-bg-header dark:bg-bg-header docked full-width top-0 border-b border-border-default flat no shadows fixed top-0 left-0 w-full z-50 flex items-center justify-between px-margin-horizontal h-[72px]">
+<div class="flex items-center gap-3">
+<button class="text-text-secondary hover:bg-surface-variant/50 p-2 rounded-full transition-colors flex items-center justify-center h-10 w-10">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-text-primary uppercase tracking-widest">Enterprise Overview</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-status-running animate-pulse"></span>
+<span class="text-[10px] font-medium text-primary uppercase tracking-wider">Online &amp; Stable · Live Enterprise Data</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button class="text-text-secondary hover:bg-surface-variant/50 p-2 rounded-full transition-colors flex items-center justify-center h-10 w-10">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</button>
+<button class="text-text-secondary hover:bg-surface-variant/50 p-2 rounded-full transition-colors flex items-center justify-center h-10 w-10 relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2.5 w-1.5 h-1.5 bg-status-breakdown rounded-full"></span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto px-margin-horizontal pt-[88px] pb-6 flex flex-col gap-gutter">
+<!-- Enterprise Pulse (Hero Card) -->
+<div class="bg-bg-card border-[0.5px] border-border-default rounded-xl p-lg flex flex-col relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<div class="flex flex-col">
+<h2 class="font-card-title text-card-title text-text-primary">Enterprise OEE</h2>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">All Global Operations</span>
+</div>
+<span class="font-delta-text text-delta-text text-status-running flex items-center gap-1">
+                        ▲ +3.3%
+                    </span>
+</div>
+<div class="flex justify-center items-center py-4">
+<!-- OEE 3-Ring Gauge SVG Placeholder -->
+<div class="relative w-[180px] h-[180px]">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<!-- Background Rings -->
+<circle cx="50" cy="50" fill="none" r="45" stroke="rgba(255,255,255,0.05)" stroke-width="4"></circle>
+<circle cx="50" cy="50" fill="none" r="38" stroke="rgba(255,255,255,0.05)" stroke-width="4"></circle>
+<circle cx="50" cy="50" fill="none" r="31" stroke="rgba(255,255,255,0.05)" stroke-width="4"></circle>
+<!-- Foreground Rings (Avail, Perf, Qual) -->
+<circle class="gauge-ring" cx="50" cy="50" fill="none" r="45" stroke="#16a34a" stroke-dasharray="257" stroke-dashoffset="23" stroke-linecap="round" stroke-width="4"></circle>
+<circle class="gauge-ring" cx="50" cy="50" fill="none" r="38" stroke="#4ade80" stroke-dasharray="216" stroke-dashoffset="19" stroke-linecap="round" stroke-width="4"></circle>
+<circle class="gauge-ring" cx="50" cy="50" fill="none" r="31" stroke="#f59e0b" stroke-dasharray="175" stroke-dashoffset="5" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center pt-1">
+<span class="font-large-kpi text-large-kpi text-text-primary leading-none">82.4</span>
+<span class="font-tag-label text-tag-label text-text-secondary mt-1">OEE %</span>
+</div>
+</div>
+</div>
+<div class="flex justify-between w-full px-2 mt-2 mb-6">
+<div class="flex flex-col items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-status-running"></div>
+<span class="font-tag-label text-tag-label text-text-secondary">A: 91.2%</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-data-performance"></div>
+<span class="font-tag-label text-tag-label text-text-secondary">P: 90.8%</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-data-quality"></div>
+<span class="font-tag-label text-tag-label text-text-secondary">Q: 97.1%</span>
+</div>
+</div>
+<!-- Status Strip -->
+<div class="flex flex-col w-full gap-2 mt-2">
+<div class="flex w-full h-1.5 rounded-full overflow-hidden">
+<div class="bg-status-running h-full" style="width: 91%"></div>
+<div class="bg-status-idle h-full" style="width: 6%"></div>
+<div class="bg-status-breakdown h-full" style="width: 2%"></div>
+<div class="bg-status-planned h-full" style="width: 1%"></div>
+</div>
+<div class="flex justify-between items-center px-1">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 bg-status-running rounded-full"></span>
+<span class="font-tag-label text-tag-label text-text-secondary">1287</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 bg-status-idle rounded-full"></span>
+<span class="font-tag-label text-tag-label text-text-secondary">89</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 bg-status-breakdown rounded-full"></span>
+<span class="font-tag-label text-tag-label text-text-secondary">25</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 bg-status-planned rounded-full"></span>
+<span class="font-tag-label text-tag-label text-text-secondary">12</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Operational Attention Areas -->
+<div class="flex flex-col gap-2 mt-4">
+<h3 class="font-section-header text-section-header text-text-secondary uppercase tracking-widest px-1">Operational Attention Areas</h3>
+<!-- Critical Card -->
+<div class="bg-bg-card border-[0.5px] border-status-breakdown/30 rounded-xl p-md flex items-start gap-3 relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-breakdown"></div>
+<div class="flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-status-breakdown text-[20px]">warning</span>
+</div>
+<div class="flex flex-col w-full">
+<div class="flex justify-between items-start">
+<span class="font-card-title text-card-title text-status-breakdown">Packaging Dept OEE 38.0%</span>
+<span class="font-tag-label text-tag-label text-text-secondary bg-surface-variant px-1.5 py-0.5 rounded">Plant A</span>
+</div>
+<span class="font-body text-body text-text-secondary mt-1">Root cause: Material shortage.</span>
+<div class="mt-2 flex items-center justify-between">
+<span class="font-tag-label text-tag-label bg-status-breakdown/10 text-status-breakdown px-2 py-0.5 rounded-full flex items-center gap-1">
+<div class="w-1.5 h-1.5 bg-status-breakdown rounded-full"></div>
+                                CRITICAL
+                            </span>
+<span class="font-delta-text text-delta-text text-status-breakdown">-4.2% impact</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Plants List -->
+<div class="flex flex-col gap-2 mt-4">
+<div class="flex justify-between items-center px-1">
+<h3 class="font-section-header text-section-header text-text-secondary uppercase tracking-widest">Plants · 4</h3>
+<span class="material-symbols-outlined text-text-secondary text-[16px]">filter_list</span>
+</div>
+<!-- Plant A -->
+<div class="bg-bg-card border-[0.5px] border-border-default rounded-xl p-md flex items-center justify-between relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-running"></div>
+<div class="flex flex-col gap-1 pl-2">
+<span class="font-card-title text-card-title text-text-primary">Plant A</span>
+<span class="font-tag-label text-tag-label bg-status-running/10 text-status-running px-2 py-0.5 rounded-full flex items-center w-fit gap-1">
+<div class="w-1.5 h-1.5 bg-status-running rounded-full"></div>
+                            ON TARGET
+                        </span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-1 h-3">
+<div class="w-1 bg-status-running rounded-full h-full"></div>
+<div class="w-1 bg-status-running rounded-full h-4/5 mt-auto"></div>
+<div class="w-1 bg-status-idle rounded-full h-2/5 mt-auto"></div>
+</div>
+<span class="font-medium-kpi text-medium-kpi text-text-primary">91.2<span class="text-sm">%</span></span>
+<span class="material-symbols-outlined text-text-secondary text-[18px]">chevron_right</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-sm h-component-height bg-bg-app border-t border-border-default flat no shadows">
+<button class="flex flex-col items-center justify-center text-text-secondary flex-1 h-full hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]">dashboard</span>
+<span class="font-tag-label text-tag-label mt-1">Situation</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary bg-surface-container rounded-lg px-3 py-1 flex-1 h-full scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[24px]">account_tree</span>
+<span class="font-tag-label text-tag-label mt-1">Floor</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-secondary flex-1 h-full hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]">visibility</span>
+<span class="font-tag-label text-tag-label mt-1">Watchlist</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-secondary flex-1 h-full hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+<span class="font-tag-label text-tag-label mt-1">Alerts</span>
+</button>
+</nav>
+</div>
+</body></html>

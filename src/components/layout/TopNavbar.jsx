@@ -8,6 +8,7 @@ import { useApp } from '../../context/AppContext';
 import { useTheme } from '../../context/ThemeContext';
 import { exportExcel, exportPDF } from '../../utils/exportReport';
 import { simulateTick } from '../../utils/simulation';
+import GlobalSearch from '../shared/GlobalSearch';
 
 const ROLE_LABELS = {
   MD: 'Managing Director',
@@ -21,7 +22,7 @@ const ROLE_LABELS = {
 const TopNavbar = ({ mobileMenuOpen, setMobileMenuOpen }) => {
   const { 
     user, currentViewRole, logout, notifications, unreadCount, 
-    markAllRead, searchQuery, setSearchQuery, drilldownPath
+    markAllRead, searchQuery, setSearchQuery, drilldownPath, drilldownContext
   } = useApp();
   const { theme, toggleTheme, isDark } = useTheme();
   const [showNotifications, setShowNotifications] = useState(false);
@@ -54,8 +55,8 @@ const TopNavbar = ({ mobileMenuOpen, setMobileMenuOpen }) => {
   const handleExport = async (type) => {
     setShowExportMenu(false);
     try {
-      if (type === 'excel') await exportExcel(user);
-      else await exportPDF(user);
+      if (type === 'excel') await exportExcel(user, currentViewRole, drilldownContext);
+      else await exportPDF(user, currentViewRole, drilldownContext);
     } catch (err) {
       if (import.meta.env.DEV) console.error('Export failed:', err);
     }
@@ -92,31 +93,7 @@ const TopNavbar = ({ mobileMenuOpen, setMobileMenuOpen }) => {
       <div className="flex items-center gap-2">
 
         {/* Search */}
-        <div className="relative hidden lg:block">
-          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: 'var(--text-muted)' }} />
-          <input
-            id="navbar-search"
-            name="search"
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && searchQuery.trim()) {
-                alert(`Search results for "${searchQuery}" will be available in the next update.`);
-                setSearchQuery('');
-              }
-            }}
-            placeholder="Search..."
-            className="pl-8 pr-3 py-1.5 rounded-lg text-xs"
-            style={{
-              background: 'var(--bg-surface)',
-              border: '1px solid var(--border)',
-              color: 'var(--text-primary)',
-              width: 180,
-              outline: 'none',
-            }}
-          />
-        </div>
+        <GlobalSearch />
 
         {/* Theme Toggle */}
         <button

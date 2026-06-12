@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chronicle Entry</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "bg-input": "#111d35",
+                        "surface-bright": "#27395a",
+                        "bg-app": "#060c18",
+                        "on-surface": "#d7e2ff",
+                        "inverse-on-surface": "#1e3050",
+                        "on-primary-fixed-variant": "#004f53",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#223555",
+                        "secondary-container": "#03b5d3",
+                        "data-quality": "#f59e0b",
+                        "text-secondary": "#8b9dc3",
+                        "primary-fixed-dim": "#36dae4",
+                        "tertiary-container": "#ff9d4f",
+                        "on-error": "#690005",
+                        "status-breakdown": "#dc2626",
+                        "data-performance": "#4ade80",
+                        "surface-container-lowest": "#000d26",
+                        "outline": "#859394",
+                        "text-tertiary": "#4a5e8a",
+                        "on-primary-fixed": "#002022",
+                        "surface-container": "#0b1f3e",
+                        "surface-container-low": "#061b3a",
+                        "surface-variant": "#223555",
+                        "on-tertiary-fixed": "#301400",
+                        "tertiary": "#ffc49b",
+                        "surface-tint": "#36dae4",
+                        "primary-container": "#00c8d2",
+                        "on-secondary": "#003640",
+                        "inverse-primary": "#00696f",
+                        "border-default": "rgba(255, 255, 255, 0.06)",
+                        "on-surface-variant": "#bbc9ca",
+                        "inverse-surface": "#d7e2ff",
+                        "on-secondary-fixed": "#001f26",
+                        "bg-card": "#0d1526",
+                        "error-container": "#93000a",
+                        "text-primary": "#f0f4ff",
+                        "on-background": "#d7e2ff",
+                        "primary-fixed": "#6ff6ff",
+                        "bg-overlay": "#050a14",
+                        "bg-header": "#080f1e",
+                        "on-tertiary-container": "#703700",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "outline-variant": "#3c494a",
+                        "on-secondary-container": "#00424e",
+                        "surface": "#001330",
+                        "surface-dim": "#001330",
+                        "on-primary": "#00373a",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "tertiary-fixed": "#ffdcc5",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "secondary-fixed": "#acedff",
+                        "status-planned": "#7c3aed",
+                        "status-running": "#16a34a",
+                        "on-tertiary": "#4f2500",
+                        "secondary": "#4cd7f6",
+                        "on-primary-container": "#004f53",
+                        "background": "#001330",
+                        "surface-container-high": "#172a49",
+                        "primary": "#46e4ee",
+                        "status-idle": "#d97706",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-horizontal": "16px",
+                        "lg": "16px",
+                        "xs": "4px",
+                        "xl": "24px",
+                        "gutter": "12px",
+                        "base": "4px",
+                        "component-height": "52px",
+                        "2xl": "32px",
+                        "sm": "8px",
+                        "md": "12px"
+                    },
+                    "fontFamily": {
+                        "large-kpi": ["Roboto"],
+                        "hero-kpi": ["Roboto"],
+                        "delta-text": ["Roboto"],
+                        "section-header": ["Roboto"],
+                        "card-title": ["Roboto"],
+                        "medium-kpi": ["Roboto"],
+                        "tag-label": ["Roboto"],
+                        "card-subtitle": ["Roboto"],
+                        "body": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "large-kpi": ["36px", { "lineHeight": "44px", "fontWeight": "400" }],
+                        "hero-kpi": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "delta-text": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "section-header": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "card-title": ["15px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "medium-kpi": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "tag-label": ["10px", { "lineHeight": "12px", "fontWeight": "600" }],
+                        "card-subtitle": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .custom-toggle:checked {
+            background-color: theme('colors.status-idle');
+        }
+        .custom-toggle:checked ~ .dot {
+            transform: translateX(100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app text-text-primary font-body antialiased selection:bg-surface-variant h-screen flex flex-col md:hidden overflow-hidden">
+<!-- TopAppBar -->
+<header class="bg-bg-header fixed top-0 w-full border-b border-border-default z-50 transition-colors duration-200">
+<div class="flex items-center justify-between px-margin-horizontal h-component-height w-full">
+<button class="text-status-idle hover:bg-surface-container-high p-2 rounded-full focus:outline-none transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">history</span>
+</button>
+<h1 class="font-card-title text-card-title text-status-idle uppercase tracking-widest">Chronicle Intelligence</h1>
+<button class="text-status-idle hover:bg-surface-container-high p-2 rounded-full focus:outline-none transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto pt-[68px] pb-[80px] px-margin-horizontal space-y-gutter">
+<!-- Header Text -->
+<div class="py-4">
+<h2 class="font-large-kpi text-large-kpi text-primary mb-1">Chronicle</h2>
+<p class="font-body text-body text-text-secondary">Replay Historical Operations</p>
+</div>
+<!-- Mode Toggle Card -->
+<div class="bg-bg-card border border-border-default rounded-xl p-lg flex flex-col gap-md relative overflow-hidden">
+<!-- Subtle gradient background effect -->
+<div class="absolute inset-0 bg-gradient-to-br from-surface-container/20 to-transparent pointer-events-none"></div>
+<div class="flex items-center justify-between relative z-10">
+<div class="flex flex-col">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Current Mode</span>
+<span class="font-medium-kpi text-medium-kpi text-status-idle font-bold tracking-wide" id="mode-text">NOW</span>
+</div>
+<!-- Custom Toggle Switch -->
+<label class="flex items-center cursor-pointer">
+<div class="relative">
+<input class="sr-only custom-toggle" id="mode-toggle" type="checkbox"/>
+<div class="block bg-surface-container-high border border-border-emphasis w-14 h-8 rounded-full transition-colors duration-300"></div>
+<div class="dot absolute left-1 top-1 bg-text-primary w-6 h-6 rounded-full transition-transform duration-300 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-surface-container-high" id="toggle-icon">sensors</span>
+</div>
+</div>
+</label>
+</div>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary relative z-10">View factory operations exactly as they existed at a selected moment in time.</p>
+</div>
+<!-- Quick Presets -->
+<div>
+<h3 class="font-section-header text-section-header text-text-secondary uppercase mb-sm tracking-wider">Quick Presets</h3>
+<div class="grid grid-cols-2 gap-sm">
+<!-- Preset Chip -->
+<button class="bg-surface-container border border-border-default rounded-lg p-md flex items-center gap-2 hover:bg-surface-variant transition-colors duration-200 focus:outline-none focus:ring-1 focus:ring-status-idle">
+<span class="material-symbols-outlined text-text-secondary text-sm">update</span>
+<span class="font-card-title text-card-title text-text-primary">Previous Shift</span>
+</button>
+<button class="bg-surface-container border border-border-default rounded-lg p-md flex items-center gap-2 hover:bg-surface-variant transition-colors duration-200 focus:outline-none focus:ring-1 focus:ring-status-idle">
+<span class="material-symbols-outlined text-text-secondary text-sm">calendar_today</span>
+<span class="font-card-title text-card-title text-text-primary">Yesterday</span>
+</button>
+<button class="bg-surface-container border border-border-default rounded-lg p-md flex items-center gap-2 hover:bg-surface-variant transition-colors duration-200 focus:outline-none focus:ring-1 focus:ring-status-idle">
+<span class="material-symbols-outlined text-text-secondary text-sm">date_range</span>
+<span class="font-card-title text-card-title text-text-primary">Last Week</span>
+</button>
+<button class="bg-surface-container border border-border-default rounded-lg p-md flex items-center gap-2 hover:bg-surface-variant transition-colors duration-200 focus:outline-none focus:ring-1 focus:ring-status-idle">
+<span class="material-symbols-outlined text-text-secondary text-sm">event</span>
+<span class="font-card-title text-card-title text-text-primary">Last Month</span>
+</button>
+<button class="bg-surface-container border border-border-default rounded-lg p-md flex items-center gap-2 hover:bg-surface-variant transition-colors duration-200 focus:outline-none focus:ring-1 focus:ring-status-idle col-span-2 justify-center">
+<span class="material-symbols-outlined text-status-idle text-sm">tune</span>
+<span class="font-card-title text-card-title text-status-idle">Custom Time</span>
+</button>
+</div>
+</div>
+<!-- Recent Sessions -->
+<div>
+<h3 class="font-section-header text-section-header text-text-secondary uppercase mb-sm tracking-wider">Recent Chronicle Sessions</h3>
+<div class="space-y-sm">
+<!-- Session Card 1 -->
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex items-start gap-md active:bg-surface-variant transition-colors">
+<div class="bg-surface-container-high rounded-full p-2 flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-text-secondary text-sm">history_toggle_off</span>
+</div>
+<div class="flex-1">
+<p class="font-card-subtitle text-card-subtitle text-text-tertiary mb-1">Yesterday 14:30</p>
+<p class="font-card-title text-card-title text-text-primary">Machine 7 Breakdown Investigation</p>
+</div>
+<button class="text-status-idle hover:text-primary transition-colors">
+<span class="material-symbols-outlined">play_circle</span>
+</button>
+</div>
+<!-- Session Card 2 -->
+<div class="bg-bg-card border border-border-default rounded-xl p-md flex items-start gap-md active:bg-surface-variant transition-colors">
+<div class="bg-surface-container-high rounded-full p-2 flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-text-secondary text-sm">history_toggle_off</span>
+</div>
+<div class="flex-1">
+<p class="font-card-subtitle text-card-subtitle text-text-tertiary mb-1">Oct 24, Night Shift</p>
+<p class="font-card-title text-card-title text-text-primary">Night Shift OEE Drop - Line 3</p>
+</div>
+<button class="text-status-idle hover:text-primary transition-colors">
+<span class="material-symbols-outlined">play_circle</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container-low fixed bottom-0 w-full z-50 border-t border-border-default transition-transform">
+<div class="flex justify-around items-center w-full h-[64px] px-2">
+<!-- Live -->
+<button class="flex flex-col items-center justify-center text-text-tertiary px-4 py-1 hover:text-text-primary transition-transform scale-95 active:scale-90">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">sensors</span>
+<span class="font-tag-label text-tag-label">Live</span>
+</button>
+<!-- Chronicle (Active) -->
+<button class="flex flex-col items-center justify-center bg-surface-container-highest text-status-idle rounded-xl px-4 py-1 transition-transform scale-95 active:scale-90">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">settings_backup_restore</span>
+<span class="font-tag-label text-tag-label">Chronicle</span>
+</button>
+<!-- Incidents -->
+<button class="flex flex-col items-center justify-center text-text-tertiary px-4 py-1 hover:text-text-primary transition-transform scale-95 active:scale-90">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">emergency_home</span>
+<span class="font-tag-label text-tag-label">Incidents</span>
+</button>
+<!-- Reports -->
+<button class="flex flex-col items-center justify-center text-text-tertiary px-4 py-1 hover:text-text-primary transition-transform scale-95 active:scale-90">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">analytics</span>
+<span class="font-tag-label text-tag-label">Reports</span>
+</button>
+</div>
+</nav>
+<script>
+        const toggle = document.getElementById('mode-toggle');
+        const modeText = document.getElementById('mode-text');
+        const toggleIcon = document.getElementById('toggle-icon');
+
+        toggle.addEventListener('change', function() {
+            if(this.checked) {
+                modeText.textContent = 'CHRONICLE';
+                modeText.classList.remove('text-status-idle');
+                modeText.classList.add('text-primary');
+                toggleIcon.textContent = 'history';
+            } else {
+                modeText.textContent = 'NOW';
+                modeText.classList.add('text-status-idle');
+                modeText.classList.remove('text-primary');
+                toggleIcon.textContent = 'sensors';
+            }
+        });
+    </script>
+</body></html>

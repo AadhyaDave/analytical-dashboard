@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fault History • Machine 7</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#00c8d2",
+                    "on-tertiary-fixed-variant": "#703700",
+                    "border-default": "rgba(255, 255, 255, 0.06)",
+                    "outline-variant": "#3c494a",
+                    "surface-bright": "#27395a",
+                    "bg-app": "#060c18",
+                    "surface-container-highest": "#223555",
+                    "on-primary": "#00373a",
+                    "primary-fixed-dim": "#36dae4",
+                    "bg-input": "#111d35",
+                    "background": "#001330",
+                    "on-tertiary": "#4f2500",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-surface": "#d7e2ff",
+                    "error": "#ffb4ab",
+                    "tertiary-container": "#ff9d4f",
+                    "surface-dim": "#001330",
+                    "surface-tint": "#36dae4",
+                    "surface-container-high": "#172a49",
+                    "inverse-on-surface": "#1e3050",
+                    "primary": "#46e4ee",
+                    "on-secondary": "#003640",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "primary-fixed": "#6ff6ff",
+                    "surface-container-low": "#061b3a",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "text-secondary": "#8b9dc3",
+                    "error-container": "#93000a",
+                    "status-planned": "#7c3aed",
+                    "tertiary-fixed": "#ffdcc5",
+                    "outline": "#859394",
+                    "on-primary-fixed-variant": "#004f53",
+                    "data-quality": "#f59e0b",
+                    "status-breakdown": "#dc2626",
+                    "bg-overlay": "#050a14",
+                    "on-primary-fixed": "#002022",
+                    "on-error-container": "#ffdad6",
+                    "data-performance": "#4ade80",
+                    "on-surface-variant": "#bbc9ca",
+                    "secondary-container": "#03b5d3",
+                    "surface-variant": "#223555",
+                    "surface": "#001330",
+                    "on-tertiary-fixed": "#301400",
+                    "text-tertiary": "#4a5e8a",
+                    "on-primary-container": "#004f53",
+                    "bg-header": "#080f1e",
+                    "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                    "text-primary": "#f0f4ff",
+                    "secondary": "#4cd7f6",
+                    "on-error": "#690005",
+                    "status-running": "#16a34a",
+                    "tertiary": "#ffc49b",
+                    "surface-container": "#0b1f3e",
+                    "status-idle": "#d97706",
+                    "inverse-surface": "#d7e2ff",
+                    "bg-card": "#0d1526",
+                    "inverse-primary": "#00696f",
+                    "on-background": "#d7e2ff",
+                    "secondary-fixed": "#acedff",
+                    "on-secondary-container": "#00424e",
+                    "surface-container-lowest": "#000d26",
+                    "on-tertiary-container": "#703700",
+                    "on-secondary-fixed": "#001f26"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "md": "12px",
+                    "lg": "16px",
+                    "2xl": "32px",
+                    "margin-horizontal": "16px",
+                    "xl": "24px",
+                    "base": "4px",
+                    "xs": "4px",
+                    "component-height": "52px",
+                    "gutter": "12px"
+            },
+            "fontFamily": {
+                    "body": ["Roboto"],
+                    "section-header": ["Roboto"],
+                    "medium-kpi": ["Roboto"],
+                    "card-subtitle": ["Roboto"],
+                    "hero-kpi": ["Roboto"],
+                    "tag-label": ["Roboto"],
+                    "large-kpi": ["Roboto"],
+                    "card-title": ["Roboto"],
+                    "delta-text": ["Roboto"]
+            },
+            "fontSize": {
+                    "body": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "section-header": ["11px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "medium-kpi": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "card-subtitle": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "hero-kpi": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300"}],
+                    "tag-label": ["10px", {"lineHeight": "12px", "fontWeight": "600"}],
+                    "large-kpi": ["36px", {"lineHeight": "44px", "fontWeight": "400"}],
+                    "card-title": ["15px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "delta-text": ["12px", {"lineHeight": "16px", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { background-color: #060c18; color: #d7e2ff; }
+        .micro-border { border: 0.5px solid rgba(255, 255, 255, 0.06); }
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full bg-bg-header text-primary font-card-title text-card-title border-b border-border-default z-50 flex justify-between items-center h-[52px] px-margin-horizontal hidden md:flex">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined hover:bg-surface-container-high active:opacity-80 transition-opacity cursor-pointer">menu</span>
+<span class="font-section-header text-section-header tracking-widest text-primary-container">INDUSTRIAL INTELLIGENCE</span>
+</div>
+<!-- Web Nav -->
+<nav class="flex gap-lg h-full items-center">
+<a class="text-on-surface-variant hover:bg-surface-container-high px-md py-xs rounded flex flex-col items-center" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="font-tag-label text-tag-label">Dashboard</span>
+</a>
+<a class="text-primary hover:bg-surface-container-high px-md py-xs rounded flex flex-col items-center border-b-2 border-primary" href="#">
+<span class="material-symbols-outlined text-xl">factory</span>
+<span class="font-tag-label text-tag-label">Assets</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high px-md py-xs rounded flex flex-col items-center" href="#">
+<span class="material-symbols-outlined text-xl">warning</span>
+<span class="font-tag-label text-tag-label">Alerts</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high px-md py-xs rounded flex flex-col items-center" href="#">
+<span class="material-symbols-outlined text-xl">assignment</span>
+<span class="font-tag-label text-tag-label">Logs</span>
+</a>
+</nav>
+<span class="material-symbols-outlined hover:bg-surface-container-high active:opacity-80 transition-opacity cursor-pointer text-on-surface-variant">settings</span>
+</header>
+<!-- Mobile Header (Contextual) -->
+<header class="md:hidden flex items-center justify-between px-margin-horizontal py-md bg-bg-app sticky top-0 z-40">
+<button class="text-on-surface-variant"><span class="material-symbols-outlined">arrow_back</span></button>
+<h1 class="font-card-title text-card-title text-text-primary text-center flex-1">Fault History • Machine 7</h1>
+<button class="text-on-surface-variant"><span class="material-symbols-outlined">filter_list</span></button>
+</header>
+<main class="pt-md md:pt-24 px-margin-horizontal max-w-5xl mx-auto flex flex-col gap-gutter">
+<!-- Desktop Context Header -->
+<div class="hidden md:flex justify-between items-end mb-sm">
+<div>
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">arrow_back</span>
+<span class="font-body text-body text-text-secondary cursor-pointer hover:text-on-surface">Back to Machine 7 Details</span>
+</div>
+<h1 class="font-hero-kpi text-hero-kpi text-text-primary">Fault History</h1>
+</div>
+<div class="flex bg-bg-input rounded-lg p-xs micro-border">
+<button class="px-md py-sm font-body text-body text-text-secondary hover:text-on-surface rounded-md">Today</button>
+<button class="px-md py-sm font-body text-body text-bg-app bg-primary-fixed-dim rounded-md font-medium">7 Days</button>
+<button class="px-md py-sm font-body text-body text-text-secondary hover:text-on-surface rounded-md">30 Days</button>
+<button class="px-md py-sm font-body text-body text-text-secondary hover:text-on-surface rounded-md flex items-center gap-xs"><span class="material-symbols-outlined text-sm">calendar_month</span> Custom</button>
+</div>
+</div>
+<!-- Mobile Filter Row (Scrollable) -->
+<div class="md:hidden flex overflow-x-auto gap-sm pb-sm no-scrollbar">
+<button class="whitespace-nowrap px-lg py-sm rounded-full micro-border font-body text-body text-text-secondary bg-surface-container-low">Today</button>
+<button class="whitespace-nowrap px-lg py-sm rounded-full micro-border font-body text-body text-bg-app bg-primary-fixed-dim font-medium">7 Days</button>
+<button class="whitespace-nowrap px-lg py-sm rounded-full micro-border font-body text-body text-text-secondary bg-surface-container-low">30 Days</button>
+<button class="whitespace-nowrap px-lg py-sm rounded-full micro-border font-body text-body text-text-secondary bg-surface-container-low flex items-center gap-xs"><span class="material-symbols-outlined text-sm">calendar_month</span> Custom</button>
+</div>
+<!-- Analytics Bento Grid -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<!-- MTBF -->
+<div class="bg-bg-card rounded-xl p-lg micro-border flex flex-col justify-between">
+<span class="font-section-header text-section-header text-text-secondary mb-md">MTBF (7D)</span>
+<div>
+<span class="font-large-kpi text-large-kpi text-on-surface block">142h</span>
+<span class="font-delta-text text-delta-text text-data-performance flex items-center gap-xs mt-xs">
+<span class="material-symbols-outlined text-sm">trending_up</span> +12h
+                    </span>
+</div>
+</div>
+<!-- MTTR -->
+<div class="bg-bg-card rounded-xl p-lg micro-border flex flex-col justify-between">
+<span class="font-section-header text-section-header text-text-secondary mb-md">MTTR (7D)</span>
+<div>
+<span class="font-large-kpi text-large-kpi text-on-surface block">1.2h</span>
+<span class="font-delta-text text-delta-text text-status-breakdown flex items-center gap-xs mt-xs">
+<span class="material-symbols-outlined text-sm">trending_up</span> +0.4h
+                    </span>
+</div>
+</div>
+<!-- Most Frequent -->
+<div class="col-span-2 bg-bg-card rounded-xl p-lg micro-border flex flex-col justify-between">
+<span class="font-section-header text-section-header text-text-secondary mb-md">MOST FREQUENT FAULT</span>
+<div class="flex items-end justify-between">
+<div>
+<span class="font-card-title text-card-title text-on-surface block mb-xs">Sensor Alignment Error</span>
+<div class="flex items-center gap-sm">
+<span class="px-sm py-xs rounded-full bg-error-container bg-opacity-20 text-error font-tag-label text-tag-label flex items-center gap-xs">
+<span class="w-[6px] h-[6px] rounded-full bg-error block"></span> 4 Events
+                            </span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Avg repair: 45m</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-4xl text-surface-variant">sensors</span>
+</div>
+</div>
+</section>
+<!-- Fault Frequency Trend (Sparkline Placeholder) -->
+<section class="bg-bg-card rounded-xl p-lg micro-border">
+<div class="flex justify-between items-center mb-md">
+<span class="font-section-header text-section-header text-text-secondary">FAULT FREQUENCY TREND</span>
+<span class="font-card-subtitle text-card-subtitle text-text-tertiary">Events / Day</span>
+</div>
+<div class="h-24 w-full relative flex items-end justify-between gap-xs">
+<!-- Decorative Bars mimicking a sparkline -->
+<div class="w-full bg-surface-container-high h-[20%] rounded-t-sm relative group"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container text-on-surface font-tag-label text-tag-label px-2 py-1 rounded">1</div></div>
+<div class="w-full bg-surface-container-high h-[40%] rounded-t-sm relative group"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container text-on-surface font-tag-label text-tag-label px-2 py-1 rounded">2</div></div>
+<div class="w-full bg-surface-container-high h-[10%] rounded-t-sm relative group"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container text-on-surface font-tag-label text-tag-label px-2 py-1 rounded">0</div></div>
+<div class="w-full bg-surface-container-high h-[60%] rounded-t-sm relative group"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container text-on-surface font-tag-label text-tag-label px-2 py-1 rounded">3</div></div>
+<div class="w-full bg-surface-container-high h-[30%] rounded-t-sm relative group"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container text-on-surface font-tag-label text-tag-label px-2 py-1 rounded">1</div></div>
+<div class="w-full bg-error-container h-[100%] rounded-t-sm relative group"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container text-on-surface font-tag-label text-tag-label px-2 py-1 rounded">5</div></div>
+<div class="w-full bg-surface-container-high h-[20%] rounded-t-sm relative group"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container text-on-surface font-tag-label text-tag-label px-2 py-1 rounded">1</div></div>
+</div>
+<div class="flex justify-between mt-sm font-tag-label text-tag-label text-text-tertiary uppercase">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+</section>
+<!-- Fault Cards List -->
+<section class="flex flex-col gap-sm">
+<h2 class="font-section-header text-section-header text-text-secondary mb-xs pl-xs">EVENT LOG</h2>
+<!-- Item 1 -->
+<div class="bg-bg-card rounded-xl p-lg micro-border flex flex-col md:flex-row md:items-center justify-between gap-md relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-status-breakdown"></div>
+<div class="flex-1 pl-sm">
+<div class="flex items-center gap-sm mb-xs">
+<span class="px-sm py-xs rounded-full bg-error-container bg-opacity-20 text-error font-tag-label text-tag-label flex items-center gap-xs">
+<span class="w-[6px] h-[6px] rounded-full bg-error block"></span> Critical
+                        </span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Today, 14:23</span>
+</div>
+<h3 class="font-card-title text-card-title text-on-surface">Spindle Overheat</h3>
+</div>
+<div class="grid grid-cols-2 md:flex md:items-center gap-md md:gap-xl text-left md:text-right bg-surface-container-low md:bg-transparent p-md md:p-0 rounded-lg">
+<div>
+<span class="font-section-header text-section-header text-text-tertiary block md:hidden mb-xs">DOWNTIME</span>
+<div class="flex items-center gap-xs md:justify-end text-text-secondary font-medium-kpi text-medium-kpi">
+<span class="material-symbols-outlined text-lg">timer</span> 47m
+                        </div>
+</div>
+<div>
+<span class="font-section-header text-section-header text-text-tertiary block md:hidden mb-xs">RESOLVED BY</span>
+<div class="flex items-center gap-xs md:justify-end font-body text-body text-on-surface-variant">
+<span class="material-symbols-outlined text-lg text-text-tertiary">person</span> Suresh M.
+                        </div>
+</div>
+<div class="col-span-2 md:w-32">
+<span class="font-section-header text-section-header text-text-tertiary block md:hidden mb-xs">IMPACT</span>
+<div class="font-body text-body text-status-breakdown flex items-center md:justify-end gap-xs">
+                            OEE -1.2%
+                        </div>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-bg-card rounded-xl p-lg micro-border flex flex-col md:flex-row md:items-center justify-between gap-md relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-status-idle"></div>
+<div class="flex-1 pl-sm">
+<div class="flex items-center gap-sm mb-xs">
+<span class="px-sm py-xs rounded-full bg-tertiary-container bg-opacity-20 text-tertiary font-tag-label text-tag-label flex items-center gap-xs">
+<span class="w-[6px] h-[6px] rounded-full bg-status-idle block"></span> Warning
+                        </span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Yesterday, 09:12</span>
+</div>
+<h3 class="font-card-title text-card-title text-on-surface">Hydraulic Pressure Low</h3>
+</div>
+<div class="grid grid-cols-2 md:flex md:items-center gap-md md:gap-xl text-left md:text-right bg-surface-container-low md:bg-transparent p-md md:p-0 rounded-lg">
+<div>
+<span class="font-section-header text-section-header text-text-tertiary block md:hidden mb-xs">DOWNTIME</span>
+<div class="flex items-center gap-xs md:justify-end text-text-secondary font-medium-kpi text-medium-kpi">
+<span class="material-symbols-outlined text-lg">timer</span> 12m
+                        </div>
+</div>
+<div>
+<span class="font-section-header text-section-header text-text-tertiary block md:hidden mb-xs">RESOLVED BY</span>
+<div class="flex items-center gap-xs md:justify-end font-body text-body text-on-surface-variant">
+<span class="material-symbols-outlined text-lg text-text-tertiary">person</span> Priya K.
+                        </div>
+</div>
+<div class="col-span-2 md:w-32">
+<!-- Empty space to align columns -->
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-bg-card rounded-xl p-lg micro-border flex flex-col md:flex-row md:items-center justify-between gap-md relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-status-breakdown"></div>
+<div class="flex-1 pl-sm">
+<div class="flex items-center gap-sm mb-xs">
+<span class="px-sm py-xs rounded-full bg-error-container bg-opacity-20 text-error font-tag-label text-tag-label flex items-center gap-xs">
+<span class="w-[6px] h-[6px] rounded-full bg-error block"></span> Critical
+                        </span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Oct 24, 18:45</span>
+</div>
+<h3 class="font-card-title text-card-title text-on-surface">Motor Trip</h3>
+</div>
+<div class="grid grid-cols-2 md:flex md:items-center gap-md md:gap-xl text-left md:text-right bg-surface-container-low md:bg-transparent p-md md:p-0 rounded-lg">
+<div>
+<span class="font-section-header text-section-header text-text-tertiary block md:hidden mb-xs">DOWNTIME</span>
+<div class="flex items-center gap-xs md:justify-end text-text-secondary font-medium-kpi text-medium-kpi">
+<span class="material-symbols-outlined text-lg">timer</span> 1h 4m
+                        </div>
+</div>
+<div>
+<span class="font-section-header text-section-header text-text-tertiary block md:hidden mb-xs">RESOLVED BY</span>
+<div class="flex items-center gap-xs md:justify-end font-body text-body text-on-surface-variant">
+<span class="material-symbols-outlined text-lg text-text-tertiary">autorenew</span> System Reset
+                        </div>
+</div>
+<div class="col-span-2 md:w-32">
+<!-- Empty space to align columns -->
+</div>
+</div>
+</div>
+<button class="w-full py-md mt-sm border border-outline-variant rounded-lg font-card-title text-card-title text-text-secondary hover:bg-surface-container hover:text-on-surface transition-colors flex justify-center items-center gap-xs">
+                View All Records <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-bg-app border-t border-border-default flex justify-around items-center h-[64px] px-sm text-primary font-tag-label text-tag-label">
+<div class="flex flex-col items-center justify-center text-text-secondary px-md py-xs hover:text-primary-fixed-dim active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-surface-container-highest text-primary-fixed rounded-xl px-md py-xs hover:text-primary-fixed-dim active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">factory</span>
+<span>Assets</span>
+</div>
+<div class="flex flex-col items-center justify-center text-text-secondary px-md py-xs hover:text-primary-fixed-dim active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">warning</span>
+<span>Alerts</span>
+</div>
+<div class="flex flex-col items-center justify-center text-text-secondary px-md py-xs hover:text-primary-fixed-dim active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">assignment</span>
+<span>Logs</span>
+</div>
+</nav>
+</body></html>

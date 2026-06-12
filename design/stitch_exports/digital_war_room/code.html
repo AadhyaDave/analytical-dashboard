@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital War Room - Incident Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#46e4ee",
+                        "text-primary": "#f0f4ff",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "on-background": "#d7e2ff",
+                        "secondary-fixed": "#acedff",
+                        "tertiary": "#ffc49b",
+                        "inverse-primary": "#00696f",
+                        "secondary": "#4cd7f6",
+                        "on-error-container": "#ffdad6",
+                        "data-performance": "#4ade80",
+                        "surface-container": "#0b1f3e",
+                        "background": "#001330",
+                        "tertiary-fixed": "#ffdcc5",
+                        "surface-variant": "#223555",
+                        "data-quality": "#f59e0b",
+                        "on-primary": "#00373a",
+                        "secondary-container": "#03b5d3",
+                        "on-primary-fixed-variant": "#004f53",
+                        "status-idle": "#d97706",
+                        "status-breakdown": "#dc2626",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "surface-container-highest": "#223555",
+                        "bg-card": "#0d1526",
+                        "status-planned": "#7c3aed",
+                        "status-running": "#16a34a",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-bright": "#27395a",
+                        "bg-header": "#080f1e",
+                        "surface-container-high": "#172a49",
+                        "bg-input": "#111d35",
+                        "error": "#ffb4ab",
+                        "text-secondary": "#8b9dc3",
+                        "on-tertiary-container": "#703700",
+                        "outline": "#859394",
+                        "surface-container-lowest": "#000d26",
+                        "surface-container-low": "#061b3a",
+                        "on-error": "#690005",
+                        "on-tertiary": "#4f2500",
+                        "text-tertiary": "#4a5e8a",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "bg-overlay": "#050a14",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-dim": "#001330",
+                        "tertiary-container": "#ff9d4f",
+                        "on-secondary-fixed": "#001f26",
+                        "inverse-on-surface": "#1e3050",
+                        "bg-app": "#060c18",
+                        "surface-tint": "#36dae4",
+                        "on-surface-variant": "#bbc9ca",
+                        "error-container": "#93000a",
+                        "on-secondary": "#003640",
+                        "on-primary-fixed": "#002022",
+                        "on-surface": "#d7e2ff",
+                        "surface": "#001330",
+                        "primary-fixed-dim": "#36dae4",
+                        "primary-fixed": "#6ff6ff",
+                        "inverse-surface": "#d7e2ff",
+                        "primary-container": "#00c8d2",
+                        "outline-variant": "#3c494a",
+                        "border-default": "rgba(255, 255, 255, 0.06)",
+                        "on-secondary-container": "#00424e",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-primary-container": "#004f53"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "12px",
+                        "2xl": "32px",
+                        "xs": "4px",
+                        "margin-horizontal": "16px",
+                        "sm": "8px",
+                        "xl": "24px",
+                        "component-height": "52px",
+                        "base": "4px",
+                        "lg": "16px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "medium-kpi": ["Roboto"],
+                        "section-header": ["Roboto"],
+                        "body": ["Roboto"],
+                        "tag-label": ["Roboto"],
+                        "delta-text": ["Roboto"],
+                        "card-title": ["Roboto"],
+                        "large-kpi": ["Roboto"],
+                        "hero-kpi": ["Roboto"],
+                        "card-subtitle": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "medium-kpi": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "section-header": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "tag-label": ["10px", { "lineHeight": "12px", "fontWeight": "600" }],
+                        "delta-text": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "card-title": ["15px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "large-kpi": ["36px", { "lineHeight": "44px", "fontWeight": "400" }],
+                        "hero-kpi": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "card-subtitle": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.bg-app'); color: theme('colors.text-primary'); }
+        .micro-border { border: 0.5px solid theme('colors.border-default'); }
+        .kpi-trend-down { color: theme('colors.status-breakdown'); }
+        .pulse-glow { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen flex flex-col pt-[52px]">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-bg-header flex items-center justify-between px-margin-horizontal h-component-height border-b border-border-default">
+<div class="flex items-center gap-lg">
+<button class="text-on-surface-variant hover:bg-surface-container-highest transition-colors p-xs rounded active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-section-header text-section-header tracking-widest text-primary">OPUS ONE</h1>
+</div>
+<button class="text-on-surface-variant hover:bg-surface-container-highest transition-colors p-xs rounded active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow p-margin-horizontal flex flex-col gap-gutter md:grid md:grid-cols-12 md:items-start max-w-7xl mx-auto w-full">
+<!-- Investigation Banner -->
+<div class="col-span-12 bg-bg-card border border-[rgba(0,200,210,0.35)] rounded-lg p-md flex items-center justify-between shadow-[0_0_15px_rgba(0,200,210,0.1)] relative overflow-hidden">
+<div class="absolute inset-0 bg-primary opacity-5"></div>
+<div class="flex items-center gap-md z-10">
+<div class="w-2 h-2 rounded-full bg-primary pulse-glow"></div>
+<span class="font-tag-label text-tag-label text-primary uppercase tracking-widest">Investigating Incident #992</span>
+</div>
+<div class="z-10 bg-status-breakdown/12 px-3 py-1 rounded-full flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-status-breakdown"></div>
+<span class="font-tag-label text-tag-label text-status-breakdown">CRITICAL SEVERITY</span>
+</div>
+</div>
+<!-- Left Column: Context & Metrics -->
+<div class="col-span-12 md:col-span-4 flex flex-col gap-gutter">
+<!-- Context Card -->
+<div class="bg-bg-card micro-border rounded-lg p-lg relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-status-breakdown"></div>
+<h2 class="font-card-title text-card-title text-text-primary mb-1">Machine 7 Breakdown</h2>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary mb-lg">CNC Milling Line Alpha</p>
+<div class="grid grid-cols-2 gap-md">
+<div>
+<p class="font-section-header text-section-header text-text-secondary mb-xs">DURATION</p>
+<p class="font-medium-kpi text-medium-kpi text-status-breakdown">1h 42m</p>
+</div>
+<div>
+<p class="font-section-header text-section-header text-text-secondary mb-xs">IMPACT OEE</p>
+<p class="font-medium-kpi text-medium-kpi kpi-trend-down">-4.2%</p>
+</div>
+<div class="col-span-2">
+<p class="font-section-header text-section-header text-text-secondary mb-xs">UNITS LOST (EST)</p>
+<p class="font-medium-kpi text-medium-kpi text-text-primary">850</p>
+</div>
+</div>
+</div>
+<!-- Participants Card -->
+<div class="bg-bg-card micro-border rounded-lg p-lg">
+<h3 class="font-section-header text-section-header text-text-secondary mb-md">WAR ROOM PARTICIPANTS (4)</h3>
+<div class="flex flex-col gap-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-bold">JD</div>
+<div>
+<p class="font-body text-body text-text-primary">John Doe</p>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary">Plant Head</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-secondary font-bold">SM</div>
+<div>
+<p class="font-body text-body text-text-primary">Sarah Miller</p>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary">Maint Head</p>
+</div>
+</div>
+<button class="w-full h-component-height bg-surface-container hover:bg-surface-container-high transition-colors micro-border rounded-lg flex items-center justify-center gap-2 text-primary">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span class="font-body text-body">Invite Subject Matter Expert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Middle/Right Column: Activity & Decisions -->
+<div class="col-span-12 md:col-span-8 flex flex-col gap-gutter">
+<!-- Decision Tracker -->
+<div class="bg-bg-card micro-border rounded-lg p-lg">
+<h3 class="font-section-header text-section-header text-text-secondary mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="rule">rule</span>
+                    DECISION TRACKER
+                </h3>
+<div class="flex flex-col gap-xs">
+<!-- Pending Decision -->
+<div class="bg-surface-container p-md rounded flex items-start gap-md border-l-2 border-data-quality">
+<span class="material-symbols-outlined text-data-quality mt-0.5" data-icon="pending">pending</span>
+<div class="flex-grow">
+<p class="font-body text-body text-text-primary">Authorize external contractor dispatch for spindle repair.</p>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary mt-1">Awaiting approval from Plant Head.</p>
+</div>
+<span class="bg-data-quality/10 text-data-quality px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wide">Pending</span>
+</div>
+<!-- Completed Decision -->
+<div class="bg-surface-container p-md rounded flex items-start gap-md border-l-2 border-status-running opacity-80">
+<span class="material-symbols-outlined text-status-running mt-0.5" data-icon="check_circle">check_circle</span>
+<div class="flex-grow">
+<p class="font-body text-body text-text-primary line-through">Divert Line B production to Line C.</p>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary mt-1">Executed at 14:15 by Shift Supervisor.</p>
+</div>
+<span class="bg-status-running/10 text-status-running px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wide">Completed</span>
+</div>
+</div>
+</div>
+<!-- Activity Feed -->
+<div class="bg-bg-card micro-border rounded-lg p-lg flex-grow flex flex-col min-h-[400px]">
+<h3 class="font-section-header text-section-header text-text-secondary mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="forum">forum</span>
+                    LIVE ACTIVITY FEED
+                </h3>
+<div class="flex-grow overflow-y-auto flex flex-col gap-md pr-2 pb-md relative">
+<!-- Timeline Line -->
+<div class="absolute left-4 top-2 bottom-0 w-px bg-border-default z-0"></div>
+<!-- Feed Item -->
+<div class="flex gap-md relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex-shrink-0 border-2 border-bg-card flex items-center justify-center text-xs text-primary">SM</div>
+<div class="bg-surface-container p-md rounded-lg rounded-tl-none flex-grow micro-border">
+<div class="flex justify-between items-center mb-1">
+<span class="font-card-subtitle text-card-subtitle text-text-primary font-medium">Sarah Miller</span>
+<span class="font-tag-label text-tag-label text-text-secondary">Just now</span>
+</div>
+<p class="font-body text-body text-text-secondary">Diagnostics indicate servo motor failure on Axis X. Initiating teardown protocol.</p>
+</div>
+</div>
+<!-- System Event -->
+<div class="flex gap-md relative z-10 items-center py-2">
+<div class="w-8 h-8 rounded-full bg-bg-card flex-shrink-0 border-2 border-status-breakdown flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-status-breakdown" data-icon="warning">warning</span>
+</div>
+<div class="flex-grow">
+<p class="font-body text-body text-text-secondary text-sm"><span class="text-status-breakdown font-medium">System Alert:</span> Secondary coolant temp rising on adjacent Unit 8.</p>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="mt-auto pt-md border-t border-border-default flex gap-md">
+<input class="flex-grow h-component-height bg-bg-input micro-border rounded-lg px-md font-body text-body text-text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Type update or command..." type="text"/>
+<button class="h-component-height px-xl bg-primary hover:bg-primary-fixed transition-colors text-on-primary rounded-lg font-card-title text-card-title flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

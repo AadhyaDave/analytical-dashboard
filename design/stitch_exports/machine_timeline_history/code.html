@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Machine Timeline</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#00c8d2",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "border-default": "rgba(255, 255, 255, 0.06)",
+                        "outline-variant": "#3c494a",
+                        "surface-bright": "#27395a",
+                        "bg-app": "#060c18",
+                        "surface-container-highest": "#223555",
+                        "on-primary": "#00373a",
+                        "primary-fixed-dim": "#36dae4",
+                        "bg-input": "#111d35",
+                        "background": "#001330",
+                        "on-tertiary": "#4f2500",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-surface": "#d7e2ff",
+                        "error": "#ffb4ab",
+                        "tertiary-container": "#ff9d4f",
+                        "surface-dim": "#001330",
+                        "surface-tint": "#36dae4",
+                        "surface-container-high": "#172a49",
+                        "inverse-on-surface": "#1e3050",
+                        "primary": "#46e4ee",
+                        "on-secondary": "#003640",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "primary-fixed": "#6ff6ff",
+                        "surface-container-low": "#061b3a",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "text-secondary": "#8b9dc3",
+                        "error-container": "#93000a",
+                        "status-planned": "#7c3aed",
+                        "tertiary-fixed": "#ffdcc5",
+                        "outline": "#859394",
+                        "on-primary-fixed-variant": "#004f53",
+                        "data-quality": "#f59e0b",
+                        "status-breakdown": "#dc2626",
+                        "bg-overlay": "#050a14",
+                        "on-primary-fixed": "#002022",
+                        "on-error-container": "#ffdad6",
+                        "data-performance": "#4ade80",
+                        "on-surface-variant": "#bbc9ca",
+                        "secondary-container": "#03b5d3",
+                        "surface-variant": "#223555",
+                        "surface": "#001330",
+                        "on-tertiary-fixed": "#301400",
+                        "text-tertiary": "#4a5e8a",
+                        "on-primary-container": "#004f53",
+                        "bg-header": "#080f1e",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "text-primary": "#f0f4ff",
+                        "secondary": "#4cd7f6",
+                        "on-error": "#690005",
+                        "status-running": "#16a34a",
+                        "tertiary": "#ffc49b",
+                        "surface-container": "#0b1f3e",
+                        "status-idle": "#d97706",
+                        "inverse-surface": "#d7e2ff",
+                        "bg-card": "#0d1526",
+                        "inverse-primary": "#00696f",
+                        "on-background": "#d7e2ff",
+                        "secondary-fixed": "#acedff",
+                        "on-secondary-container": "#00424e",
+                        "surface-container-lowest": "#000d26",
+                        "on-tertiary-container": "#703700",
+                        "on-secondary-fixed": "#001f26"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "md": "12px",
+                        "lg": "16px",
+                        "2xl": "32px",
+                        "margin-horizontal": "16px",
+                        "xl": "24px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "component-height": "52px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "body": ["Roboto"],
+                        "section-header": ["Roboto"],
+                        "medium-kpi": ["Roboto"],
+                        "card-subtitle": ["Roboto"],
+                        "hero-kpi": ["Roboto"],
+                        "tag-label": ["Roboto"],
+                        "large-kpi": ["Roboto"],
+                        "card-title": ["Roboto"],
+                        "delta-text": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "section-header": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "medium-kpi": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "card-subtitle": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "hero-kpi": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "tag-label": ["10px", { "lineHeight": "12px", "fontWeight": "600" }],
+                        "large-kpi": ["36px", { "lineHeight": "44px", "fontWeight": "400" }],
+                        "card-title": ["15px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "delta-text": ["12px", { "lineHeight": "16px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.bg-app'); color: theme('colors.text-primary'); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 1; }
+        
+        /* Custom scrollbar for timeline */
+        .timeline-scroll::-webkit-scrollbar { height: 6px; }
+        .timeline-scroll::-webkit-scrollbar-track { background: theme('colors.surface-container-low'); }
+        .timeline-scroll::-webkit-scrollbar-thumb { background: theme('colors.surface-container-high'); border-radius: 4px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body text-body bg-bg-app text-text-primary antialiased min-h-screen flex flex-col md:flex-row pb-[64px] md:pb-0 pt-[52px]">
+<!-- TopAppBar -->
+<header class="bg-bg-header text-primary font-card-title text-card-title fixed top-0 w-full border-b border-border-default flex justify-between items-center h-[52px] px-margin-horizontal z-50">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-high active:opacity-80 transition-opacity p-2 rounded-full">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-section-header text-section-header tracking-widest text-primary-container">INDUSTRIAL INTELLIGENCE</span>
+</div>
+<div class="flex items-center">
+<button class="text-on-surface-variant hover:bg-surface-container-high active:opacity-80 transition-opacity p-2 rounded-full">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Desktop Sidebar / Drawer (Hidden on mobile) -->
+<aside class="hidden md:flex bg-bg-overlay h-full w-[280px] border-r border-border-emphasis flex-col py-xl fixed left-0 top-[52px] z-40">
+<div class="px-lg mb-8 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-border-default">
+<span class="material-symbols-outlined text-text-secondary text-2xl">person</span>
+</div>
+<div>
+<h3 class="font-card-title text-card-title text-primary">OPERATOR_042</h3>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary">Shift B • North Wing</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-2 px-sm">
+<a class="flex items-center gap-4 px-md py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Line Overview</span>
+</a>
+<a class="flex items-center gap-4 px-md py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span>Shift Reports</span>
+</a>
+<a class="flex items-center gap-4 px-md py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">build</span>
+<span>Maintenance</span>
+</a>
+<a class="flex items-center gap-4 px-md py-3 rounded-lg bg-surface-container text-primary-fixed-dim font-bold transition-colors duration-200 border-l-2 border-primary-fixed-dim" href="#">
+<span class="material-symbols-outlined">factory</span>
+<span>Machine Timeline</span>
+</a>
+<a class="flex items-center gap-4 px-md py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings_suggest</span>
+<span>System Health</span>
+</a>
+</nav>
+<div class="px-lg mt-auto text-text-tertiary font-tag-label text-tag-label">
+            v2.4.0-stable
+        </div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin-horizontal py-6 md:ml-[280px] overflow-y-auto">
+<!-- Header -->
+<div class="mb-6">
+<h1 class="font-card-title text-card-title text-text-primary flex items-center gap-2">
+                Machine Timeline <span class="text-text-secondary mx-2">•</span> Machine 7
+            </h1>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary mt-1">Historical Gantt View (Last 24 Hours)</p>
+</div>
+<!-- Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Left Column: Timeline & Overview (Span 2) -->
+<div class="lg:col-span-2 flex flex-col gap-gutter">
+<!-- Gantt Chart Container -->
+<div class="bg-bg-card rounded-xl border border-border-default p-lg">
+<h2 class="font-section-header text-section-header text-text-secondary uppercase mb-4 tracking-widest">24-Hour Operations Cycle</h2>
+<div class="relative w-full h-[120px] bg-bg-input rounded-lg border border-border-default overflow-hidden timeline-scroll overflow-x-auto">
+<div class="min-w-[800px] h-full relative p-4 flex flex-col justify-center">
+<!-- Gantt Track -->
+<div class="h-8 w-full bg-surface-container-lowest rounded-md flex relative shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)]">
+<!-- 00:00 - 06:00 Running -->
+<div class="h-full bg-status-running border-r border-bg-app" style="width: 25%"></div>
+<!-- 06:00 - 06:30 Idle -->
+<div class="h-full bg-status-idle border-r border-bg-app" style="width: 2%"></div>
+<!-- 06:30 - 10:15 Running -->
+<div class="h-full bg-status-running border-r border-bg-app" style="width: 15%"></div>
+<!-- 10:15 - 11:19 Breakdown (SELECTED) -->
+<div class="h-full bg-status-breakdown border-2 border-primary shadow-[0_0_8px_rgba(70,228,238,0.5)] relative z-10" style="width: 4%">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-surface-container-high px-2 py-1 rounded text-[10px] text-primary whitespace-nowrap border border-border-default shadow-lg">10:15 - 11:19</div>
+</div>
+<!-- 11:19 - 14:00 Maintenance -->
+<div class="h-full bg-status-planned border-r border-bg-app" style="width: 11%"></div>
+<!-- 14:00 - 20:00 Running -->
+<div class="h-full bg-status-running border-r border-bg-app" style="width: 25%"></div>
+<!-- 20:00 - 22:00 Idle -->
+<div class="h-full bg-status-idle border-r border-bg-app" style="width: 8%"></div>
+<!-- 22:00 - 24:00 Running -->
+<div class="h-full bg-status-running" style="width: 10%"></div>
+</div>
+<!-- X-Axis Labels -->
+<div class="flex justify-between w-full mt-2 font-tag-label text-tag-label text-text-tertiary">
+<span>00:00</span>
+<span>04:00</span>
+<span>08:00</span>
+<span>12:00</span>
+<span>16:00</span>
+<span>20:00</span>
+<span>24:00</span>
+</div>
+</div>
+</div>
+<!-- Legend -->
+<div class="flex flex-wrap gap-4 mt-4 justify-center md:justify-start">
+<div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-status-running"></div><span class="font-tag-label text-tag-label text-text-secondary">Running</span></div>
+<div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-status-idle"></div><span class="font-tag-label text-tag-label text-text-secondary">Idle</span></div>
+<div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-status-breakdown"></div><span class="font-tag-label text-tag-label text-text-secondary">Breakdown</span></div>
+<div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-status-planned"></div><span class="font-tag-label text-tag-label text-text-secondary">Maintenance</span></div>
+</div>
+</div>
+<!-- Split Stats / Heatmap -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Distribution Analytics -->
+<div class="bg-bg-card rounded-xl border border-border-default p-lg">
+<h3 class="font-section-header text-section-header text-text-secondary uppercase mb-4 tracking-widest">Time Distribution</h3>
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<span class="font-body text-body text-text-secondary flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-status-running"></div> Running</span>
+<span class="font-medium-kpi text-medium-kpi text-text-primary">82%</span>
+</div>
+<div class="w-full bg-surface-container-low h-1 rounded-full"><div class="bg-status-running h-1 rounded-full" style="width: 82%"></div></div>
+<div class="flex justify-between items-center mt-2">
+<span class="font-body text-body text-text-secondary flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-status-idle"></div> Idle</span>
+<span class="font-medium-kpi text-medium-kpi text-text-primary">12%</span>
+</div>
+<div class="w-full bg-surface-container-low h-1 rounded-full"><div class="bg-status-idle h-1 rounded-full" style="width: 12%"></div></div>
+<div class="flex justify-between items-center mt-2">
+<span class="font-body text-body text-text-secondary flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-status-breakdown"></div> Breakdown</span>
+<span class="font-medium-kpi text-medium-kpi text-text-primary">4%</span>
+</div>
+<div class="w-full bg-surface-container-low h-1 rounded-full"><div class="bg-status-breakdown h-1 rounded-full" style="width: 4%"></div></div>
+<div class="flex justify-between items-center mt-2">
+<span class="font-body text-body text-text-secondary flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-status-planned"></div> Maintenance</span>
+<span class="font-medium-kpi text-medium-kpi text-text-primary">2%</span>
+</div>
+<div class="w-full bg-surface-container-low h-1 rounded-full"><div class="bg-status-planned h-1 rounded-full" style="width: 2%"></div></div>
+</div>
+</div>
+<!-- Downtime Heatmap -->
+<div class="bg-bg-card rounded-xl border border-border-default p-lg">
+<h3 class="font-section-header text-section-header text-text-secondary uppercase mb-4 tracking-widest">Downtime Heatmap</h3>
+<div class="grid grid-cols-6 gap-1 h-[150px]">
+<!-- Simulated Heatmap Grid -->
+<div class="bg-surface-container-low rounded-sm"></div>
+<div class="bg-surface-container-low rounded-sm"></div>
+<div class="bg-surface-container-low rounded-sm"></div>
+<div class="bg-surface-container-low rounded-sm"></div>
+<div class="bg-surface-container-low rounded-sm"></div>
+<div class="bg-surface-container-low rounded-sm"></div>
+<div class="bg-surface-container-low rounded-sm"></div>
+<div class="bg-status-breakdown opacity-20 rounded-sm"></div>
+<div class="bg-status-breakdown opacity-40 rounded-sm"></div>
+<div class="bg-surface-container-low rounded-sm"></div>
+<div class="bg-surface-container-low rounded-sm"></div>
+<div class="bg-surface-container-low rounded-sm"></div>
+<div class="bg-surface-container-low rounded-sm"></div>
+<div class="bg-surface-container-low rounded-sm"></div>
+<div class="bg-status-breakdown opacity-80 rounded-sm"></div>
+<div class="bg-status-breakdown opacity-100 rounded-sm"></div>
+<div class="bg-surface-container-low rounded-sm"></div>
+<div class="bg-surface-container-low rounded-sm"></div>
+<div class="bg-surface-container-low rounded-sm"></div>
+<div class="bg-surface-container-low rounded-sm"></div>
+<div class="bg-surface-container-low rounded-sm"></div>
+<div class="bg-surface-container-low rounded-sm"></div>
+<div class="bg-surface-container-low rounded-sm"></div>
+<div class="bg-surface-container-low rounded-sm"></div>
+</div>
+<div class="flex justify-between w-full mt-2 font-tag-label text-tag-label text-text-tertiary">
+<span>Low</span>
+<span>High</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Segment Detail Panel -->
+<div class="bg-bg-card rounded-xl border border-border-default p-lg border-t-4 border-t-status-breakdown relative overflow-hidden">
+<!-- Background subtle pattern -->
+<div class="absolute top-0 right-0 p-4 opacity-5">
+<span class="material-symbols-outlined text-[120px]">warning</span>
+</div>
+<h3 class="font-section-header text-section-header text-text-secondary uppercase mb-6 tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-status-breakdown">info</span> Selected Event Detail
+                </h3>
+<div class="space-y-6 relative z-10">
+<div>
+<p class="font-tag-label text-tag-label text-text-tertiary mb-1">EVENT TYPE</p>
+<div class="flex items-center gap-2">
+<span class="inline-block w-2 h-2 rounded-full bg-status-breakdown"></span>
+<span class="font-card-title text-card-title text-error">Motor Fault (Breakdown)</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg border border-border-emphasis">
+<p class="font-tag-label text-tag-label text-text-tertiary mb-1">DURATION</p>
+<p class="font-medium-kpi text-medium-kpi text-text-primary">1h 4m</p>
+<p class="font-card-subtitle text-card-subtitle text-text-secondary mt-1">10:15 - 11:19</p>
+</div>
+<div>
+<p class="font-tag-label text-tag-label text-text-tertiary mb-1">ROOT CAUSE</p>
+<p class="font-body text-body text-text-primary">Overheating in primary drive assembly. Thermal sensor #4 triggered emergency halt.</p>
+</div>
+<div>
+<p class="font-tag-label text-tag-label text-text-tertiary mb-1">RESOLUTION</p>
+<p class="font-body text-body text-text-primary">Fan Assembly Replacement. Recalibrated thermal thresholds.</p>
+</div>
+<button class="w-full bg-surface-container-highest hover:bg-surface-container-high text-primary border border-border-emphasis rounded-lg h-component-height font-card-title text-card-title transition-colors mt-4 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">description</span> View Full Incident Report
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-bg-app text-primary font-tag-label text-tag-label text-primary-container font-section-header fixed bottom-0 w-full z-50 border-t border-border-default flat no shadows flex justify-around items-center h-[64px] px-sm">
+<a class="flex flex-col items-center justify-center text-text-secondary px-md py-xs hover:text-primary-fixed-dim active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-surface-container-highest text-primary-fixed rounded-xl px-md py-xs hover:text-primary-fixed-dim active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">factory</span>
+<span>Assets</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary px-md py-xs hover:text-primary-fixed-dim active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">warning</span>
+<span>Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary px-md py-xs hover:text-primary-fixed-dim active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span>Logs</span>
+</a>
+</nav>
+</body></html>

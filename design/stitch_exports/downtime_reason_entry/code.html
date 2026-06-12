@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Downtime Reason Entry - Opus One</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#00373a",
+                        "bg-card": "#0d1526",
+                        "data-quality": "#f59e0b",
+                        "surface-dim": "#001330",
+                        "inverse-on-surface": "#1e3050",
+                        "surface-container": "#0b1f3e",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "border-default": "rgba(255, 255, 255, 0.06)",
+                        "status-planned": "#7c3aed",
+                        "secondary-container": "#03b5d3",
+                        "surface-container-highest": "#223555",
+                        "surface-tint": "#36dae4",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-secondary-fixed": "#001f26",
+                        "primary-fixed-dim": "#36dae4",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "background": "#001330",
+                        "on-secondary": "#003640",
+                        "status-breakdown": "#dc2626",
+                        "surface-container-lowest": "#000d26",
+                        "bg-app": "#060c18",
+                        "on-error": "#690005",
+                        "secondary": "#4cd7f6",
+                        "inverse-surface": "#d7e2ff",
+                        "on-secondary-container": "#00424e",
+                        "surface": "#001330",
+                        "secondary-fixed": "#acedff",
+                        "surface-bright": "#27395a",
+                        "on-primary-container": "#004f53",
+                        "status-idle": "#d97706",
+                        "text-secondary": "#8b9dc3",
+                        "primary-container": "#00c8d2",
+                        "on-tertiary": "#4f2500",
+                        "status-running": "#16a34a",
+                        "on-tertiary-fixed": "#301400",
+                        "tertiary-container": "#ff9d4f",
+                        "on-surface-variant": "#bbc9ca",
+                        "surface-container-low": "#061b3a",
+                        "on-tertiary-container": "#703700",
+                        "bg-input": "#111d35",
+                        "bg-header": "#080f1e",
+                        "on-background": "#d7e2ff",
+                        "on-surface": "#d7e2ff",
+                        "primary-fixed": "#6ff6ff",
+                        "outline": "#859394",
+                        "on-primary-fixed-variant": "#004f53",
+                        "on-error-container": "#ffdad6",
+                        "outline-variant": "#3c494a",
+                        "inverse-primary": "#00696f",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "data-performance": "#4ade80",
+                        "bg-overlay": "#050a14",
+                        "primary": "#46e4ee",
+                        "tertiary": "#ffc49b",
+                        "surface-container-high": "#172a49",
+                        "text-primary": "#f0f4ff",
+                        "surface-variant": "#223555",
+                        "text-tertiary": "#4a5e8a",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#002022"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "12px",
+                        "2xl": "32px",
+                        "base": "4px",
+                        "xl": "24px",
+                        "lg": "16px",
+                        "margin-horizontal": "16px",
+                        "xs": "4px",
+                        "component-height": "52px",
+                        "sm": "8px",
+                        "md": "12px"
+                    },
+                    "fontFamily": {
+                        "body": ["Roboto"],
+                        "card-title": ["Roboto"],
+                        "section-header": ["Roboto"],
+                        "large-kpi": ["Roboto"],
+                        "medium-kpi": ["Roboto"],
+                        "tag-label": ["Roboto"],
+                        "hero-kpi": ["Roboto"],
+                        "delta-text": ["Roboto"],
+                        "card-subtitle": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "card-title": ["15px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "section-header": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "large-kpi": ["36px", { "lineHeight": "44px", "fontWeight": "400" }],
+                        "medium-kpi": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "tag-label": ["10px", { "lineHeight": "12px", "fontWeight": "600" }],
+                        "hero-kpi": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "delta-text": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "card-subtitle": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #060c18; color: #f0f4ff; }
+        .micro-border { border: 0.5px solid rgba(255, 255, 255, 0.06); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 1; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app min-h-screen flex flex-col font-body antialiased">
+<!-- TopAppBar (Transactional - Hidden Navigation Elements, Focus on Action) -->
+<header class="fixed top-0 w-full z-50 bg-bg-header border-b border-border-default flex items-center justify-between px-margin-horizontal h-component-height">
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center w-8 h-8 rounded-full active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-lg" data-icon="close">close</span>
+</button>
+<div class="font-section-header text-section-header tracking-widest text-primary">OPUS ONE</div>
+<div class="w-8"></div> <!-- Spacer for balance -->
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-component-height p-margin-horizontal overflow-y-auto">
+<div class="max-w-3xl mx-auto space-y-xl pb-24">
+<!-- Page Header -->
+<div class="mb-lg">
+<h1 class="font-medium-kpi text-medium-kpi text-text-primary mb-xs">Log Downtime Reason</h1>
+<p class="font-body text-body text-text-secondary">Machine 04 - Milling Station</p>
+</div>
+<!-- Investigation Banner -->
+<div class="bg-surface-container-high border-[0.5px] border-[rgba(220,38,38,0.35)] rounded-lg p-md flex items-center space-x-md mb-xl">
+<div class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-status-breakdown opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-status-breakdown"></span>
+</div>
+<span class="font-tag-label text-tag-label text-status-breakdown uppercase tracking-wider">Line Stopped - Resolution Required</span>
+</div>
+<!-- Section 1: Primary Cause Grid -->
+<section class="space-y-sm">
+<h2 class="font-section-header text-section-header text-text-secondary uppercase tracking-widest pl-xs">SELECT PRIMARY CAUSE</h2>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-md">
+<!-- Mechanical -->
+<button class="bg-bg-card micro-border rounded-lg p-md flex flex-col items-center justify-center space-y-sm hover:bg-surface-container-highest transition-colors focus:ring-2 focus:ring-primary focus:bg-surface-container group h-24">
+<span class="material-symbols-outlined text-text-secondary group-focus:text-primary transition-colors text-2xl" data-icon="settings">settings</span>
+<span class="font-card-title text-card-title text-text-primary text-center">Mechanical</span>
+</button>
+<!-- Electrical -->
+<button class="bg-bg-card micro-border rounded-lg p-md flex flex-col items-center justify-center space-y-sm hover:bg-surface-container-highest transition-colors focus:ring-2 focus:ring-primary focus:bg-surface-container group h-24">
+<span class="material-symbols-outlined text-text-secondary group-focus:text-primary transition-colors text-2xl" data-icon="electrical_services">electrical_services</span>
+<span class="font-card-title text-card-title text-text-primary text-center">Electrical</span>
+</button>
+<!-- Supply Chain -->
+<button class="bg-bg-card micro-border rounded-lg p-md flex flex-col items-center justify-center space-y-sm hover:bg-surface-container-highest transition-colors focus:ring-2 focus:ring-primary focus:bg-surface-container group h-24">
+<span class="material-symbols-outlined text-text-secondary group-focus:text-primary transition-colors text-2xl" data-icon="conveyor_belt">conveyor_belt</span>
+<span class="font-card-title text-card-title text-text-primary text-center">Supply Chain</span>
+</button>
+<!-- Changeover -->
+<button class="bg-bg-card micro-border rounded-lg p-md flex flex-col items-center justify-center space-y-sm hover:bg-surface-container-highest transition-colors focus:ring-2 focus:ring-primary focus:bg-surface-container group h-24">
+<span class="material-symbols-outlined text-text-secondary group-focus:text-primary transition-colors text-2xl" data-icon="published_with_changes">published_with_changes</span>
+<span class="font-card-title text-card-title text-text-primary text-center">Changeover</span>
+</button>
+<!-- Other -->
+<button class="bg-bg-card micro-border rounded-lg p-md flex flex-col items-center justify-center space-y-sm hover:bg-surface-container-highest transition-colors focus:ring-2 focus:ring-primary focus:bg-surface-container group h-24 col-span-2 md:col-span-1">
+<span class="material-symbols-outlined text-text-secondary group-focus:text-primary transition-colors text-2xl" data-icon="more_horiz">more_horiz</span>
+<span class="font-card-title text-card-title text-text-primary text-center">Other</span>
+</button>
+</div>
+</section>
+<!-- Section 2: Detailed Category -->
+<section class="space-y-sm mt-xl">
+<h2 class="font-section-header text-section-header text-text-secondary uppercase tracking-widest pl-xs">DETAILED CATEGORY</h2>
+<div class="bg-bg-card micro-border rounded-lg overflow-hidden divide-y divide-border-default">
+<label class="flex items-center space-x-md p-md hover:bg-surface-container-highest cursor-pointer transition-colors group">
+<input class="form-radio text-primary bg-bg-input border-outline-variant focus:ring-primary focus:ring-offset-bg-card w-5 h-5" name="detail_category" type="radio"/>
+<span class="font-body text-body text-text-primary group-hover:text-primary transition-colors">Spindle Failure</span>
+</label>
+<label class="flex items-center space-x-md p-md hover:bg-surface-container-highest cursor-pointer transition-colors group">
+<input class="form-radio text-primary bg-bg-input border-outline-variant focus:ring-primary focus:ring-offset-bg-card w-5 h-5" name="detail_category" type="radio"/>
+<span class="font-body text-body text-text-primary group-hover:text-primary transition-colors">Motor Burnout</span>
+</label>
+<label class="flex items-center space-x-md p-md hover:bg-surface-container-highest cursor-pointer transition-colors group">
+<input class="form-radio text-primary bg-bg-input border-outline-variant focus:ring-primary focus:ring-offset-bg-card w-5 h-5" name="detail_category" type="radio"/>
+<span class="font-body text-body text-text-primary group-hover:text-primary transition-colors">Sensor Fault</span>
+</label>
+<label class="flex items-center space-x-md p-md hover:bg-surface-container-highest cursor-pointer transition-colors group">
+<input class="form-radio text-primary bg-bg-input border-outline-variant focus:ring-primary focus:ring-offset-bg-card w-5 h-5" name="detail_category" type="radio"/>
+<span class="font-body text-body text-text-primary group-hover:text-primary transition-colors">Jammed Conveyor</span>
+</label>
+</div>
+</section>
+<!-- Section 3: Notes -->
+<section class="space-y-sm mt-xl">
+<h2 class="font-section-header text-section-header text-text-secondary uppercase tracking-widest pl-xs">NOTES</h2>
+<textarea class="w-full bg-bg-input micro-border rounded-lg p-md font-body text-body text-text-primary placeholder-text-secondary focus:ring-1 focus:ring-primary focus:border-primary transition-all resize-none" placeholder="Enter additional context, part numbers, or observed symptoms..." rows="4"></textarea>
+</section>
+</div>
+</main>
+<!-- Bottom Action Bar -->
+<div class="fixed bottom-0 w-full bg-bg-card border-t border-border-default p-margin-horizontal z-50">
+<div class="max-w-3xl mx-auto flex gap-md">
+<button class="flex-1 h-component-height bg-surface-container-highest hover:bg-surface-variant text-text-primary font-card-title text-card-title rounded-lg micro-border transition-colors active:scale-95 duration-150">
+                Cancel
+            </button>
+<button class="flex-[2] h-component-height bg-primary hover:bg-primary-fixed-dim text-on-primary font-card-title text-card-title rounded-lg transition-colors flex items-center justify-center space-x-sm active:scale-95 duration-150 shadow-[0_0_15px_rgba(70,228,238,0.2)]">
+<span class="material-symbols-outlined" data-icon="save">save</span>
+<span>Save &amp; Log Resolution</span>
+</button>
+</div>
+</div>
+</body></html>

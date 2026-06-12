@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Resolution Workflow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#00373a",
+                        "bg-card": "#0d1526",
+                        "data-quality": "#f59e0b",
+                        "surface-dim": "#001330",
+                        "inverse-on-surface": "#1e3050",
+                        "surface-container": "#0b1f3e",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "border-default": "rgba(255, 255, 255, 0.06)",
+                        "status-planned": "#7c3aed",
+                        "secondary-container": "#03b5d3",
+                        "surface-container-highest": "#223555",
+                        "surface-tint": "#36dae4",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-secondary-fixed": "#001f26",
+                        "primary-fixed-dim": "#36dae4",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "background": "#001330",
+                        "on-secondary": "#003640",
+                        "status-breakdown": "#dc2626",
+                        "surface-container-lowest": "#000d26",
+                        "bg-app": "#060c18",
+                        "on-error": "#690005",
+                        "secondary": "#4cd7f6",
+                        "inverse-surface": "#d7e2ff",
+                        "on-secondary-container": "#00424e",
+                        "surface": "#001330",
+                        "secondary-fixed": "#acedff",
+                        "surface-bright": "#27395a",
+                        "on-primary-container": "#004f53",
+                        "status-idle": "#d97706",
+                        "text-secondary": "#8b9dc3",
+                        "primary-container": "#00c8d2",
+                        "on-tertiary": "#4f2500",
+                        "status-running": "#16a34a",
+                        "on-tertiary-fixed": "#301400",
+                        "tertiary-container": "#ff9d4f",
+                        "on-surface-variant": "#bbc9ca",
+                        "surface-container-low": "#061b3a",
+                        "on-tertiary-container": "#703700",
+                        "bg-input": "#111d35",
+                        "bg-header": "#080f1e",
+                        "on-background": "#d7e2ff",
+                        "on-surface": "#d7e2ff",
+                        "primary-fixed": "#6ff6ff",
+                        "outline": "#859394",
+                        "on-primary-fixed-variant": "#004f53",
+                        "on-error-container": "#ffdad6",
+                        "outline-variant": "#3c494a",
+                        "inverse-primary": "#00696f",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "data-performance": "#4ade80",
+                        "bg-overlay": "#050a14",
+                        "primary": "#46e4ee",
+                        "tertiary": "#ffc49b",
+                        "surface-container-high": "#172a49",
+                        "text-primary": "#f0f4ff",
+                        "surface-variant": "#223555",
+                        "text-tertiary": "#4a5e8a",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#002022"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "12px",
+                        "2xl": "32px",
+                        "base": "4px",
+                        "xl": "24px",
+                        "lg": "16px",
+                        "margin-horizontal": "16px",
+                        "xs": "4px",
+                        "component-height": "52px",
+                        "sm": "8px",
+                        "md": "12px"
+                    },
+                    "fontFamily": {
+                        "body": ["Roboto"],
+                        "card-title": ["Roboto"],
+                        "section-header": ["Roboto"],
+                        "large-kpi": ["Roboto"],
+                        "medium-kpi": ["Roboto"],
+                        "tag-label": ["Roboto"],
+                        "hero-kpi": ["Roboto"],
+                        "delta-text": ["Roboto"],
+                        "card-subtitle": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "body": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "card-title": ["15px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "section-header": ["11px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "large-kpi": ["36px", {"lineHeight": "44px", "fontWeight": "400"}],
+                        "medium-kpi": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "tag-label": ["10px", {"lineHeight": "12px", "fontWeight": "600"}],
+                        "hero-kpi": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300"}],
+                        "delta-text": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "card-subtitle": ["12px", {"lineHeight": "16px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #060c18;
+            color: #d7e2ff;
+        }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #060c18; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #223555; 
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #36dae4; 
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-bg-app text-on-surface font-body antialiased selection:bg-primary-container selection:text-on-primary-container h-screen flex flex-col overflow-hidden">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-bg-header border-b border-border-default h-component-height flex items-center justify-between px-margin-horizontal flat no shadows">
+<div class="flex items-center gap-4">
+<button aria-label="Menu" class="text-on-surface-variant hover:bg-surface-container-highest transition-colors active:opacity-80 rounded-full p-2 -ml-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<h1 class="font-section-header text-section-header tracking-widest text-primary uppercase">OPUS ONE</h1>
+</div>
+<button aria-label="Profile" class="text-on-surface-variant hover:bg-surface-container-highest transition-colors active:opacity-80 rounded-full p-2 -mr-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+</button>
+</header>
+<!-- Main Content Canvas (Scrollable) -->
+<main class="flex-1 mt-[52px] mb-[80px] md:mb-0 md:ml-72 overflow-y-auto px-margin-horizontal py-xl relative">
+<!-- Workflow Header -->
+<div class="mb-xl">
+<div class="flex items-center gap-2 mb-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">build</span>
+<span class="font-section-header text-section-header uppercase">Machine M-04</span>
+</div>
+<h2 class="font-medium-kpi text-medium-kpi text-text-primary mb-2">Resolution Workflow</h2>
+<p class="font-body text-body text-text-secondary">Execute repair protocol and validate return to operational status.</p>
+</div>
+<!-- Progress Tracker (Stepper) -->
+<div class="bg-bg-card border-[0.5px] border-border-default rounded-xl p-lg mb-gutter">
+<div class="flex items-center justify-between relative">
+<!-- Line -->
+<div class="absolute top-1/2 left-0 w-full h-[2px] bg-surface-container -z-10 -translate-y-1/2"></div>
+<!-- Step 1: Assessment (Done) -->
+<div class="flex flex-col items-center gap-2 relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-tint text-on-primary flex items-center justify-center border-2 border-bg-card">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-tag-label text-tag-label text-text-secondary">Assessment</span>
+</div>
+<!-- Step 2: Repair (Active) -->
+<div class="flex flex-col items-center gap-2 relative z-10">
+<div class="w-8 h-8 rounded-full bg-bg-card border-2 border-primary text-primary flex items-center justify-center relative">
+<div class="w-2.5 h-2.5 bg-primary rounded-full animate-pulse"></div>
+</div>
+<span class="font-tag-label text-tag-label text-primary">Repair</span>
+</div>
+<!-- Step 3: Validation (Pending) -->
+<div class="flex flex-col items-center gap-2 relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-container border-2 border-border-default text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">fact_check</span>
+</div>
+<span class="font-tag-label text-tag-label text-on-surface-variant">Validation</span>
+</div>
+</div>
+</div>
+<!-- Main Card: Repair in Progress -->
+<div class="bg-bg-card border-[0.5px] border-border-default rounded-xl overflow-hidden relative mb-gutter">
+<!-- Active Status Banner -->
+<div class="bg-surface-container-low border-b-[0.5px] border-border-default px-lg py-md flex items-center justify-between">
+<div class="flex items-center gap-3">
+<!-- Status Indicator -->
+<div class="relative flex items-center justify-center w-6 h-6">
+<div class="absolute inset-0 bg-status-planned opacity-20 rounded-full animate-ping"></div>
+<div class="w-2.5 h-2.5 bg-status-planned rounded-full"></div>
+</div>
+<h3 class="font-card-title text-card-title text-text-primary">Repair in Progress</h3>
+</div>
+<div class="bg-surface-variant px-3 py-1 rounded-full border-[0.5px] border-border-default">
+<span class="font-tag-label text-tag-label text-on-surface-variant">T+ 00:45:12</span>
+</div>
+</div>
+<!-- Content Area -->
+<div class="p-lg flex flex-col gap-xl">
+<!-- Inputs Section -->
+<div class="flex flex-col gap-gutter">
+<!-- Expected Restart Time -->
+<div class="flex flex-col gap-sm">
+<label class="font-section-header text-section-header text-text-secondary uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                            Expected Restart Time
+                        </label>
+<div class="relative">
+<input class="w-full bg-bg-input border-[0.5px] border-border-default rounded-lg h-component-height px-4 font-body text-body text-text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all shadow-inner appearance-none" type="time" value="14:30"/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Parts Used List -->
+<div class="flex flex-col gap-sm">
+<label class="font-section-header text-section-header text-text-secondary uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">inventory_2</span>
+                            Parts Used
+                        </label>
+<div class="bg-surface-container-low rounded-lg border-[0.5px] border-border-default overflow-hidden">
+<!-- Part Item -->
+<div class="flex items-center justify-between p-3 border-b-[0.5px] border-border-default bg-bg-card">
+<div class="flex flex-col">
+<span class="font-body text-body text-text-primary">Sensor Array Alpha</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">SKU: SA-A-9021</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-body text-body text-text-primary bg-surface-container px-2 py-1 rounded">Qty: 1</span>
+<button aria-label="Remove part" class="text-on-surface-variant hover:text-status-breakdown transition-colors p-1">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<!-- Part Item -->
+<div class="flex items-center justify-between p-3 border-b-[0.5px] border-border-default bg-bg-card">
+<div class="flex flex-col">
+<span class="font-body text-body text-text-primary">Drive Belt 50mm</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">SKU: DB-50-22X</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-body text-body text-text-primary bg-surface-container px-2 py-1 rounded">Qty: 2</span>
+<button aria-label="Remove part" class="text-on-surface-variant hover:text-status-breakdown transition-colors p-1">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<!-- Add Part Button -->
+<button class="w-full p-3 flex items-center justify-center gap-2 text-primary hover:bg-surface-container transition-colors font-card-title text-card-title">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                                Add Part
+                            </button>
+</div>
+</div>
+</div>
+<!-- Help Text -->
+<div class="bg-surface-container-low border-l-2 border-status-planned p-md rounded-r-lg flex gap-3">
+<span class="material-symbols-outlined text-status-planned mt-0.5" style="font-variation-settings: 'FILL' 1;">info</span>
+<p class="font-card-subtitle text-card-subtitle text-on-surface-variant leading-relaxed">
+                        Validation requires Shift Lead sign-off for Quality assurance prior to initiating full production sequence.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Action Area (Fixed) -->
+<div class="fixed bottom-[80px] md:bottom-0 md:ml-72 left-0 w-full md:w-[calc(100%-18rem)] bg-bg-app/90 backdrop-blur-md border-t-[0.5px] border-border-default p-margin-horizontal z-40">
+<button class="w-full h-component-height bg-status-running text-bg-app font-card-title text-card-title rounded-lg flex items-center justify-center gap-2 hover:bg-opacity-90 active:scale-[0.98] transition-all shadow-[0_0_15px_rgba(22,163,74,0.3)]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">power_settings_new</span>
+            Signal Machine Ready
+        </button>
+</div>
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden md:flex flex-col h-full w-72 bg-bg-app border-r border-border-default fixed left-0 top-[52px] py-xl z-30 overflow-y-auto">
+<!-- Profile Header -->
+<div class="px-xl mb-xl flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container border border-border-default flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant text-2xl">person</span>
+</div>
+<div class="flex flex-col">
+<span class="font-card-title text-card-title text-text-primary">Lead Technician</span>
+<span class="font-card-subtitle text-card-subtitle text-text-secondary">Site B - Production</span>
+<span class="font-tag-label text-tag-label text-status-running mt-1 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-status-running"></span>
+                    Active Shift
+                </span>
+</div>
+</div>
+<nav class="flex flex-col gap-1 px-sm">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:bg-surface-container transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body text-body">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg bg-surface-container-highest text-primary border-l-4 border-primary duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">work_history</span>
+<span class="font-body text-body">Alert History</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:bg-surface-container transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-body text-body">Technician Status</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:bg-surface-container transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-body text-body">Shift Logs</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:bg-surface-container transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body text-body">System Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Bottom Nav Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-bg-card border-t border-border-default h-[80px] flex justify-around items-center px-gutter pb-4 pt-2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs hover:text-secondary transition-all active:scale-95 duration-150 flex-1" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">notifications_active</span>
+<span class="font-tag-label text-tag-label">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-surface-container rounded-lg p-xs hover:text-secondary transition-all active:scale-95 duration-150 flex-1" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]" style="font-variation-settings: 'FILL' 1;">engineering</span>
+<span class="font-tag-label text-tag-label">Personnel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs hover:text-secondary transition-all active:scale-95 duration-150 flex-1" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">history_edu</span>
+<span class="font-tag-label text-tag-label">Logs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs hover:text-secondary transition-all active:scale-95 duration-150 flex-1" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">query_stats</span>
+<span class="font-tag-label text-tag-label">OEE</span>
+</a>
+</nav>
+</body></html>

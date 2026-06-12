@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Incident Command Center - OPUS ONE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#46e4ee",
+                        "text-primary": "#f0f4ff",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "on-background": "#d7e2ff",
+                        "secondary-fixed": "#acedff",
+                        "tertiary": "#ffc49b",
+                        "inverse-primary": "#00696f",
+                        "secondary": "#4cd7f6",
+                        "on-error-container": "#ffdad6",
+                        "data-performance": "#4ade80",
+                        "surface-container": "#0b1f3e",
+                        "background": "#001330",
+                        "tertiary-fixed": "#ffdcc5",
+                        "surface-variant": "#223555",
+                        "data-quality": "#f59e0b",
+                        "on-primary": "#00373a",
+                        "secondary-container": "#03b5d3",
+                        "on-primary-fixed-variant": "#004f53",
+                        "status-idle": "#d97706",
+                        "status-breakdown": "#dc2626",
+                        "border-emphasis": "rgba(255, 255, 255, 0.12)",
+                        "surface-container-highest": "#223555",
+                        "bg-card": "#0d1526",
+                        "status-planned": "#7c3aed",
+                        "status-running": "#16a34a",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-bright": "#27395a",
+                        "bg-header": "#080f1e",
+                        "surface-container-high": "#172a49",
+                        "bg-input": "#111d35",
+                        "error": "#ffb4ab",
+                        "text-secondary": "#8b9dc3",
+                        "on-tertiary-container": "#703700",
+                        "outline": "#859394",
+                        "surface-container-lowest": "#000d26",
+                        "surface-container-low": "#061b3a",
+                        "on-error": "#690005",
+                        "on-tertiary": "#4f2500",
+                        "text-tertiary": "#4a5e8a",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "bg-overlay": "#050a14",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-dim": "#001330",
+                        "tertiary-container": "#ff9d4f",
+                        "on-secondary-fixed": "#001f26",
+                        "inverse-on-surface": "#1e3050",
+                        "bg-app": "#060c18",
+                        "surface-tint": "#36dae4",
+                        "on-surface-variant": "#bbc9ca",
+                        "error-container": "#93000a",
+                        "on-secondary": "#003640",
+                        "on-primary-fixed": "#002022",
+                        "on-surface": "#d7e2ff",
+                        "surface": "#001330",
+                        "primary-fixed-dim": "#36dae4",
+                        "primary-fixed": "#6ff6ff",
+                        "inverse-surface": "#d7e2ff",
+                        "primary-container": "#00c8d2",
+                        "outline-variant": "#3c494a",
+                        "border-default": "rgba(255, 255, 255, 0.06)",
+                        "on-secondary-container": "#00424e",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-primary-container": "#004f53"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "md": "12px",
+                        "2xl": "32px",
+                        "xs": "4px",
+                        "margin-horizontal": "16px",
+                        "sm": "8px",
+                        "xl": "24px",
+                        "component-height": "52px",
+                        "base": "4px",
+                        "lg": "16px",
+                        "gutter": "12px"
+                    },
+                    fontFamily: {
+                        "medium-kpi": ["Roboto"],
+                        "section-header": ["Roboto"],
+                        "body": ["Roboto"],
+                        "tag-label": ["Roboto"],
+                        "delta-text": ["Roboto"],
+                        "card-title": ["Roboto"],
+                        "large-kpi": ["Roboto"],
+                        "hero-kpi": ["Roboto"],
+                        "card-subtitle": ["Roboto"]
+                    },
+                    fontSize: {
+                        "medium-kpi": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "section-header": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "tag-label": ["10px", { "lineHeight": "12px", "fontWeight": "600" }],
+                        "delta-text": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "card-title": ["15px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "large-kpi": ["36px", { "lineHeight": "44px", "fontWeight": "400" }],
+                        "hero-kpi": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "card-subtitle": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #060c18; color: #f0f4ff; }
+        .micro-border { border: 0.5px solid rgba(255, 255, 255, 0.06); }
+        .kpi-card { background-color: #0d1526; border-radius: 12px; padding: 16px; border: 0.5px solid rgba(255, 255, 255, 0.06); }
+        
+        /* Pulse Animation for Investigation Mode */
+        @keyframes pulse-teal {
+            0% { box-shadow: 0 0 0 0 rgba(0, 200, 210, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(0, 200, 210, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 200, 210, 0); }
+        }
+        .pulse-indicator { animation: pulse-teal 2s infinite; }
+        
+        /* Heatmap Grid Pattern */
+        .heatmap-grid {
+            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        /* Machine Card Status Bar */
+        .machine-status-bar { width: 4px; border-radius: 4px 0 0 4px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body text-body bg-bg-app text-text-primary antialiased flex flex-col md:flex-row h-screen overflow-hidden">
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden md:flex flex-col h-full w-72 bg-bg-app border-r border-border-default py-xl z-40">
+<div class="px-margin-horizontal mb-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-2xl">local_fire_department</span>
+<h1 class="font-section-header text-section-header text-primary tracking-widest uppercase">OPUS ONE</h1>
+</div>
+<div class="px-margin-horizontal mb-xl pb-lg border-b border-border-default">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary font-bold">
+                    LT
+                </div>
+<div>
+<div class="font-card-title text-card-title text-text-primary">Lead Technician</div>
+<div class="font-card-subtitle text-card-subtitle text-text-secondary">Site B - Production</div>
+<div class="font-tag-label text-tag-label text-status-running flex items-center gap-xs mt-xs">
+<div class="w-1.5 h-1.5 rounded-full bg-status-running"></div> Active Shift
+                    </div>
+</div>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-md px-margin-horizontal py-sm bg-surface-container-highest text-primary border-l-4 border-primary hover:bg-surface-container transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-body text-body">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-margin-horizontal py-sm text-on-surface-variant hover:bg-surface-container-low border-l-4 border-transparent hover:bg-surface-container transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">work_history</span>
+<span class="font-body text-body">Alert History</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-margin-horizontal py-sm text-on-surface-variant hover:bg-surface-container-low border-l-4 border-transparent hover:bg-surface-container transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-body text-body">Technician Status</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-margin-horizontal py-sm text-on-surface-variant hover:bg-surface-container-low border-l-4 border-transparent hover:bg-surface-container transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-body text-body">Shift Logs</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-margin-horizontal py-sm text-on-surface-variant hover:bg-surface-container-low border-l-4 border-transparent hover:bg-surface-container transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body text-body">System Settings</span>
+</a>
+</li>
+</ul>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-full w-full overflow-hidden relative">
+<!-- TopAppBar -->
+<header class="bg-bg-header fixed top-0 w-full z-50 md:hidden flex items-center justify-between px-margin-horizontal h-component-height border-b border-border-default">
+<button class="text-primary active:opacity-80 transition-opacity p-xs">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-section-header text-section-header tracking-widest text-primary uppercase">OPUS ONE</h1>
+<button class="text-primary active:opacity-80 transition-opacity p-xs">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</header>
+<!-- Main Scrollable Canvas -->
+<main class="flex-1 overflow-y-auto mt-[52px] md:mt-0 pb-[64px] md:pb-0 px-margin-horizontal py-lg bg-bg-app">
+<div class="max-w-7xl mx-auto space-y-gutter">
+<!-- Page Header -->
+<div class="mb-xl flex justify-between items-end">
+<div>
+<h2 class="font-hero-kpi text-hero-kpi text-text-primary leading-tight">Command Center</h2>
+<p class="font-body text-body text-text-secondary mt-xs">Executive Oversight &amp; Incident Management</p>
+</div>
+<div class="hidden sm:flex items-center gap-sm bg-surface-container-low px-sm py-xs rounded-full border border-border-default">
+<div class="w-2 h-2 rounded-full bg-status-running pulse-indicator"></div>
+<span class="font-tag-label text-tag-label text-text-secondary uppercase">Live Data</span>
+</div>
+</div>
+<!-- Investigation Banner (Critical Alert) -->
+<div class="bg-surface-container-high border border-[rgba(0,200,210,0.35)] rounded-lg p-md flex items-center justify-between mb-gutter relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-[rgba(0,200,210,0.05)] to-transparent pointer-events-none"></div>
+<div class="flex items-center gap-md z-10">
+<div class="w-3 h-3 rounded-full bg-primary pulse-indicator"></div>
+<div>
+<div class="font-tag-label text-tag-label text-primary uppercase tracking-wider">INVESTIGATING</div>
+<div class="font-card-title text-card-title text-text-primary mt-xs">Critical Failure on Assembly Line 4</div>
+</div>
+</div>
+<button class="bg-primary text-bg-app px-md py-sm rounded text-tag-label font-tag-label uppercase tracking-wider hover:bg-secondary transition-colors z-10">
+                        View Details
+                    </button>
+</div>
+<!-- Hero KPIs Bento Grid -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- KPI 1 -->
+<div class="kpi-card flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Active Incidents</span>
+<span class="material-symbols-outlined text-text-secondary text-lg">warning</span>
+</div>
+<div class="mt-md">
+<div class="font-hero-kpi text-hero-kpi text-text-primary">5</div>
+<div class="font-delta-text text-delta-text text-status-breakdown mt-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">trending_up</span> +2 from last hour
+                            </div>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="kpi-card flex flex-col justify-between bg-[rgba(220,38,38,0.05)] border-[rgba(220,38,38,0.2)]">
+<div class="flex justify-between items-start">
+<span class="font-section-header text-section-header text-status-breakdown uppercase">Critical Risk</span>
+<span class="material-symbols-outlined text-status-breakdown text-lg">error</span>
+</div>
+<div class="mt-md">
+<div class="font-hero-kpi text-hero-kpi text-status-breakdown">2</div>
+<div class="font-delta-text text-delta-text text-text-secondary mt-xs flex items-center gap-xs">
+                                Requires immediate attention
+                            </div>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="kpi-card flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Open Work Orders</span>
+<span class="material-symbols-outlined text-text-secondary text-lg">build</span>
+</div>
+<div class="mt-md">
+<div class="font-hero-kpi text-hero-kpi text-text-primary">18</div>
+<div class="font-delta-text text-delta-text text-status-running mt-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">trending_down</span> -4 completed today
+                            </div>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="kpi-card flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="font-section-header text-section-header text-text-secondary uppercase">Avg Response Time</span>
+<span class="material-symbols-outlined text-text-secondary text-lg">timer</span>
+</div>
+<div class="mt-md">
+<div class="font-hero-kpi text-hero-kpi text-text-primary">14<span class="text-large-kpi text-text-secondary ml-1">m</span></div>
+<div class="font-delta-text text-delta-text text-status-idle mt-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">remove</span> Stable trend
+                            </div>
+</div>
+</div>
+</div>
+<!-- Secondary Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mt-gutter">
+<!-- Escalation Queue (Col 1-2) -->
+<div class="kpi-card lg:col-span-2 flex flex-col">
+<div class="flex justify-between items-center mb-md pb-sm border-b border-border-default">
+<h3 class="font-section-header text-section-header text-text-primary uppercase tracking-widest">Escalation Queue</h3>
+<button class="text-primary hover:text-secondary text-sm flex items-center gap-xs transition-colors">
+<span class="font-tag-label uppercase">View All</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="flex-1 space-y-2 overflow-y-auto pr-sm" style="max-height: 300px;">
+<!-- Queue Item 1 -->
+<div class="bg-surface-container-high rounded p-sm flex items-start gap-md border-l-2 border-status-breakdown micro-border">
+<div class="bg-[rgba(220,38,38,0.12)] text-status-breakdown w-10 h-10 rounded flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<div class="font-card-title text-card-title text-text-primary truncate">Conveyor Belt Jam - Sector 7G</div>
+<div class="font-tag-label text-tag-label text-text-secondary shrink-0">12m ago</div>
+</div>
+<div class="font-body text-body text-text-secondary text-sm mt-xs truncate">Multiple sensors offline. Suspected mechanical failure.</div>
+<div class="flex gap-sm mt-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[rgba(220,38,38,0.12)] text-status-breakdown font-tag-label text-tag-label">
+<div class="w-1.5 h-1.5 rounded-full bg-status-breakdown"></div> Critical
+                                        </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-highest text-text-secondary font-tag-label text-tag-label">
+                                            Unassigned
+                                        </span>
+</div>
+</div>
+</div>
+<!-- Queue Item 2 -->
+<div class="bg-surface-container-high rounded p-sm flex items-start gap-md border-l-2 border-status-idle micro-border">
+<div class="bg-[rgba(217,119,6,0.12)] text-status-idle w-10 h-10 rounded flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">thermostat</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<div class="font-card-title text-card-title text-text-primary truncate">HVAC Temp Variance - Zone B</div>
+<div class="font-tag-label text-tag-label text-text-secondary shrink-0">45m ago</div>
+</div>
+<div class="font-body text-body text-text-secondary text-sm mt-xs truncate">Temperature exceeding threshold by 2.4°C.</div>
+<div class="flex gap-sm mt-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[rgba(217,119,6,0.12)] text-status-idle font-tag-label text-tag-label">
+<div class="w-1.5 h-1.5 rounded-full bg-status-idle"></div> Warning
+                                        </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-highest text-primary font-tag-label text-tag-label border border-primary/30">
+                                            Assigned: Tech Team Alpha
+                                        </span>
+</div>
+</div>
+</div>
+<!-- Queue Item 3 -->
+<div class="bg-surface-container-high rounded p-sm flex items-start gap-md border-l-2 border-status-idle micro-border opacity-70">
+<div class="bg-surface-container w-10 h-10 rounded flex items-center justify-center shrink-0 text-text-secondary">
+<span class="material-symbols-outlined">wifi_off</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<div class="font-card-title text-card-title text-text-primary truncate">Gateway Timeout - Node 12</div>
+<div class="font-tag-label text-tag-label text-text-secondary shrink-0">2h ago</div>
+</div>
+<div class="flex gap-sm mt-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-highest text-text-secondary font-tag-label text-tag-label">
+                                            Investigating
+                                        </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Top Operational Risks & Heatmap Mini (Col 3) -->
+<div class="flex flex-col gap-gutter h-full">
+<!-- Heatmap Mini -->
+<div class="kpi-card flex-1 min-h-[180px] relative overflow-hidden group">
+<div class="flex justify-between items-center mb-sm relative z-10">
+<h3 class="font-section-header text-section-header text-text-primary uppercase tracking-widest">Facility Heatmap</h3>
+<span class="material-symbols-outlined text-text-secondary text-sm">map</span>
+</div>
+<!-- Abstract Heatmap Graphic -->
+<div class="absolute inset-0 mt-8 mx-4 mb-4 rounded bg-surface-container-low heatmap-grid border border-border-default overflow-hidden">
+<!-- Hotspots -->
+<div class="absolute top-1/4 left-1/4 w-12 h-12 bg-status-breakdown/30 rounded-full blur-xl pulse-indicator"></div>
+<div class="absolute top-1/2 right-1/3 w-8 h-8 bg-status-idle/40 rounded-full blur-lg"></div>
+<div class="absolute bottom-1/4 right-1/4 w-16 h-16 bg-primary/20 rounded-full blur-xl"></div>
+<!-- Blueprint lines -->
+<div class="absolute top-1/2 left-0 w-full h-[1px] bg-border-emphasis"></div>
+<div class="absolute top-0 left-1/3 w-[1px] h-full bg-border-emphasis"></div>
+</div>
+<div class="absolute bottom-4 right-4 z-10 bg-bg-card/80 backdrop-blur-sm px-2 py-1 rounded text-[10px] font-tag-label text-text-secondary border border-border-default">
+                                Sector 7G Active
+                            </div>
+</div>
+<!-- Top Risks List -->
+<div class="kpi-card flex-1 flex flex-col">
+<h3 class="font-section-header text-section-header text-text-primary uppercase tracking-widest mb-md pb-sm border-b border-border-default">Top Operational Risks</h3>
+<ul class="space-y-3 flex-1">
+<li class="flex items-center justify-between group">
+<div class="flex items-center gap-sm">
+<div class="w-1.5 h-6 bg-status-breakdown rounded-full"></div>
+<div>
+<div class="font-card-title text-sm text-text-primary group-hover:text-primary transition-colors">Line 4 Conveyor</div>
+<div class="font-card-subtitle text-[11px] text-text-secondary">Vibration threshold exceeded</div>
+</div>
+</div>
+<div class="font-medium-kpi text-lg text-status-breakdown">92%</div>
+</li>
+<li class="flex items-center justify-between group">
+<div class="flex items-center gap-sm">
+<div class="w-1.5 h-6 bg-status-idle rounded-full"></div>
+<div>
+<div class="font-card-title text-sm text-text-primary group-hover:text-primary transition-colors">HVAC Unit B</div>
+<div class="font-card-subtitle text-[11px] text-text-secondary">Efficiency drop detected</div>
+</div>
+</div>
+<div class="font-medium-kpi text-lg text-status-idle">68%</div>
+</li>
+<li class="flex items-center justify-between group">
+<div class="flex items-center gap-sm">
+<div class="w-1.5 h-6 bg-status-planned rounded-full"></div>
+<div>
+<div class="font-card-title text-sm text-text-primary group-hover:text-primary transition-colors">Server Rack 3</div>
+<div class="font-card-subtitle text-[11px] text-text-secondary">Scheduled maintenance due</div>
+</div>
+</div>
+<div class="font-medium-kpi text-lg text-status-planned">45%</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden bg-bg-card fixed bottom-0 w-full z-50 h-component-height px-gutter flex justify-around items-center border-t border-border-default">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs hover:text-secondary transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-xl">notifications_active</span>
+<span class="font-tag-label text-[10px] mt-1">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs hover:text-secondary transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-xl">engineering</span>
+<span class="font-tag-label text-[10px] mt-1">Personnel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs hover:text-secondary transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-xl">history_edu</span>
+<span class="font-tag-label text-[10px] mt-1">Logs</span>
+</a>
+<!-- Active State -->
+<a class="flex flex-col items-center justify-center text-primary bg-surface-container rounded-lg p-xs w-16 active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">query_stats</span>
+<span class="font-tag-label text-[10px] mt-1">OEE</span>
+</a>
+</nav>
+</div>
+<script>
+        // Micro-interaction for hover states on generic list items could go here
+        document.querySelectorAll('.kpi-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.borderColor = 'rgba(70, 228, 238, 0.3)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.borderColor = 'rgba(255, 255, 255, 0.06)';
+                // Reset specialized borders if needed
+                if(card.classList.contains('border-[rgba(220,38,38,0.2)]')) {
+                     card.style.borderColor = 'rgba(220,38,38,0.2)';
+                }
+            });
+        });
+    </script>
+</body></html>

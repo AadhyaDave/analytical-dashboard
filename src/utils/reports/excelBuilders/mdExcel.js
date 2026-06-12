@@ -15,7 +15,7 @@ import {
   computeMachineStatusSummary,
   mdKPIs, plantPerformanceTable, operationalLossContributors,
   oeeTrendData, shiftProductivityComparison, alarmHeatmapData,
-} from './reportData.js';
+} from '../reportData.js';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Style palette — all colours as ARGB hex (no leading #)
@@ -563,7 +563,7 @@ function downloadWorkbook(wb, filename) {
 // ─────────────────────────────────────────────────────────────────────────────
 // Main export
 // ─────────────────────────────────────────────────────────────────────────────
-export function buildExcel(user) {
+export function buildMDExcel(user) {
   const meta = generateReportMeta(user);
   const wb   = XLSX.utils.book_new();
 

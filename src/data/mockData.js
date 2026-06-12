@@ -3,6 +3,7 @@
 // ============================================================
 
 export const ROLES = {
+  SUPER_ADMIN: 'Super Admin',
   MD: 'Managing Director',
   PLANT_HEAD: 'Plant Head',
   DEPT_HEAD: 'Department Head',
@@ -11,12 +12,214 @@ export const ROLES = {
 };
 
 export const users = [
+  { id: 0, name: 'Super Admin', role: 'SUPER_ADMIN', avatar: 'SA', email: 'admin@opusone.in', plant: 'Global Administrator' },
   { id: 1, name: 'Rajiv Mehta', role: 'MD', avatar: 'RM', email: 'r.mehta@opusone.in', plant: 'Corporate HQ' },
   { id: 2, name: 'Sunita Patel', role: 'PLANT_HEAD', avatar: 'SP', email: 's.patel@opusone.in', plant: 'Plant A — Pune' },
   { id: 3, name: 'Arvind Kumar', role: 'DEPT_HEAD', avatar: 'AK', email: 'a.kumar@opusone.in', plant: 'Plant A — Pune', dept: 'Machining' },
   { id: 4, name: 'Priya Sharma', role: 'SECTION_HEAD', avatar: 'PS', email: 'p.sharma@opusone.in', plant: 'Plant A — Pune', dept: 'Machining', section: 'CNC Section' },
   { id: 5, name: 'Ravi Nair', role: 'LINE_HEAD', avatar: 'RN', email: 'r.nair@opusone.in', plant: 'Plant A — Pune', dept: 'Machining', section: 'CNC Section', line: 'Line-01' },
 ];
+
+// ============================================================
+// SUPER ADMIN DASHBOARD DATA
+// ============================================================
+
+export const superAdminKPIs = {
+  groupOEEAvg: { value: 75.4, unit: '%', trend: +0.8, label: 'Group OEE Avg' },
+  availability: { value: 86.2, unit: '%', trend: +1.1, label: 'Availability' },
+  performance: { value: 88.5, unit: '%', trend: +0.5, label: 'Performance' },
+  quality: { value: 96.8, unit: '%', trend: +0.2, label: 'Quality' },
+  totalDowntime: { value: 340, unit: 'hrs', trend: -12.5, label: 'Total Downtime' },
+};
+
+export const groupMachineStatus = [
+  { name: 'Running', value: 350, color: 'var(--green)' },
+  { name: 'Idle', value: 65, color: 'var(--amber)' },
+  { name: 'No Plan', value: 30, color: 'var(--text-muted)' },
+  { name: 'Breakdown', value: 15, color: 'var(--red)' },
+];
+
+export const groupCompanyStatus = [
+  { name: 'Stable', value: 2, color: 'var(--green)' },
+  { name: 'Needs Attention', value: 1, color: 'var(--amber)' },
+  { name: 'Critical', value: 1, color: 'var(--red)' },
+];
+
+export const companyPerformanceTable = [
+  { company: 'Company A', location: 'India', oee: 76.9, avail: 88.6, perf: 89.4, qual: 97.1, downtime: 122, status: 'good' },
+  { company: 'Company B', location: 'Germany', oee: 71.2, avail: 84.5, perf: 86.1, qual: 95.8, downtime: 160, status: 'warning' },
+  { company: 'Company C', location: 'USA', oee: 65.8, avail: 80.2, perf: 82.5, qual: 93.4, downtime: 210, status: 'critical' },
+  { company: 'Company D', location: 'Japan', oee: 82.4, avail: 92.1, perf: 93.5, qual: 98.2, downtime: 85, status: 'good' },
+];
+
+export const groupOEETrend = {
+  0: [
+    { label: '06:00', oee: 75.5, availability: 88.1, performance: 88.2, quality: 96.4 },
+    { label: '10:00', oee: 76.2, availability: 89.5, performance: 89.4, quality: 96.6 },
+    { label: '14:00', oee: 76.9, availability: 88.6, performance: 89.4, quality: 97.1 },
+    { label: '18:00', oee: null, availability: null, performance: null, quality: null },
+  ],
+  1: [
+    { label: '06:00', oee: 70.1, availability: 83.2, performance: 85.0, quality: 95.1 },
+    { label: '10:00', oee: 71.8, availability: 84.5, performance: 86.2, quality: 95.8 },
+    { label: '14:00', oee: 71.2, availability: 84.5, performance: 86.1, quality: 95.8 },
+    { label: '18:00', oee: null, availability: null, performance: null, quality: null },
+  ],
+  2: [
+    { label: '06:00', oee: 64.4, availability: 79.5, performance: 81.0, quality: 92.5 },
+    { label: '10:00', oee: 63.8, availability: 78.8, performance: 80.5, quality: 92.1 },
+    { label: '14:00', oee: 65.8, availability: 80.2, performance: 82.5, quality: 93.4 },
+    { label: '18:00', oee: null, availability: null, performance: null, quality: null },
+  ],
+  3: [
+    { label: '06:00', oee: 81.5, availability: 91.6, performance: 92.5, quality: 98.0 },
+    { label: '10:00', oee: 82.2, availability: 92.2, performance: 93.8, quality: 98.2 },
+    { label: '14:00', oee: 82.4, availability: 92.1, performance: 93.5, quality: 98.2 },
+    { label: '18:00', oee: null, availability: null, performance: null, quality: null },
+  ],
+};
+
+export const companyMachineStatus = {
+  0: [
+    { name: 'Running', value: 112, color: 'var(--green)' },
+    { name: 'Idle', value: 18, color: 'var(--amber)' },
+    { name: 'No Plan', value: 9, color: 'var(--text-muted)' },
+    { name: 'Breakdown', value: 5, color: 'var(--red)' },
+  ],
+  1: [
+    { name: 'Running', value: 85, color: 'var(--green)' },
+    { name: 'Idle', value: 20, color: 'var(--amber)' },
+    { name: 'No Plan', value: 15, color: 'var(--text-muted)' },
+    { name: 'Breakdown', value: 8, color: 'var(--red)' },
+  ],
+  2: [
+    { name: 'Running', value: 45, color: 'var(--green)' },
+    { name: 'Idle', value: 30, color: 'var(--amber)' },
+    { name: 'No Plan', value: 10, color: 'var(--text-muted)' },
+    { name: 'Breakdown', value: 15, color: 'var(--red)' },
+  ],
+  3: [
+    { name: 'Running', value: 140, color: 'var(--green)' },
+    { name: 'Idle', value: 10, color: 'var(--amber)' },
+    { name: 'No Plan', value: 5, color: 'var(--text-muted)' },
+    { name: 'Breakdown', value: 2, color: 'var(--red)' },
+  ],
+};
+
+export const topPerformingCompanies = {
+  0: [{ name: 'Plant A — Pune', oee: 81.0, status: 'running' }],
+  1: [{ name: 'Berlin Factory', oee: 75.5, status: 'running' }],
+  2: [{ name: 'Texas Hub', oee: 68.2, status: 'running' }],
+  3: [{ name: 'Tokyo Main', oee: 85.1, status: 'running' }],
+};
+
+export const superAdminAttentionItems = [
+  {
+    id: 1,
+    severity: 'critical',
+    message: 'Company C operating 12% below group target OEE',
+    targetLabel: 'Company C',
+    contextData: { companyIdx: 2 }
+  },
+  {
+    id: 2,
+    severity: 'watch',
+    message: 'Company B showing consecutive performance drops',
+    targetLabel: 'Company B',
+    contextData: { companyIdx: 1 }
+  }
+];
+
+export const superAdminLossContributors = [
+  {
+    cause: 'Supply Chain Delay', hours: 140, percent: 34, category: 'Availability',
+    mostAffectedEntity: 'Company C', primaryContributor: 'Texas Hub',
+    availabilityImpact: '8%',
+    contextData: { companyIdx: 2 }
+  },
+  {
+    cause: 'Mechanical Breakdown', hours: 85, percent: 23, category: 'Availability',
+    mostAffectedEntity: 'Acme Manufacturing', primaryContributor: 'Berlin Factory',
+    availabilityImpact: '6%',
+    contextData: { companyIdx: 1 }
+  }
+];
+export const executiveSummaries = {
+  0: { trend: '+2.4', statusText: 'No active situations.', rootCause: null, recommendedAction: null }, // Stable
+  1: { trend: '-1.2', statusText: 'Consecutive performance drops detected.', rootCause: 'Machine Reliability', recommendedAction: 'Review maintenance schedules for Berlin Factory', worstPlant: 'Berlin Factory' }, // Warning
+  2: { trend: '-4.3', statusText: 'Operating 12% below group target OEE.', rootCause: 'Supply Chain Delay', recommendedAction: 'Escalate supplier review for Texas Hub', worstPlant: 'Texas Hub' }, // Critical
+  3: { trend: '+1.8', statusText: 'No active situations.', rootCause: null, recommendedAction: null }, // Stable
+};
+
+export const performanceDrivers = {
+  0: [
+    { label: 'Plant A — Pune', impact: '+1.4', type: 'positive' },
+    { label: 'Assembly Line 1', impact: '+0.8', type: 'positive' },
+    { label: 'Quality Control', impact: '+0.2', type: 'positive' }
+  ],
+  1: [
+    { label: 'Berlin Factory', impact: '-1.8', type: 'negative' },
+    { label: 'Maintenance Delays', impact: '-0.7', type: 'negative' },
+    { label: 'Quality Rejects', impact: '-0.2', type: 'negative' }
+  ],
+  2: [
+    { label: 'Texas Hub', impact: '-3.2', type: 'negative' },
+    { label: 'Extrusion Operations', impact: '-1.8', type: 'negative' },
+    { label: 'Material Shortage', impact: '-1.1', type: 'negative' }
+  ],
+  3: [
+    { label: 'Tokyo Main', impact: '+2.1', type: 'positive' },
+    { label: 'Robotics Assembly', impact: '+1.5', type: 'positive' },
+    { label: 'Zero Breakdown Shift', impact: '+0.9', type: 'positive' }
+  ]
+};
+
+export const activeSituations = {
+  0: [],
+  1: [
+    { type: 'Underperforming Plants', count: 1, severity: 'warning' },
+    { type: 'Maintenance Overdue', count: 2, severity: 'warning' }
+  ],
+  2: [
+    { type: 'Machine Failures', count: 8, severity: 'critical' },
+    { type: 'Underperforming Plants', count: 3, severity: 'warning' },
+    { type: 'Material Shortages', count: 2, severity: 'critical' }
+  ],
+  3: []
+};
+
+export const impactRankings = {
+  0: [
+    { plant: 'Plant A — Pune', oee: 84.2, impact: '+0.9' },
+    { plant: 'Plant B — Mumbai', oee: 81.0, impact: '+0.5' }
+  ],
+  1: [
+    { plant: 'Berlin Factory', oee: 68.4, impact: '-1.8' },
+    { plant: 'Munich Facility', oee: 74.0, impact: '-0.4' }
+  ],
+  2: [
+    { plant: 'Texas Hub', oee: 62.1, impact: '-4.1' },
+    { plant: 'Ohio Plant', oee: 68.2, impact: '-1.8' },
+    { plant: 'Nevada Facility', oee: 70.0, impact: '-0.5' }
+  ],
+  3: [
+    { plant: 'Tokyo Main', oee: 88.5, impact: '+2.1' },
+    { plant: 'Osaka Hub', oee: 85.1, impact: '+1.2' }
+  ]
+};
+
+export const executiveDecisions = {
+  0: [],
+  1: [
+    { title: 'Approve Maintenance Shutdown', target: 'Berlin Factory', pendingTime: '2h', status: 'pending', impactInfo: 'Prevents critical failure' }
+  ],
+  2: [
+    { title: 'Budget Request for Parts', target: 'Texas Hub', pendingTime: '4h', status: 'pending', impactInfo: 'Resolves material shortage' },
+    { title: 'Overtime Approval', target: 'Ohio Plant', pendingTime: '1h', status: 'pending', impactInfo: 'Recovers 2% OEE loss' }
+  ],
+  3: []
+};
+
 
 // ============================================================
 // MD DASHBOARD DATA
@@ -217,12 +420,28 @@ export const shiftProductivityComparison = [
   { shift: 'Shift C', plantA: 78, plantB: 74, plantC: 71, plantD: 76 },
 ];
 
-export const plantPerformanceTable = [
-  { plant: 'Plant A — Pune', oee: 81.0, avail: 91.2, perf: 90.8, qual: 97.8, downtime: 38, machines: 48, production: 1401, status: 'good' },
-  { plant: 'Plant B — Nashik', oee: 75.2, avail: 87.4, perf: 88.6, qual: 97.2, downtime: 52, machines: 36, production: 1120, status: 'warning' },
-  { plant: 'Plant C — Chennai', oee: 70.9, avail: 84.1, perf: 87.2, qual: 96.8, downtime: 71, machines: 28, production: 890, status: 'critical' },
-  { plant: 'Plant D — Ahmedabad', oee: 76.8, avail: 88.8, perf: 89.2, qual: 97.0, downtime: 44, machines: 32, production: 1045, status: 'good' },
-];
+export const plantPerformanceTables = {
+  0: [
+    { plant: 'Plant A — Pune', oee: 81.0, avail: 91.2, perf: 90.8, qual: 97.8, downtime: 38, machines: 48, production: 1401, status: 'good' },
+    { plant: 'Plant B — Nashik', oee: 75.2, avail: 87.4, perf: 88.6, qual: 97.2, downtime: 52, machines: 36, production: 1120, status: 'warning' },
+    { plant: 'Plant C — Chennai', oee: 70.9, avail: 84.1, perf: 87.2, qual: 96.8, downtime: 71, machines: 28, production: 890, status: 'critical' },
+    { plant: 'Plant D — Ahmedabad', oee: 76.8, avail: 88.8, perf: 89.2, qual: 97.0, downtime: 44, machines: 32, production: 1045, status: 'good' },
+  ],
+  1: [
+    { plant: 'Plant E — Berlin', oee: 82.5, avail: 92.1, perf: 91.5, qual: 98.2, downtime: 32, machines: 40, production: 1250, status: 'good' },
+    { plant: 'Plant F — Munich', oee: 73.1, avail: 85.2, perf: 86.4, qual: 96.5, downtime: 65, machines: 25, production: 810, status: 'warning' },
+  ],
+  2: [
+    { plant: 'Plant G — Texas', oee: 68.2, avail: 82.1, perf: 84.5, qual: 94.0, downtime: 110, machines: 50, production: 1800, status: 'critical' },
+    { plant: 'Plant H — Ohio', oee: 63.5, avail: 78.4, perf: 80.6, qual: 92.8, downtime: 100, machines: 35, production: 1100, status: 'critical' },
+  ],
+  3: [
+    { plant: 'Plant I — Tokyo', oee: 85.1, avail: 94.2, perf: 93.8, qual: 98.6, downtime: 28, machines: 60, production: 2200, status: 'good' },
+    { plant: 'Plant J — Osaka', oee: 79.8, avail: 90.1, perf: 93.2, qual: 97.8, downtime: 57, machines: 45, production: 1650, status: 'good' },
+  ]
+};
+
+export const plantPerformanceTable = plantPerformanceTables[0];
 
 // ============================================================
 // PLANT HEAD DASHBOARD DATA
@@ -739,6 +958,13 @@ export const departmentAttentionItems = [
 // ============================================================
 
 export const drilldownHierarchy = {
+  group: 'Global Group',
+  companies: [
+    { id: 'comp-opus', name: 'Opus One Industries', oee: 76.9 },
+    { id: 'comp-acme', name: 'Acme Manufacturing', oee: 71.2 },
+    { id: 'comp-nova', name: 'Nova Tech', oee: 65.8 },
+    { id: 'comp-zenith', name: 'Zenith Production', oee: 82.4 },
+  ],
   company: 'Opus One Industries',
   plants: [
     { id: 'plant-a', name: 'Plant A — Pune', oee: 84.2 },
