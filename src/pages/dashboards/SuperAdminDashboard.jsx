@@ -29,7 +29,30 @@ const CompanyInvestigationOverlay = ({ companyIdx, onClose, drillDown }) => {
   const drivers = performanceDrivers[companyIdx];
   const situations = activeSituations[companyIdx];
   const plantsRanking = impactRankings[companyIdx];
-  const decisions = executiveDecisions[companyIdx];
+
+  const generateStrategicPriorities = (comp) => {
+    if (comp.status === 'critical') {
+      return [
+        { title: 'Performance Recovery Program', level: 'High Priority', impact: 'OEE below target for 7 consecutive days', focus: 'Review maintenance and reliability strategy' },
+        { title: 'Supply Chain Intervention', level: 'High Priority', impact: 'Material shortages causing cascading downtime', focus: 'Escalate supplier performance review and secure alternative logistics' },
+        { title: 'Leadership Task Force Deployment', level: 'Medium Priority', impact: 'Prolonged operational instability', focus: 'Deploy corporate turnaround team to stabilize operations' }
+      ];
+    } else if (comp.status === 'warning') {
+      return [
+        { title: 'Predictive Maintenance Audit', level: 'Medium Priority', impact: 'Downtime increasing week-over-week', focus: 'Audit predictive maintenance compliance and escalate gaps' },
+        { title: 'Quality Control Review', level: 'Medium Priority', impact: 'Minor increase in defect rates detected', focus: 'Initiate continuous improvement initiatives on primary assembly lines' },
+        { title: 'Resource Reallocation', level: 'Low Priority', impact: 'Suboptimal shift efficiency', focus: 'Monitor shift-by-shift productivity trends for future reallocation' }
+      ];
+    } else {
+      return [
+        { title: 'Best Practice Replication', level: 'Opportunity', impact: 'Highest OEE in the group', focus: 'Replicate operating model across other companies' },
+        { title: 'Capacity Expansion Readiness', level: 'Opportunity', impact: 'Sustained peak performance unlocking excess capacity', focus: 'Evaluate facility for next-quarter production volume increase' },
+        { title: 'Automation Pilot Program', level: 'Opportunity', impact: 'Stable processes prime for automation', focus: 'Review capital expenditure proposal for robotic assembly integration' }
+      ];
+    }
+  };
+
+  const strategicPriorities = generateStrategicPriorities(company);
 
   const statusColors = { good: 'var(--green)', warning: 'var(--amber)', critical: 'var(--red)' };
   const statusLabels = { good: 'Stable', warning: 'Needs Attention', critical: 'Critical Alert' };
@@ -216,32 +239,36 @@ const CompanyInvestigationOverlay = ({ companyIdx, onClose, drillDown }) => {
                   </div>
                 </div>
 
-                {/* SECTION 4: REQUIRES DECISION */}
+                {/* SECTION 4: STRATEGIC PRIORITIES */}
                 <div>
-                  <h4 className="text-[12px] font-bold text-[var(--text-muted)] uppercase tracking-wider mb-4">Requires Decision</h4>
-                  {decisions.length > 0 ? (
-                    <div className="space-y-3">
-                      {decisions.map((dec, i) => (
-                        <div key={i} className="p-4 rounded bg-[var(--bg-card)] border border-[var(--blue)] shadow-sm">
-                          <div className="flex justify-between items-start mb-2">
-                            <span className="text-[13px] font-bold text-[var(--text-primary)]">{dec.title}</span>
-                            <span className="text-[11px] font-bold text-[var(--blue)] uppercase px-2 py-0.5 rounded bg-[rgba(59,130,246,0.1)]">Pending {dec.pendingTime}</span>
-                          </div>
-                          <p className="text-[12px] text-[var(--text-secondary)] mb-3">
-                            <span className="font-semibold text-[var(--text-primary)]">{dec.target}</span> • {dec.impactInfo}
-                          </p>
-                          <div className="flex gap-2">
-                            <button className="flex-1 py-1.5 bg-[var(--blue)] hover:bg-blue-600 text-white text-[12px] font-bold rounded transition-colors">Approve</button>
-                            <button className="flex-1 py-1.5 bg-transparent border border-[var(--border)] hover:bg-[var(--bg-hover)] text-[var(--text-primary)] text-[12px] font-bold rounded transition-colors">Reject</button>
-                          </div>
+                  <h4 className="text-[12px] font-bold text-[var(--text-muted)] uppercase tracking-wider mb-4">Strategic Priorities</h4>
+                  <div className="space-y-3">
+                    {strategicPriorities.map((sp, i) => (
+                      <div key={i} className="p-4 rounded bg-[var(--bg-card)] border border-[var(--border-light)] shadow-sm">
+                        <div className="flex justify-between items-start mb-2">
+                          <span className="text-[13px] font-bold text-[var(--text-primary)]">{sp.title}</span>
+                          <span className={`text-[11px] font-bold uppercase px-2 py-0.5 rounded ${
+                            sp.level.includes('High') ? 'text-[var(--red)] bg-[rgba(239,68,68,0.1)]' : 
+                            sp.level.includes('Opportunity') ? 'text-[var(--green)] bg-[rgba(34,197,94,0.1)]' : 
+                            'text-[var(--amber)] bg-[rgba(245,158,11,0.1)]'
+                          }`}>
+                            {sp.level}
+                          </span>
                         </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="p-4 text-center text-[13px] text-[var(--text-muted)] border border-dashed border-[var(--border-light)] rounded">
-                      No executive decisions pending.
-                    </div>
-                  )}
+                        <p className="text-[12px] text-[var(--text-secondary)] mb-1">
+                          <span className="font-semibold text-[var(--text-primary)]">{companyName}</span>
+                        </p>
+                        <p className="text-[12px] text-[var(--text-secondary)] mb-2">
+                          <span className="text-[var(--text-muted)]">Business Impact:</span> {sp.impact}
+                        </p>
+                        <div className="pt-2 border-t border-[var(--border-light)] mt-2">
+                          <p className="text-[12px] text-[var(--text-secondary)]">
+                            <span className="text-[var(--text-muted)]">Leadership Focus:</span> <span className="font-medium text-[var(--text-primary)]">{sp.focus}</span>
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
